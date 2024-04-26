@@ -12,14 +12,14 @@ export const ButtonVariants = cva(
     variants: {
       variant: {
         default: ' shadow-none active:scale-100',
-        grey: ' bg-black ',
-        blue: ' bg-blue-500',
-        red: ' bg-red',
+        gray: ' bg-gray-50',
+        green: ' bg-success-50',
+        red: ' bg-primary-50',
       },
       size: {
         default: '',
         md: ' w-[6.875rem] h-[2.375rem] text-[1rem] rounded-md',
-        lg: 'w-[21.875rem] h-[7.5rem] text-[3rem] rounded-3xl',
+        lg: ' w-[21.875rem] h-[7.5rem] text-[3rem] rounded-3xl',
         wlg: 'w-[24rem] h-[5.25rem] text-[2rem]',
       },
     },

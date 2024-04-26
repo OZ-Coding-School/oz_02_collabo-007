@@ -13,7 +13,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const PrimaryFooter: Story = {
+export const PrimaryBtn: Story = {
   args: {
     size: 'lg',
     variant: 'red',
@@ -21,9 +21,18 @@ export const PrimaryFooter: Story = {
   },
 };
 
-export const NotPrimaryFooter: Story = {
+export const GrayBtn: Story = {
   args: {
     size: 'md',
-    variant: 'grey',
+    variant: 'gray',
+    label: 'button',
+  },
+};
+
+export const successBtn: Story = {
+  args: {
+    size: 'wlg',
+    variant: 'green',
+    label: 'button',
   },
 };
