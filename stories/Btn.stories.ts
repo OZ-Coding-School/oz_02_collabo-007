@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Btn from './Btn';
+import Btn from '../components/core/Button/Btn';
 
 const meta = {
   title: 'Example/btn',
