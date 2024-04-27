@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
 // import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
-import localFont from 'next/font/local';
-
-const pretendard = localFont({
-  src: '../public/fonts/PretendardVariable.woff2',
-  display: 'swap',
-  variable: '--font-pretendard',
-});
-
-// const inter = Inter({ subsets: ['latin'] });
+import { Pretendard } from './fonts';
+import clsx from 'clsx';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${pretendard.variable}`}>
-      <body className={pretendard.className}>{children}</body>
+    <html lang="en" className={clsx(Pretendard.variable)}>
+      <body className="font-pretendard">{children}</body>
     </html>
   );
 }
