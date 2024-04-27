@@ -16,7 +16,8 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <div
-        className={clsx(Pretendard.variable, 'font-pretendard', 'w-[81px]', 'h-[48px]')}
+        className={clsx(Pretendard.variable, 'font-pretendard')}
+        style={{ width: '81px', height: '48px' }}
       >
         <Story />
       </div>
