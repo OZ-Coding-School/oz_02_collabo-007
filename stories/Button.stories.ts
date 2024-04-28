@@ -40,3 +40,34 @@ export const Ghost: Story = {
     variant: 'ghost',
   },
 };
+
+export const PrimaryDark: Story = {
+  args: {
+    label: 'Button',
+    dark: true,
+  },
+};
+
+export const SecondaryDark: Story = {
+  args: {
+    label: 'Button',
+    variant: 'secondary',
+    dark: true,
+  },
+};
+
+export const TertiaryDark: Story = {
+  args: {
+    label: 'Button',
+    variant: 'tertiary',
+    dark: true,
+  },
+};
+
+export const GhostDark: Story = {
+  args: {
+    label: 'Button',
+    variant: 'ghost',
+    dark: true,
+  },
+};
