@@ -4,21 +4,39 @@ import React, { FC, InputHTMLAttributes } from 'react';
 
 export const InputVariants = cva(
   `
-    w-[328px] flex justify-center border-[1px] rounded-[8px] text-[16px] 
-     transition-all  `,
+    w-[328px] flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] 
+     transition-all `,
   {
     variants: {
       variant: {
-        default: 'shadow-none active:scale-100',
-        gray: ' bg-gray-50',
-        green: ' bg-success-50',
-        red: ' bg-primary-50',
+        default: '',
+        hover: ' bg-gray-10',
+        pressed: ' border-black bg-gray-10',
+        active: ' border-black',
+        focus: ' border-[2px] border-black',
+        filled: ' text-black',
+        success: ' border-success-60',
+        error: ' border-error-60',
+        warning: ' border-warning-60',
+        disabled: ' text-gray-30',
+        display: ' border-0 bg-gray-20',
       },
       inputSize: {
         default: '',
         lg: ' h-[56px] ',
         md: ' h-[48px] ',
         sm: ' h-[40px] text-[14px] ',
+      },
+      helperTextColor: {
+        default: ' text-gray-60',
+        success: '',
+        error: '',
+        warning: '',
+        disabled: '',
+      },
+      labelColor: {
+        default: '',
+        disabled: 'text-gray-30',
       },
     },
     defaultVariants: {
@@ -32,6 +50,7 @@ interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof InputVariants> {
   label?: string;
+  labelColor?: string;
   children?: React.ReactElement;
   helperText?: string;
   type: string;
@@ -40,7 +59,9 @@ interface InputProps
 
 const Input: FC<InputProps> = ({
   variant,
+  helperTextColor,
   label,
+  labelColor,
   helperText,
   type,
   placeholder,
@@ -50,14 +71,14 @@ const Input: FC<InputProps> = ({
 }) => {
   return (
     <div>
-      <label>{label && label}</label>
+      <label className={labelColor}>{label && label}</label>
       <input
         type={type}
         placeholder={placeholder}
         className={cn(InputVariants({ variant, inputSize }))}
         {...props}
       />
-      <p>{helperText && helperText}</p>
+      <p className="font-thin text-xs">{helperText && helperText}</p>
     </div>
   );
 };
