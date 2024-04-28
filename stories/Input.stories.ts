@@ -92,7 +92,8 @@ export const successInput: Story = {
     type: 'text',
     label: 'Label',
     labelColor: 'default',
-    helperText: 'Helper text',
+    helperText: 'Success text',
+    helperTextColor: 'success',
     placeholder: 'Placeholder text',
   },
 };
@@ -105,6 +106,7 @@ export const errorInput: Story = {
     label: 'Label',
     labelColor: 'default',
     helperText: 'Helper text',
+    helperTextColor: 'error',
     placeholder: 'Placeholder text',
   },
 };
@@ -117,6 +119,7 @@ export const warningInput: Story = {
     label: 'Label',
     labelColor: 'default',
     helperText: 'Helper text',
+    helperTextColor: 'warning',
     placeholder: 'Placeholder text',
   },
 };
@@ -127,8 +130,9 @@ export const disabledInput: Story = {
     variant: 'disabled',
     type: 'text',
     label: 'Label',
-    labelColor: 'default',
+    labelColor: 'disabled',
     helperText: 'Helper text',
+    helperTextColor: 'disabled',
     placeholder: 'Placeholder text',
   },
 };

@@ -29,14 +29,14 @@ export const InputVariants = cva(
       },
       helperTextColor: {
         default: ' text-gray-60',
-        success: '',
-        error: '',
-        warning: '',
-        disabled: '',
+        success: ' text-success-60',
+        error: 'text-error-60',
+        warning: ' text-warning-60',
+        disabled: 'text-gray-30',
       },
       labelColor: {
         default: '',
-        disabled: 'text-gray-30',
+        disabled: ' text-gray-30',
       },
     },
     defaultVariants: {
@@ -78,7 +78,9 @@ const Input: FC<InputProps> = ({
         className={cn(InputVariants({ variant, inputSize }))}
         {...props}
       />
-      <p className="font-thin text-xs">{helperText && helperText}</p>
+      <p className={cn('font-thin text-xs', { helperTextColor })}>
+        {helperText && helperText}
+      </p>
     </div>
   );
 };
