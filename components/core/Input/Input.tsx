@@ -1,11 +1,12 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes, LabelHTMLAttributes } from 'react';
+import { InputLabel } from '../InputLabel/InputLabel';
 
 export const InputVariants = cva(
   `
     w-[328px] flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] 
-     transition-all `,
+     transition-all placeholder:text-gray-50 `,
   {
     variants: {
       variant: {
@@ -18,14 +19,8 @@ export const InputVariants = cva(
         success: ' border-success-60',
         error: ' border-error-60',
         warning: ' border-warning-60',
-        disabled: ' text-gray-30',
+        disabled: ' placeholder:text-gray-30',
         display: ' border-0 bg-gray-20',
-      },
-      inputSize: {
-        default: '',
-        lg: ' h-[56px] ',
-        md: ' h-[48px] ',
-        sm: ' h-[40px] text-[14px] ',
       },
       helperTextColor: {
         default: ' text-gray-60',
@@ -34,14 +29,25 @@ export const InputVariants = cva(
         warning: ' text-warning-60',
         disabled: 'text-gray-30',
       },
-      labelColor: {
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+export const LabelVariants = cva(
+  `
+      text-gray-80`,
+  {
+    variants: {
+      variant: {
         default: '',
         disabled: ' text-gray-30',
       },
     },
     defaultVariants: {
       variant: 'default',
-      inputSize: 'default',
     },
   },
 );
@@ -50,35 +56,28 @@ interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof InputVariants> {
   label?: string;
-  labelColor?: string;
+  labelColor?: 'default' | 'disabled';
   children?: React.ReactElement;
   helperText?: string;
-  type: string;
+  helperTextcolor?: string;
   placeholder: string;
 }
 
 const Input: FC<InputProps> = ({
   variant,
-  helperTextColor,
   label,
-  labelColor,
+  labelColor = 'default',
+  helperTextColor,
   helperText,
-  type,
-  placeholder,
-  children,
-  inputSize,
   ...props
 }) => {
   return (
     <div>
-      <label className={labelColor}>{label && label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className={cn(InputVariants({ variant, inputSize }))}
-        {...props}
-      />
-      <p className={cn('font-thin text-xs', { helperTextColor })}>
+      <label className={cn(LabelVariants({ variant: labelColor }))}>
+        {label && label}
+      </label>
+      <input className={cn(InputVariants({ variant }))} {...props} />
+      <p className={cn('font-thin text-xs', helperTextColor)}>
         {helperText && helperText}
       </p>
     </div>

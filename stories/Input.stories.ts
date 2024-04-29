@@ -15,7 +15,6 @@ type Story = StoryObj<typeof meta>;
 
 export const defaultInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'default',
     type: 'text',
     label: 'Label',
@@ -26,7 +25,6 @@ export const defaultInput: Story = {
 
 export const hoverInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'hover',
     type: 'text',
     label: 'Label',
@@ -37,7 +35,6 @@ export const hoverInput: Story = {
 
 export const pressedInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'pressed',
     type: 'text',
     label: 'Label',
@@ -48,7 +45,6 @@ export const pressedInput: Story = {
 
 export const activeInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'active',
     type: 'text',
     label: 'Label',
@@ -59,7 +55,6 @@ export const activeInput: Story = {
 
 export const focusInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'focus',
     type: 'text',
     label: 'Label',
@@ -70,7 +65,6 @@ export const focusInput: Story = {
 
 export const filledInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'filled',
     type: 'text',
     label: 'Label',
@@ -81,7 +75,6 @@ export const filledInput: Story = {
 
 export const successInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'success',
     type: 'text',
     label: 'Label',
@@ -93,7 +86,6 @@ export const successInput: Story = {
 
 export const errorInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'error',
     type: 'text',
     label: 'Label',
@@ -105,7 +97,6 @@ export const errorInput: Story = {
 
 export const warningInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'warning',
     type: 'text',
     label: 'Label',
@@ -117,7 +108,6 @@ export const warningInput: Story = {
 
 export const disabledInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'disabled',
     type: 'text',
     label: 'Label',
@@ -130,7 +120,6 @@ export const disabledInput: Story = {
 
 export const displayInput: Story = {
   args: {
-    inputSize: 'lg',
     variant: 'display',
     type: 'text',
     label: 'Label',
