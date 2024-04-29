@@ -4,7 +4,7 @@ import React, { FC, InputHTMLAttributes, LabelHTMLAttributes } from 'react';
 
 export const InputVariants = cva(
   `
-    w-[328px] flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] 
+    w-full flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] 
      transition-all outline-none enabled placeholder:text-gray-50 hover:bg-gray-10 active:border-black active:bg-gray-10 focus:border-[2px] focus:border-black disabled:border-gray-50 disabled:bg-white`,
   {
     variants: {
