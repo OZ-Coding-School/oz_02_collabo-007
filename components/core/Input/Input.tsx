@@ -1,25 +1,18 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
 import React, { FC, InputHTMLAttributes, LabelHTMLAttributes } from 'react';
-import { InputLabel } from '../InputLabel/InputLabel';
 
 export const InputVariants = cva(
   `
     w-[328px] flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] 
-     transition-all placeholder:text-gray-50 `,
+     transition-all outline-none enabled placeholder:text-gray-50 hover:bg-gray-10 active:border-black active:bg-gray-10 focus:border-[2px] focus:border-black`,
   {
     variants: {
       variant: {
         default: '',
-        hover: ' bg-gray-10',
-        pressed: ' border-black bg-gray-10',
-        active: ' border-black',
-        focus: ' border-[2px] border-black',
-        filled: ' text-black',
         success: ' border-success-60',
         error: ' border-error-60',
         warning: ' border-warning-60',
-        disabled: ' placeholder:text-gray-30',
         display: ' border-0 bg-gray-20',
       },
       helperTextColor: {

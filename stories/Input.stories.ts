@@ -23,56 +23,6 @@ export const defaultInput: Story = {
   },
 };
 
-export const hoverInput: Story = {
-  args: {
-    variant: 'hover',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Helper text',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const pressedInput: Story = {
-  args: {
-    variant: 'pressed',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Helper text',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const activeInput: Story = {
-  args: {
-    variant: 'active',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Helper text',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const focusInput: Story = {
-  args: {
-    variant: 'focus',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Helper text',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const filledInput: Story = {
-  args: {
-    variant: 'filled',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Helper text',
-    placeholder: 'Placeholder text',
-  },
-};
-
 export const successInput: Story = {
   args: {
     variant: 'success',
@@ -102,18 +52,6 @@ export const warningInput: Story = {
     label: 'Label',
     helperText: 'Warning text',
     helperTextColor: 'warning',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const disabledInput: Story = {
-  args: {
-    variant: 'disabled',
-    type: 'text',
-    label: 'Label',
-    labelColor: 'disabled',
-    helperText: 'Helper text',
-    helperTextColor: 'disabled',
     placeholder: 'Placeholder text',
   },
 };
