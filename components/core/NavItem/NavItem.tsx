@@ -14,7 +14,6 @@ interface Props {
 
 const NavItem: FC<Props> = ({ name, url, icon, fillIcon }) => {
   const pathname = usePathname();
-  console.log(pathname);
   const [currentTab, setCurrentTab] = useState(pathname === url);
 
   return (
