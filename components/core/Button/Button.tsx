@@ -54,9 +54,19 @@ interface ButtonProps
   disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ label, variant, dark, disabled = false }) => {
+const Button: FC<ButtonProps> = ({
+  label,
+  variant,
+  dark,
+  disabled = false,
+  ...props
+}) => {
   return (
-    <button className={cn(ButtonVariants({ variant, dark }))} disabled={disabled}>
+    <button
+      className={cn(ButtonVariants({ variant, dark }))}
+      disabled={disabled}
+      {...props}
+    >
       {label}
     </button>
   );
