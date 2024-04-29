@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from '@/components/core/Button/Button';
+import clsx from 'clsx';
+import { Pretendard } from '@/app/fonts';
 
 const meta = {
   title: 'Core/Button',
@@ -7,6 +9,16 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  decorators: [
+    (Story) => (
+      <div
+        className={clsx(Pretendard.variable, 'font-pretendard')}
+        style={{ width: '81px', height: '48px' }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 
   tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
