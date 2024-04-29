@@ -1,15 +1,14 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
-import React, { FC, InputHTMLAttributes, LabelHTMLAttributes } from 'react';
-import warning from '@/public/warning-circle.svg';
-import error from '@/public/error-circle.svg';
-import success from '@/public/success-circle.svg';
+import React, { FC, InputHTMLAttributes } from 'react';
+import warning from '@/public/icons/warning-circle.svg';
+import error from '@/public/icons/error-circle.svg';
+import success from '@/public/icons/success-circle.svg';
 import Image from 'next/image';
 
 export const InputVariants = cva(
   `
-    w-full flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] 
-     transition-all outline-none enabled placeholder:text-gray-50 hover:bg-gray-10 active:border-black active:bg-gray-10 focus:border-[2px] focus:border-black disabled:border-gray-50 disabled:bg-white`,
+    w-full flex justify-center my-[8px] py-[16px] px-[12px] border-[1px] border-gray-30 rounded-[8px] text-[16px] transition-all outline-none enabled placeholder:text-gray-50 hover:bg-gray-10 active:border-black active:bg-gray-10 focus:border-[2px] focus:border-black disabled:border-gray-50 disabled:bg-white disabled:cursor-not-allowed`,
   {
     variants: {
       variant: {
