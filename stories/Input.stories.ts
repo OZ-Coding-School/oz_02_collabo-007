@@ -23,39 +23,6 @@ export const defaultInput: Story = {
   },
 };
 
-export const successInput: Story = {
-  args: {
-    variant: 'success',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Success text',
-    helperTextColor: 'success',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const errorInput: Story = {
-  args: {
-    variant: 'error',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Error text',
-    helperTextColor: 'error',
-    placeholder: 'Placeholder text',
-  },
-};
-
-export const warningInput: Story = {
-  args: {
-    variant: 'warning',
-    type: 'text',
-    label: 'Label',
-    helperText: 'Warning text',
-    helperTextColor: 'warning',
-    placeholder: 'Placeholder text',
-  },
-};
-
 export const displayInput: Story = {
   args: {
     variant: 'display',
@@ -63,5 +30,6 @@ export const displayInput: Story = {
     label: 'Label',
     helperText: 'Helper text',
     placeholder: 'Placeholder text',
+    readOnly: true,
   },
 };
