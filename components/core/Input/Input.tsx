@@ -64,7 +64,7 @@ const Input: FC<InputProps> = ({
           <Image
             priority
             src={circleSvgs[variant]}
-            alt={''}
+            alt={variant}
             width={16}
             height={16}
             className={`mr-[6px]`}
