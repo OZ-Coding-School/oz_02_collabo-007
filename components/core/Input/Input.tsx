@@ -1,6 +1,10 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
 import React, { FC, InputHTMLAttributes, LabelHTMLAttributes } from 'react';
+import warning from '@/public/warning-circle.svg';
+import error from '@/public/error-circle.svg';
+import success from '@/public/success-circle.svg';
+import Image from 'next/image';
 
 export const InputVariants = cva(
   `
@@ -32,8 +36,14 @@ interface InputProps
   readOnly?: boolean;
 }
 
+const circleSvgs = {
+  warning: warning,
+  error: error,
+  success: success,
+};
+
 const Input: FC<InputProps> = ({
-  variant,
+  variant = 'default',
   label,
   helperText,
   disabled = false,
@@ -49,7 +59,19 @@ const Input: FC<InputProps> = ({
         disabled={disabled}
         readOnly={readOnly}
       />
-      <p className={`font-thin text-xs text-${variant}-60`}>{helperText && helperText}</p>
+      <p className={`flex font-thin text-xs text-${variant}-60`}>
+        {variant !== 'default' && circleSvgs ? (
+          <Image
+            priority
+            src={circleSvgs[variant]}
+            alt={''}
+            width={16}
+            height={16}
+            className={`mr-[6px]`}
+          />
+        ) : null}
+        {helperText && helperText}
+      </p>
     </div>
   );
 };
