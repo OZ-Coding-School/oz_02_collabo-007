@@ -60,7 +60,7 @@ const Input: FC<InputProps> = ({
         readOnly={readOnly}
       />
       <p className={`flex font-thin text-xs text-${variant}-60`}>
-        {variant !== 'default' && circleSvgs ? (
+        {variant === 'warning' || variant === 'error' || variant === 'success' ? (
           <Image
             priority
             src={circleSvgs[variant]}
