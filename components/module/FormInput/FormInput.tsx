@@ -3,13 +3,18 @@ import Input from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 
 interface FormInputProps {
-  variant: 'default' | 'success' | 'error' | 'warning' | 'display' | null | undefined;
+  variant?: 'default' | 'success' | 'error' | 'warning' | 'display';
   disabled: boolean;
   readOnly: boolean;
   helperText?: string;
 }
 
-const FormInput = ({ variant, disabled, readOnly, helperText }: FormInputProps) => {
+const FormInput = ({
+  variant = 'default',
+  disabled,
+  readOnly,
+  helperText,
+}: FormInputProps) => {
   return (
     <div className={`${disabled ? 'opacity-30' : ''}`}>
       <Label label="Label" disabled={disabled} />

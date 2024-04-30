@@ -30,7 +30,7 @@ interface InputProps
 }
 
 const Input: FC<InputProps> = ({
-  variant = 'default',
+  variant,
   disabled = false,
   readOnly = false,
   ...props

@@ -4,23 +4,27 @@ import success from '@/app/_asset/icons/success-circle.svg';
 import Image from 'next/image';
 
 interface HelperTextProps {
-  variant: 'default' | 'success' | 'error' | 'warning' | 'display' | null | undefined;
+  variant: 'default' | 'success' | 'error' | 'warning' | 'display';
   helperText?: string;
 }
 
-const circleSvgs = {
-  warning: warning,
-  error: error,
-  success: success,
+const helperTextOptions = {
+  success: { icon: success, color: 'text-success-60' },
+  warning: { icon: warning, color: 'text-warning-60' },
+  error: { icon: error, color: 'text-error-60' },
+  default: { icon: null, color: 'text-gray-60' },
+  display: { icon: null, color: 'text-gray-60' },
 };
 
 const HelperText = ({ variant, helperText }: HelperTextProps) => {
+  const { color, icon } = helperTextOptions[variant];
+
   return (
-    <p className={`flex font-thin text-xs text-${variant}-60`}>
-      {variant === 'warning' || variant === 'error' || variant === 'success' ? (
+    <p className={`flex font-thin text-xs ${color}`}>
+      {icon !== null ? (
         <Image
           priority
-          src={circleSvgs[variant]}
+          src={icon}
           alt={variant}
           width={16}
           height={16}
