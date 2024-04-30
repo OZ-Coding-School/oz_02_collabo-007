@@ -2,32 +2,45 @@ import warning from '@/app/_asset/icons/warning-circle.svg';
 import error from '@/app/_asset/icons/error-circle.svg';
 import success from '@/app/_asset/icons/success-circle.svg';
 import Image from 'next/image';
+import { VariantProps, cva } from 'class-variance-authority';
+import { FC } from 'react';
+import { cn } from '@/lib/utils/cn';
 
-interface HelperTextProps {
+export const HelperTextVariants = cva(`flex font-thin text-xs`, {
+  variants: {
+    variant: {
+      default: ' text-gray-60',
+      success: ' text-success-60',
+      error: ' text-error-60',
+      warning: ' text-warning-60',
+      display: ' text-gray-60',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+interface HelperTextProps extends VariantProps<typeof HelperTextVariants> {
   variant: 'default' | 'success' | 'error' | 'warning' | 'display';
   helperText?: string;
   disabled?: boolean;
 }
 
-const helperTextOptions = {
-  success: { icon: success, color: 'text-success-60' },
-  warning: { icon: warning, color: 'text-warning-60' },
-  error: { icon: error, color: 'text-error-60' },
-  default: { icon: null, color: 'text-gray-60' },
-  display: { icon: null, color: 'text-gray-60' },
+const ICONS = {
+  success: success,
+  warning: warning,
+  error: error,
+  default: null,
+  display: null,
 };
 
-const HelperText = ({ variant, helperText, disabled }: HelperTextProps) => {
-  let { color, icon } = helperTextOptions[variant];
-
-  if (disabled) {
-    color = 'text-gray-60';
-    icon = null;
-  }
+const HelperText: FC<HelperTextProps> = ({ variant, helperText, disabled }) => {
+  const icon = ICONS[variant];
 
   return (
-    <p className={`flex font-thin text-xs ${color}`}>
-      {icon !== null ? (
+    <p className={cn(HelperTextVariants({ variant }))}>
+      {icon !== null && !disabled && (
         <Image
           priority
           src={icon}
@@ -36,7 +49,7 @@ const HelperText = ({ variant, helperText, disabled }: HelperTextProps) => {
           height={16}
           className={`mr-[6px]`}
         />
-      ) : null}
+      )}
       {helperText && helperText}
     </p>
   );

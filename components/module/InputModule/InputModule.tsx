@@ -8,7 +8,7 @@ interface InputModuleProps extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   readOnly?: boolean;
   helperText?: string;
-  label: string;
+  label?: string;
 }
 
 const InputModule = ({
@@ -21,9 +21,11 @@ const InputModule = ({
 }: InputModuleProps) => {
   return (
     <div className={`${disabled ? 'opacity-30' : ''}`}>
-      <Label label={label} disabled={disabled} />
+      {label && <Label label={label} disabled={disabled} />}
       <Input variant={variant} disabled={disabled} readOnly={readOnly} {...props} />
-      <HelperText variant={variant} helperText={helperText} disabled={disabled} />
+      {helperText && (
+        <HelperText variant={variant} helperText={helperText} disabled={disabled} />
+      )}
     </div>
   );
 };
