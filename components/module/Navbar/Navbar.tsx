@@ -1,14 +1,14 @@
 import React from 'react';
 import NavItem from '@/components/core/NavItem/NavItem';
 // icon
-import home from '@/public/icons/home.svg';
-import homeFilled from '@/public/icons/home-filled.svg';
-import award from '@/public/icons/award.svg';
-import awardFilled from '@/public/icons/award-filled.svg';
-import flag from '@/public/icons/flag.svg';
-import flagFilled from '@/public/icons/flag-filled.svg';
-import user from '@/public/icons/user.svg';
-import userFilled from '@/public/icons/user-filled.svg';
+import home from '@/app/_asset/icons/home.svg';
+import homeFilled from '@/app/_asset/icons/home-filled.svg';
+import award from '@/app/_asset/icons/award.svg';
+import awardFilled from '@/app/_asset/icons/award-filled.svg';
+import flag from '@/app/_asset/icons/flag.svg';
+import flagFilled from '@/app/_asset/icons/flag-filled.svg';
+import user from '@/app/_asset/icons/user.svg';
+import userFilled from '@/app/_asset/icons/user-filled.svg';
 
 export const NAV_LINK = [
   { name: '홈', url: '/', icon: home, fillIcon: homeFilled },

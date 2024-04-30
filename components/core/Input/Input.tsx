@@ -1,10 +1,6 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
 import React, { FC, InputHTMLAttributes } from 'react';
-import warning from '@/public/icons/warning-circle.svg';
-import error from '@/public/icons/error-circle.svg';
-import success from '@/public/icons/success-circle.svg';
-import Image from 'next/image';
 
 export const InputVariants = cva(
   `
@@ -29,49 +25,23 @@ export const InputVariants = cva(
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof InputVariants> {
-  label?: string;
-  helperText?: string;
   disabled?: boolean;
   readOnly?: boolean;
 }
 
-const circleSvgs = {
-  warning: warning,
-  error: error,
-  success: success,
-};
-
 const Input: FC<InputProps> = ({
-  variant = 'default',
-  label,
-  helperText,
+  variant,
   disabled = false,
   readOnly = false,
   ...props
 }) => {
   return (
-    <div className={`${disabled ? 'opacity-30' : ''}`}>
-      <label className={`${disabled ? 'text-gray-50' : ''}`}>{label && label}</label>
-      <input
-        className={cn(InputVariants({ variant }))}
-        {...props}
-        disabled={disabled}
-        readOnly={readOnly}
-      />
-      <p className={`flex font-thin text-xs text-${variant}-60`}>
-        {variant === 'warning' || variant === 'error' || variant === 'success' ? (
-          <Image
-            priority
-            src={circleSvgs[variant]}
-            alt={variant}
-            width={16}
-            height={16}
-            className={`mr-[6px]`}
-          />
-        ) : null}
-        {helperText && helperText}
-      </p>
-    </div>
+    <input
+      className={cn(InputVariants({ variant }))}
+      disabled={disabled}
+      readOnly={readOnly}
+      {...props}
+    />
   );
 };
 
