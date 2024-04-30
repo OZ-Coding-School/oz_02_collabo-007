@@ -1,9 +1,9 @@
-import Input from '@/components/core/Input/Input';
+import InputModule from '@/components/module/InputModule/InputModule';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Core/Input',
-  component: Input,
+  component: InputModule,
   parameters: {
     layout: 'centered',
   },
@@ -15,7 +15,7 @@ const meta = {
     ),
   ],
   tags: ['autodocs'],
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof InputModule>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

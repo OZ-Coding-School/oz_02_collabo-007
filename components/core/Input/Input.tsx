@@ -38,9 +38,9 @@ const Input: FC<InputProps> = ({
   return (
     <input
       className={cn(InputVariants({ variant }))}
-      {...props}
       disabled={disabled}
       readOnly={readOnly}
+      {...props}
     />
   );
 };

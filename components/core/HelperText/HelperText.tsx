@@ -6,6 +6,7 @@ import Image from 'next/image';
 interface HelperTextProps {
   variant: 'default' | 'success' | 'error' | 'warning' | 'display';
   helperText?: string;
+  disabled?: boolean;
 }
 
 const helperTextOptions = {
@@ -16,8 +17,13 @@ const helperTextOptions = {
   display: { icon: null, color: 'text-gray-60' },
 };
 
-const HelperText = ({ variant, helperText }: HelperTextProps) => {
-  const { color, icon } = helperTextOptions[variant];
+const HelperText = ({ variant, helperText, disabled }: HelperTextProps) => {
+  let { color, icon } = helperTextOptions[variant];
+
+  if (disabled) {
+    color = 'text-gray-60';
+    icon = null;
+  }
 
   return (
     <p className={`flex font-thin text-xs ${color}`}>
