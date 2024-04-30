@@ -3,7 +3,7 @@ import { VariantProps, cva } from 'class-variance-authority';
 import React, { ButtonHTMLAttributes, FC } from 'react';
 
 export const ButtonVariants = cva(
-  `w-full h-full flex justify-center items-center rounded-lg font-[500] text-[16px] leading-[24px] outline-none font-pretendard disabled:cursor-not-allowed disabled:opacity-50`,
+  `w-full h-full flex justify-center items-center self-stretch gap-[8px] rounded-lg font-[500] text-[16px] leading-[24px] outline-none font-pretendard disabled:cursor-not-allowed disabled:opacity-50 box-border`,
   {
     variants: {
       variant: {
@@ -11,6 +11,11 @@ export const ButtonVariants = cva(
         secondary: ` bg-primary-10 text-primary-60 enabled:hover:bg-primary-20 enabled:active:bg-primary-30`,
         tertiary: ` bg-white border border-primary-30 text-primary-60 enabled:hover:bg-primary-10 enabled:active:bg-primary-20`,
         ghost: ` bg-white text-primary-60 enabled:hover:text-primary-70 enabled:active:text-primary-80`,
+      },
+      size: {
+        sm: 'px-[12px] py-[12px]',
+        md: 'px-[16px] py-[10px]',
+        lg: 'px-[16px] py-[12px]',
       },
       colors: {
         default: '',
@@ -43,6 +48,7 @@ export const ButtonVariants = cva(
     ],
     defaultVariants: {
       variant: 'primary',
+      size: 'lg',
       colors: 'default',
     },
   },
@@ -59,12 +65,13 @@ const Button: FC<ButtonProps> = ({
   label,
   variant,
   colors,
+  size,
   disabled = false,
   ...props
 }) => {
   return (
     <button
-      className={cn(ButtonVariants({ variant, colors }))}
+      className={cn(ButtonVariants({ variant, colors, size }))}
       disabled={disabled}
       {...props}
     >

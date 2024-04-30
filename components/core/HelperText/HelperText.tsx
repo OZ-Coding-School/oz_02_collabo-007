@@ -39,7 +39,12 @@ const HelperText: FC<HelperTextProps> = ({ variant, helperText, disabled }) => {
   const icon = ICONS[variant];
 
   return (
-    <p className={cn(HelperTextVariants({ variant }))}>
+    <p
+      className={cn(
+        HelperTextVariants({ variant }),
+        'text-[12px] font-[400] leading-[16px]',
+      )}
+    >
       {icon !== null && !disabled && (
         <Image
           priority
