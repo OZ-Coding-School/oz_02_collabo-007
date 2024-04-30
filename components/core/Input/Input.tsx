@@ -1,8 +1,6 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
 import React, { FC, InputHTMLAttributes } from 'react';
-import Label from '../Label/Label';
-import HelperText from '../HelperText/HelperText';
 
 export const InputVariants = cva(
   `

@@ -6,7 +6,9 @@ interface LabelProps {
 }
 
 const Label = ({ disabled, label }: LabelProps) => {
-  return <label className={`${disabled ? 'text-gray-50' : ''}`}>{label && label}</label>;
+  return label ? (
+    <label className={`${disabled ? 'text-gray-50' : ''}`}>{label && label}</label>
+  ) : null;
 };
 
 export default Label;
