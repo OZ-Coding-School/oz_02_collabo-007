@@ -19,7 +19,7 @@ const NavItem: FC<Props> = ({ name, url, icon, fillIcon }) => {
   return (
     <Link
       href={url}
-      className="w-[85.75px] h-[64px] flex flex-col justify-center items-center gap-[8px] text-gray-60"
+      className="w-[85.75px] p-[8px] flex flex-1 flex-col justify-center items-center self-stretch gap-[8px] text-gray-60"
     >
       <Image
         priority

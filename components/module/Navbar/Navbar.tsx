@@ -19,7 +19,7 @@ export const NAV_LINK = [
 
 const Navbar = () => {
   return (
-    <div className="w-full flex justify-center items-center bg-white">
+    <div className="w-full flex justify-center items-center px-[16px] bg-white">
       {NAV_LINK.map(({ name, url, icon, fillIcon }, index) => (
         <NavItem key={index} name={name} url={url} icon={icon} fillIcon={fillIcon} />
       ))}
