@@ -9,14 +9,14 @@ interface InputModuleProps extends InputHTMLAttributes<HTMLInputElement> {
   readOnly?: boolean;
   helperText?: string;
   label?: string;
-  inputSize?: 'default' | 'md';
+  inputSize?: 'md' | 'lg' | 'mdWith' | 'lgWith';
 }
 
 const InputModule = ({
   variant = 'default',
   disabled = false,
   readOnly = false,
-  inputSize = 'default',
+  inputSize = 'md',
   helperText,
   label,
   ...props

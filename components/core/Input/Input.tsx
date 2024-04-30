@@ -15,13 +15,15 @@ export const InputVariants = cva(
           ' border-0 bg-gray-20 text-gray-60 border-none hover:bg-gray-20 active:bg-gray-20',
       },
       inputSize: {
-        default: 'px-[12px] py-[10px] text-[14px] font-[400] leading-[20px] ',
-        md: 'p-[12px] text-[16px] font-[400] leading-[24px]',
+        md: 'px-[12px] py-[10px] text-[14px] font-[400] leading-[20px] ',
+        lg: 'p-[12px] text-[16px] font-[400] leading-[24px]',
+        mdWith: 'pl-[12px] pr-[44px] py-[10px] text-[14px] font-[400] leading-[20px] ',
+        lgWith: 'pl-[12px] pr-[48px] py-[12px] text-[16px] font-[400] leading-[24px]',
       },
     },
     defaultVariants: {
       variant: 'default',
-      inputSize: 'default',
+      inputSize: 'md',
     },
   },
 );
