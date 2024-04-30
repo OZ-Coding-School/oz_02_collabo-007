@@ -1,9 +1,9 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
 import React, { FC, InputHTMLAttributes } from 'react';
-import warning from '@/public/icons/warning-circle.svg';
-import error from '@/public/icons/error-circle.svg';
-import success from '@/public/icons/success-circle.svg';
+import warning from '@/app/_asset/icons/warning-circle.svg';
+import error from '@/app/_asset/icons/error-circle.svg';
+import success from '@/app/_asset/icons/success-circle.svg';
 import Image from 'next/image';
 
 export const InputVariants = cva(
