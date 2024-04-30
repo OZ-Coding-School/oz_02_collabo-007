@@ -5,6 +5,7 @@ import warning from '@/app/_asset/icons/warning-circle.svg';
 import error from '@/app/_asset/icons/error-circle.svg';
 import success from '@/app/_asset/icons/success-circle.svg';
 import Image from 'next/image';
+import Label from '../Label/Label';
 
 export const InputVariants = cva(
   `
@@ -51,7 +52,7 @@ const Input: FC<InputProps> = ({
 }) => {
   return (
     <div className={`${disabled ? 'opacity-30' : ''}`}>
-      <label className={`${disabled ? 'text-gray-50' : ''}`}>{label && label}</label>
+      <Label label="Label" disabled={disabled} />
       <input
         className={cn(InputVariants({ variant }))}
         {...props}
