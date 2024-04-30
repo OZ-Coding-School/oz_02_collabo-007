@@ -56,7 +56,7 @@ export const Ghost: Story = {
 export const PrimaryDark: Story = {
   args: {
     label: 'Button',
-    dark: true,
+    colors: 'gray',
   },
 };
 
@@ -64,7 +64,7 @@ export const SecondaryDark: Story = {
   args: {
     label: 'Button',
     variant: 'secondary',
-    dark: true,
+    colors: 'gray',
   },
 };
 
@@ -72,7 +72,7 @@ export const TertiaryDark: Story = {
   args: {
     label: 'Button',
     variant: 'tertiary',
-    dark: true,
+    colors: 'gray',
   },
 };
 
@@ -80,6 +80,6 @@ export const GhostDark: Story = {
   args: {
     label: 'Button',
     variant: 'ghost',
-    dark: true,
+    colors: 'gray',
   },
 };

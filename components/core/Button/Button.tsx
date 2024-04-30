@@ -12,37 +12,38 @@ export const ButtonVariants = cva(
         tertiary: ` bg-white border border-primary-30 text-primary-60 enabled:hover:bg-primary-10 enabled:active:bg-primary-20`,
         ghost: ` bg-white text-primary-60 enabled:hover:text-primary-70 enabled:active:text-primary-80`,
       },
-      dark: {
-        true: '',
+      colors: {
+        default: '',
+        gray: '',
       },
     },
     compoundVariants: [
       {
         variant: 'primary',
-        dark: true,
+        colors: 'gray',
         className: 'bg-gray-100 enabled:hover:bg-gray-90 enabled:active:bg-gray-80',
       },
       {
         variant: 'secondary',
-        dark: true,
+        colors: 'gray',
         className:
           'bg-gray-20 text-gray-80 enabled:hover:bg-gray-30 enabled:active:bg-gray-40',
       },
       {
         variant: 'tertiary',
-        dark: true,
+        colors: 'gray',
         className:
           'border-gray-30 text-gray-80 enabled:hover:bg-gray-10 enabled:active:bg-gray-20',
       },
       {
         variant: 'ghost',
-        dark: true,
+        colors: 'gray',
         className: 'text-gray-80 enabled:hover:text-gray-90 enabled:active:text-gray-100',
       },
     ],
     defaultVariants: {
       variant: 'primary',
-      dark: false,
+      colors: 'default',
     },
   },
 );
@@ -54,9 +55,19 @@ interface ButtonProps
   disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ label, variant, dark, disabled = false }) => {
+const Button: FC<ButtonProps> = ({
+  label,
+  variant,
+  colors,
+  disabled = false,
+  ...props
+}) => {
   return (
-    <button className={cn(ButtonVariants({ variant, dark }))} disabled={disabled}>
+    <button
+      className={cn(ButtonVariants({ variant, colors }))}
+      disabled={disabled}
+      {...props}
+    >
       {label}
     </button>
   );
