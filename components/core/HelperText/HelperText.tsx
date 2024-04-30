@@ -4,7 +4,7 @@ import success from '@/app/_asset/icons/success-circle.svg';
 import Image from 'next/image';
 
 interface HelperTextProps {
-  variant: string | null;
+  variant: 'default' | 'success' | 'error' | 'warning' | 'display' | null | undefined;
   helperText?: string;
 }
 

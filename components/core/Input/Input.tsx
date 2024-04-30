@@ -27,31 +27,23 @@ export const InputVariants = cva(
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof InputVariants> {
-  label?: string;
-  helperText?: string;
   disabled?: boolean;
   readOnly?: boolean;
 }
 
 const Input: FC<InputProps> = ({
   variant = 'default',
-  label,
-  helperText,
   disabled = false,
   readOnly = false,
   ...props
 }) => {
   return (
-    <div className={`${disabled ? 'opacity-30' : ''}`}>
-      <Label label="Label" disabled={disabled} />
-      <input
-        className={cn(InputVariants({ variant }))}
-        {...props}
-        disabled={disabled}
-        readOnly={readOnly}
-      />
-      <HelperText variant={variant} helperText={helperText} />
-    </div>
+    <input
+      className={cn(InputVariants({ variant }))}
+      {...props}
+      disabled={disabled}
+      readOnly={readOnly}
+    />
   );
 };
 
