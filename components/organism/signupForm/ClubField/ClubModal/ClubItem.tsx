@@ -9,17 +9,14 @@ interface Props {
 
 const ClubItem: FC<Props> = ({ name, address, image }) => {
   return (
-    <div
-      className="w-full p-[12px] flex items-center gap-[16px] self-stretch"
-      style={{ boxShadow: '0px 2px 8px 0px rgba(0, 0, 0, 0.12)' }}
-    >
+    <div className="w-full p-[12px] flex items-center gap-[16px] self-stretch shadow-card rounded-[8px]">
       <div className="relative w-[56px] h-[56px]">
         <Image
           src={image}
           alt={name}
           fill
           sizes="w-[56px] h-[56px]"
-          style={{ objectFit: 'cover' }}
+          className="object-cover"
         />
       </div>
       <div className="flex flex-1 flex-col justify-center gap-[4px]">

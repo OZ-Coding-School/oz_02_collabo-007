@@ -54,14 +54,14 @@ const ClubContent: FC<Props> = ({ handleCloseModal }) => {
       </header>
       <div className="relative flex flex-col gap-[10px] self-stretch px-[20px] py-[16px] bg-white">
         <input
-          id={'clubSearch'}
-          name={'clubSearch'}
+          id="clubSearch"
+          name="clubSearch"
           type="text"
-          disabled={false}
-          readOnly={false}
           placeholder="소속 클럽 검색"
-          style={{ paddingLeft: '44px' }}
-          className={cn(InputVariants({ variant: 'default', inputSize: 'md' }))}
+          className={cn(
+            InputVariants({ variant: 'default', inputSize: 'md' }),
+            'pl-[44px]',
+          )}
         />
         <Image
           src={searchIcon}

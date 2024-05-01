@@ -16,17 +16,17 @@ const ClubField = () => {
   return (
     <div className="w-full relative">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
-        <Label label={'소속 클럽 검색'} disabled={false} name={'club'} />
+        <Label label={'소속 클럽 검색'} name={'club'} />
         <input
-          id={'club'}
-          name={'club'}
+          id="club"
+          name="club"
           type="text"
           ref={inputRef}
-          disabled={false}
-          readOnly={false}
           placeholder="소속 클럽 검색"
-          style={{ paddingLeft: '44px' }}
-          className={cn(InputVariants({ variant: 'default', inputSize: 'md' }))}
+          className={cn(
+            InputVariants({ variant: 'default', inputSize: 'md' }),
+            'pl-[44px]',
+          )}
           onFocus={() => setIsOpen((prev) => !prev)}
         />
         <Image
