@@ -8,6 +8,8 @@ import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
+import tennisImg from '@/public/tennis.jpeg';
+import ClubItem from './ClubModal/ClubItem';
 
 const ClubField = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +37,13 @@ const ClubField = () => {
           width={20}
           height={20}
           className="absolute top-[38px] left-[12px]"
+        />
+
+        <ClubItem
+          name={'라온 테니스'}
+          address={'서울 서초구 강남대로 99길'}
+          image={tennisImg}
+          displayMode
         />
       </div>
 
