@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* appearance-none
+  w-[20px]
+  h-[20px]
+  border-[2px]
+  border-gray-40
+  rounded-[4px]
+  bg-cover
+  checked:bg-primary-60
+  checked:border-primary-60
+  checked:bg-[url('../app/_asset/icons/check.svg')] */
+
+input[type='checkbox'] {
+  appearance: none;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d6d6d6;
+  border-radius: 4px;
+  background-size: cover;
+}
+
+input[type='checkbox']:checked {
+  background-color: #fc5214;
+  border-color: #fc5214;
+  background-image: url('../app/_asset/icons/check.svg');
+}
