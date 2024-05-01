@@ -18,6 +18,9 @@ const config: Config = {
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
       },
+      boxShadow: {
+        card: '0px 2px 8px 0px rgba(0, 0, 0, 0.12)',
+      },
       fontSize: {
         'headline-1': [
           '36px',
@@ -75,7 +78,7 @@ const config: Config = {
             fontWeight: '700',
           },
         ],
-        'sub-headline1-': [
+        'sub-headline-1': [
           '16px',
           {
             lineHeight: '24px',
