@@ -18,7 +18,7 @@ const ClubItem: FC<Props> = ({ name, address, image }) => {
           src={image}
           alt={name}
           fill
-          sizes="w-[56px] h-[56px"
+          sizes="w-[56px] h-[56px]"
           style={{ objectFit: 'cover' }}
         />
       </div>
