@@ -7,15 +7,15 @@ import addIcon from '@/app/_asset/icons/add.svg';
 
 const ProfileField = () => {
   const fileRef = useRef<HTMLInputElement>(null);
-  const [profileImages, setProfileImages] = useState<string | null>(null);
+  const [profileImages, setProfileImages] = useState<string[]>([]);
 
   const handleChange = (e: React.ChangeEvent) => {
-    const targetFile = (e.target as HTMLInputElement).files as FileList;
-    const targetFilesArray = Array.from(targetFile);
-    const selectedFile: string = targetFilesArray.map((file) => {
+    const targetFiles = (e.target as HTMLInputElement).files as FileList;
+    const targetFilesArray = Array.from(targetFiles);
+    const selectedFiles: string[] = targetFilesArray.map((file) => {
       return URL.createObjectURL(file);
-    })[0];
-    setProfileImages(() => selectedFile);
+    });
+    setProfileImages(() => [...selectedFiles]);
   };
 
   const handleClick = () => {
@@ -28,14 +28,14 @@ const ProfileField = () => {
         className="w-full h-full rounded-full bg-gray-20 border border-gray-30 cursor-pointer"
         onClick={handleClick}
       >
-        {profileImages === null ? (
+        {profileImages.length === 0 ? (
           <div className="w-full h-full p-[24px]">
             <Image src={userIcon} alt="user" width={40} height={40} />
           </div>
         ) : (
           <div className="w-full h-full overflow-hidden relative">
             <Image
-              src={profileImages}
+              src={profileImages[0]}
               alt="profileImg"
               fill
               style={{ objectFit: 'cover' }}
