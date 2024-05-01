@@ -5,8 +5,6 @@ import { InputHTMLAttributes } from 'react';
 
 interface InputModuleProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: 'default' | 'success' | 'error' | 'warning' | 'display';
-  disabled?: boolean;
-  readOnly?: boolean;
   helperText?: string;
   label?: string;
   inputSize?: 'md' | 'lg' | 'mdWith' | 'lgWith';
@@ -14,8 +12,6 @@ interface InputModuleProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const InputModule = ({
   variant = 'default',
-  disabled = false,
-  readOnly = false,
   inputSize = 'md',
   helperText,
   label,
@@ -23,18 +19,12 @@ const InputModule = ({
 }: InputModuleProps) => {
   return (
     <div
-      className={`${disabled ? 'opacity-30' : ''} flex flex-col items-start gap-[8px] self-stretch`}
+      className={`${props.disabled ? 'opacity-30' : ''} flex flex-col items-start gap-[8px] self-stretch`}
     >
-      {label && <Label label={label} disabled={disabled} name={props.name} />}
-      <Input
-        variant={variant}
-        disabled={disabled}
-        readOnly={readOnly}
-        inputSize={inputSize}
-        {...props}
-      />
+      {label && <Label label={label} disabled={props.disabled} name={props.name} />}
+      <Input variant={variant} inputSize={inputSize} {...props} />
       {helperText && (
-        <HelperText variant={variant} helperText={helperText} disabled={disabled} />
+        <HelperText variant={variant} helperText={helperText} disabled={props.disabled} />
       )}
     </div>
   );

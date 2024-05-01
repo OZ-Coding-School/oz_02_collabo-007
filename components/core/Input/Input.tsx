@@ -15,10 +15,10 @@ export const InputVariants = cva(
           ' border-0 bg-gray-20 text-gray-60 border-none hover:bg-gray-20 active:bg-gray-20',
       },
       inputSize: {
-        md: 'px-[12px] py-[10px] text-[14px] font-[400] leading-[20px] ',
-        lg: 'p-[12px] text-[16px] font-[400] leading-[24px]',
-        mdWith: 'pl-[12px] pr-[44px] py-[10px] text-[14px] font-[400] leading-[20px] ',
-        lgWith: 'pl-[12px] pr-[48px] py-[12px] text-[16px] font-[400] leading-[24px]',
+        md: 'px-[12px] py-[10px] text-body-2',
+        lg: 'p-[12px] text-[16px] text-body-1',
+        mdWith: 'pl-[12px] pr-[44px] py-[10px] text-body-2',
+        lgWith: 'pl-[12px] pr-[48px] py-[12px] text-body-1',
       },
     },
     defaultVariants: {
@@ -30,25 +30,14 @@ export const InputVariants = cva(
 
 interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof InputVariants> {
-  disabled?: boolean;
-  readOnly?: boolean;
-}
+    VariantProps<typeof InputVariants> {}
 
-const Input: FC<InputProps> = ({
-  variant,
-  disabled = false,
-  readOnly = false,
-  inputSize,
-  ...props
-}) => {
+const Input: FC<InputProps> = ({ variant, inputSize, ...props }) => {
   return (
     <input
       className={cn(InputVariants({ variant, inputSize }))}
       id={props.name}
       name={props.name}
-      disabled={disabled}
-      readOnly={readOnly}
       {...props}
     />
   );

@@ -75,7 +75,7 @@ const config: Config = {
             fontWeight: '700',
           },
         ],
-        'sub-headline1-': [
+        'sub-headline-1': [
           '16px',
           {
             lineHeight: '24px',

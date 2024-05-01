@@ -28,9 +28,7 @@ const NavItem: FC<Props> = ({ name, url, icon, fillIcon }) => {
         width={24}
         height={24}
       />
-      <span
-        className={`text-[12px] font-[500] leading-[16px] ${currentTab && 'text-primary-60'}`}
-      >
+      <span className={`text-sub-headline-3 ${currentTab && 'text-primary-60'}`}>
         {name}
       </span>
     </Link>
