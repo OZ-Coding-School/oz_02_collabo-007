@@ -1,26 +1,46 @@
-import InputModule from '@/components/module/InputModule/InputModule';
+'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import searchIcon from '@/app/_asset/icons/search.svg';
+import ClubModal from './ClubModal/ClubModal';
+import Label from '@/components/core/Label/Label';
+import { AnimatePresence } from 'framer-motion';
+import { cn } from '@/lib/utils/cn';
+import { InputVariants } from '@/components/core/Input/Input';
 
 const ClubField = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   return (
     <div className="w-full relative">
-      <InputModule
-        label="소속 클럽 검색"
-        placeholder="소속 클럽 검색"
-        type="text"
-        name="club"
-        style={{ paddingLeft: '44px' }}
-      />
+      <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
+        <Label label={'소속 클럽 검색'} disabled={false} name={'club'} />
+        <input
+          id={'club'}
+          name={'club'}
+          type="text"
+          ref={inputRef}
+          disabled={false}
+          readOnly={false}
+          placeholder="소속 클럽 검색"
+          style={{ paddingLeft: '44px' }}
+          className={cn(InputVariants({ variant: 'default', inputSize: 'md' }))}
+          onFocus={() => setIsOpen((prev) => !prev)}
+        />
+        <Image
+          src={searchIcon}
+          alt="search"
+          width={20}
+          height={20}
+          className="absolute top-[38px] left-[12px]"
+        />
+      </div>
 
-      <Image
-        src={searchIcon}
-        alt="search"
-        width={20}
-        height={20}
-        className="absolute top-[38px] left-[12px]"
-      />
+      <AnimatePresence>
+        {isOpen && <ClubModal setIsOpen={setIsOpen} inputRef={inputRef} />}
+      </AnimatePresence>
     </div>
   );
 };

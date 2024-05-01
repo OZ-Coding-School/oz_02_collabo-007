@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${clsx(Pretendard.variable)} w-screen h-screen bg-gray-10`}
+      className={`${clsx(Pretendard.variable)} w-screen h-screen bg-gray-40`}
     >
       <body className="font-pretendard max-w-[500px] h-full m-auto bg-white no-scrollbar">
         {children}

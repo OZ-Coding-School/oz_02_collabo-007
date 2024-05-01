@@ -15,15 +15,15 @@ import {
 const page = () => {
   return (
     <div className="w-full h-full relative">
-      <div className="flex justify-center items-center gap-[16px]">
+      <header className="flex justify-center items-center gap-[16px]">
         <div className="p-[16px]">
           <Image src={chevronIcon} alt="back" width={24} height={24} />
         </div>
-        <div className="flex-1 text-center text-[16px] font-[700]  leading-[24px] font-feature-settings-normal">
+        <div className="flex-1 text-center text-headline-6 font-feature-settings-normal">
           회원 가입
         </div>
         <div className="w-[56px] h-[56px] p-[16px]"></div>
-      </div>
+      </header>
 
       <form action="" className="flex flex-col no-scrollbar">
         <div className="w-full px-[20px] py-[24px] flex flex-1 flex-col items-center gap-[24px]">
