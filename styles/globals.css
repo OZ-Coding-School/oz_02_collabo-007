@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* appearance-none
-  w-[20px]
-  h-[20px]
-  border-[2px]
-  border-gray-40
-  rounded-[4px]
-  bg-cover
-  checked:bg-primary-60
-  checked:border-primary-60
-  checked:bg-[url('../app/_asset/icons/check.svg')] */
-
 input[type='checkbox'] {
   appearance: none;
 }

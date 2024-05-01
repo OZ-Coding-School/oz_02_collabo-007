@@ -9,6 +9,9 @@ import Image from 'next/image';
 const InputPassword = () => {
   const [isVisible, setVisible] = useState(false);
 
+  const changeVisible = () => {
+    setVisible((isVisible) => !isVisible);
+  };
   return (
     <div className="mt-6 relative">
       <InputModule
@@ -22,7 +25,7 @@ const InputPassword = () => {
         width={24}
         height={24}
         alt="visible"
-        onClick={() => setVisible(!isVisible)}
+        onClick={changeVisible}
         className="absolute right-[12px] bottom-[12px]"
       />
     </div>
