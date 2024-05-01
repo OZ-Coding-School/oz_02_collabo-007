@@ -11,19 +11,17 @@ import {
   PhoneField,
   ProfileField,
 } from '@/components/organism/signupForm';
+import HeaderBar from '@/components/organism/signupForm/HeaderBar/HeaderBar';
+import Link from 'next/link';
 
 const page = () => {
   return (
     <div className="w-full h-full relative">
-      <header className="flex justify-center items-center gap-[16px]">
-        <div className="p-[16px]">
+      <HeaderBar title="회원 가입">
+        <Link href={'#'}>
           <Image src={chevronIcon} alt="back" width={24} height={24} />
-        </div>
-        <div className="flex-1 text-center text-headline-6 font-feature-settings-normal">
-          회원 가입
-        </div>
-        <div className="w-[56px] h-[56px] p-[16px]"></div>
-      </header>
+        </Link>
+      </HeaderBar>
 
       <form action="" className="flex flex-col no-scrollbar">
         <div className="w-full px-[20px] py-[24px] flex flex-1 flex-col items-center gap-[24px]">

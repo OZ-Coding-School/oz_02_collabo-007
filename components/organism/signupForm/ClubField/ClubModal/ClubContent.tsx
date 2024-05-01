@@ -6,6 +6,7 @@ import { InputVariants } from '@/components/core/Input/Input';
 import { cn } from '@/lib/utils/cn';
 import ClubItem from './ClubItem';
 import tennisImg from '@/public/tennis.jpeg';
+import HeaderBar from '../../HeaderBar/HeaderBar';
 
 interface Props {
   handleCloseModal: () => void;
@@ -36,22 +37,17 @@ const CLUBS = [
 const ClubContent: FC<Props> = ({ handleCloseModal }) => {
   return (
     <>
-      <header className="flex justify-center items-center gap-[16px] w-full bg-white">
-        <div className="w-[56px] h-[56px] p-[16px]"></div>
-        <div className="flex-1 text-center text-headline-6 font-feature-settings-normal">
-          클럽 검색
-        </div>
-        <div className="w-[56px] h-[56px] p-[16px]">
-          <Image
-            src={xIcon}
-            alt="x"
-            width={24}
-            height={24}
-            onClick={() => handleCloseModal()}
-            className="cursor-pointer"
-          />
-        </div>
-      </header>
+      <HeaderBar title="클럽 검색">
+        <Image
+          src={xIcon}
+          alt="x"
+          width={24}
+          height={24}
+          onClick={() => handleCloseModal()}
+          className="cursor-pointer"
+        />
+      </HeaderBar>
+
       <div className="relative flex flex-col gap-[10px] self-stretch px-[20px] py-[16px] bg-white">
         <input
           id="clubSearch"
