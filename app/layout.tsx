@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { Pretendard } from './fonts';
 import clsx from 'clsx';
-import Navbar from '@/components/module/Navbar/Navbar';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={clsx(Pretendard.variable)}>
-      <body className="font-pretendard">
-        {children} <Navbar />
-      </body>
+      <body className="font-pretendard">{children}</body>
     </html>
   );
 }
