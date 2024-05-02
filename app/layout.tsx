@@ -15,8 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(Pretendard.variable)}>
-      <body className="font-pretendard">{children}</body>
+    <html
+      lang="en"
+      className={`${clsx(Pretendard.variable)} w-screen h-screen bg-gray-40 no-scrollbar`}
+    >
+      <body className="font-pretendard max-w-[500px] h-full m-auto bg-white no-scrollbar">
+        {children}
+      </body>
     </html>
   );
 }

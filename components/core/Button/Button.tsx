@@ -13,9 +13,9 @@ export const ButtonVariants = cva(
         ghost: ` bg-white text-primary-60 enabled:hover:text-primary-70 enabled:active:text-primary-80`,
       },
       size: {
-        sm: 'px-[12px] py-[12px] text-[12px] font-[500] leading-[16px]',
-        md: 'px-[16px] py-[10px] text-[14px] font-[500] leading-[20px]',
-        lg: 'px-[16px] py-[12px] text-[16px] font-[500] leading-[24px]',
+        sm: 'px-[12px] py-[12px] text-sub-headline-3',
+        md: 'px-[16px] py-[10px] text-sub-headline-2',
+        lg: 'px-[16px] py-[12px] text-sub-headline-1 text-white',
       },
       colors: {
         default: '',
@@ -58,23 +58,11 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   label?: string;
-  disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({
-  label,
-  variant,
-  colors,
-  size,
-  disabled = false,
-  ...props
-}) => {
+const Button: FC<ButtonProps> = ({ label, variant, colors, size, ...props }) => {
   return (
-    <button
-      className={cn(ButtonVariants({ variant, colors, size }))}
-      disabled={disabled}
-      {...props}
-    >
+    <button className={cn(ButtonVariants({ variant, colors, size }))} {...props}>
       {label}
     </button>
   );
