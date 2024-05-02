@@ -56,7 +56,25 @@ const ProfileField = () => {
       </div>
 
       <div className="absolute bottom-0 right-0 bg-primary-60 p-[4px] rounded-full border border-white">
-        <Image src={addIcon} alt="add" width={16} height={16} />
+        {profileImages.length === 0 ? (
+          <Image
+            src={addIcon}
+            alt="add"
+            width={16}
+            height={16}
+            onClick={handleClick}
+            className="cursor-pointer"
+          />
+        ) : (
+          <Image
+            src={addIcon}
+            alt="add"
+            width={16}
+            height={16}
+            className="rotate-45 cursor-pointer"
+            onClick={() => setProfileImages(() => [])}
+          />
+        )}
       </div>
     </div>
   );
