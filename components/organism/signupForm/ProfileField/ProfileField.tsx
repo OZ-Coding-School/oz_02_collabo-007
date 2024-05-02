@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import userIcon from '@/app/_asset/icons/user.svg';
 import addIcon from '@/app/_asset/icons/add.svg';
 
@@ -16,6 +16,11 @@ const ProfileField = () => {
       return URL.createObjectURL(file);
     });
     setProfileImages(() => [...selectedFiles]);
+  };
+
+  const handleDelete = () => {
+    if (fileRef.current) fileRef.current.value = '';
+    setProfileImages(() => []);
   };
 
   const handleClick = () => {
@@ -72,7 +77,7 @@ const ProfileField = () => {
             width={16}
             height={16}
             className="rotate-45 cursor-pointer"
-            onClick={() => setProfileImages(() => [])}
+            onClick={handleDelete}
           />
         )}
       </div>
