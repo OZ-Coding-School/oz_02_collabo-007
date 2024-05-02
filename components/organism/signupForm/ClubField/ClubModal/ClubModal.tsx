@@ -36,7 +36,7 @@ const ClubModal: FC<Props> = ({ setIsOpen, inputRef }) => {
       animate={{ y: 0 }}
       exit={{ y: '100vh' }}
       transition={{ duration: 0.4 }}
-      className="fixed top-0 left-0 w-screen h-screen "
+      className="fixed left-0 top-0 h-screen w-screen "
     >
       <motion.div
         ref={modalRef}
@@ -44,7 +44,7 @@ const ClubModal: FC<Props> = ({ setIsOpen, inputRef }) => {
         dragConstraints={{ top: 0, bottom: 0 }}
         dragElastic={0.5}
         onDragEnd={handleDragEnd}
-        className="max-w-[500px] w-full h-full m-auto relative bg-gray-10 flex flex-col items-center"
+        className="relative m-auto flex h-full w-full max-w-[500px] flex-col items-center bg-gray-10"
       >
         <ClubContent handleCloseModal={handleCloseModal} />
       </motion.div>

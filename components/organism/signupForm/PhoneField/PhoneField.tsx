@@ -15,7 +15,7 @@ const PhoneField = () => {
   };
 
   return (
-    <div className="w-full flex items-end self-stretch gap-[8px]">
+    <div className="flex w-full items-end gap-[8px] self-stretch">
       <div className="flex-1">
         <InputModule
           label="휴대폰 번호"

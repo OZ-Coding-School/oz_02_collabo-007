@@ -3,43 +3,43 @@
 @tailwind utilities;
 
 [type='radio'] {
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #d6d6d6;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px #d6d6d6;
 }
 
 [type='radio']:checked {
-  box-shadow: 0 0 0 2px #fc5214;
-  border: 3px solid #fff;
-  background-color: #fc5214;
+	box-shadow: 0 0 0 2px #fc5214;
+	border: 3px solid #fff;
+	background-color: #fc5214;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
 input[type='checkbox'] {
-  appearance: none;
+	appearance: none;
 }
 
 input[type='checkbox'] {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #d6d6d6;
-  border-radius: 4px;
-  background-size: cover;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #d6d6d6;
+	border-radius: 4px;
+	background-size: cover;
 }
 
 input[type='checkbox']:checked {
-  background-color: #fc5214;
-  border-color: #fc5214;
-  background-image: url('../app/_asset/icons/check.svg');
+	background-color: #fc5214;
+	border-color: #fc5214;
+	background-image: url('../app/_asset/icons/check.svg');
 }

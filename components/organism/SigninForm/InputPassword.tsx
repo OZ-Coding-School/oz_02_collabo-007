@@ -13,7 +13,7 @@ const InputPassword = () => {
     setVisible((isVisible) => !isVisible);
   };
   return (
-    <div className="mt-6 relative">
+    <div className="relative mt-6">
       <InputModule
         type={isVisible ? 'text' : 'password'}
         label="비밀번호"
@@ -26,7 +26,7 @@ const InputPassword = () => {
         height={24}
         alt="visible"
         onClick={changeVisible}
-        className="absolute right-[12px] bottom-[12px]"
+        className="absolute bottom-[12px] right-[12px]"
       />
     </div>
   );

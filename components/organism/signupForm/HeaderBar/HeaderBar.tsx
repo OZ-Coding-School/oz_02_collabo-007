@@ -15,8 +15,8 @@ const HeaderBar: FC<Props> = ({ title, backBtn = false, actionBtn }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full flex justify-center items-center gap-[16px] bg-white">
-      <div className="w-[56px] h-[56px] p-[16px]">
+    <div className="flex w-full items-center justify-center gap-[16px] bg-white">
+      <div className="h-[56px] w-[56px] p-[16px]">
         {backBtn && (
           <Image
             src={chevronIcon}
@@ -29,7 +29,7 @@ const HeaderBar: FC<Props> = ({ title, backBtn = false, actionBtn }) => {
         )}
       </div>
       <div className="flex-1 text-center text-headline-6">{title}</div>
-      <div className="w-[56px] h-[56px] p-[16px]">{actionBtn && <>{actionBtn}</>}</div>
+      <div className="h-[56px] w-[56px] p-[16px]">{actionBtn && <>{actionBtn}</>}</div>
     </div>
   );
 };

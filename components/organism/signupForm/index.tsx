@@ -1,10 +1,10 @@
-import ProfileField from '@/components/organism/signupForm/ProfileField/ProfileField';
-import PhoneField from '@/components/organism/signupForm/PhoneField/PhoneField';
-import PasswordField from '@/components/organism/signupForm/PasswordField/PasswordField';
-import GenderField from '@/components/organism/signupForm/GenderField/GenderField';
-import BirthField from '@/components/organism/signupForm/BirthField/BirthField';
-import NameField from '@/components/organism/signupForm/NameField/NameField';
-import ClubField from '@/components/organism/signupForm/ClubField/ClubField';
+import ProfileField from '@/components/organism/SignupForm/ProfileField/ProfileField';
+import PhoneField from '@/components/organism/SignupForm/PhoneField/PhoneField';
+import PasswordField from '@/components/organism/SignupForm/PasswordField/PasswordField';
+import GenderField from '@/components/organism/SignupForm/GenderField/GenderField';
+import BirthField from '@/components/organism/SignupForm/BirthField/BirthField';
+import NameField from '@/components/organism/SignupForm/NameField/NameField';
+import ClubField from '@/components/organism/SignupForm/ClubField/ClubField';
 
 export {
   ProfileField,

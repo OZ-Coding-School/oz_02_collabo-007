@@ -52,7 +52,7 @@ const ClubContent: FC<Props> = ({ handleCloseModal }) => {
     <>
       <HeaderBar title="클럽 검색" actionBtn={<ModalActionBtn />} />
 
-      <div className="relative flex flex-col gap-[10px] self-stretch px-[20px] py-[16px] bg-white">
+      <div className="relative flex flex-col gap-[10px] self-stretch bg-white px-[20px] py-[16px]">
         <input
           id="clubSearch"
           name="clubSearch"
@@ -68,12 +68,12 @@ const ClubContent: FC<Props> = ({ handleCloseModal }) => {
           alt="search"
           width={20}
           height={20}
-          className="absolute top-[26px] left-[32px]"
+          className="absolute left-[32px] top-[26px]"
         />
       </div>
       <div className="flex flex-1 flex-col items-center gap-[16px] self-stretch px-[20px] py-[24px] text-body-2">
         {CLUBS.length === 0 ? (
-          <span className="w-full h-full flex justify-center items-center text-gray-60 text-body-2">
+          <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
             클럽을 검색해주세요
           </span>
         ) : (

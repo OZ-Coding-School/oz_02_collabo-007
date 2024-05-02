@@ -28,17 +28,17 @@ const ProfileField = () => {
   };
 
   return (
-    <div className="w-[88px] h-[88px] rounded-full relative">
+    <div className="relative h-[88px] w-[88px] rounded-full">
       <div
-        className="w-full h-full rounded-full bg-gray-20 border border-gray-30 cursor-pointer"
+        className="h-full w-full cursor-pointer rounded-full border border-gray-30 bg-gray-20"
         onClick={handleClick}
       >
         {profileImages.length === 0 ? (
-          <div className="w-full h-full p-[24px]">
+          <div className="h-full w-full p-[24px]">
             <Image src={userIcon} alt="user" width={40} height={40} />
           </div>
         ) : (
-          <div className="w-full h-full overflow-hidden relative">
+          <div className="relative h-full w-full overflow-hidden">
             <Image
               src={profileImages[0]}
               alt="profileImg"
@@ -60,7 +60,7 @@ const ProfileField = () => {
         />
       </div>
 
-      <div className="absolute bottom-0 right-0 bg-primary-60 p-[4px] rounded-full border border-white">
+      <div className="absolute bottom-0 right-0 rounded-full border border-white bg-primary-60 p-[4px]">
         {profileImages.length === 0 ? (
           <Image
             src={addIcon}

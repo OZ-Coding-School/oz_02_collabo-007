@@ -16,7 +16,7 @@ const ClubField = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
-    <div className="w-full relative">
+    <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'소속 클럽 검색'} name={'club'} />
         <input
@@ -36,7 +36,7 @@ const ClubField = () => {
           alt="search"
           width={20}
           height={20}
-          className="absolute top-[38px] left-[12px]"
+          className="absolute left-[12px] top-[38px]"
         />
 
         <ClubItem

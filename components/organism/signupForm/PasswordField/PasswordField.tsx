@@ -10,7 +10,7 @@ const PasswordField = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <div className="w-full relative">
+    <div className="relative w-full">
       <InputModule
         label="비밀번호"
         placeholder="비밀번호 입력"
@@ -23,7 +23,7 @@ const PasswordField = () => {
         alt="visible"
         width={20}
         height={20}
-        className="absolute top-[38px] right-[12px]"
+        className="absolute right-[12px] top-[38px]"
         onClick={() => setPasswordVisible((prev) => !prev)}
       />
     </div>

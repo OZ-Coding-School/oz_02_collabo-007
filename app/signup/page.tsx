@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@/components/core/Button/Button';
-import Image from 'next/image';
 import {
   BirthField,
   ClubField,
@@ -9,17 +8,16 @@ import {
   PasswordField,
   PhoneField,
   ProfileField,
-} from '@/components/organism/signupForm';
-import HeaderBar from '@/components/organism/signupForm/HeaderBar/HeaderBar';
-import Link from 'next/link';
+} from '@/components/organism/SignupForm';
+import HeaderBar from '@/components/organism/SignupForm/HeaderBar/HeaderBar';
 
 const page = () => {
   return (
-    <div className="w-full h-full relative flex flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <HeaderBar title="회원 가입" backBtn />
 
-      <form action="" className="flex flex-1 flex-col overflow-scroll no-scrollbar">
-        <div className="w-full px-[20px] py-[24px] flex flex-1 flex-col items-center gap-[24px]">
+      <form action="" className="no-scrollbar flex flex-1 flex-col overflow-scroll">
+        <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
           <ProfileField />
           <PhoneField />
           <PasswordField />
