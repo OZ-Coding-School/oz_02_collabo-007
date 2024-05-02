@@ -13,9 +13,116 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'check-icon': '/app/_asset/icons/check.svg',
       },
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
+      },
+      fontSize: {
+        'headline-1': [
+          '36px',
+          {
+            lineHeight: '40px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'headline-2': [
+          '28px',
+          {
+            lineHeight: '36px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'headline-3': [
+          '24px',
+          {
+            lineHeight: '30px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'headline-4': [
+          '20px',
+          {
+            lineHeight: '28px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'headline-5': [
+          '18px',
+          {
+            lineHeight: '26px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'headline-6': [
+          '16px',
+          {
+            lineHeight: '24px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'headline-7': [
+          '14px',
+          {
+            lineHeight: '20px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
+        'sub-headline1-': [
+          '16px',
+          {
+            lineHeight: '24px',
+            letterSpacing: '0%',
+            fontWeight: '500',
+          },
+        ],
+        'sub-headline-2': [
+          '14px',
+          {
+            lineHeight: '20px',
+            letterSpacing: '0%',
+            fontWeight: '500',
+          },
+        ],
+        'sub-headline-3': [
+          '12px',
+          {
+            lineHeight: '16px',
+            letterSpacing: '0%',
+            fontWeight: '500',
+          },
+        ],
+        'body-1': [
+          '16px',
+          {
+            lineHeight: '24px',
+            letterSpacing: '0%',
+            fontWeight: '400',
+          },
+        ],
+        'body-2': [
+          '14px',
+          {
+            lineHeight: '20px',
+            letterSpacing: '0%',
+            fontWeight: '400',
+          },
+        ],
+        'body-3': [
+          '12px',
+          {
+            lineHeight: '16px',
+            letterSpacing: '0%',
+            fontWeight: '400',
+          },
+        ],
       },
     },
     colors: {

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type='checkbox'] {
+  appearance: none;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d6d6d6;
+  border-radius: 4px;
+  background-size: cover;
+}
+
+input[type='checkbox']:checked {
+  background-color: #fc5214;
+  border-color: #fc5214;
+  background-image: url('../app/_asset/icons/check.svg');
+}
