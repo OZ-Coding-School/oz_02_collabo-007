@@ -35,18 +35,22 @@ const CLUBS = [
 ];
 
 const ClubContent: FC<Props> = ({ handleCloseModal }) => {
+  const ModalActionBtn = () => {
+    return (
+      <Image
+        src={xIcon}
+        alt="x"
+        width={24}
+        height={24}
+        onClick={() => handleCloseModal()}
+        className="cursor-pointer"
+      />
+    );
+  };
+
   return (
     <>
-      <HeaderBar title="클럽 검색">
-        <Image
-          src={xIcon}
-          alt="x"
-          width={24}
-          height={24}
-          onClick={() => handleCloseModal()}
-          className="cursor-pointer"
-        />
-      </HeaderBar>
+      <HeaderBar title="클럽 검색" actionBtn={<ModalActionBtn />} />
 
       <div className="relative flex flex-col gap-[10px] self-stretch px-[20px] py-[16px] bg-white">
         <input
