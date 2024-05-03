@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-interface RecordBoardProps {
+interface TotalRecordProps {
   win: number;
   lose: number;
 }
 
-const RecordBoard: FC<RecordBoardProps> = ({ win, lose }) => {
+const TotalRecord: FC<TotalRecordProps> = ({ win, lose }) => {
   return (
     <div className="flex flex-col items-start gap-[16px] self-stretch p-[20px]">
       <div className="text-body-1">전체 전적</div>
@@ -24,4 +24,4 @@ const RecordBoard: FC<RecordBoardProps> = ({ win, lose }) => {
   );
 };
 
-export default RecordBoard;
+export default TotalRecord;

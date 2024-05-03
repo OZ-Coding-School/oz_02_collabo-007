@@ -1,4 +1,4 @@
-import RecordBoard from './RecordBoard/RecordBoard';
-import MatchResultBoard from './CompResultBoard/CompResultBoard';
+import TotalRecord from './TotalRecord/TotalRecord';
+import CompRecordBoard from './CompRecordBoard/CompRecordBoard';
 
-export { RecordBoard, MatchResultBoard };
+export { TotalRecord, CompRecordBoard };

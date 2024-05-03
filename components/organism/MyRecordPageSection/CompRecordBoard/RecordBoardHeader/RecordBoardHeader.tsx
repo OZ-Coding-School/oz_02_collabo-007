@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-interface ResultBoardHeaderProps {
+interface RecordBoardHeaderProps {
   compName: string;
   date: string;
   category: string;
   tier: string;
 }
 
-const ResultBoardHeader: FC<ResultBoardHeaderProps> = ({
+const RecordBoardHeader: FC<RecordBoardHeaderProps> = ({
   compName,
   date,
   category,
@@ -27,4 +27,4 @@ const ResultBoardHeader: FC<ResultBoardHeaderProps> = ({
   );
 };
 
-export default ResultBoardHeader;
+export default RecordBoardHeader;

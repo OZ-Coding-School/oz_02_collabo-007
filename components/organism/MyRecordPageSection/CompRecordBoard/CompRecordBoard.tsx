@@ -1,5 +1,5 @@
 import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
-import ResultBoardHeader from './ResultBoardHeader/ResultBoardHeader';
+import RecordBoardHeader from './RecordBoardHeader/RecordBoardHeader';
 import { FC } from 'react';
 
 interface Props {
@@ -23,12 +23,12 @@ interface Props {
   };
 }
 
-const CompResultBoard: FC<Props> = ({ matchData }) => {
+const CompRecordBoard: FC<Props> = ({ matchData }) => {
   const { compName, date, category, tier, matches } = matchData;
 
   return (
     <div className="flex flex-col items-start gap-[12px] self-stretch">
-      <ResultBoardHeader
+      <RecordBoardHeader
         compName={compName}
         date={date}
         category={category}
@@ -42,4 +42,4 @@ const CompResultBoard: FC<Props> = ({ matchData }) => {
   );
 };
 
-export default CompResultBoard;
+export default CompRecordBoard;
