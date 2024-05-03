@@ -8,7 +8,7 @@ import {
   PasswordField,
   ProfileField,
 } from '@/components/organism/SignupForm';
-import HeaderBar from '@/components/module/HeaderBar/HeaderBar';
+import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
 import testImage from '@/public/tennis.jpeg';
 

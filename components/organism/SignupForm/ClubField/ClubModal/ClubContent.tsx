@@ -6,7 +6,7 @@ import { InputVariants } from '@/components/core/Input/Input';
 import { cn } from '@/lib/utils/cn';
 import ClubItem from './ClubItem';
 import tennisImg from '@/public/tennis.jpeg';
-import HeaderBar from '../../../../module/HeaderBar/HeaderBar';
+import HeaderBar from '../../../../core/HeaderBar/HeaderBar';
 
 interface Props {
   handleCloseModal: () => void;
