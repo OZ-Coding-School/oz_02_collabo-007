@@ -9,13 +9,15 @@ import teamIcon from './_asset/icons/team.svg';
 import clubIcon from './_asset/icons/group.svg';
 
 import { data } from './data';
+import CompCard from '@/components/organism/CompCard/CompCard';
+import CompList from '@/components/organism/CompList/CompList';
 
 export default function Home() {
-  // const user = null;
-  const user = data.userInfo;
+  const user = null;
+  //   const user = data.userInfo;
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
       {user ? (
         <div className="w-full px-[20px] py-[24px] shadow-md">
           <div className="mb-[24px] flex w-full items-center justify-between">
@@ -88,89 +90,12 @@ export default function Home() {
         </div>
       )}
       <main className="bg-gray-10 p-[20px]">
-        {user ? (
-          <div className="mb-[32px]">
-            <div className="mb-[12px] flex items-center justify-between">
-              <span className="text-headline-5 text-gray-100">참가 예정 대회</span>
-              <Link href="/#" className="sub-headline-2 text-gray-60">
-                전체 목록 보기
-              </Link>
-            </div>
-            <div className="ml-[-20px] flex w-screen overflow-y-scroll pl-[20px]">
-              {data.myComp.myCompetition.map((comp) =>
-                comp.status === '진행 중' ? (
-                  <div className="mr-[12px] rounded-[8px] bg-white p-[16px] shadow-md">
-                    <div className="mb-[16px] flex">
-                      <div className="mr-[16px] h-[88px] w-[88px] rounded-[8px]">
-                        <Image src={comp.image} width={18} height={18} alt="comp" />
-                      </div>
-                      <div className="flex w-[199px] flex-col gap-1 text-headline-6 text-gray-100">
-                        <span>{comp.name}</span>
-                        <div className="text-gary-80 flex flex-col gap-1 text-body-3">
-                          <span>{comp.date}</span>
-                          <span>
-                            {comp.category} · {comp.tier}
-                          </span>
-                          <span>{comp.location}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between rounded-[8px] bg-gray-20 p-[12px]">
-                      <span className="text-sub-headline-3 text-gray-80">
-                        {comp.nextMatch.teammate[0].name} ·{' '}
-                        {comp.nextMatch.teammate[1].name} vs{' '}
-                        {comp.nextMatch.opponent[0].name} ·{' '}
-                        {comp.nextMatch.opponent[1].name}
-                      </span>
-                      <span className="text-body-3 text-gray-60">
-                        {comp.nextMatch.court}번 코트
-                      </span>
-                    </div>
-                  </div>
-                ) : null,
-              )}
-            </div>
-          </div>
-        ) : null}
-        <div className="mb-[32px]">
-          <div className="mb-[12px] flex items-center justify-between">
-            <span className="text-headline-5 text-gray-100">대회 목록</span>
-            <Link href="/#" className="sub-headline-2 text-gray-60">
-              전체 목록 보기
-            </Link>
-          </div>
-          <div
-            className={user ? 'ml-[-20px] flex w-screen overflow-y-scroll pl-[20px]' : ''}
-          >
-            {data.myComp.myCompetition.map((comp) =>
-              comp.status === '진행 중' ? (
-                <div
-                  className={
-                    user
-                      ? 'mr-[12px] rounded-[8px] bg-white p-[16px] shadow-md'
-                      : 'mb-[16px] rounded-[8px] bg-white p-[16px] shadow-md'
-                  }
-                >
-                  <div className="flex">
-                    <div className="mr-[16px] h-[88px] w-[88px] rounded-[8px]">
-                      <Image src={comp.image} width={18} height={18} alt="comp" />
-                    </div>
-                    <div className="flex w-[199px] flex-col gap-1 text-headline-6 text-gray-100">
-                      <span>{comp.name}</span>
-                      <div className="text-gary-80 flex flex-col gap-1 text-body-3">
-                        <span>{comp.date}</span>
-                        <span>
-                          {comp.category} · {comp.tier}
-                        </span>
-                        <span>{comp.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : null,
-            )}
-          </div>
-        </div>
+        {user ? <CompList title="참가 예정 대회" compStatus="진행 전" /> : null}
+        {user ? <CompList title="최근 참가 대회" compStatus="종료" /> : null}
+        <CompList
+          title="대회 정보"
+          flexDirection={!user ? 'flex-col w-full' : 'w-screen'}
+        />
       </main>
       <div className="sticky bottom-0 w-full">
         <Navbar />
