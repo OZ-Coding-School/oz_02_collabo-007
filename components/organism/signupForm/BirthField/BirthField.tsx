@@ -16,7 +16,7 @@ const BirthField = ({ existBirth = undefined }: { existBirth?: number | undefine
         max="2099"
         step="1"
         name="birth"
-        value={birth}
+        value={birth === 0 ? undefined : birth}
         onChange={(e) => setBirth(() => Number(e.target.value))}
       />
     </div>
