@@ -1,5 +1,5 @@
 import { CompRecordBoard, TotalRecord } from '@/components/organism/MyRecordPageSection';
-import HeaderBar from '@/components/organism/SignupForm/HeaderBar/HeaderBar';
+import HeaderBar from '@/components/module/HeaderBar/HeaderBar';
 import React from 'react';
 
 const page = () => {
