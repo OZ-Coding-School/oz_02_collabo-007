@@ -11,7 +11,7 @@ import { InputVariants } from '@/components/core/Input/Input';
 import tennisImg from '@/public/tennis.jpeg';
 import ClubItem from './ClubModal/ClubItem';
 
-const ClubField = () => {
+const ClubField = ({ clubId }: { clubId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 

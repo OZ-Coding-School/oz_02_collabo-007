@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import userIcon from '@/app/_asset/icons/user.svg';
 import addIcon from '@/app/_asset/icons/add.svg';
 
-const ProfileField = () => {
+const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
   const fileRef = useRef<HTMLInputElement>(null);
-  const [profileImages, setProfileImages] = useState<string[]>([]);
+  const [profileImages, setProfileImages] = useState<string[]>(currentImg);
 
   const handleChange = (e: React.ChangeEvent) => {
     const targetFiles = (e.target as HTMLInputElement).files as FileList;
@@ -43,6 +43,7 @@ const ProfileField = () => {
               src={profileImages[0]}
               alt="profileImg"
               fill
+              sizes="88px"
               style={{ objectFit: 'cover' }}
               className="rounded-full"
             />
