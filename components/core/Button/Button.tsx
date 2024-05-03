@@ -13,9 +13,9 @@ export const ButtonVariants = cva(
         ghost: ` bg-white text-primary-60 enabled:hover:text-primary-70 enabled:active:text-primary-80`,
       },
       size: {
-        sm: 'px-[12px] py-[12px] text-sub-headline-3',
-        md: 'px-[16px] py-[10px] text-sub-headline-2',
-        lg: 'px-[16px] py-[12px] text-sub-headline-1 text-white',
+        sm: 'px-[12px] py-[12px] text-[12px] font-[500] leading-[16px]',
+        md: 'px-[16px] py-[10px] text-[14px] font-[500] leading-[20px]',
+        lg: 'px-[16px] py-[12px] text-[16px] font-[500] leading-[24px]',
       },
       colors: {
         default: '',
