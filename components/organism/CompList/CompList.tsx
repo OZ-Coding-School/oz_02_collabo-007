@@ -3,7 +3,7 @@ import React from 'react';
 import { data } from '@/app/data.js';
 import CompCard from '../CompCard/CompCard';
 
-const CompList = ({ title, compStatus, flexDirection = '' }) => {
+const CompList = ({ title, compStatus, flexDirection = '' }: any) => {
   return (
     <div className="mb-[32px]">
       <div className={' mb-[12px] flex items-center justify-between'}>
