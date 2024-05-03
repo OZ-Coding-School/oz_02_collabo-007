@@ -1,9 +1,11 @@
 'use client';
 
 import InputModule from '@/components/module/InputModule/InputModule';
-import React from 'react';
+import React, { useState } from 'react';
 
 const NameField = ({ existName = '' }: { existName?: string }) => {
+  const [userName, setUserName] = useState(existName);
+
   return (
     <div className="w-full">
       <InputModule
@@ -11,8 +13,8 @@ const NameField = ({ existName = '' }: { existName?: string }) => {
         placeholder="김형섭"
         type="text"
         name="userName"
-        value={existName}
-        onChange={(e) => e.target.value}
+        value={userName}
+        onChange={(e) => setUserName(() => e.target.value)}
       />
     </div>
   );
