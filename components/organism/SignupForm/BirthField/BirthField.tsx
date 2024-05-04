@@ -1,7 +1,11 @@
-import InputModule from '@/components/module/InputModule/InputModule';
-import React from 'react';
+'use client';
 
-const BirthField = () => {
+import InputModule from '@/components/module/InputModule/InputModule';
+import React, { useState } from 'react';
+
+const BirthField = ({ existBirth = undefined }: { existBirth?: number | undefined }) => {
+  const [birth, setBirth] = useState(existBirth);
+
   return (
     <div className="w-full">
       <InputModule
@@ -12,6 +16,8 @@ const BirthField = () => {
         max="2099"
         step="1"
         name="birth"
+        value={birth === 0 ? undefined : birth}
+        onChange={(e) => setBirth(() => Number(e.target.value))}
       />
     </div>
   );

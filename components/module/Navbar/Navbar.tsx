@@ -14,7 +14,7 @@ export const NAV_LINK = [
   { name: '홈', url: '/', icon: home, fillIcon: homeFilled },
   { name: '랭킹', url: '/ranking', icon: award, fillIcon: awardFilled },
   { name: '대회', url: '/competition', icon: flag, fillIcon: flagFilled },
-  { name: '마이페이지', url: '/myPage', icon: user, fillIcon: userFilled },
+  { name: '마이페이지', url: '/mypage', icon: user, fillIcon: userFilled },
 ];
 
 const Navbar = () => {
