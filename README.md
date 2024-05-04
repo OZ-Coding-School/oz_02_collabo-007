@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <!-- 프로젝트 이미지 -->
+  ![tennis-5264102_1280](https://github.com/OZ-Coding-School/oz_02_collabo-007/assets/27201254/e1c6ca5b-c6e3-40f9-8b08-981fb0ad6680)
   <br />
   
   <div>
