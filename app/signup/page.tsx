@@ -9,7 +9,7 @@ import {
   PhoneField,
   ProfileField,
 } from '@/components/organism/SignupForm';
-import HeaderBar from '@/components/module/HeaderBar/HeaderBar';
+import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 
 const page = () => {
   return (

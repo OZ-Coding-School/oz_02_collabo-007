@@ -1,3 +1,5 @@
+import image from '../public/tennis.jpeg';
+
 export const data = {
   userInfo: {
     accessToken: '엑세스 토큰',
@@ -5,7 +7,7 @@ export const data = {
     id: '고유 아이디',
     phone: '010-1234-1234',
     name: '김철수',
-    image: null,
+    image: image,
     club: {
       id: '클럽 아이디',
       name: '라온테니스',
@@ -33,7 +35,7 @@ export const data = {
       {
         id: '대회 아이디',
         name: '챔피언스리그',
-        image: '이미지 url',
+        image: image,
         date: '2024.04.10 14:00',
         location: '열우물 테니스장',
         category: '남자 복식',
@@ -47,7 +49,7 @@ export const data = {
       {
         id: '대회 아이디',
         name: '챔피언스리그',
-        image: '이미지 url',
+        image: image,
         date: '2024.04.10 14:00',
         location: '열우물 테니스장',
         category: '남자 복식',
@@ -60,18 +62,40 @@ export const data = {
       },
     ],
   },
-
   myComp: {
     myCompetition: [
       {
         id: '대회 아이디',
         name: '챔피언스리그',
-        image: '/app/_asset/images/Rectangle4343.png',
+        image: image,
         date: '2024.04.10 14:00',
         location: '열우물 테니스장',
         category: '남자 복식',
-        tier: '개나리부',
+        tier: { name: '개나리부' },
         status: '진행 중',
+        nextMatch: {
+          id: null,
+          teammate: [
+            { id: '유저아이디', name: '자신' },
+            { id: '유저아이디', name: '파트너' },
+          ],
+          opponent: [
+            { id: '유저 아이디', name: '콩쥐' },
+            { id: '유저 아이디', name: '팥쥐' },
+          ],
+          court: '1',
+          round: 4,
+        },
+      },
+      {
+        id: '대회 아이디',
+        name: '2024 초보 대회',
+        image: image,
+        date: '2024.04.10 14:00',
+        location: '열우물 테니스장',
+        category: '남자 복식',
+        tier: { name: '국화부' },
+        status: '진행 전',
         nextMatch: {
           id: '매치 아이디',
           teammate: [
@@ -89,12 +113,12 @@ export const data = {
       {
         id: '대회 아이디',
         name: '2024 초보 대회',
-        image: '/app/_asset/images/Rectangle4343.png',
+        image: image,
         date: '2024.04.10 14:00',
         location: '열우물 테니스장',
         category: '남자 복식',
-        tier: '국화부',
-        status: '진행 중',
+        tier: { name: '국화부' },
+        status: '종료',
         nextMatch: {
           id: '매치 아이디',
           teammate: [
@@ -112,22 +136,19 @@ export const data = {
       {
         id: '대회 아이디',
         name: '2024 초보 대회',
-        image: '/app/_asset/images/Rectangle4343.png',
+        image: image,
         date: '2024.04.10 14:00',
         location: '열우물 테니스장',
         category: '남자 복식',
-        tier: '국화부',
-        status: '진행 중',
+        tier: { name: '국화부' },
+        status: '진행 전',
         nextMatch: {
           id: '매치 아이디',
           teammate: [
             { id: '유저아이디', name: '자신' },
             { id: '유저아이디', name: '파트너' },
           ],
-          opponent: [
-            { id: '유저 아이디', name: '콩쥐' },
-            { id: '유저 아이디', name: '팥쥐' },
-          ],
+          opponent: null,
           court: '1',
           round: 4,
         },
@@ -135,11 +156,31 @@ export const data = {
       {
         id: '대회 아이디',
         name: '2024 초보 대회',
-        image: '/app/_asset/images/Rectangle4343.png',
+        image: image,
         date: '2024.04.10 14:00',
         location: '열우물 테니스장',
         category: '남자 복식',
-        tier: '국화부',
+        tier: { name: '국화부' },
+        status: '진행 전',
+        nextMatch: {
+          id: '매치 아이디',
+          teammate: [
+            { id: '유저아이디', name: '자신' },
+            { id: '유저아이디', name: '파트너' },
+          ],
+          opponent: null,
+          court: null,
+          round: 4,
+        },
+      },
+      {
+        id: '대회 아이디',
+        name: '2024 초보 대회',
+        image: image,
+        date: '2024.04.10 14:00',
+        location: '열우물 테니스장',
+        category: '남자 복식',
+        tier: { name: '국화부' },
         status: '진행 중',
         nextMatch: {
           id: '매치 아이디',
@@ -147,11 +188,8 @@ export const data = {
             { id: '유저아이디', name: '자신' },
             { id: '유저아이디', name: '파트너' },
           ],
-          opponent: [
-            { id: '유저 아이디', name: '콩쥐' },
-            { id: '유저 아이디', name: '팥쥐' },
-          ],
-          court: '1',
+          opponent: null,
+          court: null,
           round: 4,
         },
       },
