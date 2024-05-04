@@ -1,8 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
-const NextMatchInfoPannel = ({ nextMatchInfo, status }: any) => {
+const NextMatchInfoPanel = ({ nextMatchInfo, status }: any) => {
   return (
     <>
       <div className="flex">
@@ -13,7 +11,7 @@ const NextMatchInfoPannel = ({ nextMatchInfo, status }: any) => {
         ) : (
           <div className="flex w-full justify-between">
             <div className="flex gap-[4px] text-sub-headline-3 text-gray-80">
-              {nextMatchInfo.teammate.map((player, index) => (
+              {nextMatchInfo.teammate.map((player: any, index: number) => (
                 <>
                   <span key={player.id}>{player.name}</span>
                   {index !== nextMatchInfo.teammate.length - 1 && <span>·</span>}
@@ -22,7 +20,7 @@ const NextMatchInfoPannel = ({ nextMatchInfo, status }: any) => {
               <span>vs</span>
               {nextMatchInfo.opponent && (
                 <>
-                  {nextMatchInfo.opponent.map((player, index) => (
+                  {nextMatchInfo.opponent.map((player: any, index: number) => (
                     <>
                       <span key={player.id}>{player.name}</span>
                       {index !== nextMatchInfo.teammate.length - 1 && <span>·</span>}
@@ -42,4 +40,4 @@ const NextMatchInfoPannel = ({ nextMatchInfo, status }: any) => {
   );
 };
 
-export default NextMatchInfoPannel;
+export default NextMatchInfoPanel;

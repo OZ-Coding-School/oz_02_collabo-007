@@ -4,7 +4,7 @@ import React from 'react';
 import chevronRightIcon from '@/app/_asset/icons/chevron-right-primary.svg';
 import flagIcon from '@/app/_asset/icons/flag.svg';
 
-const CompetitionStatusPannel = ({ compInfo }: any) => {
+const CompetitionStatusPanel = ({ compInfo }: any) => {
   return (
     <div className="flex items-center justify-between text-sub-headline-3 ">
       <div className="flex items-center gap-[4px] text-gray-80">
@@ -23,4 +23,4 @@ const CompetitionStatusPannel = ({ compInfo }: any) => {
   );
 };
 
-export default CompetitionStatusPannel;
+export default CompetitionStatusPanel;

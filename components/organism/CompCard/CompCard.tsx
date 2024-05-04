@@ -1,5 +1,4 @@
-import Button from '@/components/core/Button/Button';
-import CardPannel from '@/components/module/CardPannel/CardPannel';
+import CardPanel from '@/components/module/CardPanel/CardPanel';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,7 +9,7 @@ const CompCard = ({ comp }: any) => {
         <div className="relative h-[88px] w-[88px] ">
           <Image src={comp.image} fill alt="comp" style={{ borderRadius: '8px' }} />
         </div>
-        <div className="felx-1 flex w-[199px] flex-col gap-[4px] text-headline-6 text-gray-100">
+        <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
           <span>{comp.name}</span>
           <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
             <span>{comp.date}</span>
@@ -21,7 +20,7 @@ const CompCard = ({ comp }: any) => {
           </div>
         </div>
       </div>
-      {comp.nextMatch && <CardPannel compInfo={comp} />}
+      {comp.nextMatch && <CardPanel compInfo={comp} />}
     </div>
   );
 };
