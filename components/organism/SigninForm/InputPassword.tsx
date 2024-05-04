@@ -3,7 +3,7 @@
 import InputModule from '@/components/module/InputModule/InputModule';
 import { useState } from 'react';
 import visibleIcon from '@/app/_asset/icons/visible.svg';
-import checkIcon from '@/app/_asset/icons/check.svg';
+import invisivleIcon from '@/app/_asset/icons/visible-off.svg';
 import Image from 'next/image';
 
 const InputPassword = () => {
@@ -21,7 +21,7 @@ const InputPassword = () => {
         inputSize="lgWith"
       />
       <Image
-        src={isVisible ? visibleIcon : checkIcon}
+        src={isVisible ? visibleIcon : invisivleIcon}
         width={24}
         height={24}
         alt="visible"
