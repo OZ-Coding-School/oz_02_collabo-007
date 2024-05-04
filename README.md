@@ -1,7 +1,6 @@
 <div align="center">
-  <br />
+  
   ![tennis-5264102_1280](https://github.com/OZ-Coding-School/oz_02_collabo-007/assets/27201254/e1c6ca5b-c6e3-40f9-8b08-981fb0ad6680)
-  <br />
   
   <div>
     <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="nextdotjs" />
