@@ -1,6 +1,5 @@
 import CompetitionStatusPannel from '@/components/core/CardPannelContent.tsx/CompetitionStatusPannel';
 import NextMatchInfoPannel from '@/components/core/CardPannelContent.tsx/NextMatchInfoPannel';
-import CompCard from '@/components/organism/CompCard/CompCard';
 
 const CardPannel = ({ compInfo }: any) => {
   return (

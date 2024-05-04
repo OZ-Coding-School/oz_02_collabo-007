@@ -7,7 +7,7 @@ export const data = {
     id: '고유 아이디',
     phone: '010-1234-1234',
     name: '김철수',
-    image: null,
+    image: image,
     club: {
       id: '클럽 아이디',
       name: '라온테니스',

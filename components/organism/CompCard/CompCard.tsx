@@ -10,7 +10,7 @@ const CompCard = ({ comp }: any) => {
         <div className="relative h-[88px] w-[88px] ">
           <Image src={comp.image} fill alt="comp" style={{ borderRadius: '8px' }} />
         </div>
-        <div className="flex w-[199px] flex-col gap-[4px] text-headline-6 text-gray-100">
+        <div className="felx-1 flex w-[199px] flex-col gap-[4px] text-headline-6 text-gray-100">
           <span>{comp.name}</span>
           <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
             <span>{comp.date}</span>
