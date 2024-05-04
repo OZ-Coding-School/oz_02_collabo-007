@@ -13,11 +13,11 @@ import CompCard from '@/components/organism/CompCard/CompCard';
 import CompList from '@/components/organism/CompList/CompList';
 
 export default function Home() {
-  const user = null;
-  //   const user = data.userInfo;
+  // const user = null;
+  const user = data.userInfo;
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="flex h-full w-full flex-col overflow-hidden">
       {user ? (
         <div className="w-full px-[20px] py-[24px] shadow-md">
           <div className="mb-[24px] flex w-full items-center justify-between">
@@ -89,12 +89,32 @@ export default function Home() {
           <Button size="lg" label="로그인하러 가기" variant="primary" />
         </div>
       )}
-      <main className="bg-gray-10 p-[20px]">
-        {user ? <CompList title="참가 예정 대회" compStatus="진행 전" /> : null}
-        {user ? <CompList title="최근 참가 대회" compStatus="종료" /> : null}
+      <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
+        {user ? (
+          <CompList
+            title="참가 예정 대회"
+            compStatus="진행 전"
+            flexDirection={
+              user && 'w-screen ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
+            }
+          />
+        ) : null}
+        {user ? (
+          <CompList
+            title="최근 참가 대회"
+            compStatus="종료"
+            flexDirection={
+              user && 'w-screen ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
+            }
+          />
+        ) : null}
         <CompList
           title="대회 정보"
-          flexDirection={!user ? 'flex-col w-full' : 'w-screen'}
+          flexDirection={
+            !user
+              ? 'flex-col w-full gap-[16px]'
+              : 'w-screen ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
+          }
         />
       </main>
       <div className="sticky bottom-0 w-full">
