@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import xIcon from '@/app/_asset/icons/x.svg';
 import searchIcon from '@/app/_asset/icons/search.svg';
-import { InputVariants } from '@/components/core/Input/Input';
+import Input, { InputVariants } from '@/components/core/Input/Input';
 import { cn } from '@/lib/utils/cn';
 import ClubItem from './ClubItem';
 import tennisImg from '@/public/tennis.jpeg';
@@ -53,16 +53,8 @@ const ClubContent: FC<Props> = ({ handleCloseModal }) => {
       <HeaderBar title="클럽 검색" actionBtn={<ModalActionBtn />} />
 
       <div className="relative flex flex-col gap-[10px] self-stretch bg-white px-[20px] py-[16px]">
-        <input
-          id="clubSearch"
-          name="clubSearch"
-          type="text"
-          placeholder="소속 클럽 검색"
-          className={cn(
-            InputVariants({ variant: 'default', inputSize: 'md' }),
-            'pl-[44px]',
-          )}
-        />
+        <Input name="clubSearch" placeholder="소속 클럽 검색" className="pl-[44px]" />
+
         <Image
           src={searchIcon}
           alt="search"

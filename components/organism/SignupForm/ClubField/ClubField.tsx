@@ -7,7 +7,7 @@ import ClubModal from './ClubModal/ClubModal';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
-import { InputVariants } from '@/components/core/Input/Input';
+import Input, { InputVariants } from '@/components/core/Input/Input';
 import tennisImg from '@/public/tennis.jpeg';
 import ClubItem from './ClubModal/ClubItem';
 
@@ -19,18 +19,15 @@ const ClubField = ({ clubId }: { clubId?: string }) => {
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'소속 클럽 검색'} name={'club'} />
-        <input
-          id="club"
+
+        <Input
           name="club"
-          type="text"
-          ref={inputRef}
+          inputRef={inputRef}
           placeholder="소속 클럽 검색"
-          className={cn(
-            InputVariants({ variant: 'default', inputSize: 'md' }),
-            'pl-[44px]',
-          )}
+          className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}
         />
+
         <Image
           src={searchIcon}
           alt="search"
