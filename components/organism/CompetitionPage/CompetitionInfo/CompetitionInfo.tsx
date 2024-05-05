@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import chevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import InfoDetail from './InfoDetail/InfoDetail';
 import ChevronRightIcon from '@/components/core/Icons/ChevronRightIcon/ChevronRightIcon';
 
