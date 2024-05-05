@@ -3,14 +3,14 @@
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import searchIcon from '@/app/_asset/icons/search.svg';
-import ClubModal from './ClubModal/ClubModal';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import tennisImg from '@/public/tennis.jpeg';
-import ClubItem from './ClubModal/ClubItem';
+import ClubItem from './ClubItem';
+import Modal from '@/components/module/Modal/Modal';
 
-const ClubField = ({ clubId }: { clubId?: string }) => {
+const ClubField = () => {
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -44,10 +44,45 @@ const ClubField = ({ clubId }: { clubId?: string }) => {
       </div>
 
       <AnimatePresence>
-        {isOpen && <ClubModal setIsOpen={setIsOpen} inputRef={inputRef} />}
+        {isOpen && (
+          <Modal setIsOpen={setIsOpen} inputRef={inputRef} type="club" label="클럽 검색">
+            {CLUBS.length === 0 ? (
+              <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
+                클럽을 검색해주세요
+              </span>
+            ) : (
+              <>
+                {CLUBS.map(({ id, name, address, image }) => (
+                  <ClubItem key={id} name={name} address={address} image={image} />
+                ))}
+              </>
+            )}
+          </Modal>
+        )}
       </AnimatePresence>
     </div>
   );
 };
 
 export default ClubField;
+
+const CLUBS = [
+  {
+    id: 1,
+    name: '라온 테니스',
+    address: '서울시 서초구 강남대로 99길',
+    image: tennisImg,
+  },
+  {
+    id: 2,
+    name: '라온 테니스',
+    address: '서울시 서초구 강남대로 99길',
+    image: tennisImg,
+  },
+  {
+    id: 3,
+    name: '라온 테니스',
+    address: '서울시 서초구 강남대로 99길',
+    image: tennisImg,
+  },
+];

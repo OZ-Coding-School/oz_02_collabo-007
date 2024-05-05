@@ -14,7 +14,7 @@ const ClubItem: FC<Props> = ({ name, address, image, displayMode = false }) => {
   return (
     <div
       className={cn(
-        `${displayMode && 'bg-gray-20'}`,
+        `${displayMode ? 'bg-gray-20' : 'bg-white'}`,
         'flex w-full items-center gap-[16px] self-stretch rounded-[8px] p-[12px] shadow-card',
       )}
     >
