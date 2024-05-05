@@ -17,7 +17,8 @@ export default function Home() {
             title="참가 예정 대회"
             compStatus="진행 전"
             flexDirection={
-              user && 'w-screen ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
+              user &&
+              'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
             }
           />
         ) : null}
@@ -26,7 +27,8 @@ export default function Home() {
             title="최근 참가 대회"
             compStatus="종료"
             flexDirection={
-              user && 'w-screen ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
+              user &&
+              'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
             }
           />
         ) : null}
@@ -35,7 +37,7 @@ export default function Home() {
           flexDirection={
             !user
               ? 'flex-col w-full gap-[16px]'
-              : 'w-screen ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
+              : 'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
           }
         />
       </main>

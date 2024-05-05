@@ -4,7 +4,7 @@ import React from 'react';
 
 const CompCard = ({ comp }: any) => {
   return (
-    <div className="flex flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
+    <div className="display-contents flex flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
       <div className="flex gap-[16px]">
         <div className="relative h-[88px] w-[88px] ">
           <Image src={comp.image} fill alt="comp" style={{ borderRadius: '8px' }} />
