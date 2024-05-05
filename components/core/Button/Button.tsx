@@ -58,7 +58,7 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   label?: string;
-  btnRef: React.Ref<HTMLButtonElement>;
+  btnRef?: React.Ref<HTMLButtonElement>;
   className?: string;
 }
 
