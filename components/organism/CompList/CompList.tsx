@@ -5,7 +5,7 @@ import CompCard from '../CompCard/CompCard';
 
 const CompList = ({ title, compStatus, flexDirection }: any) => {
   return (
-    <div className=" flex flex-col gap-[2px] ">
+    <div className="flex w-full flex-col gap-[2px] ">
       {title ? (
         <div className={'flex items-center justify-between'}>
           <span className="text-headline-5 text-gray-100">{title}</span>
@@ -14,20 +14,28 @@ const CompList = ({ title, compStatus, flexDirection }: any) => {
           </Link>
         </div>
       ) : null}
-      <div className={`flex ${flexDirection} no-scrollbar overflow-visible pb-[10px]`}>
-        {title === '대회 정보' ? (
+      <div className={`flex ${flexDirection} no-scrollbar pb-[10px]`}>
+        {title === '대회 정보' && (
           <>
             {data.compList.comp.map((comp) => (
               <CompCard comp={comp} />
             ))}
           </>
-        ) : (
+        )}{' '}
+        {!title && compStatus === '전체' && (
+          <>
+            {data.myComp.myCompetition.map((comp) => (
+              <CompCard comp={comp} />
+            ))}
+          </>
+        )}
+        {
           <>
             {data.myComp.myCompetition.map((comp) =>
               comp.status === compStatus ? <CompCard comp={comp} /> : null,
             )}
           </>
-        )}
+        }
       </div>
     </div>
   );
