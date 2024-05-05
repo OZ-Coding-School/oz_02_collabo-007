@@ -1,4 +1,3 @@
-import Button from '@/components/core/Button/Button';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import InfoDetail from '@/components/organism/CompetitionPage/CompetitionInfo/InfoDetail/InfoDetail';
 import { RegisterForm } from '@/components/organism/RegisterPage';

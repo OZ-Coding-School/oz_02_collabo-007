@@ -1,7 +1,6 @@
 import Button from '@/components/core/Button/Button';
 import InputModule from '@/components/module/InputModule/InputModule';
 import React from 'react';
-import { ClubField, NameField } from '../../SignupForm';
 
 const RegisterForm = () => {
   return (

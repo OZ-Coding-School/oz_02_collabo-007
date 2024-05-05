@@ -19,7 +19,7 @@ const page = ({ params }: { params: { id: number } }) => {
       <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
         <CompetitionInfo data={data} />
 
-        <CompetitionButton status={data.status} />
+        <CompetitionButton id={data.id} status={data.status} />
       </div>
     </div>
   );

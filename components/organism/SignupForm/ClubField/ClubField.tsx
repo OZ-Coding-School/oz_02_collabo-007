@@ -6,8 +6,7 @@ import searchIcon from '@/app/_asset/icons/search.svg';
 import ClubModal from './ClubModal/ClubModal';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils/cn';
-import Input, { InputVariants } from '@/components/core/Input/Input';
+import Input from '@/components/core/Input/Input';
 import tennisImg from '@/public/tennis.jpeg';
 import ClubItem from './ClubModal/ClubItem';
 
