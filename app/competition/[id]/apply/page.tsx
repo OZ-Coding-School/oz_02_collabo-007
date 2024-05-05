@@ -1,6 +1,6 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import InfoDetail from '@/components/organism/CompetitionPage/CompetitionInfo/InfoDetail/InfoDetail';
-import { RegisterForm } from '@/components/organism/RegisterPage';
+import { ApplyForm } from '@/components/organism/ApplyPage';
 import React from 'react';
 
 const page = () => {
@@ -12,10 +12,14 @@ const page = () => {
 
       <div className="no-scrollbar flex flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex bg-white px-[20px] py-[24px]">
-          <InfoDetail data={data} />
+          <div className="flex w-full flex-col gap-[16px]">
+            <div className="text-headline-3">{data.name}</div>
+
+            <InfoDetail data={data} />
+          </div>
         </div>
 
-        <RegisterForm />
+        <ApplyForm />
       </div>
     </div>
   );

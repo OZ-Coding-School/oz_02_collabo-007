@@ -26,7 +26,11 @@ interface CompetitionInfoProps {
 const CompetitionInfo: FC<CompetitionInfoProps> = ({ data }) => {
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
-      <InfoDetail data={data} />
+      <div className="flex w-full flex-col gap-[16px]">
+        <div className="text-headline-3">{data.name}</div>
+
+        <InfoDetail data={data} />
+      </div>
 
       <div className="flex w-full flex-col gap-[8px]">
         <div className="text-headline-6">대회 요강</div>

@@ -1,8 +1,9 @@
 import Button from '@/components/core/Button/Button';
 import InputModule from '@/components/module/InputModule/InputModule';
+import Link from 'next/link';
 import React from 'react';
 
-const RegisterForm = () => {
+const ApplyForm = () => {
   return (
     <form className="flex flex-1 flex-col">
       <div className="no-scrollbar flex flex-1 flex-col gap-[16px] overflow-scroll bg-white px-[20px] py-[24px] ">
@@ -41,4 +42,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default ApplyForm;
