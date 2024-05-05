@@ -7,6 +7,7 @@ import ChevronRightIcon from '@/components/core/Icons/ChevronRightIcon/ChevronRi
 
 interface CompetitionInfoProps {
   data: {
+    id: number;
     name: string;
     status: string;
     startDate: string;
@@ -40,19 +41,15 @@ const CompetitionInfo: FC<CompetitionInfoProps> = ({ data }) => {
 
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
-      <div className="flex w-full flex-col gap-[16px]">
-        <div className="text-headline-3">{name}</div>
-        <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
-          <InfoDetail
-            startDate={startDate}
-            matchType={matchType}
-            tier={tier}
-            round={round}
-            location={location}
-            address={address}
-          />
-        </div>
-      </div>
+      <InfoDetail
+        name={name}
+        startDate={startDate}
+        matchType={matchType}
+        tier={tier}
+        round={round}
+        location={location}
+        address={address}
+      />
 
       <div className="flex w-full flex-col gap-[8px]">
         <div className="text-headline-6">대회 요강</div>

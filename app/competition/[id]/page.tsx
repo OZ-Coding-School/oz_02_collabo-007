@@ -28,6 +28,7 @@ const page = ({ params }: { params: { id: number } }) => {
 export default page;
 
 const TEST_DATA = {
+  id: 1,
   name: '챔피언스리그',
   status: '신청가능 --> 좀 더 구체적인 설계 필요할 듯?',
   startDate: '2024-04-10 14:00',
