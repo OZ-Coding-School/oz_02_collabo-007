@@ -1,7 +1,7 @@
 import Button from '@/components/core/Button/Button';
 import InputModule from '@/components/module/InputModule/InputModule';
-import Link from 'next/link';
 import React from 'react';
+import PartnerField from './PartnerField/PartnerField';
 
 const ApplyForm = () => {
   return (
@@ -25,6 +25,8 @@ const ApplyForm = () => {
             variant="display"
             readOnly
           />
+
+          <PartnerField />
 
           <InputModule
             label="신청 코드"
