@@ -1,10 +1,9 @@
 'use client';
 
 import InputModule from '@/components/module/InputModule/InputModule';
-import Image from 'next/image';
 import React, { useState } from 'react';
-import visibleOffIcon from '@/app/_asset/icons/visible-off.svg';
-import visibleIcon from '@/app/_asset/icons/visible.svg';
+import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
+import VisibleIcon from '@/app/_asset/icons/visible.svg';
 
 const PasswordField = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -18,14 +17,23 @@ const PasswordField = () => {
         inputSize="mdWith"
         name="password"
       />
-      <Image
-        src={passwordVisible ? visibleIcon : visibleOffIcon}
-        alt="visible"
-        width={20}
-        height={20}
-        className="absolute right-[12px] top-[38px]"
-        onClick={() => setPasswordVisible((prev) => !prev)}
-      />
+      {passwordVisible ? (
+        <VisibleIcon
+          width={20}
+          height={20}
+          fill="#787878"
+          className="absolute right-[12px] top-[38px]"
+          onClick={() => setPasswordVisible((prev) => !prev)}
+        />
+      ) : (
+        <VisibleOffIcon
+          width={20}
+          height={20}
+          fill="#787878"
+          className="absolute right-[12px] top-[38px]"
+          onClick={() => setPasswordVisible((prev) => !prev)}
+        />
+      )}
     </div>
   );
 };

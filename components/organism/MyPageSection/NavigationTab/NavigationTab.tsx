@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
-import chevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
+import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Image from 'next/image';
 
 interface NavigationTabProps {
@@ -15,7 +15,7 @@ const NavigationTab: FC<NavigationTabProps> = ({ link, description }) => {
       className="flex items-center gap-[16px] self-stretch px-[24px] py-[16px]"
     >
       <span className="flex-1">{description}</span>
-      <Image src={chevronRightIcon} alt="chevronIcon" width={24} height={24} />
+      <ChevronRightIcon width={24} height={24} fill="#121212" />
     </Link>
   );
 };

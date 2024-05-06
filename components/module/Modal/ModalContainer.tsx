@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import Image from 'next/image';
-import xIcon from '@/app/_asset/icons/x.svg';
-import searchIcon from '@/app/_asset/icons/search.svg';
+import XIcon from '@/app/_asset/icons/x.svg';
+import SearchIcon from '@/app/_asset/icons/search.svg';
 import Input from '@/components/core/Input/Input';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { cn } from '@/lib/utils/cn';
@@ -16,11 +15,10 @@ interface Props {
 const ModalContainer: FC<Props> = ({ handleCloseModal, type, label, children }) => {
   const ModalActionBtn = () => {
     return (
-      <Image
-        src={xIcon}
-        alt="x"
+      <XIcon
         width={24}
         height={24}
+        fill="#393939"
         onClick={() => handleCloseModal()}
         className="cursor-pointer"
       />
@@ -34,11 +32,10 @@ const ModalContainer: FC<Props> = ({ handleCloseModal, type, label, children }) 
       <div className="relative flex flex-col gap-[10px] self-stretch bg-white px-[20px] py-[16px]">
         <Input name={`${type}Search`} placeholder={label} className="pl-[44px]" />
 
-        <Image
-          src={searchIcon}
-          alt="search"
+        <SearchIcon
           width={20}
           height={20}
+          fill="#A6A6A6"
           className="absolute left-[32px] top-[26px]"
         />
       </div>

@@ -1,8 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import React, { FC } from 'react';
-import chevronIcon from '@/app/_asset/icons/chevron-left.svg';
+import ChevronIcon from '@/app/_asset/icons/chevron-left.svg';
 import { useRouter } from 'next/navigation';
 
 interface Props {
@@ -18,11 +17,10 @@ const HeaderBar: FC<Props> = ({ title, backBtn = false, actionBtn }) => {
     <div className="flex w-full items-center justify-center gap-[16px] bg-white">
       <div className="h-[56px] w-[56px] p-[16px]">
         {backBtn && (
-          <Image
-            src={chevronIcon}
-            alt="back"
+          <ChevronIcon
             width={24}
             height={24}
+            fill="#121212"
             onClick={() => router.back()}
             className="cursor-pointer"
           />

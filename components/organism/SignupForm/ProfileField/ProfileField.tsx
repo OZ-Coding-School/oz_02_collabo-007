@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
-import userIcon from '@/app/_asset/icons/user.svg';
-import addIcon from '@/app/_asset/icons/add.svg';
+import UserIcon from '@/app/_asset/icons/user.svg';
+import AddIcon from '@/app/_asset/icons/add.svg';
 
 const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -35,7 +35,7 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
       >
         {profileImages.length === 0 ? (
           <div className="h-full w-full p-[24px]">
-            <Image src={userIcon} alt="user" width={40} height={40} />
+            <UserIcon width={40} height={40} fill="#787878" />
           </div>
         ) : (
           <div className="relative h-full w-full overflow-hidden">
@@ -63,22 +63,20 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
 
       <div className="absolute bottom-0 right-0 rounded-full border border-white bg-primary-60 p-[4px]">
         {profileImages.length === 0 ? (
-          <Image
-            src={addIcon}
-            alt="add"
+          <AddIcon
             width={16}
             height={16}
             onClick={handleClick}
             className="cursor-pointer"
+            fill="#fff"
           />
         ) : (
-          <Image
-            src={addIcon}
-            alt="add"
+          <AddIcon
             width={16}
             height={16}
-            className="rotate-45 cursor-pointer"
             onClick={handleDelete}
+            className="rotate-45 cursor-pointer"
+            fill="#fff"
           />
         )}
       </div>

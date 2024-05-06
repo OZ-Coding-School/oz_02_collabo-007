@@ -1,6 +1,6 @@
 import React from 'react';
-import CrownIcon from '@/components/core/Icons/CrownIcon/CrownIcon';
-import StarIcon from '@/components/core/Icons/StarIcon/StarIcon';
+import CrownIcon from '@/app/_asset/icons/crown.svg';
+import StarIcon from '@/app/_asset/icons/star.svg';
 import testImg from '@/public/tennis.jpeg';
 import Image from 'next/image';
 import { cn } from '@/lib/utils/cn';
@@ -16,12 +16,11 @@ const ResultCard = ({ winner }: { winner?: boolean }) => {
       <div className="flex items-center gap-[8px]">
         <div className="relative flex h-[24px] w-[24px] items-center justify-center">
           <StarIcon
-            className={cn(
-              'absolute h-[24px] w-[24px]',
-              `${winner ? 'fill-warning-60' : 'fill-gray-50'}`,
-            )}
+            width={24}
+            height={24}
+            className={cn('absolute', `${winner ? 'fill-warning-60' : 'fill-gray-50'}`)}
           />
-          <CrownIcon className="absolute h-[16px] w-[16px] fill-white" />
+          <CrownIcon width={16} height={16} fill="#fff" className="absolute" />
         </div>
         <div className="text-headline-6">{winner ? '우승' : '준우승'}</div>
       </div>

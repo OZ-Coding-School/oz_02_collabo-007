@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils/cn';
 import Image, { StaticImageData } from 'next/image';
 import React, { FC } from 'react';
-import xIcon from '@/app/_asset/icons/x.svg';
+import XIcon from '@/app/_asset/icons/x.svg';
 
 interface Props {
   name: string;
@@ -33,7 +33,7 @@ const PartnerItem: FC<Props> = ({ name, clubName, image, displayMode = false }) 
       </div>
       {displayMode && (
         <div>
-          <Image src={xIcon} alt="del" width={20} height={20} />
+          <XIcon width={20} height={20} fill="#393939" />
         </div>
       )}
     </div>

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
-import searchIcon from '@/app/_asset/icons/search.svg';
+import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
@@ -27,11 +27,10 @@ const ClubField = () => {
           onFocus={() => setIsOpen((prev) => !prev)}
         />
 
-        <Image
-          src={searchIcon}
-          alt="search"
+        <SearchIcon
           width={20}
           height={20}
+          fill="#A6A6A6"
           className="absolute left-[12px] top-[38px]"
         />
 

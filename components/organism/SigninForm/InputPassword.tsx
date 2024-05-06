@@ -2,9 +2,8 @@
 
 import InputModule from '@/components/module/InputModule/InputModule';
 import { useState } from 'react';
-import visibleIcon from '@/app/_asset/icons/visible.svg';
-import invisivleIcon from '@/app/_asset/icons/visible-off.svg';
-import Image from 'next/image';
+import VisibleIcon from '@/app/_asset/icons/visible.svg';
+import InvisibleIcon from '@/app/_asset/icons/visible-off.svg';
 
 const InputPassword = () => {
   const [isVisible, setVisible] = useState(false);
@@ -20,14 +19,23 @@ const InputPassword = () => {
         placeholder="비밀번호"
         inputSize="lgWith"
       />
-      <Image
-        src={isVisible ? visibleIcon : invisivleIcon}
-        width={24}
-        height={24}
-        alt="visible"
-        onClick={changeVisible}
-        className="absolute bottom-[12px] right-[12px]"
-      />
+      {isVisible ? (
+        <VisibleIcon
+          width={24}
+          height={24}
+          fill="#787878"
+          onClick={changeVisible}
+          className="absolute bottom-[12px] right-[12px]"
+        />
+      ) : (
+        <InvisibleIcon
+          width={24}
+          height={24}
+          fill="#787878"
+          onClick={changeVisible}
+          className="absolute bottom-[12px] right-[12px]"
+        />
+      )}
     </div>
   );
 };

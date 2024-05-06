@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import InfoDetail from './InfoDetail/InfoDetail';
-import ChevronRightIcon from '@/components/core/Icons/ChevronRightIcon/ChevronRightIcon';
+import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 
 interface CompetitionInfoProps {
   data: {
@@ -44,14 +44,14 @@ const CompetitionInfo: FC<CompetitionInfoProps> = ({ data }) => {
       <div className="flex w-full items-center gap-[6px]">
         <div className="text-headline-6">대회 상세 요강 링크</div>
         <Link href={data.siteLink}>
-          <ChevronRightIcon className="h-[16px] w-[16px] fill-gray-80" />
+          <ChevronRightIcon width={16} height={16} fill="393939" />
         </Link>
       </div>
 
       <div className="flex w-full items-center gap-[6px]">
         <div className="text-headline-6">문의하기</div>
         <Link href={'#'}>
-          <ChevronRightIcon className="h-[16px] w-[16px] fill-gray-80" />
+          <ChevronRightIcon width={16} height={16} fill="393939" />
         </Link>
       </div>
     </div>

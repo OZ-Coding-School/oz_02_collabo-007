@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import userIcon from '@/app/_asset/icons/user.svg';
-import teamIcon from '@/app/_asset/icons/team.svg';
-import clubIcon from '@/app/_asset/icons/group.svg';
-import chevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
+import UserIcon from '@/app/_asset/icons/user.svg';
+import TeamIcon from '@/app/_asset/icons/team.svg';
+import ClubIcon from '@/app/_asset/icons/group.svg';
+import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 
 const HomeUserProfile = ({ userInfo }: any) => {
@@ -19,7 +19,7 @@ const HomeUserProfile = ({ userInfo }: any) => {
             {userInfo ? (
               <Link href="/" className="flex gap-[8px]">
                 {userInfo.name}
-                <Image src={chevronRightIcon} width={18} height={18} alt="chevron" />
+                <ChevronRightIcon width={18} height={18} fill="#393939" />
               </Link>
             ) : (
               <span className="text-gray-60">
@@ -29,13 +29,13 @@ const HomeUserProfile = ({ userInfo }: any) => {
             {userInfo ? (
               <>
                 <div className="flex gap-[8px]">
-                  <Image src={clubIcon} width={20} height={20} alt="club" />
+                  <ClubIcon width={20} height={20} fill="#393939" />
                   <span className="flex text-body-2 text-gray-80">
                     {userInfo.club.name}
                   </span>
                 </div>
                 <div className="flex gap-[8px]">
-                  <Image src={teamIcon} width={20} height={20} alt="team" />
+                  <TeamIcon width={20} height={20} fill="#393939" />
                   <span className="flex text-body-2 text-gray-80">
                     {userInfo.team.name}
                   </span>
@@ -54,7 +54,7 @@ const HomeUserProfile = ({ userInfo }: any) => {
               />
             )}
             {!userInfo || !userInfo.image ? (
-              <Image src={userIcon} width={32} height={32} alt="user" />
+              <UserIcon width={32} height={32} fill="#393939" />
             ) : null}
           </div>
         </div>

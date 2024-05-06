@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import FlagIcon from '@/components/core/Icons/FlagIcon/FlagIcon';
-import CalendarIcon from '@/components/core/Icons/CalendarIcon/CalendarIcon';
-import MapPinIcon from '@/components/core/Icons/MapPinIcon/MapPinIcon';
-import MapIcon from '@/components/core/Icons/MapIcon/MapIcon';
+import FlagIcon from '@/app/_asset/icons/flag.svg';
+import CalendarIcon from '@/app/_asset/icons/calendar.svg';
+import MapPinIcon from '@/app/_asset/icons/map-pin.svg';
+import MapIcon from '@/app/_asset/icons/map.svg';
 
 interface InfoDetailProps {
   data: {
@@ -28,11 +28,11 @@ const InfoDetail: FC<InfoDetailProps> = ({ data }) => {
   return (
     <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
       <div className="flex gap-[8px]">
-        <CalendarIcon className="h-[16px] w-[16px] fill-gray-80" />
+        <CalendarIcon width={16} height={16} fill="#393939" />
         <span className="flex-1">{data.startDate}</span>
       </div>
       <div className="flex gap-[8px]">
-        <FlagIcon className="h-[16px] w-[16px] fill-gray-80" />
+        <FlagIcon width={16} height={16} fill="#393939" />
         <span className="flex-1">
           {[data.matchType.field, data.matchType.type, data.tier, data.round].join(
             ' \u00B7 ',

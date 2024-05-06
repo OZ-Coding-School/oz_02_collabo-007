@@ -1,20 +1,40 @@
 import React from 'react';
 import NavItem from '@/components/core/NavItem/NavItem';
 // icon
-import home from '@/app/_asset/icons/home.svg';
-import homeFilled from '@/app/_asset/icons/home-filled.svg';
-import award from '@/app/_asset/icons/award.svg';
-import awardFilled from '@/app/_asset/icons/award-filled.svg';
-import flag from '@/app/_asset/icons/flag.svg';
-import flagFilled from '@/app/_asset/icons/flag-filled.svg';
-import user from '@/app/_asset/icons/user.svg';
-import userFilled from '@/app/_asset/icons/user-filled.svg';
+import Home from '@/app/_asset/icons/home.svg';
+import HomeFilled from '@/app/_asset/icons/home-filled.svg';
+import Award from '@/app/_asset/icons/award.svg';
+import AwardFilled from '@/app/_asset/icons/award-filled.svg';
+import Flag from '@/app/_asset/icons/flag.svg';
+import FlagFilled from '@/app/_asset/icons/flag-filled.svg';
+import User from '@/app/_asset/icons/user.svg';
+import UserFilled from '@/app/_asset/icons/user-filled.svg';
 
 export const NAV_LINK = [
-  { name: '홈', url: '/', icon: home, fillIcon: homeFilled },
-  { name: '랭킹', url: '/ranking', icon: award, fillIcon: awardFilled },
-  { name: '대회', url: '/competition', icon: flag, fillIcon: flagFilled },
-  { name: '마이페이지', url: '/mypage', icon: user, fillIcon: userFilled },
+  {
+    name: '홈',
+    url: '/',
+    icon: <Home width={24} height={24} fill="#393939" />,
+    fillIcon: <HomeFilled width={24} height={24} fill="#FC5214" />,
+  },
+  {
+    name: '랭킹',
+    url: '/ranking',
+    icon: <Award width={24} height={24} fill="#393939" />,
+    fillIcon: <AwardFilled width={24} height={24} fill="#FC5214" />,
+  },
+  {
+    name: '대회',
+    url: '/competition',
+    icon: <Flag width={24} height={24} fill="#393939" />,
+    fillIcon: <FlagFilled width={24} height={24} fill="#FC5214" />,
+  },
+  {
+    name: '마이페이지',
+    url: '/mypage',
+    icon: <User width={24} height={24} fill="#393939" />,
+    fillIcon: <UserFilled width={24} height={24} fill="#FC5214" />,
+  },
 ];
 
 const Navbar = () => {

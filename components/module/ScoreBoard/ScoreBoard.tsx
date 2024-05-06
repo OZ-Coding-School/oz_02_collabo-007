@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import React, { FC } from 'react';
-import checkIcon from '@/app/_asset/icons/check-circle.svg';
+import CheckIcon from '@/app/_asset/icons/check-circle.svg';
 import { cn } from '@/lib/utils/cn';
 
 interface ScoreBoardProps {
@@ -18,7 +17,7 @@ const ScoreBoard: FC<ScoreBoardProps> = ({ board, isWin = false }) => {
         {board.users.map(({ name }, index) => (
           <div key={index}>{name}</div>
         ))}
-        {isWin && <Image src={checkIcon} alt="check" width={18} height={18} />}
+        {isWin && <CheckIcon width={18} height={18} fill="#FC5214" />}
       </div>
       <div className="flex items-start gap-[4px] text-center text-headline-7">
         {board.scores.map((score, index) => (

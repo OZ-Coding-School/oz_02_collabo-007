@@ -1,6 +1,6 @@
 import Button from '@/components/core/Button/Button';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import CheckCircleIcon from '@/components/core/Icons/CheckCircleIcon/CheckCircleIcon';
+import CheckCircleIcon from '@/app/_asset/icons/check-circle.svg';
 import InfoDetail from '@/components/organism/CompetitionPage/CompetitionInfo/InfoDetail/InfoDetail';
 import { FeeCard, ParticipantInfo } from '@/components/organism/SuccessPage';
 import React from 'react';
@@ -15,7 +15,7 @@ const page = () => {
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex flex-col gap-[24px] bg-white px-[20px] py-[24px]">
           <div className="flex items-center justify-start gap-[8px]">
-            <CheckCircleIcon className="h-[28px] w-[28px] fill-success-60" />
+            <CheckCircleIcon width={28} height={28} fill="#138C59" />
             <div className="text-headline-4">대회 신청을 완료했습니다!</div>
           </div>
 
