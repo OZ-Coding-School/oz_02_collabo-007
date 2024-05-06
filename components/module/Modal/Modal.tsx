@@ -2,14 +2,17 @@
 import useClickOutside from '@/lib/hook/useClickOutsideModal';
 import React, { Dispatch, FC, RefObject, SetStateAction, useRef } from 'react';
 import { motion, useMotionValue, PanInfo } from 'framer-motion';
-import ClubContent from './ClubContent';
+import ModalContainer from './ModalContainer';
 
 interface Props {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   inputRef: RefObject<HTMLDivElement>;
+  type: string;
+  label: string;
+  children: React.ReactNode;
 }
 
-const ClubModal: FC<Props> = ({ setIsOpen, inputRef }) => {
+const Modal: FC<Props> = ({ setIsOpen, inputRef, type, label, children }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const y = useMotionValue(0);
 
@@ -46,10 +49,12 @@ const ClubModal: FC<Props> = ({ setIsOpen, inputRef }) => {
         onDragEnd={handleDragEnd}
         className="relative m-auto flex h-full w-full max-w-[500px] flex-col items-center bg-gray-10"
       >
-        <ClubContent handleCloseModal={handleCloseModal} />
+        <ModalContainer handleCloseModal={handleCloseModal} type={type} label={label}>
+          {children}
+        </ModalContainer>
       </motion.div>
     </motion.div>
   );
 };
 
-export default ClubModal;
+export default Modal;

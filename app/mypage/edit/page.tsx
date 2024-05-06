@@ -45,7 +45,7 @@ const page = () => {
           <NameField existName={name} />
           <GenderField exitGender={gender} />
           <BirthField existBirth={birth} />
-          <ClubField clubId={clubId} />
+          <ClubField />
 
           <div className="w-full py-[20px]">
             <Button label="완료" type="submit" />

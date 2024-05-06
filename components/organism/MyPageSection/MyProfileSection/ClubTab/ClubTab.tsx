@@ -1,5 +1,5 @@
 import ClubIcon from '@/components/core/ClubIcon/ClubIcon';
-import TeamIcon from '@/components/core/TeamIcon/TeamIcon';
+import TeamIcon from '@/components/core/Icons/TeamIcon/TeamIcon';
 import React, { FC } from 'react';
 
 interface ClubTabProps {
