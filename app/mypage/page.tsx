@@ -13,7 +13,10 @@ const page = () => {
         <MyProfileSection />
 
         <div className="flex flex-col items-start self-stretch bg-white py-[8px] text-body-1">
-          <NavigationTab link={'mypage/comp'} description="참가 신청한 대회 보기" />
+          <NavigationTab
+            link={'mypage/comp?status=전체'}
+            description="참가 신청한 대회 보기"
+          />
           <NavigationTab link={'mypage/record'} description="내 전적 보기" />
         </div>
 

@@ -2,27 +2,34 @@
 
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CompList from '@/components/organism/CompList/CompList';
-import React, { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { data } from '@/app/data.js';
 
 export const COMPLIST_OPTIONS = ['전체', '진행 전', '진행 중', '종료'];
 
 const page = () => {
-  const [selectedOption, setSelectedOption] = useState('');
-
-  const changeOption = (option: any) => {
-    setSelectedOption(option);
-  };
+  const searchParams = useSearchParams();
+  const compStatus = searchParams.get('status');
 
   return (
-    <div className="flex h-full w-full flex-col">
-      <HeaderBar title="참가 신청한 대회" backBtn={true} />
-      <div className="flex gap-[4px] px-[20px] pt-[12px]">
-        {COMPLIST_OPTIONS.map((option) => (
-          <div className="flex h-[32px] flex-1 justify-center text-gray-80">{option}</div>
-        ))}
+    <div className="relative flex h-full w-full flex-col">
+      <div className="sticky top-0 z-10">
+        <HeaderBar title="참가 신청한 대회" backBtn={true} />
+        <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
+          {COMPLIST_OPTIONS.map((option) => (
+            <Link
+              href={{ pathname: `/mypage/comp`, query: { status: option } }}
+              className={`flex h-[32px] flex-1 items-center justify-center text-body-2 ${compStatus === option ? 'border-b-[2px] border-primary-60 text-primary-60' : ''}`}
+              key={option}
+            >
+              {option}
+            </Link>
+          ))}
+        </div>
       </div>
-      <div className="flex flex-1 border-t-[1px] border-gray-30 bg-gray-10">
-        <CompList />
+      <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
+        <CompList compStatus={compStatus} flexDirection="flex-col w-full gap-[16px]" />
       </div>
     </div>
   );

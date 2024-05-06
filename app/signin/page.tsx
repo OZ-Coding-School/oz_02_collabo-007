@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="flex h-full w-full flex-col items-center gap-[56px] px-[20px] py-[80px]">
+    <main className="flex h-full w-full flex-col items-center gap-[56px] overflow-scroll px-[20px]  py-[80px]">
       <h1 className="text-headline-2">알케미스트</h1>
       <form className="flex w-full flex-col gap-[40px]">
         <div className="flex flex-col gap-[20px]">
