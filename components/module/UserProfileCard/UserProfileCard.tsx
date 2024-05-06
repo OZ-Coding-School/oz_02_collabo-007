@@ -13,7 +13,6 @@ interface UserProfileCardProps {
 }
 
 const UserProfileCard: FC<UserProfileCardProps> = ({ data }) => {
-  console.log(data);
   return (
     <>
       <div className="flex w-full items-center gap-[8px] text-body-3 text-gray-60">
