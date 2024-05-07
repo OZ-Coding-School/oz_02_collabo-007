@@ -11,12 +11,31 @@ import {
 } from '@/components/organism/SignupForm';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 
+async function signUpUser(formData: FormData) {
+  'use server';
+
+  const res = await fetch(`${process.env.API_URL}/auth/signup/`, {
+    credentials: 'include',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    body: formData,
+  });
+
+  const data = await res.json();
+  console.log(data);
+}
+
 const page = () => {
   return (
     <div className="relative flex h-full w-full flex-col">
       <HeaderBar title="회원 가입" backBtn />
 
-      <form action="" className="no-scrollbar flex flex-1 flex-col overflow-scroll">
+      <form
+        action={signUpUser}
+        className="no-scrollbar flex flex-1 flex-col overflow-scroll"
+      >
         <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
           <ProfileField />
           <PhoneField />

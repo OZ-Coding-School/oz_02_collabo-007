@@ -16,6 +16,7 @@ const PasswordField = () => {
         type={passwordVisible ? 'text' : 'password'}
         inputSize="mdWith"
         name="password"
+        required
       />
       {passwordVisible ? (
         <VisibleIcon

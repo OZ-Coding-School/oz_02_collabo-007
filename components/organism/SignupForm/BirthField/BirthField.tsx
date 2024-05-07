@@ -3,8 +3,8 @@
 import InputModule from '@/components/module/InputModule/InputModule';
 import React, { useState } from 'react';
 
-const BirthField = ({ existBirth = undefined }: { existBirth?: number | undefined }) => {
-  const [birth, setBirth] = useState(existBirth);
+const BirthField = ({ existBirth }: { existBirth?: number }) => {
+  const [birth, setBirth] = useState(existBirth !== undefined ? existBirth : '');
 
   return (
     <div className="w-full">
@@ -16,7 +16,8 @@ const BirthField = ({ existBirth = undefined }: { existBirth?: number | undefine
         max="2099"
         step="1"
         name="birth"
-        value={birth === 0 ? undefined : birth}
+        required
+        value={birth === 0 ? '' : birth}
         onChange={(e) => setBirth(() => Number(e.target.value))}
       />
     </div>

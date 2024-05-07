@@ -13,6 +13,7 @@ const NameField = ({ existName = '' }: { existName?: string }) => {
         placeholder="김형섭"
         type="text"
         name="userName"
+        required
         value={userName}
         onChange={(e) => setUserName(() => e.target.value)}
       />
