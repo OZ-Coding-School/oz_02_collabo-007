@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import ChevronRightIcon from '@/app/_asset/icons/chevron-right-primary.svg';
+import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import FlagIcon from '@/app/_asset/icons/flag.svg';
 
 const CompetitionStatusPanel = ({ compInfo }: any) => {
@@ -16,7 +16,7 @@ const CompetitionStatusPanel = ({ compInfo }: any) => {
           <span>
             {compInfo.status === '진행 중' ? '대회 현황 보기' : '대회 결과 보기'}
           </span>
-          <ChevronRightIcon width={16} height={16} fill="#393939" />
+          <ChevronRightIcon width={16} height={16} fill="#FC5214" />
         </div>
       </Link>
     </div>
