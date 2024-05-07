@@ -17,11 +17,11 @@ const page = () => {
       <div className="sticky top-0 z-10">
         <HeaderBar title="참가 신청한 대회" backBtn={true} />
         <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
-          {COMPLIST_OPTIONS.map((option) => (
+          {COMPLIST_OPTIONS.map((option, index) => (
             <Link
               href={{ pathname: `/mypage/comp`, query: { status: option } }}
               className={`flex h-[32px] flex-1 items-center justify-center text-body-2 ${compStatus === option ? 'border-b-[2px] border-primary-60 text-primary-60' : ''}`}
-              key={option}
+              key={index}
             >
               {option}
             </Link>
