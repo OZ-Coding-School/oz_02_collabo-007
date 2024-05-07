@@ -43,3 +43,16 @@ input[type='checkbox']:checked {
   border-color: #fc5214;
   background-image: url('../app/_asset/icons/check.svg');
 }
+
+select {
+  appearance: none;
+  background: transparent;
+  color: #393939;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+select::-ms-expend {
+  display: none;
+}
