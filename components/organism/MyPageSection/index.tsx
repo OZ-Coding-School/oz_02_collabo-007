@@ -1,5 +1,5 @@
 import MyProfileSection from './MyProfileSection/MyProfileSection';
 import NavigationTab from './NavigationTab/NavigationTab';
-import SignoutTab from './SignoutTab/SignoutTab';
+import LogoutTab from './LogoutTab/LogoutTab';
 
-export { MyProfileSection, NavigationTab, SignoutTab };
+export { MyProfileSection, NavigationTab, LogoutTab };

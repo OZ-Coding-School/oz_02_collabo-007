@@ -2,7 +2,6 @@
 
 import { signUpSchema } from '@/lib/utils/validation';
 import { ZodError } from 'zod';
-import { redirect } from 'next/navigation';
 
 export type State =
   | {
@@ -18,14 +17,18 @@ export type State =
         message: string;
       }>;
     }
+  | {
+      status: 'totalError';
+      message: string;
+    }
   | null;
 
-export async function signUpUser(
+export const signUpUser = async (
   prevState: State | null,
   formData: FormData,
-): Promise<State> {
+): Promise<State> => {
   try {
-    const { phone, password, confirmPassword } = signUpSchema.parse(formData);
+    const { password, confirmPassword } = signUpSchema.parse(formData);
 
     if (confirmPassword !== password) {
       return {
@@ -44,17 +47,22 @@ export async function signUpUser(
     formData.delete('imageFile');
     formData.delete('club');
 
-    const res = await fetch(`${process.env.API_URL}/auth/signup/`, {
-      credentials: 'include',
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
       method: 'POST',
       body: formData,
+      credentials: 'include',
     });
 
+    const data = await res.json();
+
     if (!res.ok) {
-      throw new Error('Failed to fetch data');
+      console.log(data);
+      return {
+        status: 'totalError',
+        message: data.message,
+      };
     }
 
-    const data = await res.json();
     console.log(data);
 
     return {
@@ -78,4 +86,4 @@ export async function signUpUser(
       message: 'Something went wrong. Please try again.',
     };
   }
-}
+};

@@ -2,7 +2,7 @@
 
 import { FieldPath, useForm } from 'react-hook-form';
 import { useFormState } from 'react-dom';
-import { useEffect, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { StaticImageData } from 'next/image';
 import { SignUpFormContent } from './SignUpFormContent';
@@ -34,9 +34,13 @@ export function SignUpForm() {
   const router = useRouter();
   const [state, formAction] = useFormState<State, FormData>(signUpUser, null);
   const [pending, startTransaction] = useTransition();
+  const [totalError, setTotalError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!state) return;
+    if (state.status === 'totalError') {
+      setTotalError(() => state.message);
+    }
     if (state.status === 'error') {
       state.errors?.forEach((error) => {
         setError(error.path as FieldPath<SignUpFormValues>, {
@@ -51,6 +55,8 @@ export function SignUpForm() {
     }
   }, [state, setError]);
 
+  console.log(totalError);
+
   return (
     <form action={(formData) => startTransaction(() => formAction(formData))}>
       <SignUpFormContent
@@ -59,6 +65,7 @@ export function SignUpForm() {
         errors={errors}
         setValue={setValue}
       />
+      {totalError !== null && <div className="">{totalError}</div>}
     </form>
   );
 }
