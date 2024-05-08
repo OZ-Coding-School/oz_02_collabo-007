@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';

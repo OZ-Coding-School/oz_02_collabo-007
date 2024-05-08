@@ -6,13 +6,15 @@ import { useEffect, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { StaticImageData } from 'next/image';
 import { SignUpFormContent } from './SignUpFormContent';
-import { formSchema } from '@/lib/utils/validation';
+import { signUpSchema } from '@/lib/utils/validation';
 import { State, signUpUser } from '@/app/signup/actions';
+import { useRouter } from 'next/navigation';
 
 export interface SignUpFormValues {
   imageFile: StaticImageData;
   phone: string;
   password: string;
+  confirmPassword: string;
   username: string;
   gender: string;
   birth: string;
@@ -24,10 +26,12 @@ export function SignUpForm() {
     register,
     formState: { isValid, errors },
     setError,
+    setValue,
   } = useForm<SignUpFormValues>({
     mode: 'all',
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(signUpSchema),
   });
+  const router = useRouter();
   const [state, formAction] = useFormState<State, FormData>(signUpUser, null);
   const [pending, startTransaction] = useTransition();
 
@@ -42,12 +46,19 @@ export function SignUpForm() {
     }
     if (state.status === 'success') {
       console.log(state.message);
+      window.localStorage.setItem('access-token', state.token);
+      router.push('/');
     }
   }, [state, setError]);
 
   return (
     <form action={(formData) => startTransaction(() => formAction(formData))}>
-      <SignUpFormContent register={register} isValid={isValid} errors={errors} />
+      <SignUpFormContent
+        register={register}
+        isValid={isValid}
+        errors={errors}
+        setValue={setValue}
+      />
     </form>
   );
 }

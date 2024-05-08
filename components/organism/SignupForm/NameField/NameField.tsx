@@ -15,7 +15,6 @@ const NameField = ({
   register: UseFormRegister<SignUpFormValues>;
   errors: FieldErrors<SignUpFormValues>;
 }) => {
-  console.log(errors);
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>

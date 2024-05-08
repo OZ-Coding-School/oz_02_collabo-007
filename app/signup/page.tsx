@@ -4,7 +4,7 @@ import { SignUpForm } from '@/components/organism/SignupForm/SignUpForm';
 
 const page = () => {
   return (
-    <div className="relative flex h-full w-full flex-col">
+    <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll">
       <HeaderBar title="회원 가입" backBtn />
 
       <SignUpForm />

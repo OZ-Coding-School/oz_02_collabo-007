@@ -24,6 +24,7 @@ async function signInUser(formData: FormData) {
   });
 
   if (!res.ok) {
+    console.log(res.json());
     throw new Error('Failed to fetch data');
   }
 

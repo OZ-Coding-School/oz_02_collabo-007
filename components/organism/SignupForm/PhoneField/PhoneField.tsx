@@ -1,8 +1,13 @@
 'use client';
 
 import Button from '@/components/core/Button/Button';
-import React from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
+import {
+  FieldErrors,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+} from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
@@ -11,9 +16,11 @@ import { SignUpFormValues } from '../SignUpForm';
 
 const PhoneField = ({
   register,
+  setValue,
   errors,
 }: {
   register: UseFormRegister<SignUpFormValues>;
+  setValue: UseFormSetValue<SignUpFormValues>;
   errors: FieldErrors<SignUpFormValues>;
 }) => {
   return (
@@ -26,6 +33,15 @@ const PhoneField = ({
             {...register('phone')}
             placeholder="숫자만 입력"
             id="phone"
+            onChange={(e) =>
+              setValue(
+                'phone',
+                e.target.value
+                  .replace(/[^0-9]/g, '')
+                  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+                  .replace(/(\-{1,2})$/g, ''),
+              )
+            }
             className={cn(
               InputVariants({
                 variant: `${errors.phone ? 'error' : 'default'}`,

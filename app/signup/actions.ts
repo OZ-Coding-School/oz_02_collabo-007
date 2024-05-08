@@ -1,12 +1,14 @@
 'use server';
 
-import { formSchema } from '@/lib/utils/validation';
+import { signUpSchema } from '@/lib/utils/validation';
 import { ZodError } from 'zod';
+import { redirect } from 'next/navigation';
 
 export type State =
   | {
       status: 'success';
       message: string;
+      token: string;
     }
   | {
       status: 'error';
@@ -20,18 +22,45 @@ export type State =
 
 export async function signUpUser(
   prevState: State | null,
-  data: FormData,
+  formData: FormData,
 ): Promise<State> {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const { phone, password, confirmPassword } = signUpSchema.parse(formData);
 
+    if (confirmPassword !== password) {
+      return {
+        status: 'error',
+        message: 'Invalid form data',
+        errors: [
+          {
+            path: 'confirmPassword',
+            message: `비밀번호가 일치하지 않습니다.`,
+          },
+        ],
+      };
+    }
+
+    formData.delete('confirmPassword');
+    formData.delete('imageFile');
+    formData.delete('club');
+
+    const res = await fetch(`${process.env.API_URL}/auth/signup/`, {
+      credentials: 'include',
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await res.json();
     console.log(data);
-    console.log(data.get('profile'));
 
-    const { phone, password, username, birth } = formSchema.parse(data);
     return {
       status: 'success',
-      message: `Welcome, ${phone}`,
+      message: `Login Success`,
+      token: data.access,
     };
   } catch (e) {
     if (e instanceof ZodError) {
