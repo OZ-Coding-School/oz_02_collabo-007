@@ -31,7 +31,7 @@ const InputPassword = ({
             {...register}
             type={isVisible ? 'text ' : 'password'}
             id="password"
-            name="phone"
+            name="password"
             placeholder="비밀번호"
             className={cn(
               InputVariants({
