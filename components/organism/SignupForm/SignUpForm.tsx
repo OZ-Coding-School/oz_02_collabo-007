@@ -49,7 +49,6 @@ export function SignUpForm() {
       });
     }
     if (state.status === 'success') {
-      console.log(state.message);
       window.localStorage.setItem('access-token', state.token);
       router.push('/');
     }

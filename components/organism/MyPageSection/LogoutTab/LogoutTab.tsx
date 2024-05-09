@@ -12,16 +12,13 @@ const LogoutTab = () => {
     });
 
     if (!res.ok) {
-      console.log(res);
       throw new Error('Failed to fetch data');
     }
 
     const data = await res.json();
-    console.log(res);
-    console.log(data);
 
     window.localStorage.removeItem('access-token');
-    // router.push('/signin');
+    router.push('/signin');
     return { data };
   };
 
