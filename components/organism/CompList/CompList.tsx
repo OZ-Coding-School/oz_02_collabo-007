@@ -17,22 +17,22 @@ const CompList = ({ title, compStatus, flexDirection }: any) => {
       <div className={`flex ${flexDirection} no-scrollbar pb-[10px]`}>
         {title === '대회 정보' && (
           <>
-            {data.compList.comp.map((comp) => (
-              <CompCard comp={comp} />
+            {data.compList.comp.map((comp, index) => (
+              <CompCard comp={comp} key={index} />
             ))}
           </>
         )}{' '}
         {!title && compStatus === '전체' && (
           <>
-            {data.myComp.myCompetition.map((comp) => (
-              <CompCard comp={comp} />
+            {data.myComp.myCompetition.map((comp, index) => (
+              <CompCard comp={comp} key={index} />
             ))}
           </>
         )}
         {
           <>
-            {data.myComp.myCompetition.map((comp) =>
-              comp.status === compStatus ? <CompCard comp={comp} /> : null,
+            {data.myComp.myCompetition.map((comp, index) =>
+              comp.status === compStatus ? <CompCard comp={comp} key={index} /> : null,
             )}
           </>
         }

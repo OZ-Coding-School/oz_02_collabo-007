@@ -10,7 +10,7 @@ import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
 import { SignUpFormValues } from '../SignUpForm';
 
-const PasswordField = ({
+const ConfirmPasswordField = ({
   register,
   errors,
 }: {
@@ -22,15 +22,15 @@ const PasswordField = ({
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
-        <Label label={'비밀번호'} name={'password'} />
+        <Label label={'비밀번호 확인'} name={'confirmPassword'} />
         <input
-          {...register('password')}
+          {...register('confirmPassword')}
           type={passwordVisible ? 'text' : 'password'}
-          id="password"
-          placeholder="비밀번호"
+          id="confirmPassword"
+          placeholder="비밀번호 확인"
           className={cn(
             InputVariants({
-              variant: `${errors.password ? 'error' : 'default'}`,
+              variant: `${errors.confirmPassword ? 'error' : 'default'}`,
               inputSize: 'mdWith',
             }),
           )}
@@ -53,14 +53,14 @@ const PasswordField = ({
           />
         )}
       </div>
-      {errors.password && (
+      {errors.confirmPassword && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
           <Error className="h-[16px] w-[16px] fill-error-60" />
-          {errors.password.message}
+          {errors.confirmPassword.message}
         </div>
       )}
     </div>
   );
 };
 
-export default PasswordField;
+export default ConfirmPasswordField;

@@ -11,6 +11,7 @@ import {
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
 import testImage from '@/public/tennis.jpeg';
+import { SignUpForm } from '@/components/organism/SignupForm/SignUpForm';
 
 // TEST
 const TEST_DATA = {
@@ -26,10 +27,11 @@ const page = () => {
   const { image, phone, name, gender, birth, clubId } = TEST_DATA;
 
   return (
-    <div className="relative flex h-full w-full flex-col">
+    <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll">
       <HeaderBar title="프로필 수정" backBtn />
 
-      <form action="" className="no-scrollbar flex flex-1 flex-col overflow-scroll">
+      {/* <SignUpForm /> */}
+      {/* <form action="" className="no-scrollbar flex flex-1 flex-col overflow-scroll">
         <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
           <ProfileField currentImg={[image.src]} />
           <InputModule
@@ -51,7 +53,7 @@ const page = () => {
             <Button label="완료" type="submit" />
           </div>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '@/components/module/Navbar/Navbar';
 import {
+  LogoutTab,
   MyProfileSection,
   NavigationTab,
-  SignoutTab,
 } from '@/components/organism/MyPageSection';
 
 const page = () => {
@@ -14,7 +14,7 @@ const page = () => {
 
         <div className="flex flex-col items-start self-stretch bg-white py-[8px] text-body-1">
           <NavigationTab
-            link={'mypage/comp?status=전체'}
+            link={'/mypage/comp?status=전체'}
             description="참가 신청한 대회 보기"
           />
           <NavigationTab link={'/user/1/record'} description="내 전적 보기" />
@@ -25,7 +25,7 @@ const page = () => {
           <NavigationTab link={'#'} description="이용 약관" />
           <NavigationTab link={'#'} description="회원 탈퇴" />
 
-          <SignoutTab />
+          <LogoutTab />
         </div>
       </div>
 

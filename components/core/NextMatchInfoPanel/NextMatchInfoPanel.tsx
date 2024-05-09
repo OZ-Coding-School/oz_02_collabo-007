@@ -12,19 +12,19 @@ const NextMatchInfoPanel = ({ nextMatchInfo, status }: any) => {
           <div className="flex w-full justify-between">
             <div className="flex gap-[4px] text-sub-headline-3 text-gray-80">
               {nextMatchInfo.teammate.map((player: any, index: number) => (
-                <>
+                <div key={index}>
                   <span key={player.id}>{player.name}</span>
                   {index !== nextMatchInfo.teammate.length - 1 && <span>·</span>}
-                </>
+                </div>
               ))}
               <span>vs</span>
               {nextMatchInfo.opponent && (
                 <>
                   {nextMatchInfo.opponent.map((player: any, index: number) => (
-                    <>
+                    <div key={index}>
                       <span key={player.id}>{player.name}</span>
                       {index !== nextMatchInfo.teammate.length - 1 && <span>·</span>}
-                    </>
+                    </div>
                   ))}
                 </>
               )}{' '}

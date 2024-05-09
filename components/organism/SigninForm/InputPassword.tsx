@@ -18,6 +18,7 @@ const InputPassword = () => {
         label="비밀번호"
         placeholder="비밀번호"
         inputSize="lgWith"
+        name="password"
       />
       {isVisible ? (
         <VisibleIcon

@@ -2,12 +2,48 @@ import Button from '@/components/core/Button/Button';
 import InputModule from '@/components/module/InputModule/InputModule';
 import InputPassword from '@/components/organism/SigninForm/InputPassword';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+import React from 'react';
+
+async function signInUser(formData: FormData) {
+  'use server';
+
+  const userFormData = {
+    phone: formData.get('phone'),
+    password: formData.get('password'),
+  };
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin/`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      phone: formData.get('phone'),
+      password: formData.get('password'),
+    }),
+    credentials: 'include',
+  });
+
+  if (!res.ok) {
+    console.log(res.json());
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = await res.json();
+  console.log(data);
+
+  redirect('/');
+
+  //로컬스토리지에 액세스 토큰 저장 예정
+}
+
+const page = async () => {
   return (
-    <main className="flex h-full w-full flex-col items-center gap-[56px] overflow-scroll px-[20px]  py-[80px]">
+    <main className="flex h-full w-full flex-col items-center gap-[56px] overflow-scroll px-[20px] py-[80px]">
       <h1 className="text-headline-2">알케미스트</h1>
-      <form className="flex w-full flex-col gap-[40px]">
+      <form action={signInUser} className="flex w-full flex-col gap-[40px]">
         <div className="flex flex-col gap-[20px]">
           <fieldset className="gap-[24px]">
             <InputModule
@@ -15,6 +51,7 @@ export default function Home() {
               label="휴대폰 번호"
               placeholder="휴대폰 번호"
               inputSize="lg"
+              name="phone"
             />
             <InputPassword />
           </fieldset>
@@ -34,11 +71,9 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col gap-[12px]">
-          <Link href="/">
-            <div className="h-12 w-full">
-              <Button variant="primary" label="로그인" />
-            </div>
-          </Link>
+          <div className="h-12 w-full">
+            <Button variant="primary" label="로그인" />
+          </div>
           <Link href="/signup">
             <div className="h-12 w-full">
               <Button variant="ghost" colors="gray" label="회원 가입" />
@@ -48,4 +83,6 @@ export default function Home() {
       </form>
     </main>
   );
-}
+};
+
+export default page;

@@ -39,7 +39,7 @@ const Modal: FC<Props> = ({ setIsOpen, inputRef, type, label, children }) => {
       animate={{ y: 0 }}
       exit={{ y: '100vh' }}
       transition={{ duration: 0.4 }}
-      className="fixed left-0 top-0 h-screen w-screen "
+      className="fixed left-0 top-0 z-10 h-screen w-screen"
     >
       <motion.div
         ref={modalRef}
