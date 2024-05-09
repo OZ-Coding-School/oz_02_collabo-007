@@ -24,34 +24,7 @@ export async function signInUser(
   try {
     const { phone, password } = signInFormSchema.parse(formData);
 
-    console.log(phone, password);
-    if (!phone) {
-      return {
-        status: 'error',
-        message: 'Invalid form data',
-        errors: [
-          {
-            path: 'phone',
-            message: '휴대폰번호를 입력해주세요.',
-          },
-        ],
-      };
-    }
-
-    if (!password) {
-      return {
-        status: 'error',
-        message: 'Invalid form data',
-        errors: [
-          {
-            path: 'password',
-            message: '비밀번호를 입력해주세요.',
-          },
-        ],
-      };
-    }
-    console.log(formData);
-    const res = await fetch(`http://localhost:3000/api/v1/auth/signin/`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin/`, {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -80,7 +53,7 @@ export async function signInUser(
         message: 'Invalid from data',
         errors: error.issues.map((issue) => ({
           path: issue.path.join('.'),
-          message: `Server validation: ${issue.message}`,
+          message: `${issue.message}`,
         })),
       };
     }

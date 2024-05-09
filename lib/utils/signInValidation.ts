@@ -5,7 +5,10 @@ export const signInFormSchema = zfd.formData({
   phone: zfd.text(
     z
       .string({ required_error: '핸드폰 번호를 입력해주세요.' })
-      .min(10, '올바르지 않은 핸드폰 번호 형식입니다.'),
+      .regex(
+        /^(?:01[0|1|6-9])-(?:\d{3}|\d{4})-\d{4}$/,
+        '올바른 핸드폰 번호 형식이 아닙니다.',
+      ),
   ),
   password: zfd.text(
     z
