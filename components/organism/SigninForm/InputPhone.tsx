@@ -37,19 +37,19 @@ const InputPhone = ({
               }),
               'p-[12px] text-body-1',
             )}
-            // onChange={(e) =>
-            //   setValue(
-            //     'phone',
-            //     e.target.value
-            //       .replace(/[^0-9]/g, '')
-            //       .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-            //       .replace(/(\-{1,2})$/g, ''),
-            //   )
-            // }
+            onChange={(e) =>
+              setValue(
+                'phone',
+                e.target.value
+                  .replace(/[^0-9]/g, '')
+                  .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+                  .replace(/(\-{1,2})$/g, ''),
+              )
+            }
           />
         </div>
         {errors.phone && (
-          <div className="flex items-center gap-[4px] text-body-3 text-error-60">
+          <div className="absolute flex items-center gap-[4px] text-body-3 text-error-60">
             <Error className="h-[16px] w-[16px] fill-error-60" />
             {errors.phone.message}
           </div>

@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import React, { useEffect, useTransition } from 'react';
 import SigninFormContent from './SigninFormContent';
+import { useRouter } from 'next/navigation';
 
 export interface SignInFormValues {
   phone: string;
@@ -17,6 +18,8 @@ export interface SignInFormValues {
 const SigninForm = () => {
   const [state, formAction] = useFormState<State, FormData>(signInUser, null);
   const [pending, startTransaction] = useTransition();
+
+  const router = useRouter();
 
   const {
     register,
@@ -38,7 +41,8 @@ const SigninForm = () => {
       });
     }
     if (state.status === 'success') {
-      console.log(state.message);
+      window.localStorage.setItem('access-token', state.token);
+      router.push('/');
     }
   }, [state, setError]);
 

@@ -30,7 +30,7 @@ const SigninFormContent = ({
           <InputPhone register={register} errors={errors} setValue={setValue} />
           <InputPassword register={register} errors={errors} />
         </div>
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <div className="flex justify-center">
             <input id="remember" type="checkbox" name="remember" />
             <label
@@ -43,7 +43,7 @@ const SigninFormContent = ({
           <Link href="/#" className="text-sub-headline-2 text-primary-60 ">
             비밀번호를 잊으셨나요?
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col gap-[12px]">
         <div className="h-12 w-full">
