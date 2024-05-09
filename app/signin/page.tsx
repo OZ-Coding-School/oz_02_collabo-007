@@ -14,13 +14,16 @@ async function signInUser(formData: FormData) {
     password: formData.get('password'),
   };
 
-  const res = await fetch('https://alchemistapi.watcher.team/api/v1/auth/signin/', {
-    credentials: 'include',
-    method: 'POST',
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin/`, {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(userFormData),
+    method: 'POST',
+    body: JSON.stringify({
+      phone: formData.get('phone'),
+      password: formData.get('password'),
+    }),
+    credentials: 'include',
   });
 
   if (!res.ok) {
@@ -40,7 +43,7 @@ const page = async () => {
   return (
     <main className="flex h-full w-full flex-col items-center gap-[56px] overflow-scroll px-[20px] py-[80px]">
       <h1 className="text-headline-2">알케미스트</h1>
-      <form className="flex w-full flex-col gap-[40px]" action={signInUser}>
+      <form action={signInUser} className="flex w-full flex-col gap-[40px]">
         <div className="flex flex-col gap-[20px]">
           <fieldset className="gap-[24px]">
             <InputModule

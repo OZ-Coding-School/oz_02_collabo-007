@@ -55,8 +55,6 @@ export function SignUpForm() {
     }
   }, [state, setError]);
 
-  console.log(totalError);
-
   return (
     <form action={(formData) => startTransaction(() => formAction(formData))}>
       <SignUpFormContent

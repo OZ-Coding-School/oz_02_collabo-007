@@ -30,7 +30,7 @@ const page = () => {
     <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll">
       <HeaderBar title="프로필 수정" backBtn />
 
-      <SignUpForm />
+      {/* <SignUpForm /> */}
       {/* <form action="" className="no-scrollbar flex flex-1 flex-col overflow-scroll">
         <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
           <ProfileField currentImg={[image.src]} />

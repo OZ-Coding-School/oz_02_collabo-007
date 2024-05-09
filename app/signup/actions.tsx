@@ -1,5 +1,3 @@
-'use server';
-
 import { signUpSchema } from '@/lib/utils/validation';
 import { ZodError } from 'zod';
 
@@ -43,32 +41,25 @@ export const signUpUser = async (
       };
     }
 
-    formData.delete('confirmPassword');
-    formData.delete('imageFile');
-    formData.delete('club');
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
       method: 'POST',
-      body: formData,
       credentials: 'include',
+      body: formData,
     });
 
     const data = await res.json();
 
     if (!res.ok) {
-      console.log(data);
       return {
         status: 'totalError',
         message: data.message,
       };
     }
 
-    console.log(data);
-
     return {
       status: 'success',
       message: `Login Success`,
-      token: data.access,
+      token: data.token,
     };
   } catch (e) {
     if (e instanceof ZodError) {
