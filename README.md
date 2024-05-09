@@ -71,7 +71,7 @@ npm ci
 프로젝트 root 경로에 `.env`를 생성
 
 ```env
-
+API_URL
 ```
 
 **Running the Project**

@@ -3,7 +3,7 @@ import { VariantProps, cva } from 'class-variance-authority';
 import React, { FC, InputHTMLAttributes } from 'react';
 
 export const InputVariants = cva(
-  `w-full flex border-[1px] border-gray-30 rounded-[8px] transition-all outline-none enabled placeholder:text-gray-50 hover:bg-gray-10 active:border-black active:bg-gray-10 focus:border-[2px] focus:border-black disabled:border-gray-50 disabled:bg-white disabled:cursor-not-allowed`,
+  `w-full flex border-[1px] border-gray-30 rounded-[8px] transition-all outline-none enabled placeholder:text-gray-50 hover:bg-gray-10 active:border-black active:bg-gray-10 disabled:border-gray-50 disabled:bg-white disabled:cursor-not-allowed`,
   {
     variants: {
       variant: {
@@ -21,6 +21,9 @@ export const InputVariants = cva(
         lgWith: 'pl-[12px] pr-[48px] py-[12px] text-body-1',
       },
     },
+    compoundVariants: [
+      { variant: 'default', className: ' focus:border-[1px] focus:border-black' },
+    ],
     defaultVariants: {
       variant: 'default',
       inputSize: 'md',

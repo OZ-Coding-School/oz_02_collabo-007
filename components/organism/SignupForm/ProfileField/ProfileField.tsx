@@ -49,11 +49,11 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
             />
           </div>
         )}
-        <label htmlFor="profile"></label>
+        <label htmlFor="imageFile"></label>
         <input
           type="file"
-          name="profile"
-          id="profile"
+          name="imageFile"
+          id="imageFile"
           ref={fileRef}
           accept="image/*"
           className="hidden"

@@ -19,19 +19,19 @@ export const NAV_LINK = [
   },
   {
     name: '랭킹',
-    url: '/ranking',
+    url: '/ranking/',
     icon: <Award width={24} height={24} fill="#393939" />,
     fillIcon: <AwardFilled width={24} height={24} fill="#FC5214" />,
   },
   {
     name: '대회',
-    url: '/competition',
+    url: '/competition/',
     icon: <Flag width={24} height={24} fill="#393939" />,
     fillIcon: <FlagFilled width={24} height={24} fill="#FC5214" />,
   },
   {
     name: '마이페이지',
-    url: '/mypage',
+    url: '/mypage/',
     icon: <User width={24} height={24} fill="#393939" />,
     fillIcon: <UserFilled width={24} height={24} fill="#FC5214" />,
   },

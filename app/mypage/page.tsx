@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '@/components/module/Navbar/Navbar';
 import {
+  LogoutTab,
   MyProfileSection,
   NavigationTab,
-  SignoutTab,
 } from '@/components/organism/MyPageSection';
 
 const page = () => {
@@ -25,7 +25,7 @@ const page = () => {
           <NavigationTab link={'#'} description="이용 약관" />
           <NavigationTab link={'#'} description="회원 탈퇴" />
 
-          <SignoutTab />
+          <LogoutTab />
         </div>
       </div>
 
