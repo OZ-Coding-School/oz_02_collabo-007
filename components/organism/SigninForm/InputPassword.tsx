@@ -23,7 +23,7 @@ const InputPassword = ({
     setVisible((isVisible) => !isVisible);
   };
   return (
-    <div className="relative mt-6">
+    <div className="relative">
       <div className="flex flex-col items-start gap-[8px] self-stretch">
         <Label label="비밀번호" name={'password'} />
         <div className="relative self-stretch">
@@ -59,7 +59,7 @@ const InputPassword = ({
           )}
         </div>
         {errors.password && (
-          <div className="flex items-center gap-[4px] text-body-3 text-error-60">
+          <div className="absolute bottom-[-24px] flex items-center gap-[4px] text-body-3 text-error-60">
             <Error className="h-[16px] w-[16px] fill-error-60" />
             {errors.password.message}
           </div>
