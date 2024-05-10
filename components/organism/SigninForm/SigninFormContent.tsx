@@ -26,7 +26,7 @@ const SigninFormContent = ({
   return (
     <>
       <div className="flex flex-col gap-[20px]">
-        <div className="gap-[24px]">
+        <div className="flex flex-col gap-[28px]">
           <InputPhone register={register} errors={errors} setValue={setValue} />
           <InputPassword register={register} errors={errors} />
         </div>

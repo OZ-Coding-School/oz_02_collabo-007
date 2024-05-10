@@ -48,7 +48,7 @@ const SigninForm = () => {
 
   return (
     <form
-      className="flex w-full flex-col gap-[40px]"
+      className="flex w-full flex-col gap-[64px]"
       action={(formData) => startTransaction(() => formAction(formData))}
     >
       <SigninFormContent
