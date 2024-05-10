@@ -28,7 +28,7 @@ const InputPassword = ({
         <Label label="비밀번호" name={'password'} />
         <div className="relative self-stretch">
           <input
-            {...register}
+            {...register('password')}
             type={isVisible ? 'text ' : 'password'}
             id="password"
             name="password"

@@ -27,7 +27,7 @@ const InputPhone = ({
         <Label label="휴대폰번호" name={'phone'} />
         <div className="self-stretch">
           <input
-            {...register}
+            {...register('phone')}
             type="text"
             id="phone"
             name="phone"
