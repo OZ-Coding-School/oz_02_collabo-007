@@ -4,24 +4,19 @@ import { FieldPath, useForm } from 'react-hook-form';
 import { useFormState } from 'react-dom';
 import { useEffect, useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { StaticImageData } from 'next/image';
 import { SignUpFormContent } from './SignUpFormContent';
 import { signUpSchema } from '@/lib/utils/validation';
 import { State, signUpUser } from '@/app/signup/actions';
 import { useRouter } from 'next/navigation';
+import { ClubProps } from '@/@types/club';
+import type { SignUpFormValues } from '@/@types/signup';
 
-export interface SignUpFormValues {
-  imageFile: StaticImageData;
-  phone: string;
-  password: string;
-  confirmPassword: string;
-  username: string;
-  gender: string;
-  birth: string;
-  club: string;
-}
+export function SignUpForm({ clubList }: { clubList: ClubProps[] }) {
+  const router = useRouter();
+  const [state, formAction] = useFormState<State, FormData>(signUpUser, null);
+  const [pending, startTransaction] = useTransition();
+  const [totalError, setTotalError] = useState<string | null>(null);
 
-export function SignUpForm() {
   const {
     register,
     formState: { isValid, errors },
@@ -31,10 +26,6 @@ export function SignUpForm() {
     mode: 'all',
     resolver: zodResolver(signUpSchema),
   });
-  const router = useRouter();
-  const [state, formAction] = useFormState<State, FormData>(signUpUser, null);
-  const [pending, startTransaction] = useTransition();
-  const [totalError, setTotalError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!state) return;
@@ -61,6 +52,7 @@ export function SignUpForm() {
         isValid={isValid}
         errors={errors}
         setValue={setValue}
+        clubList={clubList}
       />
       {totalError !== null && <div className="">{totalError}</div>}
     </form>

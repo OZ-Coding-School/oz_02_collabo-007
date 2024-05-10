@@ -48,6 +48,7 @@ export const signUpUser = async (
     });
 
     const data = await res.json();
+    console.log(data);
 
     if (!res.ok) {
       return {
@@ -59,7 +60,7 @@ export const signUpUser = async (
     return {
       status: 'success',
       message: `Login Success`,
-      token: data.token,
+      token: data.access,
     };
   } catch (e) {
     if (e instanceof ZodError) {

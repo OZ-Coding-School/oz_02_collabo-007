@@ -15,21 +15,19 @@ import {
   ProfileField,
 } from '@/components/organism/SignupForm';
 import Button from '@/components/core/Button/Button';
-import { SignUpFormValues } from './SignUpForm';
 import ConfirmPasswordField from './ConfirmPasswordField/ConfirmPasswordField';
+import type { SignUpFormContentProps } from '@/@types/signup';
+import { FC } from 'react';
 
-export function SignUpFormContent({
+export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   register,
   isValid,
   errors,
   setValue,
-}: {
-  register: UseFormRegister<SignUpFormValues>;
-  isValid: boolean;
-  errors: FieldErrors<SignUpFormValues>;
-  setValue: UseFormSetValue<SignUpFormValues>;
-}) {
+  clubList,
+}) => {
   const { pending } = useFormStatus();
+
   return (
     <>
       <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
@@ -41,7 +39,7 @@ export function SignUpFormContent({
         <NameField register={register} errors={errors} />
         <GenderField />
         <BirthField register={register} errors={errors} />
-        <ClubField />
+        <ClubField clubList={clubList} />
 
         <div className="w-full py-[20px]">
           <Button label="회원 가입" type="submit" disabled={pending || !isValid} />
@@ -49,4 +47,4 @@ export function SignUpFormContent({
       </div>
     </>
   );
-}
+};
