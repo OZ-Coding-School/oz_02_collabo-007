@@ -1,4 +1,7 @@
+'use server';
+
 import { signUpSchema } from '@/lib/utils/validation';
+import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
 export type State =
@@ -47,7 +50,22 @@ export const signUpUser = async (
       body: formData,
     });
 
+    const cookieString = res.headers.get('set-cookie');
+    const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
+    const endIndex = (cookieString as string).indexOf(';', startIndex);
+    const refreshValue = (cookieString as string).substring(
+      startIndex,
+      endIndex !== -1 ? endIndex : undefined,
+    );
+
+    cookies().set({
+      name: 'refresh',
+      value: refreshValue,
+      httpOnly: true,
+    });
+
     const data = await res.json();
+    console.log(data);
 
     if (!res.ok) {
       return {
@@ -59,7 +77,7 @@ export const signUpUser = async (
     return {
       status: 'success',
       message: `Login Success`,
-      token: data.token,
+      token: data.access,
     };
   } catch (e) {
     if (e instanceof ZodError) {

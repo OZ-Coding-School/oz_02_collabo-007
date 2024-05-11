@@ -1,24 +1,24 @@
 'use client';
 import useClickOutside from '@/lib/hook/useClickOutsideModal';
-import React, { Dispatch, FC, RefObject, SetStateAction, useRef } from 'react';
+import React, { FC, useRef } from 'react';
 import { motion, useMotionValue, PanInfo } from 'framer-motion';
 import ModalContainer from './ModalContainer';
+import type { ModalProps } from '@/@types/modal';
 
-interface Props {
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  inputRef: RefObject<HTMLDivElement>;
-  type: string;
-  label: string;
-  children: React.ReactNode;
-}
-
-const Modal: FC<Props> = ({ setIsOpen, inputRef, type, label, children }) => {
+const Modal: FC<ModalProps> = ({
+  setIsOpen,
+  inputRef,
+  type,
+  label,
+  searchData,
+  setSelectedId,
+}) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const y = useMotionValue(0);
 
   const handleCloseModal = () => {
     inputRef.current?.blur();
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev: boolean) => !prev);
   };
 
   const handleDragEnd = (event: MouseEvent | TouchEvent, info: PanInfo) => {
@@ -49,9 +49,13 @@ const Modal: FC<Props> = ({ setIsOpen, inputRef, type, label, children }) => {
         onDragEnd={handleDragEnd}
         className="relative m-auto flex h-full w-full max-w-[500px] flex-col items-center bg-gray-10"
       >
-        <ModalContainer handleCloseModal={handleCloseModal} type={type} label={label}>
-          {children}
-        </ModalContainer>
+        <ModalContainer
+          handleCloseModal={handleCloseModal}
+          type={type}
+          label={label}
+          searchData={searchData}
+          setSelectedId={setSelectedId}
+        ></ModalContainer>
       </motion.div>
     </motion.div>
   );
