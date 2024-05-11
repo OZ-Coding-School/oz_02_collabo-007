@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import XIcon from '@/app/_asset/icons/x.svg';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Input from '@/components/core/Input/Input';
@@ -20,6 +20,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   const [searchValue, setSearchValue] = useState('');
   const [filteredData, setFilteredData] = useState<ClubProps[]>([]);
   const debounceSearchValue = useDebounce<string>(searchValue, 500);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const ModalActionBtn = () => {
     return (
@@ -32,6 +33,10 @@ const ModalContainer: FC<ModalContainerProps> = ({
       />
     );
   };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     if (debounceSearchValue === '') {
@@ -61,6 +66,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
           placeholder={label}
           className="pl-[44px]"
           value={searchValue}
+          inputRef={inputRef}
           onChange={(e) => setSearchValue(() => e.target.value)}
         />
 
