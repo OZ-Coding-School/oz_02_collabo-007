@@ -2,7 +2,7 @@
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import { cn } from '@/lib/utils/cn';
-import React, { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
@@ -22,6 +22,13 @@ const InputPhone = ({
   errors: FieldErrors<SignInFormValues>;
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
+
   return (
     <div className="relative">
       <div className="flex flex-col items-start gap-[8px] self-stretch">
