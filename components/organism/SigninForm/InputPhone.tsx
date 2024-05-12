@@ -2,7 +2,7 @@
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import { cn } from '@/lib/utils/cn';
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
@@ -21,6 +21,7 @@ const InputPhone = ({
   setValue: UseFormSetValue<SignInFormValues>;
   errors: FieldErrors<SignInFormValues>;
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <div className="relative">
       <div className="flex flex-col items-start gap-[8px] self-stretch">
@@ -28,6 +29,7 @@ const InputPhone = ({
         <div className="self-stretch">
           <input
             {...register('phone')}
+            ref={inputRef}
             type="text"
             id="phone"
             name="phone"
