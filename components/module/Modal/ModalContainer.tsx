@@ -6,7 +6,7 @@ import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { cn } from '@/lib/utils/cn';
 import type { ModalContainerProps } from '@/@types/modal';
 import useDebounce from '@/lib/hook/useDebounce';
-import { ClubProps } from '@/@types/club';
+import type { SimpleClubData } from '@/@types/club';
 import { hangulToJamo } from '@/lib/hook/hangulToJamo';
 import ClubItem from '@/components/organism/SignupForm/ClubField/ClubItem';
 
@@ -18,7 +18,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   setSelectedId,
 }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [filteredData, setFilteredData] = useState<ClubProps[]>([]);
+  const [filteredData, setFilteredData] = useState<SimpleClubData[]>([]);
   const debounceSearchValue = useDebounce<string>(searchValue, 500);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -44,7 +44,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
       return;
     }
 
-    const filtered: ClubProps[] = searchData.filter(({ name }: { name: string }) => {
+    const filtered: SimpleClubData[] = searchData.filter(({ name }: { name: string }) => {
       return hangulToJamo(name).includes(hangulToJamo(debounceSearchValue));
     });
 
@@ -89,13 +89,13 @@ const ModalContainer: FC<ModalContainerProps> = ({
           </span>
         ) : (
           <>
-            {filteredData.map(({ id, name, address, image_url }) => (
+            {filteredData.map(({ id, name, address, imageUrl }) => (
               <div
                 key={id}
                 className="w-full cursor-pointer rounded-[8px] bg-white p-[12px] shadow-card"
                 onClick={() => handleClubItem(id)}
               >
-                <ClubItem name={name} address={address} image={image_url} />
+                <ClubItem name={name} address={address} image={imageUrl} />
               </div>
             ))}
           </>

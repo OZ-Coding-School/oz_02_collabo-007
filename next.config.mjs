@@ -17,6 +17,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ['search.pstatic.net'],
+  },
 };
 
 export default nextConfig;

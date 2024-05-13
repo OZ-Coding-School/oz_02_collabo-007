@@ -45,7 +45,7 @@ export const signUpUser = async (
     }
 
     formData.delete('imageFile');
-    formData.append('imageFIle', '');
+    formData.append('imageFile', '');
     console.log(formData);
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
@@ -53,6 +53,7 @@ export const signUpUser = async (
       credentials: 'include',
       body: formData,
     });
+    // console.log(res);
 
     const cookieString = res.headers.get('set-cookie');
     const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
