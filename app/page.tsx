@@ -8,7 +8,6 @@ import { cookies } from 'next/headers';
 const Home = async () => {
   const cookie = cookies();
   const user = cookie.get('access')!;
-  const userInfo = data.userInfo;
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
