@@ -30,7 +30,7 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className="flex flex-col gap-[16px] bg-white px-[20px] py-[24px]">
           <InfoBanner
             name={club.name}
-            imageUrl={club.imageUrl?.imageUrl || null}
+            imageUrl={club.imageUrl?.imageUrl}
             description={club.description}
           />
           <ClubBanner address={club.address} phone={club.phone} />
@@ -44,7 +44,7 @@ const page = async ({ params }: { params: { id: string } }) => {
                 <Avatar
                   key={user.id}
                   name={user.username}
-                  image={user.imageUrl?.imageUrl || null}
+                  image={user.imageUrl?.imageUrl}
                 />
               ))}
             </div>

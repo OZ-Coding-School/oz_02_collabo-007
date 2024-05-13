@@ -6,19 +6,19 @@ import Link from 'next/link';
 interface UserProfileProps {
   id: number;
   name: string;
-  rank: number | null;
-  image: string | null;
-  score: string | null;
-  teamName: string | null;
+  rank?: number | null;
+  image?: string | null;
+  score?: string | null;
+  teamName?: string | null;
 }
 
 const UserProfile: FC<UserProfileProps> = ({
   id,
   name,
-  rank,
-  image,
-  score,
-  teamName,
+  rank = null,
+  image = null,
+  score = null,
+  teamName = null,
 }) => {
   return (
     <Link
