@@ -26,20 +26,30 @@ const page = async ({ params }: { params: { id: number } }) => {
           <div className="w-full bg-white">
             <HomeUserProfile userInfo={res} user={user} />
           </div>
-          <div>
-            <span>랭킹</span>
-            <div>
-              <div>단식</div>
-              <div>복식</div>
-              <div>팀</div>
-            </div>
-            <div>그래프</div>
-            <div>
-              <div>
-                <span>최근전적</span>
-                <Link href={`/records`}>전체 전적 보기</Link>
+          <div className="flex flex-col gap-[40px] bg-white p-[20px]">
+            <div className="flex flex-col gap-[12px]">
+              <span className="text-headline-6 text-gray-100">랭킹</span>
+              <div className="flex gap-[12px]">
+                <div className="flex flex-1 flex-col gap-[4px] rounded-[8px] bg-gray-20 p-[12px] text-center">
+                  <span className="text-body-3 text-gray-60">단식</span>
+                  <span className="text-headline-6 text-gray-60">
+                    {res.ranking ? res.ranking.single : '-'}
+                  </span>
+                </div>
               </div>
-              <div></div>
+              <div>그래프</div>
+            </div>
+            <div className="flex w-full flex-col gap-[12px]">
+              <div className="flex justify-between">
+                <span className="text-headline-6 text-gray-100">최근전적</span>
+                <Link
+                  href={`/user/${params.id}/record/`}
+                  className="text-subheadline-2 text-gray-60"
+                >
+                  전체 전적 보기
+                </Link>
+              </div>
+              <div>최근전적카드</div>
             </div>
           </div>
         </div>
