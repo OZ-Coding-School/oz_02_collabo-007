@@ -29,7 +29,7 @@ const ClubField = ({ clubList }: { clubList: ClubProps[] }) => {
           placeholder="소속 클럽 검색"
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}
-          value={selectedId ? selectedId.name : ''}
+          value={selectedId ? selectedId.id : ''}
           onChange={(e) => e.target.value}
           variant={selectedId ? 'display' : 'default'}
         />

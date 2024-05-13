@@ -44,6 +44,10 @@ export const signUpUser = async (
       };
     }
 
+    formData.delete('imageFile');
+    formData.append('imageFIle', '');
+    console.log(formData);
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
       method: 'POST',
       credentials: 'include',
@@ -58,14 +62,19 @@ export const signUpUser = async (
       endIndex !== -1 ? endIndex : undefined,
     );
 
+    const data = await res.json();
+
     cookies().set({
       name: 'refresh',
       value: refreshValue,
       httpOnly: true,
     });
 
-    const data = await res.json();
-    console.log(data);
+    cookies().set({
+      name: 'access',
+      value: data.access,
+      httpOnly: true,
+    });
 
     if (!res.ok) {
       return {

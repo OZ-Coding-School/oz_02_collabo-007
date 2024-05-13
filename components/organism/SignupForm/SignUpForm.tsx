@@ -33,6 +33,7 @@ export function SignUpForm({ clubList }: { clubList: ClubProps[] }) {
       setTotalError(() => state.message);
     }
     if (state.status === 'error') {
+      console.log(state);
       state.errors?.forEach((error) => {
         setError(error.path as FieldPath<SignUpFormValues>, {
           message: error.message,
@@ -40,7 +41,6 @@ export function SignUpForm({ clubList }: { clubList: ClubProps[] }) {
       });
     }
     if (state.status === 'success') {
-      window.localStorage.setItem('access-token', state.token);
       router.push('/');
     }
   }, [state, setError]);
