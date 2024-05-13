@@ -7,10 +7,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 
-const HomeUserProfile = ({ userInfo, user, loginBtn }: any) => {
-  //   const userProfileImage = userInfo.image;
-  //   const userProfileImage = null;
-
+const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPannel }: any) => {
   return (
     <div className="w-full">
       <div
@@ -19,7 +16,10 @@ const HomeUserProfile = ({ userInfo, user, loginBtn }: any) => {
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-[8px]">
             {user && userInfo ? (
-              <Link href="/" className="flex items-center gap-[8px] text-headline-4">
+              <Link
+                href="/mypage/edit/"
+                className="flex items-center gap-[8px] text-headline-4"
+              >
                 {userInfo.username}
                 {loginBtn && <ChevronRightIcon width={18} height={18} fill="#393939" />}
               </Link>
@@ -61,19 +61,27 @@ const HomeUserProfile = ({ userInfo, user, loginBtn }: any) => {
             ) : null}
           </div>
         </div>
-        {userInfo.ranking ? (
+        {userInfo.ranking || rankingPannel ? (
           <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
-            <span className="flex gap-[4px] text-sub-headline-2 text-gray-80">
-              {userInfo.ranking.single.name ? userInfo.ranking.single.name : null}
-              <span>·</span>
-              {userInfo.ranking.single.tier ? userInfo.ranking.single.tier : null}
-            </span>
-            <span className="text-headline-6 text-primary-60">
-              {userInfo.ranking.single.rank ? userInfo.ranking.single.rank : null}
-            </span>
+            {userInfo.ranking ? (
+              <>
+                <span className="flex gap-[4px] text-sub-headline-2 text-gray-80">
+                  {userInfo.ranking ? userInfo.ranking.single.name : null}
+                  <span>·</span>
+                  {userInfo.ranking ? userInfo.ranking.single.tier : null}
+                </span>
+                <span className="text-headline-6 text-primary-60">
+                  {userInfo.ranking ? userInfo.ranking.single.rank : null}
+                </span>
+              </>
+            ) : (
+              <span className="text-sub-headline-2 text-primary-60">
+                현재 등록된 대표 랭킹이 없습니다.
+              </span>
+            )}
           </div>
         ) : null}
-        {user && loginBtn && (
+        {!user && loginBtn && (
           <Link href="/signin">
             <Button size="lg" label="로그인하러 가기" variant="primary" />
           </Link>
