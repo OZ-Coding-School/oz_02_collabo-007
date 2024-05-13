@@ -4,8 +4,8 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 
 interface ClubTabProps {
-  club: string;
-  team: string;
+  club: string | null;
+  team: string | null;
 }
 
 const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
@@ -19,7 +19,7 @@ const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
           <ClubIcon width={20} height={20} fill="#FC5214" />
           <span>클럽</span>
         </div>
-        <div className="w-full text-center text-sub-headline-2">{club}</div>
+        <div className="w-full text-center text-sub-headline-2">{club ? club : '-'}</div>
       </Link>
       <Link
         href={`team/1`}
@@ -29,7 +29,7 @@ const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
           <TeamIcon width={20} height={20} fill="#FC5214" />
           <span>팀</span>
         </div>
-        <div className="w-full text-center text-sub-headline-2">{team}</div>
+        <div className="w-full text-center text-sub-headline-2">{team ? team : '-'}</div>
       </Link>
     </div>
   );
