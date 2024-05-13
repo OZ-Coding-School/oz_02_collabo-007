@@ -17,6 +17,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ['search.pstatic.net', 'tennis-dev.s3.amazonaws.com'],
+  },
 };
 
 export default nextConfig;
