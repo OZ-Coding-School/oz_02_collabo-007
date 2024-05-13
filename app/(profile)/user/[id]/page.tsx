@@ -5,6 +5,22 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import React from 'react';
 
+export interface UserInfo {
+  id: number;
+  username: string;
+  phone: string;
+  gender: 'male' | 'female';
+  birth: number;
+  imageUrl: {
+    imageUrl: string;
+  };
+  club: string | null;
+  team: string | null;
+  ranking: {
+    [key: string]: string | null;
+  };
+}
+
 const page = async ({ params }: { params: { id: number } }) => {
   const cookie = cookies();
   const user = cookie.get('access');
