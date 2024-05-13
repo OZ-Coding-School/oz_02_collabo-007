@@ -3,7 +3,6 @@ import Navbar from '@/components/module/Navbar/Navbar';
 import { data } from './data';
 import CompList from '@/components/organism/CompList/CompList';
 import HomeUserProfile from '@/components/module/HomeUserProfile/HomeUserProfile';
-import getLocalStorage from '@/lib/utils/getLocalStorage';
 import { cookies } from 'next/headers';
 
 export default function Home() {
@@ -13,7 +12,7 @@ export default function Home() {
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden">
-      <HomeUserProfile user={user} userInfo={userInfo} />
+      <HomeUserProfile user={user} userInfo={userInfo} rankingPannel />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
         {user ? (
           <CompList
