@@ -1,3 +1,4 @@
+import CategoryRankingCard from '@/components/core/CategoryRankingCard/CategoryRankingCard';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import HomeUserProfile from '@/components/module/HomeUserProfile/HomeUserProfile';
 import { cookies } from 'next/headers';
@@ -30,12 +31,9 @@ const page = async ({ params }: { params: { id: number } }) => {
             <div className="flex flex-col gap-[12px]">
               <span className="text-headline-6 text-gray-100">랭킹</span>
               <div className="flex gap-[12px]">
-                <div className="flex flex-1 flex-col gap-[4px] rounded-[8px] bg-gray-20 p-[12px] text-center">
-                  <span className="text-body-3 text-gray-60">단식</span>
-                  <span className="text-headline-6 text-gray-60">
-                    {res.ranking ? res.ranking.single : '-'}
-                  </span>
-                </div>
+                <CategoryRankingCard res={res} category="single" name="단식" />
+                <CategoryRankingCard res={res} category="double" name="복식" />
+                <CategoryRankingCard res={res} category="team" name="팀" />
               </div>
               <div>그래프</div>
             </div>
