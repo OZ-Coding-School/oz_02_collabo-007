@@ -11,6 +11,7 @@ export interface UserInfo {
   phone: string;
   gender: 'male' | 'female';
   birth: number;
+  tier: string | null;
   imageUrl: {
     imageUrl: string;
   };
