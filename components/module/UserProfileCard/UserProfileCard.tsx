@@ -17,9 +17,9 @@ const UserProfileCard = ({ userData }: { userData: ClubTeamUser[] }) => {
           id={id}
           image={imageUrl?.imageUrl || null}
           name={username}
-          rank={team.rank || null}
-          score={team.score || null}
-          teamName={team.name}
+          rank={team?.rank || null}
+          score={team?.score || null}
+          teamName={team?.name || null}
         />
       ))}
     </>

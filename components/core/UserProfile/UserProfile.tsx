@@ -9,7 +9,7 @@ interface UserProfileProps {
   rank: number | null;
   image: string | null;
   score: string | null;
-  teamName: string;
+  teamName: string | null;
 }
 
 const UserProfile: FC<UserProfileProps> = ({
@@ -44,7 +44,7 @@ const UserProfile: FC<UserProfileProps> = ({
         <div className="text-sub-headline-2">{name}</div>
       </div>
       <div className="flex-1 text-right">{score ? score : '-'}</div>
-      <div className="flex-1 text-right">{teamName}</div>
+      <div className="flex-1 text-right">{teamName ? teamName : '-'}</div>
     </Link>
   );
 };
