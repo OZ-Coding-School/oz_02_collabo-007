@@ -11,6 +11,7 @@ import Button from '@/components/core/Button/Button';
 import { SignInFormValues } from './SigninForm';
 import { useFormStatus } from 'react-dom';
 import InputPhone from './InputPhone';
+import Error from '@/app/_asset/icons/error-circle.svg';
 
 const SigninFormContent = ({
   register,
@@ -45,6 +46,13 @@ const SigninFormContent = ({
           </Link>
         </div> */}
       </div>
+      {console.log(errors)}
+      {errors.phone && (
+        <div className="absolute bottom-[-24px] flex items-center gap-[4px] text-body-3 text-error-60">
+          <Error className="h-[16px] w-[16px] fill-error-60" />
+          {errors.phone.message}
+        </div>
+      )}
       <div className="flex flex-col gap-[12px]">
         <div className="h-12 w-full">
           <Button variant="primary" label="로그인" type="submit" />

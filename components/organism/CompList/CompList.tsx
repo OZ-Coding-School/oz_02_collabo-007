@@ -5,7 +5,7 @@ import CompCard from '../CompCard/CompCard';
 
 const CompList = ({ title, compStatus, flexDirection }: any) => {
   return (
-    <div className="flex w-full flex-col gap-[2px] ">
+    <div className="flex w-full flex-col gap-[12px] ">
       {title ? (
         <div className={'flex items-center justify-between'}>
           <span className="text-headline-5 text-gray-100">{title}</span>
