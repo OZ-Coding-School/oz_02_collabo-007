@@ -46,7 +46,7 @@ const ClubField = ({ clubList }: { clubList: SimpleClubData[] }) => {
             <ClubItem
               name={selectedId.name}
               address={selectedId.address}
-              image={selectedId.imageUrl}
+              image={selectedId.imageUrl?.imageUrl || null}
               displayMode
               handleDelete={handleDelete}
             />

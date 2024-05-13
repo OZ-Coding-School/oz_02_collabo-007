@@ -95,7 +95,11 @@ const ModalContainer: FC<ModalContainerProps> = ({
                 className="w-full cursor-pointer rounded-[8px] bg-white p-[12px] shadow-card"
                 onClick={() => handleClubItem(id)}
               >
-                <ClubItem name={name} address={address} image={imageUrl} />
+                <ClubItem
+                  name={name}
+                  address={address}
+                  image={imageUrl?.imageUrl || null}
+                />
               </div>
             ))}
           </>

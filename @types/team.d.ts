@@ -2,7 +2,7 @@ export type Team = {
   id: number;
   name: string;
   description: string;
-  imageUrl: { imageUrl: string } | null;
+  imageUrl: ImageFile;
 };
 
 export type TennisTeamData = {

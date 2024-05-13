@@ -15,11 +15,11 @@ const ClubItem: FC<ClubItemProps> = ({
     <div
       className={cn(
         `${displayMode ? 'bg-gray-20' : 'bg-white'}`,
-        'flex h-full w-full items-center',
+        'flex h-full w-full items-center gap-[16px]',
       )}
     >
       <div className="relative h-[56px] w-[56px]">
-        {image && (
+        {image ? (
           <Image
             src={image}
             alt={name}
@@ -27,6 +27,8 @@ const ClubItem: FC<ClubItemProps> = ({
             sizes="w-[56px] h-[56px]"
             className="rounded-[8px] object-cover"
           />
+        ) : (
+          <div className="h-full w-full rounded-[8px] bg-gray-30" />
         )}
       </div>
       <div className="flex flex-1 flex-col justify-center gap-[4px]">
