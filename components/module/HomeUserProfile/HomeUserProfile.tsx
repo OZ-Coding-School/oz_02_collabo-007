@@ -7,7 +7,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 
-const HomeUserProfile = ({ userInfo }: any) => {
+const HomeUserProfile = ({ userInfo, user }: any) => {
   //   const userProfileImage = userInfo.image;
   //   const userProfileImage = null;
 
@@ -15,18 +15,18 @@ const HomeUserProfile = ({ userInfo }: any) => {
     <div>
       <div className="flex w-full flex-col gap-[24px] px-[20px] py-[24px] shadow-md">
         <div className="flex w-full items-center justify-between">
-          <div className="flex flex-col gap-[8px] text-headline-4">
-            {userInfo ? (
+          <div className="flex flex-col gap-[8px]">
+            {user ? (
               <Link href="/" className="flex gap-[8px]">
                 {userInfo.name}
                 <ChevronRightIcon width={18} height={18} fill="#393939" />
               </Link>
             ) : (
-              <span className="text-gray-60">
+              <span className="text-headline-4 text-gray-60">
                 대회를 신청하려면 <br /> 로그인 해주세요
               </span>
             )}
-            {userInfo ? (
+            {user ? (
               <>
                 <div className="flex gap-[8px]">
                   <ClubIcon width={20} height={20} fill="#393939" />
@@ -43,8 +43,8 @@ const HomeUserProfile = ({ userInfo }: any) => {
               </>
             ) : null}
           </div>
-          <div className="item-center flex h-[80px] w-[80px] justify-center rounded-[50%] bg-gray-20">
-            {userInfo && userInfo.image && (
+          <div className="flex h-[80px] w-[80px] items-center justify-center rounded-[50%] bg-gray-20">
+            {user && userInfo.image && (
               <Image
                 src={userInfo.image}
                 width={80}
@@ -53,12 +53,12 @@ const HomeUserProfile = ({ userInfo }: any) => {
                 style={{ borderRadius: '50%' }}
               />
             )}
-            {!userInfo || !userInfo.image ? (
-              <UserIcon width={32} height={32} fill="#393939" />
+            {!user || !userInfo.image ? (
+              <UserIcon width={32} height={32} fill="#787878" />
             ) : null}
           </div>
         </div>
-        {userInfo ? (
+        {user ? (
           <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
             <span className="flex gap-[4px] text-sub-headline-2 text-gray-80">
               {userInfo.ranking.single.name}

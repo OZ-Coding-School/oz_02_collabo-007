@@ -1,4 +1,7 @@
+'use server';
+
 import { signInFormSchema } from '@/lib/utils/signInValidation';
+import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
 export type State =
@@ -33,19 +36,34 @@ export async function signInUser(
       body: JSON.stringify({ phone: phone, password: password }),
     });
 
-    if (!res.ok) {
-      throw new Error('Failed to fetch data');
-    }
+    const cookieString = res.headers.get('set-cookie');
+    const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
+    const endIndex = (cookieString as string).indexOf(';', startIndex);
+    const refreshValue = (cookieString as string).substring(
+      startIndex,
+      endIndex !== -1 ? endIndex : undefined,
+    );
+
+    cookies().set({
+      name: 'refresh',
+      value: refreshValue,
+      httpOnly: true,
+    });
 
     const data = await res.json();
+    console.log(data);
+
+    cookies().set({
+      name: 'access',
+      value: data.access,
+      httpOnly: true,
+    });
 
     return {
       status: 'success',
       message: `Login Success`,
       token: data.access,
     };
-
-    //로컬스토리지에 액세스 토큰 저장 예정
   } catch (error) {
     if (error instanceof ZodError) {
       return {

@@ -10,7 +10,6 @@ import {
   UseFormGetValues,
 } from 'react-hook-form';
 import { SignInFormValues } from './SigninForm';
-import Error from '@/app/_asset/icons/error-circle.svg';
 
 const InputPhone = ({
   register,
@@ -25,7 +24,7 @@ const InputPhone = ({
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current?.focus();
     }
   });
 
@@ -43,7 +42,7 @@ const InputPhone = ({
             placeholder="휴대폰번호"
             className={cn(
               InputVariants({
-                variant: `${errors.phone ? 'error' : 'default'}`,
+                variant: 'default',
               }),
               'p-[12px] text-body-1',
             )}
@@ -58,12 +57,6 @@ const InputPhone = ({
             }
           />
         </div>
-        {errors.phone && (
-          <div className="absolute bottom-[-24px] flex items-center gap-[4px] text-body-3 text-error-60">
-            <Error className="h-[16px] w-[16px] fill-error-60" />
-            {errors.phone.message}
-          </div>
-        )}
       </div>
     </div>
   );
