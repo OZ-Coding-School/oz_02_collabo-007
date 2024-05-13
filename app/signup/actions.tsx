@@ -44,16 +44,18 @@ export const signUpUser = async (
       };
     }
 
-    formData.delete('imageFile');
-    formData.append('imageFile', '');
-    console.log(formData);
+    // 빈 이미지 파일 임시 조건 처리
+    const imageData = formData.get('imageFile');
+    if (imageData instanceof File && imageData.size === 0) {
+      formData.delete('imageFile');
+      formData.append('imageFile', '');
+    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
       method: 'POST',
       credentials: 'include',
       body: formData,
     });
-    // console.log(res);
 
     const cookieString = res.headers.get('set-cookie');
     const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
@@ -102,7 +104,7 @@ export const signUpUser = async (
     }
     return {
       status: 'error',
-      message: 'Something went wrong. Please try again.',
+      message: `${e}`,
     };
   }
 };
