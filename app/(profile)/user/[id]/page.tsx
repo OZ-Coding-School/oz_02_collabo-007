@@ -13,13 +13,25 @@ export interface UserInfo {
   birth: number;
   tier: string | null;
   imageUrl: {
-    imageUrl: string;
-  };
-  club: string | null;
-  team: string | null;
+    [key: string]: string;
+  } | null;
+
+  club: ClubValues | null;
+  team: {
+    [key: string]: string;
+  } | null;
   ranking: {
     [key: string]: string | null;
   };
+}
+
+export interface ClubValues {
+  id: number;
+  address: string;
+  phone: string;
+  name: string;
+  description: string;
+  imageUrl: string | null;
 }
 
 const page = async ({ params }: { params: { id: number } }) => {

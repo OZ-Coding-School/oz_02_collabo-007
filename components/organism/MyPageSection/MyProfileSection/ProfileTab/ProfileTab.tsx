@@ -7,7 +7,7 @@ interface ProfileTabProps {
   gender: string;
   birth: number;
   tier: string | null;
-  imageUrl: string | null;
+  imageUrl: string | null | undefined;
 }
 
 const ProfileTab: FC<ProfileTabProps> = ({ name, gender, birth, tier, imageUrl }) => {
