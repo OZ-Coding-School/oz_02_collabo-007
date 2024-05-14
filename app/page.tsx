@@ -24,6 +24,16 @@ export const getUserData = async () => {
   }
 };
 
+const HOME_COMP_LIST = [
+  { title: '참가 예정 대회', compStatus: '진행 전', variant: 'flex' },
+  { title: '최근 참가 대회', compStatus: '종료', variant: 'flex' },
+  {
+    title: '대회 정보',
+    compStatus: null,
+    variant: '',
+  },
+];
+
 const Home = async () => {
   const userData = await getUserData();
 
@@ -31,32 +41,15 @@ const Home = async () => {
     <div className="flex h-full w-full flex-col overflow-hidden">
       <HomeUserProfile userInfo={userData} rankingPanel loginBtn />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
-        {userData ? (
-          <CompList
-            title="참가 예정 대회"
-            compStatus="진행 전"
-            flexDirection={
-              'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
-            }
-          />
-        ) : null}
-        {userData ? (
-          <CompList
-            title="최근 참가 대회"
-            compStatus="종료"
-            flexDirection={
-              'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
-            }
-          />
-        ) : null}
-        <CompList
-          title="대회 정보"
-          flexDirection={
-            !userData
-              ? 'flex-col w-full gap-[16px]'
-              : 'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll'
-          }
-        />
+        {HOME_COMP_LIST.map(({ title, compStatus, variant }) =>
+          compStatus !== null ? (
+            userData ? (
+              <CompList title={title} compStatus={compStatus} variant={variant} />
+            ) : null
+          ) : (
+            <CompList title={title} variant={userData ? 'flex' : 'flexCol'} />
+          ),
+        )}
       </main>
       <div className="sticky bottom-0 w-full">
         <Navbar />
