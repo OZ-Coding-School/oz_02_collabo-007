@@ -35,7 +35,7 @@ const CompList = ({ title, compStatus, variant }: any) => {
       {title ? (
         <div className={'flex items-center justify-between'}>
           <span className="text-headline-5 text-gray-100">{title}</span>
-          <Link href="/#" className="sub-headline-2 text-gray-60">
+          <Link href="/#" className="text-sub-headline-2 text-gray-60">
             전체 목록 보기
           </Link>
         </div>
