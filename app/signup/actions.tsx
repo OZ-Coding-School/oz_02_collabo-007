@@ -44,6 +44,9 @@ export const signUpUser = async (
       };
     }
 
+    formData.delete('confirmPassword');
+    formData.delete('clubName');
+
     // 빈 이미지 파일 임시 조건 처리
     const imageData = formData.get('imageFile');
     if (imageData instanceof File && imageData.size === 0) {

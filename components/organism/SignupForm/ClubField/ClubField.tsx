@@ -25,11 +25,17 @@ const ClubField = ({ clubList }: { clubList: SimpleClubData[] }) => {
 
         <Input
           name="club"
+          className="hidden pl-[44px]"
+          value={selectedId ? selectedId.id : ''}
+        />
+
+        <Input
+          name="clubName"
           inputRef={inputRef}
           placeholder="소속 클럽 검색"
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}
-          value={selectedId ? selectedId.id : ''}
+          value={selectedId ? selectedId.name : ''}
           onChange={(e) => e.target.value}
           variant={selectedId ? 'display' : 'default'}
         />

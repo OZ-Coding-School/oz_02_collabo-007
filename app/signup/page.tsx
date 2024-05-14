@@ -8,7 +8,6 @@ export const getClubList = async () => {
       next: { revalidate: 3600 },
     });
     const data = await res.json();
-    console.log(data);
 
     return data.data;
   } catch (error) {
