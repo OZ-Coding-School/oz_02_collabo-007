@@ -1,6 +1,4 @@
 import Navbar from '@/components/module/Navbar/Navbar';
-
-import { data } from './data';
 import CompList from '@/components/organism/CompList/CompList';
 import HomeUserProfile from '@/components/module/HomeUserProfile/HomeUserProfile';
 import { cookies } from 'next/headers';
@@ -10,19 +8,20 @@ export const getUserData = async () => {
 
   const cookie = cookies();
   const user = cookie.get('access')!;
+  if (user) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
+      credentials: 'include',
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${user.value}`,
+        'Content-type': 'application/json',
+      },
+      cache: 'force-cache',
+      next: { tags: ['userData'] },
+    }).then((res) => res.json());
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
-    credentials: 'include',
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${user.value}`,
-      'Content-type': 'application/json',
-    },
-    cache: 'force-cache',
-    next: { tags: ['userData'] },
-  }).then((res) => res.json());
-
-  return res;
+    return res;
+  }
 };
 
 const Home = async () => {
@@ -33,7 +32,7 @@ const Home = async () => {
       <HomeUserProfile
         user={userData ? true : false}
         userInfo={userData}
-        rankingpanel
+        rankingPanel
         loginBtn
       />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
