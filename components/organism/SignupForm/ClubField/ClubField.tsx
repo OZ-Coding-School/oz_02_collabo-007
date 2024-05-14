@@ -6,12 +6,12 @@ import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import Modal from '@/components/module/Modal/Modal';
-import type { ClubProps } from '@/@types/club';
+import type { SimpleClubData } from '@/@types/club';
 import ClubItem from './ClubItem';
 
-const ClubField = ({ clubList }: { clubList: ClubProps[] }) => {
+const ClubField = ({ clubList }: { clubList: SimpleClubData[] }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<ClubProps | null>(null);
+  const [selectedId, setSelectedId] = useState<SimpleClubData | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDelete = () => {
@@ -25,11 +25,17 @@ const ClubField = ({ clubList }: { clubList: ClubProps[] }) => {
 
         <Input
           name="club"
+          className="hidden pl-[44px]"
+          value={selectedId ? selectedId.id : ''}
+        />
+
+        <Input
+          name="clubName"
           inputRef={inputRef}
           placeholder="소속 클럽 검색"
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}
-          value={selectedId ? selectedId.id : ''}
+          value={selectedId ? selectedId.name : ''}
           onChange={(e) => e.target.value}
           variant={selectedId ? 'display' : 'default'}
         />
@@ -46,7 +52,7 @@ const ClubField = ({ clubList }: { clubList: ClubProps[] }) => {
             <ClubItem
               name={selectedId.name}
               address={selectedId.address}
-              image={selectedId.image_url}
+              image={selectedId.imageUrl?.imageUrl || null}
               displayMode
               handleDelete={handleDelete}
             />

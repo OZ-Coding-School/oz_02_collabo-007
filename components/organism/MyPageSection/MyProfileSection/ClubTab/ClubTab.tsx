@@ -13,7 +13,7 @@ const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
   return (
     <div className="flex w-full items-start self-stretch rounded-[8px] bg-white p-[12px] shadow-card">
       <Link
-        href={`club/1`}
+        href={`/club/1`}
         className="flex flex-1 flex-col items-center justify-center gap-[8px] border-r border-gray-30 pr-[8px]"
       >
         <div className="flex items-center justify-center gap-[4px] text-body-3 text-primary-60">
@@ -25,7 +25,7 @@ const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
         </div>
       </Link>
       <Link
-        href={`team/1`}
+        href={`/team/1`}
         className="flex flex-1 flex-col items-center justify-center gap-[8px] pl-[8px]"
       >
         <div className="flex items-center justify-center gap-[4px] text-body-3 text-primary-60">

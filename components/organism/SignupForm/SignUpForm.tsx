@@ -8,10 +8,10 @@ import { SignUpFormContent } from './SignUpFormContent';
 import { signUpSchema } from '@/lib/utils/validation';
 import { State, signUpUser } from '@/app/signup/actions';
 import { useRouter } from 'next/navigation';
-import { ClubProps } from '@/@types/club';
+import type { SimpleClubData } from '@/@types/club';
 import type { SignUpFormValues } from '@/@types/signup';
 
-export function SignUpForm({ clubList }: { clubList: ClubProps[] }) {
+export function SignUpForm({ clubList }: { clubList: SimpleClubData[] }) {
   const router = useRouter();
   const [state, formAction] = useFormState<State, FormData>(signUpUser, null);
   const [pending, startTransaction] = useTransition();

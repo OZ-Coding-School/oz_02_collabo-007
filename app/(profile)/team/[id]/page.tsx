@@ -1,15 +1,27 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
-import tennisImg from '@/public/tennis.jpeg';
 import UserProfileCard from '@/components/module/UserProfileCard/UserProfileCard';
-import MemberCard from '@/components/organism/ProfilePage/MemberCard/MemberCard';
 import InfoBanner from '@/components/organism/ProfilePage/InfoBanner/InfoBanner';
-import ClubBanner from '@/components/organism/ProfilePage/ClubBanner/ClubBanner';
 import Link from 'next/link';
 import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
 import TeamBanner from '@/components/organism/ProfilePage/TeamBanner/TeamBanner';
+import type { TennisTeamData } from '@/@types/team';
 
-const page = () => {
+const getTeamData = async (id: string) => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/team/${id}`, {
+      next: { revalidate: 3600 },
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const page = async ({ params }: { params: { id: string } }) => {
+  const { team, users }: TennisTeamData = await getTeamData(params.id);
+
   return (
     <div className="flex h-full w-full flex-col">
       <HeaderBar title="팀 정보" backBtn />
@@ -17,9 +29,9 @@ const page = () => {
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex flex-col gap-[16px] bg-white px-[20px] py-[24px]">
           <InfoBanner
-            name="라온테니스 A"
-            image={tennisImg}
-            description="라온테니스 A는 가장 높은 실력을 가진 팀입니다."
+            name={team.name}
+            imageUrl={team.imageUrl?.imageUrl || null}
+            description={team.description}
           />
           <TeamBanner rank={32} win={32} lose={15} />
         </div>
@@ -37,7 +49,7 @@ const page = () => {
             </div>
 
             <div className="flex w-full flex-col">
-              <UserProfileCard data={TEST_DATA2} />
+              <UserProfileCard userData={users} />
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-[12px]">
@@ -106,10 +118,4 @@ const MATCHES_DATA = [
       scores: ['3', '2', '-'],
     },
   },
-];
-
-const TEST_DATA2 = [
-  { name: '이인호', rank: 1, score: '3,485', team: '라온테니스 A', image: tennisImg },
-  { name: '이인호', rank: 2, score: '3,485', team: '라온테니스 A', image: tennisImg },
-  { name: '이인호', rank: 3, score: '3,485', team: '라온테니스 A', image: tennisImg },
 ];

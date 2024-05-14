@@ -1,18 +1,8 @@
+import { ClubTeamUser } from '@/@types/user';
 import UserProfile from '@/components/core/UserProfile/UserProfile';
-import React, { FC } from 'react';
-import { StaticImageData } from 'next/image';
+import React from 'react';
 
-interface UserProfileCardProps {
-  data: {
-    name: string;
-    rank: number;
-    score: string;
-    team: string;
-    image: StaticImageData;
-  }[];
-}
-
-const UserProfileCard: FC<UserProfileCardProps> = ({ data }) => {
+const UserProfileCard = ({ userData }: { userData: ClubTeamUser[] }) => {
   return (
     <>
       <div className="flex w-full items-center gap-[8px] text-body-3 text-gray-60">
@@ -21,14 +11,15 @@ const UserProfileCard: FC<UserProfileCardProps> = ({ data }) => {
         <div className="flex-1 text-right">점수</div>
         <div className="flex-1 text-right">소속 팀</div>
       </div>
-      {data?.map(({ name, image, rank, score, team }, index) => (
+      {userData?.map(({ id, username, imageUrl, team }) => (
         <UserProfile
-          key={index}
-          image={image}
-          name={name}
-          rank={rank}
-          score={score}
-          team={team}
+          key={id}
+          id={id}
+          image={imageUrl?.imageUrl}
+          name={username}
+          rank={team?.rank}
+          score={team?.score}
+          teamName={team?.name}
         />
       ))}
     </>

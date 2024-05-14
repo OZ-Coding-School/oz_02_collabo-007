@@ -3,14 +3,14 @@ export interface ModalProps {
   inputRef: RefObject<HTMLDivElement>;
   type: string;
   label: string;
-  searchData: ClubProps[];
-  setSelectedId: Dispatch<SetStateAction<ClubProps | null>>;
+  searchData: SimpleClubData[];
+  setSelectedId: Dispatch<SetStateAction<SimpleClubData | null>>;
 }
 
 export interface ModalContainerProps {
   handleCloseModal: () => void;
   type: string;
   label: string;
-  searchData: ClubProps[];
-  setSelectedId: Dispatch<SetStateAction<ClubProps | null>>;
+  searchData: SimpleClubData[];
+  setSelectedId: Dispatch<SetStateAction<SimpleClubData | null>>;
 }

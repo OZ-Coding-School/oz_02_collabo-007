@@ -14,5 +14,5 @@ export interface SignUpFormContentProps {
   isValid: boolean;
   errors: FieldErrors<SignUpFormValues>;
   setValue: UseFormSetValue<SignUpFormValues>;
-  clubList: ClubProps[];
+  clubList: SimpleClubData[];
 }

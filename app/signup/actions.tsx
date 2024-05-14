@@ -44,9 +44,15 @@ export const signUpUser = async (
       };
     }
 
-    formData.delete('imageFile');
-    formData.append('imageFIle', '');
-    console.log(formData);
+    formData.delete('confirmPassword');
+    formData.delete('clubName');
+
+    // 빈 이미지 파일 임시 조건 처리
+    const imageData = formData.get('imageFile');
+    if (imageData instanceof File && imageData.size === 0) {
+      formData.delete('imageFile');
+      formData.append('imageFile', '');
+    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
       method: 'POST',
@@ -101,7 +107,7 @@ export const signUpUser = async (
     }
     return {
       status: 'error',
-      message: 'Something went wrong. Please try again.',
+      message: `${e}`,
     };
   }
 };
