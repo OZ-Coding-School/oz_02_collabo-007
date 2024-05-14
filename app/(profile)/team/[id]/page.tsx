@@ -21,8 +21,6 @@ const getTeamData = async (id: string) => {
 
 const page = async ({ params }: { params: { id: string } }) => {
   const { team, users }: TennisTeamData = await getTeamData(params.id);
-  console.log(team);
-  console.log(users);
 
   return (
     <div className="flex h-full w-full flex-col">
