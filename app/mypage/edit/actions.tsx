@@ -2,10 +2,11 @@
 
 import type { SignUpState } from '@/@types/signup';
 import { signUpSchema } from '@/lib/utils/validation';
+import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
-export const signUpUser = async (
+export const editUser = async (
   prevState: SignUpState | null,
   formData: FormData,
 ): Promise<SignUpState> => {
@@ -29,39 +30,37 @@ export const signUpUser = async (
     formData.delete('clubName');
 
     // 빈 이미지 파일 임시 조건 처리
+    const imageChange = formData.get('imageChange');
+    if (imageChange === 'false') {
+      formData.delete('imageFile');
+    }
+
     const imageData = formData.get('imageFile');
-    if (imageData instanceof File && imageData.size === 0) {
+    if (imageChange === 'true' && imageData instanceof File && imageData.size === 0) {
       formData.delete('imageFile');
       formData.append('imageFile', '');
     }
+    formData.delete('imageChange');
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
-      method: 'POST',
-      credentials: 'include',
-      body: formData,
-    });
+    console.log(formData);
 
-    const cookieString = res.headers.get('set-cookie');
-    const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
-    const endIndex = (cookieString as string).indexOf(';', startIndex);
-    const refreshValue = (cookieString as string).substring(
-      startIndex,
-      endIndex !== -1 ? endIndex : undefined,
+    const cookie = cookies();
+    const user = cookie.get('access')!;
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/`,
+      {
+        credentials: 'include',
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${user.value}`,
+        },
+        body: formData,
+      },
     );
+    // console.log(res);
 
     const data = await res.json();
-
-    cookies().set({
-      name: 'refresh',
-      value: refreshValue,
-      httpOnly: true,
-    });
-
-    cookies().set({
-      name: 'access',
-      value: data.access,
-      httpOnly: true,
-    });
 
     if (!res.ok) {
       return {
@@ -69,6 +68,8 @@ export const signUpUser = async (
         message: data.message,
       };
     }
+
+    revalidateTag('userData');
 
     return {
       status: 'success',

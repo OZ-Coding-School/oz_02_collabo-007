@@ -9,15 +9,18 @@ import type { SignUpFormValues } from '@/@types/signup';
 const NameField = ({
   register,
   errors,
+  nameData,
 }: {
   register: UseFormRegister<SignUpFormValues>;
   errors: FieldErrors<SignUpFormValues>;
+  nameData?: string;
 }) => {
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'이름'} name={'username'} />
         <input
+          defaultValue={nameData}
           {...register('username')}
           placeholder="홍길동"
           id="username"

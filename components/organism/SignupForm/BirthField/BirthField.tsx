@@ -9,15 +9,18 @@ import type { SignUpFormValues } from '@/@types/signup';
 const BirthField = ({
   register,
   errors,
+  birthData,
 }: {
   register: UseFormRegister<SignUpFormValues>;
   errors: FieldErrors<SignUpFormValues>;
+  birthData?: number;
 }) => {
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'출생년도'} name={'birth'} />
         <input
+          defaultValue={birthData}
           {...register('birth')}
           id="birth"
           placeholder="2000"

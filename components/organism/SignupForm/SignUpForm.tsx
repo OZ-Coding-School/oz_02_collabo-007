@@ -10,10 +10,19 @@ import { signUpUser } from '@/app/signup/actions';
 import { useRouter } from 'next/navigation';
 import type { SimpleClubData } from '@/@types/club';
 import type { SignUpFormValues, SignUpState } from '@/@types/signup';
+import type { UserData } from '@/@types/user';
+import { editUser } from '@/app/mypage/edit/actions';
 
-export function SignUpForm({ clubList }: { clubList: SimpleClubData[] }) {
+export function SignUpForm({
+  clubList,
+  userData,
+}: {
+  clubList: SimpleClubData[];
+  userData?: UserData;
+}) {
   const router = useRouter();
-  const [state, formAction] = useFormState<SignUpState, FormData>(signUpUser, null);
+  const fn = userData ? editUser : signUpUser;
+  const [state, formAction] = useFormState<SignUpState, FormData>(fn, null);
   const [pending, startTransaction] = useTransition();
   const [totalError, setTotalError] = useState<string | null>(null);
 
@@ -33,7 +42,6 @@ export function SignUpForm({ clubList }: { clubList: SimpleClubData[] }) {
       setTotalError(() => state.message);
     }
     if (state.status === 'error') {
-      console.log(state);
       state.errors?.forEach((error) => {
         setError(error.path as FieldPath<SignUpFormValues>, {
           message: error.message,
@@ -53,6 +61,7 @@ export function SignUpForm({ clubList }: { clubList: SimpleClubData[] }) {
         errors={errors}
         setValue={setValue}
         clubList={clubList}
+        userData={userData}
       />
       {totalError !== null && <div className="">{totalError}</div>}
     </form>
