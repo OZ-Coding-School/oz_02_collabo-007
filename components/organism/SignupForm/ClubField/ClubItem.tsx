@@ -7,7 +7,7 @@ import type { ClubItemProps } from '@/@types/club';
 const ClubItem: FC<ClubItemProps> = ({
   name,
   address,
-  image,
+  image = null,
   displayMode = false,
   handleDelete,
 }) => {
@@ -21,7 +21,7 @@ const ClubItem: FC<ClubItemProps> = ({
       <div className="relative h-[56px] w-[56px]">
         {image ? (
           <Image
-            src={image}
+            src={image.imageUrl}
             alt={name}
             fill
             sizes="w-[56px] h-[56px]"

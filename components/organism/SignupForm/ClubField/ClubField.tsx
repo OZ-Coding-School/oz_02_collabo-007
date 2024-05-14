@@ -27,6 +27,7 @@ const ClubField = ({ clubList }: { clubList: SimpleClubData[] }) => {
           name="club"
           className="hidden pl-[44px]"
           value={selectedId ? selectedId.id : ''}
+          readOnly
         />
 
         <Input
@@ -52,7 +53,7 @@ const ClubField = ({ clubList }: { clubList: SimpleClubData[] }) => {
             <ClubItem
               name={selectedId.name}
               address={selectedId.address}
-              image={selectedId.imageUrl?.imageUrl || null}
+              image={selectedId.imageUrl}
               displayMode
               handleDelete={handleDelete}
             />
