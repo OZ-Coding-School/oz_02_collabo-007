@@ -7,7 +7,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 
-const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPanel }: any) => {
+const HomeUserProfile = ({ userInfo, loginBtn, rankingPanel }: any) => {
   return (
     <div className="w-full">
       <div
@@ -15,7 +15,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPanel }: any) => {
       >
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-[8px]">
-            {user && userInfo ? (
+            {userInfo ? (
               <Link
                 href="/mypage/edit/"
                 className="flex items-center gap-[8px] text-headline-4"
@@ -28,7 +28,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPanel }: any) => {
                 대회를 신청하려면 <br /> 로그인 해주세요
               </span>
             )}
-            {user ? (
+            {userInfo ? (
               <>
                 <div className="flex gap-[8px]">
                   <ClubIcon width={20} height={20} fill="#393939" />
@@ -46,7 +46,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPanel }: any) => {
             ) : null}
           </div>
           <div className="relative flex h-[80px] w-[80px] items-center justify-center overflow-hidden rounded-[50%] bg-gray-20">
-            {user && userInfo.imageUrl && (
+            {userInfo && userInfo.imageUrl && (
               <Image
                 src={userInfo.imageUrl.imageUrl}
                 fill
@@ -55,7 +55,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPanel }: any) => {
                 style={{ borderRadius: '50%' }}
               />
             )}
-            {!user || !userInfo.image ? (
+            {!userInfo || !userInfo.image ? (
               <UserIcon width={32} height={32} fill="#787878" />
             ) : null}
           </div>
@@ -80,7 +80,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPanel }: any) => {
             )}
           </div>
         ) : null}
-        {!user && loginBtn && (
+        {!userInfo && loginBtn && (
           <Link href="/signin">
             <Button size="lg" label="로그인하러 가기" variant="primary" />
           </Link>
