@@ -5,50 +5,36 @@ import {
   MyProfileSection,
   NavigationTab,
 } from '@/components/organism/MyPageSection';
-import { cookies } from 'next/headers';
+import { getUserData } from '../page';
 
 const page = async () => {
-  const cookie = cookies();
-  const user = cookie.get('access')!;
+  const userData = await getUserData();
 
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
-      credentials: 'include',
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${user.value}`,
-        'Content-type': 'application/json',
-      },
-    }).then((res) => res.json());
+  return (
+    <div className="flex h-full flex-col items-center gap-[8px] self-stretch bg-gray-30  text-gray-100">
+      <div className="no-scrollbar flex flex-1 flex-col items-center gap-[8px] self-stretch overflow-scroll">
+        <MyProfileSection userInfo={userData} />
 
-    return (
-      <div className="flex h-full flex-col items-center gap-[8px] self-stretch bg-gray-30  text-gray-100">
-        <div className="no-scrollbar flex flex-1 flex-col items-center gap-[8px] self-stretch overflow-scroll">
-          <MyProfileSection userInfo={res} />
-
-          <div className="flex flex-col items-start self-stretch bg-white py-[8px] text-body-1">
-            <NavigationTab
-              link={'/mypage/comp?status=전체'}
-              description="참가 신청한 대회 보기"
-            />
-            <NavigationTab link={'/user/1/record'} description="내 전적 보기" />
-          </div>
-
-          <div className="flex flex-1 flex-col items-start self-stretch bg-white py-[8px] text-body-1">
-            <NavigationTab link={'#'} description="서비스 소개" />
-            <NavigationTab link={'#'} description="이용 약관" />
-            <NavigationTab link={'#'} description="회원 탈퇴" />
-
-            <LogoutTab />
-          </div>
+        <div className="flex flex-col items-start self-stretch bg-white py-[8px] text-body-1">
+          <NavigationTab
+            link={'/mypage/comp?status=전체'}
+            description="참가 신청한 대회 보기"
+          />
+          <NavigationTab link={'/user/1/record'} description="내 전적 보기" />
         </div>
 
-        <Navbar />
+        <div className="flex flex-1 flex-col items-start self-stretch bg-white py-[8px] text-body-1">
+          <NavigationTab link={'#'} description="서비스 소개" />
+          <NavigationTab link={'#'} description="이용 약관" />
+          <NavigationTab link={'#'} description="회원 탈퇴" />
+
+          <LogoutTab />
+        </div>
       </div>
-    );
-  } catch (e) {
-    console.log(e);
-  }
+
+      <Navbar />
+    </div>
+  );
 };
 
 export default page;

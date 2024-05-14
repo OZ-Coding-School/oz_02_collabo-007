@@ -52,6 +52,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPannel }: any) => {
                 // width={80}
                 // height={80}
                 fill
+                sizes="80px"
                 alt="visible"
                 style={{ borderRadius: '50%' }}
               />

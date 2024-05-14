@@ -1,3 +1,6 @@
+import { ImageFile } from './image';
+import { ClubTeamUser } from './user';
+
 export type Team = {
   id: number;
   name: string;

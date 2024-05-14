@@ -1,3 +1,5 @@
+import { SimpleClubData } from './club';
+
 export interface ModalProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   inputRef: RefObject<HTMLDivElement>;

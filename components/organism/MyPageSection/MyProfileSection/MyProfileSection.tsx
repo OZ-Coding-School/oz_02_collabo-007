@@ -3,7 +3,7 @@ import ProfileTab from './ProfileTab/ProfileTab';
 import ClubTab from './ClubTab/ClubTab';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
-import { UserInfo } from '@/app/(profile)/user/[id]/page';
+import type { UserInfo } from '@/app/(profile)/user/[id]/page';
 
 interface MyProfileSectionProps {
   userInfo: UserInfo;

@@ -54,7 +54,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             <div className="text-headline-6">클럽 팀</div>
             <div className="flex items-start gap-[24px] self-stretch">
               {teams.map(({ id, name, imageUrl }) => (
-                <Avatar key={id} name={name} image={imageUrl?.imageUrl || null} />
+                <Avatar key={id} name={name} image={imageUrl?.imageUrl} />
               ))}
             </div>
           </div>
