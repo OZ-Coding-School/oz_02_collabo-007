@@ -1,9 +1,3 @@
-import {
-  FieldErrors,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetValue,
-} from 'react-hook-form';
 import { useFormStatus } from 'react-dom';
 import {
   BirthField,

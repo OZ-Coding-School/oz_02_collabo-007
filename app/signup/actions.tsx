@@ -1,33 +1,14 @@
 'use server';
 
+import type { SignUpState } from '@/@types/signup';
 import { signUpSchema } from '@/lib/utils/validation';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
-export type State =
-  | {
-      status: 'success';
-      message: string;
-      token: string;
-    }
-  | {
-      status: 'error';
-      message: string;
-      errors?: Array<{
-        path: string;
-        message: string;
-      }>;
-    }
-  | {
-      status: 'totalError';
-      message: string;
-    }
-  | null;
-
 export const signUpUser = async (
-  prevState: State | null,
+  prevState: SignUpState | null,
   formData: FormData,
-): Promise<State> => {
+): Promise<SignUpState> => {
   try {
     const { password, confirmPassword } = signUpSchema.parse(formData);
 

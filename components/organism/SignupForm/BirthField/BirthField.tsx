@@ -1,12 +1,10 @@
-'use client';
-
 import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import { SignUpFormValues } from '../SignUpForm';
+import type { SignUpFormValues } from '@/@types/signup';
 
 const BirthField = ({
   register,

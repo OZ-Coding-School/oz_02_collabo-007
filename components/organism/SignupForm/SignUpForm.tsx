@@ -6,14 +6,14 @@ import { useEffect, useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignUpFormContent } from './SignUpFormContent';
 import { signUpSchema } from '@/lib/utils/validation';
-import { State, signUpUser } from '@/app/signup/actions';
+import { signUpUser } from '@/app/signup/actions';
 import { useRouter } from 'next/navigation';
 import type { SimpleClubData } from '@/@types/club';
-import type { SignUpFormValues } from '@/@types/signup';
+import type { SignUpFormValues, SignUpState } from '@/@types/signup';
 
 export function SignUpForm({ clubList }: { clubList: SimpleClubData[] }) {
   const router = useRouter();
-  const [state, formAction] = useFormState<State, FormData>(signUpUser, null);
+  const [state, formAction] = useFormState<SignUpState, FormData>(signUpUser, null);
   const [pending, startTransaction] = useTransition();
   const [totalError, setTotalError] = useState<string | null>(null);
 
