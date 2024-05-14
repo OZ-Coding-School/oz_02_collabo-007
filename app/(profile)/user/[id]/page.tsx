@@ -5,35 +5,6 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import React from 'react';
 
-export interface UserInfo {
-  id: number;
-  username: string;
-  phone: string;
-  gender: 'male' | 'female';
-  birth: number;
-  tier: string | null;
-  imageUrl: {
-    [key: string]: string;
-  } | null;
-
-  club: ClubValues | null;
-  team: {
-    [key: string]: string;
-  } | null;
-  ranking: {
-    [key: string]: string | null;
-  };
-}
-
-export interface ClubValues {
-  id: number;
-  address: string;
-  phone: string;
-  name: string;
-  description: string;
-  imageUrl: string | null;
-}
-
 const page = async ({ params }: { params: { id: number } }) => {
   const cookie = cookies();
   const user = cookie.get('access');
