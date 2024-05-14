@@ -1,11 +1,12 @@
+import { ClubValues } from '@/app/(profile)/user/[id]/page';
 import ClubIcon from '@/app/_asset/icons/club.svg';
 import TeamIcon from '@/app/_asset/icons/team.svg';
 import Link from 'next/link';
 import React, { FC } from 'react';
 
 interface ClubTabProps {
-  club: string;
-  team: string;
+  club: ClubValues | null;
+  team: { [key: string]: string } | null;
 }
 
 const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
@@ -19,7 +20,9 @@ const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
           <ClubIcon width={20} height={20} fill="#FC5214" />
           <span>클럽</span>
         </div>
-        <div className="w-full text-center text-sub-headline-2">{club}</div>
+        <div className="w-full text-center text-sub-headline-2">
+          {club ? club.name : '-'}
+        </div>
       </Link>
       <Link
         href={`team/1`}
@@ -29,7 +32,9 @@ const ClubTab: FC<ClubTabProps> = ({ club, team }) => {
           <TeamIcon width={20} height={20} fill="#FC5214" />
           <span>팀</span>
         </div>
-        <div className="w-full text-center text-sub-headline-2">{team}</div>
+        <div className="w-full text-center text-sub-headline-2">
+          {team ? team.name : '-'}
+        </div>
       </Link>
     </div>
   );

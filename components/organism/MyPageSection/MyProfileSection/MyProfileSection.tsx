@@ -1,31 +1,25 @@
 import React from 'react';
-import profileImg from '@/public/tennis.jpeg';
 import ProfileTab from './ProfileTab/ProfileTab';
 import ClubTab from './ClubTab/ClubTab';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
+import { UserInfo } from '@/app/(profile)/user/[id]/page';
 
-// TEST
-const TEST_DATA = {
-  name: '김형섭',
-  gender: '남자',
-  birth: '1993',
-  tier: '개나리부',
-  profile: profileImg,
-  club: '라온테니스',
-  team: '초보 A',
-};
+interface MyProfileSectionProps {
+  userInfo: UserInfo;
+}
 
-const MyProfileSection = () => {
-  const { name, gender, birth, tier, profile, club, team } = TEST_DATA;
+const MyProfileSection = ({ userInfo }: MyProfileSectionProps) => {
+  console.log(userInfo);
+  const { username, gender, birth, tier, imageUrl, club, team } = userInfo;
 
   return (
     <div className="flex flex-col items-start gap-[24px] self-stretch bg-white px-[20px] py-[24px]">
       <ProfileTab
-        name={name}
+        name={username}
         birth={birth}
         gender={gender}
-        profile={profile}
+        imageUrl={imageUrl?.imageUrl}
         tier={tier}
       />
 
