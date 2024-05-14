@@ -33,7 +33,7 @@ const Home = async () => {
       <HomeUserProfile
         user={userData ? true : false}
         userInfo={userData}
-        rankingPannel
+        rankingpanel
         loginBtn
       />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">

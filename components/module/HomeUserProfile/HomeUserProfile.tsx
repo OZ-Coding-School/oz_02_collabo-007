@@ -7,7 +7,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 
-const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPannel }: any) => {
+const HomeUserProfile = ({ userInfo, user, loginBtn, rankingpanel }: any) => {
   return (
     <div className="w-full">
       <div
@@ -49,8 +49,6 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPannel }: any) => {
             {user && userInfo.imageUrl && (
               <Image
                 src={userInfo.imageUrl.imageUrl}
-                // width={80}
-                // height={80}
                 fill
                 sizes="80px"
                 alt="visible"
@@ -62,7 +60,7 @@ const HomeUserProfile = ({ userInfo, user, loginBtn, rankingPannel }: any) => {
             ) : null}
           </div>
         </div>
-        {userInfo.ranking || rankingPannel ? (
+        {userInfo.ranking || rankingpanel ? (
           <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
             {userInfo.ranking ? (
               <>
