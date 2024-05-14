@@ -13,7 +13,7 @@ const page = async () => {
   return (
     <div className="flex h-full flex-col items-center gap-[8px] self-stretch bg-gray-30  text-gray-100">
       <div className="no-scrollbar flex flex-1 flex-col items-center gap-[8px] self-stretch overflow-scroll">
-        <MyProfileSection userInfo={userData} />
+        <MyProfileSection userData={userData} />
 
         <div className="flex flex-col items-start self-stretch bg-white py-[8px] text-body-1">
           <NavigationTab

@@ -6,12 +6,12 @@ import Link from 'next/link';
 import { UserInfo } from '@/@types/user';
 
 interface MyProfileSectionProps {
-  userInfo: UserInfo;
+  userData: UserInfo;
 }
 
-const MyProfileSection = ({ userInfo }: MyProfileSectionProps) => {
-  console.log(userInfo);
-  const { username, gender, birth, tier, imageUrl, club, team } = userInfo;
+const MyProfileSection = ({ userData }: MyProfileSectionProps) => {
+  console.log(userData);
+  const { username, gender, birth, tier, imageUrl, club, team } = userData;
 
   return (
     <div className="flex flex-col items-start gap-[24px] self-stretch bg-white px-[20px] py-[24px]">
