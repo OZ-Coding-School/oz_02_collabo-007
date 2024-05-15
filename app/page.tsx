@@ -36,9 +36,14 @@ const Home = async () => {
     <div className="flex h-full w-full flex-col overflow-hidden">
       <HomeUserProfile userInfo={userData} rankingPanel loginBtn />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
-        {HOME_COMP_LIST.map(({ title, compStatus, variant }) =>
+        {HOME_COMP_LIST.map(({ title, compStatus, variant }, index) =>
           userData ? (
-            <CompList title={title} compStatus={compStatus} variant={variant} />
+            <CompList
+              key={index}
+              title={title}
+              compStatus={compStatus}
+              variant={variant}
+            />
           ) : null,
         )}
         <CompList title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />
