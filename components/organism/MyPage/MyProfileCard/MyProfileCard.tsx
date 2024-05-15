@@ -5,11 +5,11 @@ import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
 import { UserInfo } from '@/@types/user';
 
-interface MyProfileSectionProps {
+interface MyProfileCardProps {
   userData: UserInfo;
 }
 
-const MyProfileSection = ({ userData }: MyProfileSectionProps) => {
+const MyProfileCard = ({ userData }: MyProfileCardProps) => {
   console.log(userData);
   const { username, gender, birth, tier, imageUrl, club, team } = userData;
 
@@ -32,4 +32,4 @@ const MyProfileSection = ({ userData }: MyProfileSectionProps) => {
   );
 };
 
-export default MyProfileSection;
+export default MyProfileCard;

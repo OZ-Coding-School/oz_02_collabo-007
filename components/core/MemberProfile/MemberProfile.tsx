@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils/cn';
 import Link from 'next/link';
 
-interface UserProfileProps {
+interface MemberProfileProps {
   id: number;
   name: string;
   rank?: number | null;
@@ -12,7 +12,7 @@ interface UserProfileProps {
   teamName?: string | null;
 }
 
-const UserProfile: FC<UserProfileProps> = ({
+const MemberProfile: FC<MemberProfileProps> = ({
   id,
   name,
   rank = null,
@@ -49,4 +49,4 @@ const UserProfile: FC<UserProfileProps> = ({
   );
 };
 
-export default UserProfile;
+export default MemberProfile;

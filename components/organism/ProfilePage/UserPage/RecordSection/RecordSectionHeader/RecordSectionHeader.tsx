@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-interface RecordBoardHeaderProps {
+interface RecordSectionHeaderProps {
   compName: string;
   date: string;
   category: string;
   tier: string;
 }
 
-const RecordBoardHeader: FC<RecordBoardHeaderProps> = ({
+const RecordSectionHeader: FC<RecordSectionHeaderProps> = ({
   compName,
   date,
   category,
@@ -27,4 +27,4 @@ const RecordBoardHeader: FC<RecordBoardHeaderProps> = ({
   );
 };
 
-export default RecordBoardHeader;
+export default RecordSectionHeader;

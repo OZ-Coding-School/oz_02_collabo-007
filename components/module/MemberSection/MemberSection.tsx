@@ -1,8 +1,8 @@
 import { ClubTeamUser } from '@/@types/user';
-import UserProfile from '@/components/core/UserProfile/UserProfile';
+import MemberProfile from '@/components/core/MemberProfile/MemberProfile';
 import React from 'react';
 
-const UserProfileCard = ({ userData }: { userData: ClubTeamUser[] }) => {
+const MemberSection = ({ userData }: { userData: ClubTeamUser[] }) => {
   return (
     <>
       <div className="flex w-full items-center gap-[8px] text-body-3 text-gray-60">
@@ -12,7 +12,7 @@ const UserProfileCard = ({ userData }: { userData: ClubTeamUser[] }) => {
         <div className="flex-1 text-right">소속 팀</div>
       </div>
       {userData?.map(({ id, username, imageUrl, team }) => (
-        <UserProfile
+        <MemberProfile
           key={id}
           id={id}
           image={imageUrl?.imageUrl}
@@ -26,4 +26,4 @@ const UserProfileCard = ({ userData }: { userData: ClubTeamUser[] }) => {
   );
 };
 
-export default UserProfileCard;
+export default MemberSection;

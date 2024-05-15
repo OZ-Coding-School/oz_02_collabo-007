@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import { SignUpForm } from '@/components/organism/SignupForm/SignUpForm';
+import { SignUpForm } from '@/components/organism/SignUpPage/SignUpForm';
 
 export const getClubList = async () => {
   try {

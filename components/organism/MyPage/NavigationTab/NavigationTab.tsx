@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
-import Image from 'next/image';
 
 interface NavigationTabProps {
   link: string;

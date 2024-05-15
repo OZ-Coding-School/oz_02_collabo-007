@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
-interface InfoBannerProps {
+interface InfoSectionProps {
   name: string;
   description: string;
   imageUrl?: string | null;
 }
 
-const InfoBanner: FC<InfoBannerProps> = ({ name, description, imageUrl = null }) => {
+const InfoSection: FC<InfoSectionProps> = ({ name, description, imageUrl = null }) => {
   return (
     <div className="flex justify-start gap-[20px] self-stretch">
       <div className="flex flex-1 flex-col gap-[8px]">
@@ -32,4 +32,4 @@ const InfoBanner: FC<InfoBannerProps> = ({ name, description, imageUrl = null })
   );
 };
 
-export default InfoBanner;
+export default InfoSection;

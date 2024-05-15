@@ -2,7 +2,15 @@ import React from 'react';
 import AwardIcon from '@/app/_asset/icons/award.svg';
 import FlagIcon from '@/app/_asset/icons/flag.svg';
 
-const TeamBanner = ({ rank, win, lose }: { rank: number; win: number; lose: number }) => {
+const TeamSection = ({
+  rank,
+  win,
+  lose,
+}: {
+  rank: number;
+  win: number;
+  lose: number;
+}) => {
   return (
     <div className="flex w-full flex-col gap-[10px] text-body-2">
       <div className="flex items-center gap-[8px]">
@@ -21,4 +29,4 @@ const TeamBanner = ({ rank, win, lose }: { rank: number; win: number; lose: numb
   );
 };
 
-export default TeamBanner;
+export default TeamSection;

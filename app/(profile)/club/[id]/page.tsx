@@ -1,11 +1,10 @@
-import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
-import UserProfileCard from '@/components/module/UserProfileCard/UserProfileCard';
-import InfoBanner from '@/components/organism/ProfilePage/InfoBanner/InfoBanner';
-import ClubBanner from '@/components/organism/ProfilePage/ClubBanner/ClubBanner';
 import Link from 'next/link';
-import type { TennisClubData } from '@/@types/club';
+import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
+import { ClubSection, InfoSection } from '@/components/organism/ProfilePage';
 import Avatar from '@/components/core/Avatar/Avatar';
+import MemberSection from '@/components/module/MemberSection/MemberSection';
+import type { TennisClubData } from '@/@types/club';
 
 const getClubData = async (id: string) => {
   try {
@@ -28,12 +27,12 @@ const page = async ({ params }: { params: { id: string } }) => {
 
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex flex-col gap-[16px] bg-white px-[20px] py-[24px]">
-          <InfoBanner
+          <InfoSection
             name={club.name}
             imageUrl={club.imageUrl?.imageUrl}
             description={club.description}
           />
-          <ClubBanner address={club.address} phone={club.phone} />
+          <ClubSection address={club.address} phone={club.phone} />
         </div>
 
         <div className="flex w-full flex-1 flex-col gap-[40px] bg-white p-[20px]">
@@ -71,7 +70,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="flex w-full flex-col">
-              <UserProfileCard userData={users} />
+              <MemberSection userData={users} />
             </div>
           </div>
         </div>

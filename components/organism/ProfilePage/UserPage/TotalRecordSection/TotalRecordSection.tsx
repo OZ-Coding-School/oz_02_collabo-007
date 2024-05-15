@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-interface TotalRecordProps {
+interface TotalRecordSectionProps {
   win: number;
   lose: number;
 }
 
-const TotalRecord: FC<TotalRecordProps> = ({ win, lose }) => {
+const TotalRecordSection: FC<TotalRecordSectionProps> = ({ win, lose }) => {
   return (
     <div className="flex flex-col items-start gap-[16px] self-stretch p-[20px]">
       <div className="text-body-1">전체 전적</div>
@@ -24,4 +24,4 @@ const TotalRecord: FC<TotalRecordProps> = ({ win, lose }) => {
   );
 };
 
-export default TotalRecord;
+export default TotalRecordSection;

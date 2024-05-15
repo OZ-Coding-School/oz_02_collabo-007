@@ -10,7 +10,7 @@ import type { ModalContainerProps } from '@/@types/modal';
 import useDebounce from '@/lib/hook/useDebounce';
 import type { SimpleClubData } from '@/@types/club';
 import { hangulToJamo } from '@/lib/hook/hangulToJamo';
-import ClubItem from '@/components/organism/SignupForm/ClubField/ClubItem';
+import ClubItem from '@/components/organism/SignUpPage/ClubField/ClubItem';
 
 const ModalContainer: FC<ModalContainerProps> = ({
   handleCloseModal,

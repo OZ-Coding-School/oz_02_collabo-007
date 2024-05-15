@@ -1,17 +1,15 @@
 import { useFormStatus } from 'react-dom';
-import {
-  BirthField,
-  ClubField,
-  GenderField,
-  NameField,
-  PasswordField,
-  PhoneField,
-  ProfileField,
-} from '@/components/organism/SignupForm';
 import Button from '@/components/core/Button/Button';
-import ConfirmPasswordField from './ConfirmPasswordField/ConfirmPasswordField';
 import type { SignUpFormContentProps } from '@/@types/signup';
 import { FC } from 'react';
+import ProfileField from './ProfileField/ProfileField';
+import PhoneField from './PhoneField/PhoneField';
+import PasswordField from './PasswordField/PasswordField';
+import ConfirmPasswordField from './ConfirmPasswordField/ConfirmPasswordField';
+import NameField from './NameField/NameField';
+import GenderField from './GenderField/GenderField';
+import BirthField from './BirthField/BirthField';
+import ClubField from './ClubField/ClubField';
 
 export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   register,

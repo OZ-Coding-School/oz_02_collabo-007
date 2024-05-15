@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const LogoutTab = () => {
+const SignOutButton = () => {
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -32,4 +32,4 @@ const LogoutTab = () => {
   );
 };
 
-export default LogoutTab;
+export default SignOutButton;
