@@ -1,4 +1,4 @@
-import { UserInfo } from '@/app/(profile)/user/[id]/page';
+import { UserInfo } from '@/@types/user';
 import React from 'react';
 
 interface CategoryRankingCardProps {
