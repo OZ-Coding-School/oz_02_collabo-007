@@ -1,25 +1,26 @@
-'use client';
-
 import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import { SignUpFormValues } from '../SignUpForm';
+import type { SignUpFormValues } from '@/@types/signup';
 
 const NameField = ({
   register,
   errors,
+  nameData,
 }: {
   register: UseFormRegister<SignUpFormValues>;
   errors: FieldErrors<SignUpFormValues>;
+  nameData?: string;
 }) => {
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'이름'} name={'username'} />
         <input
+          defaultValue={nameData}
           {...register('username')}
           placeholder="홍길동"
           id="username"

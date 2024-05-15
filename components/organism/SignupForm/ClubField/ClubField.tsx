@@ -1,17 +1,21 @@
-'use client';
-
 import React, { useRef, useState } from 'react';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import Modal from '@/components/module/Modal/Modal';
-import type { SimpleClubData } from '@/@types/club';
+import type { Club, SimpleClubData } from '@/@types/club';
 import ClubItem from './ClubItem';
 
-const ClubField = ({ clubList }: { clubList: SimpleClubData[] }) => {
+const ClubField = ({
+  clubList,
+  clubData = null,
+}: {
+  clubList: SimpleClubData[];
+  clubData?: Club | null;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<SimpleClubData | null>(null);
+  const [selectedId, setSelectedId] = useState<SimpleClubData | Club | null>(clubData);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDelete = () => {

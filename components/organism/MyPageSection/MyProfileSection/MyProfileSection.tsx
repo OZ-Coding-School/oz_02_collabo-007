@@ -10,7 +10,6 @@ interface MyProfileSectionProps {
 }
 
 const MyProfileSection = ({ userInfo }: MyProfileSectionProps) => {
-  console.log(userInfo);
   const { username, gender, birth, tier, imageUrl, club, team } = userInfo;
 
   return (

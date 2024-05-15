@@ -1,4 +1,5 @@
 'use client';
+
 import useClickOutside from '@/lib/hook/useClickOutsideModal';
 import React, { FC, useRef } from 'react';
 import { motion, useMotionValue, PanInfo } from 'framer-motion';
