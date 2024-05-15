@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import VisibleIcon from '@/app/_asset/icons/visible.svg';
@@ -8,7 +6,7 @@ import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import { SignUpFormValues } from '../SignUpForm';
+import type { SignUpFormValues } from '@/@types/signup';
 
 const ConfirmPasswordField = ({
   register,

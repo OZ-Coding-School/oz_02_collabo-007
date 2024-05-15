@@ -1,3 +1,3 @@
 export type ImageFile = {
-  imageUrl: string;
+  [key: string]: string;
 } | null;

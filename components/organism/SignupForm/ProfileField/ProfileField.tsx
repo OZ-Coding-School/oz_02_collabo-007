@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import UserIcon from '@/app/_asset/icons/user.svg';
 import AddIcon from '@/app/_asset/icons/add.svg';
 
 const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [profileImages, setProfileImages] = useState<string[]>(currentImg);
+  const [imageChange, setImageChange] = useState<'true' | 'false'>('true');
 
   const handleChange = (e: React.ChangeEvent) => {
     const targetFiles = (e.target as HTMLInputElement).files as FileList;
@@ -16,16 +17,24 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
       return URL.createObjectURL(file);
     });
     setProfileImages(() => [...selectedFiles]);
+    setImageChange(() => 'true');
   };
 
   const handleDelete = () => {
     if (fileRef.current) fileRef.current.value = '';
     setProfileImages(() => []);
+    setImageChange(() => 'true');
   };
 
   const handleClick = () => {
     fileRef?.current?.click();
   };
+
+  useEffect(() => {
+    if (currentImg.length === 0) return;
+
+    setImageChange(() => 'false');
+  }, []);
 
   return (
     <div className="relative h-[88px] w-[88px] rounded-full">
@@ -58,6 +67,15 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
           accept="image/*"
           className="hidden"
           onChange={handleChange}
+        />
+        <label htmlFor="imageChange"></label>
+        <input
+          type="text"
+          id="imageChange"
+          name="imageChange"
+          value={imageChange}
+          className="hidden"
+          onChange={(e) => e.target.value}
         />
       </div>
 

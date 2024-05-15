@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC, useEffect, useRef, useState } from 'react';
 import XIcon from '@/app/_asset/icons/x.svg';
 import SearchIcon from '@/app/_asset/icons/search.svg';
@@ -95,11 +97,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
                 className="w-full cursor-pointer rounded-[8px] bg-white p-[12px] shadow-card"
                 onClick={() => handleClubItem(id)}
               >
-                <ClubItem
-                  name={name}
-                  address={address}
-                  image={imageUrl?.imageUrl || null}
-                />
+                <ClubItem name={name} address={address} image={imageUrl} />
               </div>
             ))}
           </>

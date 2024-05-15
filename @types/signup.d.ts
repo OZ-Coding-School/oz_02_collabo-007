@@ -1,3 +1,6 @@
+import { StaticImageData } from 'next/image';
+import { UserData } from './user';
+
 export interface SignUpFormValues {
   imageFile: StaticImageData;
   phone: string;
@@ -15,4 +18,24 @@ export interface SignUpFormContentProps {
   errors: FieldErrors<SignUpFormValues>;
   setValue: UseFormSetValue<SignUpFormValues>;
   clubList: SimpleClubData[];
+  userData?: UserData;
 }
+
+export type SignUpState =
+  | {
+      status: 'success';
+      message: string;
+    }
+  | {
+      status: 'error';
+      message: string;
+      errors?: Array<{
+        path: string;
+        message: string;
+      }>;
+    }
+  | {
+      status: 'totalError';
+      message: string;
+    }
+  | null;

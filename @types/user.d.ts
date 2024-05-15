@@ -1,5 +1,6 @@
 import { Club } from './club';
 import { ImageFile } from './image';
+import { Team } from './team';
 
 export type ClubTeamUser = {
   id: number;
@@ -26,4 +27,15 @@ export type UserInfo = {
   ranking: {
     [key: string]: string | null;
   };
+};
+
+export type UserData = {
+  id: number;
+  phone: string;
+  username: string;
+  gender: string;
+  birth: number;
+  imageUrl: ImageFile;
+  club: Club | null;
+  team: Team | null;
 };
