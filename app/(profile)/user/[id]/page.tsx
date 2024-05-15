@@ -1,3 +1,4 @@
+import type { UserInfo } from '@/@types/user';
 import { getUserData } from '@/app/page';
 import CategoryRankingCard from '@/components/core/CategoryRankingCard/CategoryRankingCard';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
@@ -6,7 +7,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const page = async ({ params }: { params: { id: number } }) => {
-  const userData = await getUserData();
+  const userData: UserInfo = await getUserData();
 
   return (
     <div className="w-full bg-gray-30">

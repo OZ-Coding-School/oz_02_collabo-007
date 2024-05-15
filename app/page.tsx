@@ -27,11 +27,6 @@ export const getUserData = async () => {
 const HOME_COMP_LIST = [
   { title: '참가 예정 대회', compStatus: '진행 전', variant: 'flex' },
   { title: '최근 참가 대회', compStatus: '종료', variant: 'flex' },
-  {
-    title: '대회 정보',
-    compStatus: null,
-    variant: '',
-  },
 ];
 
 const Home = async () => {
@@ -42,14 +37,11 @@ const Home = async () => {
       <HomeUserProfile userInfo={userData} rankingPanel loginBtn />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
         {HOME_COMP_LIST.map(({ title, compStatus, variant }) =>
-          compStatus !== null ? (
-            userData ? (
-              <CompList title={title} compStatus={compStatus} variant={variant} />
-            ) : null
-          ) : (
-            <CompList title={title} variant={userData ? 'flex' : 'flexCol'} />
-          ),
+          userData ? (
+            <CompList title={title} compStatus={compStatus} variant={variant} />
+          ) : null,
         )}
+        <CompList title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />
       </main>
       <div className="sticky bottom-0 w-full">
         <Navbar />

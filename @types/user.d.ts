@@ -1,3 +1,4 @@
+import { Club } from './club';
 import { ImageFile } from './image';
 
 export type ClubTeamUser = {

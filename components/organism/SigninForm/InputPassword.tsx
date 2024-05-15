@@ -23,11 +23,11 @@ const InputPassword = ({
     setVisible((isVisible) => !isVisible);
   };
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  // const inputRef = useRef<HTMLInputElement>(null);
 
-  if (errors.password && !errors.phone) {
-    inputRef.current?.focus();
-  }
+  // if (errors.password && !errors.phone) {
+  //   inputRef.current?.focus();
+  // }
 
   return (
     <div className="relative">
@@ -36,7 +36,7 @@ const InputPassword = ({
         <div className="relative self-stretch">
           <input
             {...register('password')}
-            ref={inputRef}
+            // ref={inputRef}
             type={isVisible ? 'text ' : 'password'}
             id="password"
             name="password"
