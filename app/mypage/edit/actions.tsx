@@ -58,7 +58,6 @@ export const editUser = async (
         body: formData,
       },
     );
-    console.log(res);
 
     const data = await res.json();
 
