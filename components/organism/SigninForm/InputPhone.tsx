@@ -20,13 +20,13 @@ const InputPhone = ({
   setValue: UseFormSetValue<SignInFormValues>;
   errors: FieldErrors<SignInFormValues>;
 }) => {
-  // const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // useEffect(() => {
-  //   if (inputRef.current) {
-  //     inputRef.current?.focus();
-  //   }
-  // });
+  useEffect(() => {
+    if (inputRef.current && inputRef.current.value === '') {
+      inputRef.current?.focus();
+    }
+  });
 
   return (
     <div className="relative">
@@ -35,7 +35,7 @@ const InputPhone = ({
         <div className="self-stretch">
           <input
             {...register('phone')}
-            // ref={inputRef}
+            ref={inputRef}
             type="text"
             id="phone"
             name="phone"
