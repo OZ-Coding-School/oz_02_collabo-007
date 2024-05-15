@@ -1,9 +1,9 @@
 import Button from '@/components/core/Button/Button';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CheckCircleIcon from '@/app/_asset/icons/check-circle.svg';
-import InfoDetail from '@/components/organism/CompetitionPage/CompetitionInfo/InfoDetail/InfoDetail';
-import { FeeCard, ParticipantInfo } from '@/components/organism/SuccessPage';
 import React from 'react';
+import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
+import { FeeCard, ParticipantInfo } from '@/components/organism/CompetitionPage';
 
 const page = () => {
   const data = TEST_DATA;
@@ -27,7 +27,7 @@ const page = () => {
 
           <div className="flex flex-col gap-[8px]">
             <div className="text-headline-6">대회 안내</div>
-            <InfoDetail data={data} />
+            <CompInfoCard data={data} />
           </div>
         </div>
       </div>

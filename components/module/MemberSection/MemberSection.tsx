@@ -1,6 +1,6 @@
 import { ClubTeamUser } from '@/@types/user';
-import MemberProfile from '@/components/core/MemberProfile/MemberProfile';
 import React from 'react';
+import MemberProfile from '../MemberProfile/MemberProfile';
 
 const MemberSection = ({ userData }: { userData: ClubTeamUser[] }) => {
   return (

@@ -2,7 +2,7 @@ import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
 import React from 'react';
 
-const CompetitionButton = ({ id, status }: { id: number; status: string }) => {
+const CompButton = ({ id, status }: { id: number; status: string }) => {
   return (
     <Link
       href={`/competition/${id}/apply`}
@@ -13,4 +13,4 @@ const CompetitionButton = ({ id, status }: { id: number; status: string }) => {
   );
 };
 
-export default CompetitionButton;
+export default CompButton;

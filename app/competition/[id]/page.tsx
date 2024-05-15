@@ -2,8 +2,8 @@ import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
 
 import {
-  CompetitionButton,
-  CompetitionInfo,
+  CompButton,
+  CompDetail,
   ImageBanner,
 } from '@/components/organism/CompetitionPage';
 
@@ -17,9 +17,9 @@ const page = ({ params }: { params: { id: number } }) => {
       <ImageBanner />
 
       <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
-        <CompetitionInfo data={data} />
+        <CompDetail data={data} />
 
-        <CompetitionButton id={data.id} status={data.status} />
+        <CompButton id={data.id} status={data.status} />
       </div>
     </div>
   );

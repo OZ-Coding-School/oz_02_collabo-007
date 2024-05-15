@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
-import InfoDetail from './InfoDetail/InfoDetail';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
+import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
 
-interface CompetitionInfoProps {
+interface CompDetailProps {
   data: {
     id: number;
     name: string;
@@ -23,13 +23,13 @@ interface CompetitionInfoProps {
   };
 }
 
-const CompetitionInfo: FC<CompetitionInfoProps> = ({ data }) => {
+const CompDetail: FC<CompDetailProps> = ({ data }) => {
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
       <div className="flex w-full flex-col gap-[16px]">
         <div className="text-headline-3">{data.name}</div>
 
-        <InfoDetail data={data} />
+        <CompInfoCard data={data} />
       </div>
 
       <div className="flex w-full flex-col gap-[8px]">
@@ -58,4 +58,4 @@ const CompetitionInfo: FC<CompetitionInfoProps> = ({ data }) => {
   );
 };
 
-export default CompetitionInfo;
+export default CompDetail;

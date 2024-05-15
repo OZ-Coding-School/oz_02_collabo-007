@@ -4,7 +4,7 @@ import CalendarIcon from '@/app/_asset/icons/calendar.svg';
 import MapPinIcon from '@/app/_asset/icons/map-pin.svg';
 import MapIcon from '@/app/_asset/icons/map.svg';
 
-interface InfoDetailProps {
+interface CompInfoCardProps {
   data: {
     id: number;
     name: string;
@@ -24,7 +24,7 @@ interface InfoDetailProps {
   };
 }
 
-const InfoDetail: FC<InfoDetailProps> = ({ data }) => {
+const CompInfoCard: FC<CompInfoCardProps> = ({ data }) => {
   return (
     <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
       <div className="flex gap-[8px]">
@@ -51,4 +51,4 @@ const InfoDetail: FC<InfoDetailProps> = ({ data }) => {
   );
 };
 
-export default InfoDetail;
+export default CompInfoCard;

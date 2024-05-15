@@ -7,7 +7,6 @@ import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import tennisImg from '@/public/tennis.jpeg';
 import PartnerItem from './PartnerItem';
-import Modal from '@/components/module/Modal/Modal';
 
 const PartnerField = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,50 +36,17 @@ const PartnerField = () => {
       </div>
 
       <AnimatePresence>
-        {isOpen && (
+        {/* {isOpen && (
           <Modal
             setIsOpen={setIsOpen}
             inputRef={inputRef}
             type="partner"
             label="파트너 검색"
-          >
-            {PARTNERS.length === 0 ? (
-              <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
-                파트너를 검색해주세요
-              </span>
-            ) : (
-              <>
-                {PARTNERS.map(({ id, name, clubName, image }) => (
-                  <PartnerItem key={id} name={name} clubName={clubName} image={image} />
-                ))}
-              </>
-            )}
-          </Modal>
-        )}
+          ></Modal>
+        )} */}
       </AnimatePresence>
     </div>
   );
 };
 
 export default PartnerField;
-
-const PARTNERS = [
-  {
-    id: 1,
-    name: '이인호',
-    clubName: '라온 테니스',
-    image: tennisImg,
-  },
-  {
-    id: 2,
-    name: '이인호',
-    clubName: '라온 테니스',
-    image: tennisImg,
-  },
-  {
-    id: 3,
-    name: '이인호',
-    clubName: '라온 테니스',
-    image: tennisImg,
-  },
-];

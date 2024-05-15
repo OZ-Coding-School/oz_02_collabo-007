@@ -3,8 +3,8 @@
 import useClickOutside from '@/lib/hook/useClickOutsideModal';
 import React, { FC, useRef } from 'react';
 import { motion, useMotionValue, PanInfo } from 'framer-motion';
-import ModalContainer from './ModalContainer';
 import type { ModalProps } from '@/@types/modal';
+import ModalContainer from '@/components/module/ModalContainer/ModalContainer';
 
 const Modal: FC<ModalProps> = ({
   setIsOpen,

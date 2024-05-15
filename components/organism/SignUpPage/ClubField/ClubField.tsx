@@ -3,9 +3,9 @@ import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
-import Modal from '@/components/module/Modal/Modal';
 import type { Club, SimpleClubData } from '@/@types/club';
 import ClubItem from './ClubItem';
+import Modal from '@/components/core/Modal/Modal';
 
 const ClubField = ({
   clubList,
