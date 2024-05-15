@@ -51,7 +51,6 @@ export async function signInUser(
     });
 
     const data = await res.json();
-    console.log(data);
 
     cookies().set({
       name: 'access',

@@ -10,7 +10,6 @@ interface MyProfileCardProps {
 }
 
 const MyProfileCard = ({ userData }: MyProfileCardProps) => {
-  console.log(userData);
   const { username, gender, birth, tier, imageUrl, club, team } = userData;
 
   return (

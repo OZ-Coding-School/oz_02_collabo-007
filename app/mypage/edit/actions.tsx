@@ -42,8 +42,6 @@ export const editUser = async (
     }
     formData.delete('imageChange');
 
-    console.log(formData);
-
     const cookie = cookies();
     const user = cookie.get('access')!;
 
