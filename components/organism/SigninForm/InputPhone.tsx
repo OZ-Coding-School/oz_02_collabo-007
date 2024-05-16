@@ -23,9 +23,13 @@ const InputPhone = ({
   errors: FieldErrors<SignInFormValues>;
   setFocus: UseFormSetFocus<SignInFormValues>;
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     setFocus('phone');
   }, []);
+
+  if (errors.phone?.message) {
+    setFocus('phone');
+  }
 
   return (
     <div className="relative">
