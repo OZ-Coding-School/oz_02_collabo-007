@@ -6,7 +6,6 @@ import type { SignUpFormContentProps } from '@/@types/signup';
 import { FC } from 'react';
 import {
   BirthField,
-  ChangePasswordForm,
   ClubField,
   ConfirmPasswordField,
   GenderField,

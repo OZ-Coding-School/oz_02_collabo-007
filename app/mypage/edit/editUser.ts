@@ -62,8 +62,14 @@ export const editUser = async (
 
     if (!res.ok) {
       return {
-        status: 'totalError',
-        message: data.message,
+        status: 'error',
+        message: 'Invalid form data',
+        errors: [
+          {
+            path: 'total',
+            message: data.message,
+          },
+        ],
       };
     }
 

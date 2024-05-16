@@ -11,6 +11,7 @@ export interface SignUpFormValues {
   gender: string;
   birth: string;
   club: string;
+  total?: string;
 }
 
 export interface SignUpFormContentProps {
@@ -35,9 +36,5 @@ export type SignUpState =
         path: string;
         message: string;
       }>;
-    }
-  | {
-      status: 'totalError';
-      message: string;
     }
   | null;

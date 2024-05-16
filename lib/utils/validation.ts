@@ -25,6 +25,20 @@ export const signUpSchema = zfd.formData({
   ),
 });
 
+export const editSchema = zfd.formData({
+  phone: zfd.text(
+    z
+      .string({ required_error: '핸드폰 번호를 입력해주세요' })
+      .regex(/^(?:01[0|1|6-9])-(?:\d{3}|\d{4})-\d{4}$/, '전화번호 형식이 아닙니다.'),
+  ),
+  username: zfd.text(z.string({ required_error: '이름을 입력해주세요' })),
+  birth: zfd.text(
+    z
+      .string({ required_error: '출생년도를 입력해주세요' })
+      .regex(/^(19[0-9][0-9]|20[0-9][0-9]|2100)$/, '1900 ~ 2100 사이 값을 입력해주세요.'),
+  ),
+});
+
 export const passwordSchema = zfd.formData({
   prevPassword: zfd.text(
     z
