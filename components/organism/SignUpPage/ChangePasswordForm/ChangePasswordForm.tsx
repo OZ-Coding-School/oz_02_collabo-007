@@ -6,8 +6,7 @@ import React, { useEffect, useTransition } from 'react';
 import { useFormState } from 'react-dom';
 import { FieldPath, useForm } from 'react-hook-form';
 import { changePassword } from './actions';
-import PasswordField from '../PasswordField/PasswordField';
-import ConfirmPasswordField from '../ConfirmPasswordField/ConfirmPasswordField';
+import ChangePasswordField from './ChangePasswordField/ChangePasswordField';
 
 export interface PasswordValues {
   prevPassword: string;
@@ -65,7 +64,9 @@ const ChangePasswordForm = () => {
   }, [state, setError]);
 
   return (
-    <form action={(formData) => startTransaction(() => formAction(formData))}></form>
+    <form action={(formData) => startTransaction(() => formAction(formData))}>
+      <ChangePasswordField register={register} errors={setError} type="prevPassword" />
+    </form>
   );
 };
 
