@@ -45,9 +45,11 @@ const SigninFormContent = ({
               {!errors.phone?.message &&
                 errors.password?.message &&
                 errors.password?.message}
+              {errors.root?.message && errors.root?.message}
             </div>
           ) : null}
         </div>
+
         {/* <div className="flex justify-between">
           <div className="flex justify-center">
             <input id="remember" type="checkbox" name="remember" />
@@ -63,6 +65,7 @@ const SigninFormContent = ({
           </Link>
         </div> */}
       </div>
+      {console.log(errors)}
       <div className="flex flex-col gap-[12px]">
         <div className="h-12 w-full">
           <Button variant="primary" label="로그인" type="submit" />

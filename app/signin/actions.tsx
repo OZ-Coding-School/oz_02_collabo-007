@@ -11,7 +11,7 @@ export type State =
       token: string;
     }
   | {
-      status: 'error';
+      status: string;
       message: string;
       errors?: Array<{
         path: string;
@@ -51,13 +51,19 @@ export async function signInUser(
     });
 
     const data = await res.json();
-    console.log(data);
 
     cookies().set({
       name: 'access',
       value: data.access,
       httpOnly: true,
     });
+
+    if (!res.ok) {
+      return {
+        status: 'networkError',
+        message: data.message,
+      };
+    }
 
     return {
       status: 'success',
@@ -77,7 +83,7 @@ export async function signInUser(
     }
     return {
       status: 'error',
-      message: 'Something went wrong. Please try again.',
+      message: `${error}`,
     };
   }
 }
