@@ -12,6 +12,9 @@ import type { SimpleClubData } from '@/@types/club';
 import type { SignUpFormValues, SignUpState } from '@/@types/signup';
 import type { UserData } from '@/@types/user';
 import { editUser } from '@/app/mypage/edit/actions';
+import { AnimatePresence } from 'framer-motion';
+import Dialog from '@/components/core/Dialog/Dialog';
+import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
 
 export function SignUpForm({
   clubList,
@@ -25,6 +28,7 @@ export function SignUpForm({
   const [state, formAction] = useFormState<SignUpState, FormData>(fn, null);
   const [pending, startTransaction] = useTransition();
   const [totalError, setTotalError] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const {
     register,
@@ -54,16 +58,26 @@ export function SignUpForm({
   }, [state, setError]);
 
   return (
-    <form action={(formData) => startTransaction(() => formAction(formData))}>
-      <SignUpFormContent
-        register={register}
-        isValid={isValid}
-        errors={errors}
-        setValue={setValue}
-        clubList={clubList}
-        userData={userData}
-      />
-      {totalError !== null && <div className="">{totalError}</div>}
-    </form>
+    <>
+      <form action={(formData) => startTransaction(() => formAction(formData))}>
+        <SignUpFormContent
+          register={register}
+          isValid={isValid}
+          errors={errors}
+          setValue={setValue}
+          clubList={clubList}
+          userData={userData}
+          setIsOpen={setIsOpen}
+        />
+        {totalError !== null && <div className="">{totalError}</div>}
+      </form>
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <Dialog setIsOpen={setIsOpen} title="비밀번호 변경">
+            <ChangePasswordForm setIsOpen={setIsOpen} />
+          </Dialog>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

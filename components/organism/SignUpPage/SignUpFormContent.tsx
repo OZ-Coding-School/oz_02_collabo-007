@@ -3,7 +3,7 @@
 import { useFormStatus } from 'react-dom';
 import Button from '@/components/core/Button/Button';
 import type { SignUpFormContentProps } from '@/@types/signup';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
   BirthField,
   ChangePasswordForm,
@@ -15,8 +15,6 @@ import {
   PhoneField,
   ProfileField,
 } from '@/components/organism/SignUpPage';
-import { AnimatePresence } from 'framer-motion';
-import Dialog from '@/components/core/Dialog/Dialog';
 
 export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   register,
@@ -25,9 +23,9 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   setValue,
   clubList,
   userData = null,
+  setIsOpen,
 }) => {
   const { pending } = useFormStatus();
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -42,7 +40,7 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           setValue={setValue}
           phoneData={userData?.phone!}
         />
-        {userData ? (
+        {userData && setIsOpen ? (
           <div className="flex w-full items-center justify-between text-sub-headline-2">
             <div>비밀번호</div>
             <div>
@@ -75,13 +73,6 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           )}
         </div>
       </div>
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <Dialog setIsOpen={setIsOpen} title="비밀번호 변경">
-            <ChangePasswordForm />
-          </Dialog>
-        )}
-      </AnimatePresence>
     </>
   );
 };

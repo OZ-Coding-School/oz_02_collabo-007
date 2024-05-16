@@ -1,18 +1,18 @@
 'use server';
 
-import type { SignUpState } from '@/@types/signup';
+import { PasswordState } from '@/@types/password';
 import { passwordSchema } from '@/lib/utils/validation';
 import { ZodError } from 'zod';
-import { PasswordState } from './ChangePasswordForm';
 
 export const changePassword = async (
   prevState: PasswordState | null,
   formData: FormData,
 ): Promise<PasswordState> => {
   try {
-    const { prevPassword, confirmPassword } = passwordSchema.parse(formData);
+    const { prevPassword, changedPassword, confirmPassword } =
+      passwordSchema.parse(formData);
 
-    if (confirmPassword !== prevPassword) {
+    if (confirmPassword !== changedPassword) {
       return {
         status: 'error',
         message: 'Invalid form data',
@@ -24,30 +24,22 @@ export const changePassword = async (
         ],
       };
     }
+    formData.delete('confirmPassword');
 
-    // formData.delete('confirmPassword');
+    if (prevPassword === changedPassword) {
+      return {
+        status: 'error',
+        message: 'Invalid form data',
+        errors: [
+          {
+            path: 'changedPassword',
+            message: `비밀번호가 기존의 비밀번호와 일치합니다.`,
+          },
+        ],
+      };
+    }
 
-    // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/`,
-    //   {
-    //     credentials: 'include',
-    //     method: 'PUT',
-    //     headers: {
-    //       Authorization: `Bearer ${user.value}`,
-    //     },
-    //     body: formData,
-    //   },
-    // );
     console.log(formData);
-
-    // const data = await res.json();
-
-    // if (!res.ok) {
-    //   return {
-    //     status: 'error',
-    //     message: data.message,
-    //   };
-    // }
 
     return {
       status: 'success',

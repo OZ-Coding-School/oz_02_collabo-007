@@ -8,33 +8,34 @@ import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import type { SignUpFormValues } from '@/@types/signup';
-import { PasswordValues } from '../ChangePasswordForm';
+import { PasswordValues } from '@/@types/password';
 
 const ChangePasswordField = ({
   register,
   errors,
+  label,
   type,
 }: {
   register: UseFormRegister<PasswordValues>;
-  errors: UseFormSetError<PasswordValues>;
-  type: 'prevPassword' | 'changedPassword' | 'ConfirmPassword';
+  errors: FieldErrors<PasswordValues>;
+  label: string;
+  type: 'prevPassword' | 'changedPassword' | 'confirmPassword';
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  console.log(register);
 
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
-        <Label label={'비밀번호 확인'} name={'confirmPassword'} />
+        <Label label={label} name={type} />
         <input
           {...register(type)}
           type={passwordVisible ? 'text' : 'password'}
-          id="confirmPassword"
-          placeholder="비밀번호 확인"
+          name={type}
+          id={type}
+          placeholder={label}
           className={cn(
             InputVariants({
-              // variant: `${errors.type ? 'error' : 'default'}`,
+              variant: `${type in errors ? 'error' : 'default'}`,
               inputSize: 'mdWith',
             }),
           )}
@@ -57,12 +58,12 @@ const ChangePasswordField = ({
           />
         )}
       </div>
-      {/* {errors.confirmPassword && (
-        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
+      {type in errors && (
+        <div className="absolute bottom-[-20px] left-[10px] flex items-center gap-[4px] text-body-3 text-error-60">
           <Error className="h-[16px] w-[16px] fill-error-60" />
-          {errors.confirmPassword.message}
+          {errors[type]?.message}
         </div>
-      )} */}
+      )}
     </div>
   );
 };

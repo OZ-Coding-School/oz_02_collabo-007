@@ -1,5 +1,6 @@
 import { StaticImageData } from 'next/image';
 import { UserData } from './user';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface SignUpFormValues {
   imageFile: StaticImageData;
@@ -19,6 +20,7 @@ export interface SignUpFormContentProps {
   setValue: UseFormSetValue<SignUpFormValues>;
   clubList: SimpleClubData[];
   userData?: UserData;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export type SignUpState =
