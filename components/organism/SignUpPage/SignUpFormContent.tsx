@@ -1,7 +1,7 @@
 import { useFormStatus } from 'react-dom';
 import Button from '@/components/core/Button/Button';
 import type { SignUpFormContentProps } from '@/@types/signup';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import ProfileField from './ProfileField/ProfileField';
 import PhoneField from './PhoneField/PhoneField';
 import PasswordField from './PasswordField/PasswordField';
@@ -10,6 +10,8 @@ import NameField from './NameField/NameField';
 import GenderField from './GenderField/GenderField';
 import BirthField from './BirthField/BirthField';
 import ClubField from './ClubField/ClubField';
+import { AnimatePresence } from 'framer-motion';
+import Dialog from '@/components/core/Dialog/Dialog';
 
 export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   register,
@@ -20,6 +22,7 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   userData = null,
 }) => {
   const { pending } = useFormStatus();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -34,8 +37,26 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           setValue={setValue}
           phoneData={userData?.phone!}
         />
-        <PasswordField register={register} errors={errors} />
-        <ConfirmPasswordField register={register} errors={errors} />
+        {userData ? (
+          <div className="flex w-full items-center justify-between text-sub-headline-2">
+            <div>비밀번호</div>
+            <div>
+              <Button
+                label="비밀번호 변경"
+                variant="tertiary"
+                size="sm"
+                type="button"
+                onClick={() => setIsOpen(() => true)}
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            <PasswordField register={register} errors={errors} />
+            <ConfirmPasswordField register={register} errors={errors} />
+          </>
+        )}
+
         <NameField register={register} errors={errors} nameData={userData?.username!} />
         <GenderField exitGender={userData?.gender} />
         <BirthField register={register} errors={errors} birthData={userData?.birth!} />
@@ -49,6 +70,11 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           )}
         </div>
       </div>
+      {isOpen && (
+        <AnimatePresence>
+          <Dialog isOpen={isOpen} setIsOpen={setIsOpen} />
+        </AnimatePresence>
+      )}
     </>
   );
 };
