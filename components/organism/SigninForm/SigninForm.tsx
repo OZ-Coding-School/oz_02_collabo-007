@@ -27,6 +27,7 @@ const SigninForm = () => {
     formState: { isValid, errors },
     setError,
     setValue,
+    setFocus,
   } = useForm<SignInFormValues>({
     mode: 'all',
     resolver: zodResolver(signInFormSchema),
@@ -56,6 +57,7 @@ const SigninForm = () => {
         isValid={isValid}
         errors={errors}
         setValue={setValue}
+        setFocus={setFocus}
       />
     </form>
   );

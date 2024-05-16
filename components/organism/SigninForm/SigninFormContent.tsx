@@ -5,6 +5,7 @@ import {
   UseFormRegister,
   UseFormGetValues,
   UseFormSetValue,
+  UseFormSetFocus,
 } from 'react-hook-form';
 import InputPassword from './InputPassword';
 import Button from '@/components/core/Button/Button';
@@ -18,17 +19,24 @@ const SigninFormContent = ({
   isValid,
   errors,
   setValue,
+  setFocus,
 }: {
   register: UseFormRegister<SignInFormValues>;
   isValid: boolean;
   errors: FieldErrors<SignInFormValues>;
   setValue: UseFormSetValue<SignInFormValues>;
+  setFocus: UseFormSetFocus<SignInFormValues>;
 }) => {
   return (
     <>
       <div className="flex flex-col gap-[20px]">
         <div className="flex flex-col gap-[28px]">
-          <InputPhone register={register} errors={errors} setValue={setValue} />
+          <InputPhone
+            register={register}
+            errors={errors}
+            setValue={setValue}
+            setFocus={setFocus}
+          />
           <InputPassword register={register} errors={errors} />
         </div>
         {/* <div className="flex justify-between">
