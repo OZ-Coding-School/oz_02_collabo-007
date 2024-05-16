@@ -1,7 +1,7 @@
 import Navbar from '@/components/module/Navbar/Navbar';
-import CompList from '@/components/organism/CompList/CompList';
-import HomeUserProfile from '@/components/module/HomeUserProfile/HomeUserProfile';
+import CompList from '@/components/module/CompList/CompList';
 import { cookies } from 'next/headers';
+import UserProfile from '@/components/module/UserProfile/UserProfile';
 
 export const getUserData = async () => {
   'use server';
@@ -25,8 +25,8 @@ export const getUserData = async () => {
 };
 
 const HOME_COMP_LIST = [
-  { title: '참가 예정 대회', compStatus: '진행 전', variant: 'flex' },
-  { title: '최근 참가 대회', compStatus: '종료', variant: 'flex' },
+  { title: '참가 예정 대회', compStatus: '진행 전' },
+  { title: '최근 참가 대회', compStatus: '종료' },
 ];
 
 const Home = async () => {
@@ -34,16 +34,11 @@ const Home = async () => {
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden">
-      <HomeUserProfile userInfo={userData} rankingPanel loginBtn />
+      <UserProfile userInfo={userData} rankingPanel loginBtn />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
-        {HOME_COMP_LIST.map(({ title, compStatus, variant }, index) =>
+        {HOME_COMP_LIST.map(({ title, compStatus }, index) =>
           userData ? (
-            <CompList
-              key={index}
-              title={title}
-              compStatus={compStatus}
-              variant={variant}
-            />
+            <CompList key={index} title={title} compStatus={compStatus} variant="flex" />
           ) : null,
         )}
         <CompList title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />

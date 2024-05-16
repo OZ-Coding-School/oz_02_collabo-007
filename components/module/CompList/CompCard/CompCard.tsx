@@ -1,4 +1,4 @@
-import CardPanel from '@/components/module/CardPanel/CardPanel';
+import CompCardMatchDetail from '@/components/module/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
 import React from 'react';
 
@@ -26,7 +26,7 @@ const CompCard = ({ comp }: any) => {
           </div>
         </div>
       </div>
-      {comp.nextMatch && <CardPanel compInfo={comp} />}
+      {comp.nextMatch && <CompCardMatchDetail compInfo={comp} />}
     </div>
   );
 };

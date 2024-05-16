@@ -1,7 +1,7 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
 import { data } from '../data';
-import CompList from '@/components/organism/CompList/CompList';
+import CompList from '@/components/module/CompList/CompList';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 
 const COMP_CATEGORY = [
@@ -57,9 +57,9 @@ const page = () => {
             </label>
           </div>
         </div>
-        <div className="">
+        <div className="flex flex-col">
           {data.compList.comp.map((comp) => (
-            <CompList flexDirection="flex-col w-full gap-[16px]" compStatus="전체" />
+            <CompList variant="flexCol" compStatus="전체" />
           ))}
         </div>
       </div>

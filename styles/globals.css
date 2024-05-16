@@ -56,3 +56,7 @@ select {
 select::-ms-expend {
   display: none;
 }
+
+.comp-list-container {
+  width: calc(100% + 40px);
+}

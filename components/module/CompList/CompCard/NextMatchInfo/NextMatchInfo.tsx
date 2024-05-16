@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NextMatchInfoPanel = ({ nextMatchInfo, status }: any) => {
+const NextMatchInfo = ({ nextMatchInfo, status }: any) => {
   return (
     <>
       <div className="flex">
@@ -40,4 +40,4 @@ const NextMatchInfoPanel = ({ nextMatchInfo, status }: any) => {
   );
 };
 
-export default NextMatchInfoPanel;
+export default NextMatchInfo;

@@ -3,7 +3,7 @@ import React from 'react';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import FlagIcon from '@/app/_asset/icons/flag.svg';
 
-const CompetitionStatusPanel = ({ compInfo }: any) => {
+const CompStatusInfo = ({ compInfo }: any) => {
   return (
     <div className="flex items-center justify-between text-sub-headline-3 ">
       <div className="flex items-center gap-[4px] text-gray-80">
@@ -23,4 +23,4 @@ const CompetitionStatusPanel = ({ compInfo }: any) => {
   );
 };
 
-export default CompetitionStatusPanel;
+export default CompStatusInfo;
