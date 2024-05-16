@@ -2,7 +2,7 @@ import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
 import { getUserData } from '@/app/page';
 import { getClubList } from '@/app/signup/page';
-import { SignUpForm } from '@/components/organism/SignUpPage/SignUpForm';
+import { SignUpForm } from '@/components/organism/SignUpPage';
 
 const page = async () => {
   const [userData, clubList] = await Promise.all([getUserData(), getClubList()]);

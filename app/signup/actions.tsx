@@ -41,6 +41,21 @@ export const signUpUser = async (
       body: formData,
     });
 
+    const data = await res.json();
+    console.log(data);
+    if (!res.ok) {
+      return {
+        status: 'error',
+        message: 'Invalid form data',
+        errors: [
+          {
+            path: 'total',
+            message: data.message,
+          },
+        ],
+      };
+    }
+
     const cookieString = res.headers.get('set-cookie');
     const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
     const endIndex = (cookieString as string).indexOf(';', startIndex);
@@ -48,8 +63,6 @@ export const signUpUser = async (
       startIndex,
       endIndex !== -1 ? endIndex : undefined,
     );
-
-    const data = await res.json();
 
     cookies().set({
       name: 'refresh',
@@ -62,13 +75,6 @@ export const signUpUser = async (
       value: data.access,
       httpOnly: true,
     });
-
-    if (!res.ok) {
-      return {
-        status: 'totalError',
-        message: data.message,
-      };
-    }
 
     return {
       status: 'success',

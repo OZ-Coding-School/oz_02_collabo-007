@@ -56,13 +56,20 @@ export const editUser = async (
         body: formData,
       },
     );
+    console.log(formData);
 
     const data = await res.json();
 
     if (!res.ok) {
       return {
-        status: 'totalError',
-        message: data.message,
+        status: 'error',
+        message: 'Invalid form data',
+        errors: [
+          {
+            path: 'total',
+            message: data.message,
+          },
+        ],
       };
     }
 

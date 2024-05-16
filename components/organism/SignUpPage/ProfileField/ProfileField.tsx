@@ -55,6 +55,7 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
               sizes="88px"
               style={{ objectFit: 'cover' }}
               className="rounded-full"
+              priority
             />
           </div>
         )}

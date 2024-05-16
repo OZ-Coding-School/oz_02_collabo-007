@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import { SimpleClubData } from './club';
 
 export interface ModalProps {
