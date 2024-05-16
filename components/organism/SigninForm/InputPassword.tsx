@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import VisibleIcon from '@/app/_asset/icons/visible.svg';
 import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import Label from '@/components/core/Label/Label';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister, UseFormSetFocus } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Error from '@/app/_asset/icons/error-circle.svg';
@@ -13,9 +13,11 @@ import { SignInFormValues } from './SigninForm';
 const InputPassword = ({
   register,
   errors,
+  setFocus,
 }: {
   register: UseFormRegister<SignInFormValues>;
   errors: FieldErrors<SignInFormValues>;
+  setFocus: UseFormSetFocus<SignInFormValues>;
 }) => {
   const [isVisible, setVisible] = useState(false);
 
@@ -23,11 +25,9 @@ const InputPassword = ({
     setVisible((isVisible) => !isVisible);
   };
 
-  // const inputRef = useRef<HTMLInputElement>(null);
-
-  // if (errors.password && !errors.phone) {
-  //   inputRef.current?.focus();
-  // }
+  if (errors.password?.message && !errors.phone?.message) {
+    setFocus('password');
+  }
 
   return (
     <div className="relative">

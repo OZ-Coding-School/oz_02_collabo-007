@@ -2,12 +2,13 @@
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import { cn } from '@/lib/utils/cn';
-import { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import {
   FieldErrors,
   UseFormRegister,
   UseFormSetValue,
   UseFormGetValues,
+  UseFormSetFocus,
 } from 'react-hook-form';
 import { SignInFormValues } from './SigninForm';
 
@@ -15,18 +16,20 @@ const InputPhone = ({
   register,
   errors,
   setValue,
+  setFocus,
 }: {
   register: UseFormRegister<SignInFormValues>;
   setValue: UseFormSetValue<SignInFormValues>;
   errors: FieldErrors<SignInFormValues>;
+  setFocus: UseFormSetFocus<SignInFormValues>;
 }) => {
-  // const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    setFocus('phone');
+  }, []);
 
-  // useEffect(() => {
-  //   if (inputRef.current) {
-  //     inputRef.current?.focus();
-  //   }
-  // });
+  if (errors.phone?.message) {
+    setFocus('phone');
+  }
 
   return (
     <div className="relative">
@@ -35,7 +38,6 @@ const InputPhone = ({
         <div className="self-stretch">
           <input
             {...register('phone')}
-            // ref={inputRef}
             type="text"
             id="phone"
             name="phone"

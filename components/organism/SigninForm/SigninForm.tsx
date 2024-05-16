@@ -9,7 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useEffect, useTransition } from 'react';
 import SigninFormContent from './SigninFormContent';
 import { useRouter } from 'next/navigation';
-import { cookies } from 'next/headers';
 
 export interface SignInFormValues {
   phone: string;
@@ -27,8 +26,10 @@ const SigninForm = () => {
     formState: { isValid, errors },
     setError,
     setValue,
+    setFocus,
+    clearErrors,
   } = useForm<SignInFormValues>({
-    mode: 'all',
+    mode: 'onSubmit',
     resolver: zodResolver(signInFormSchema),
   });
 
@@ -41,21 +42,28 @@ const SigninForm = () => {
         });
       });
     }
+    if (state.status === 'networkError') {
+      setError('root', { message: state.message });
+    }
     if (state.status === 'success') {
       router.push('/');
     }
   }, [state, setError]);
 
+  const handleSubmit = async (formData: FormData) => {
+    clearErrors();
+
+    startTransaction(() => formAction(formData));
+  };
+
   return (
-    <form
-      className="flex w-full flex-col gap-[64px]"
-      action={(formData) => startTransaction(() => formAction(formData))}
-    >
+    <form className="flex w-full flex-col gap-[64px]" action={handleSubmit}>
       <SigninFormContent
         register={register}
         isValid={isValid}
         errors={errors}
         setValue={setValue}
+        setFocus={setFocus}
       />
     </form>
   );
