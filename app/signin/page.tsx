@@ -1,5 +1,5 @@
 import React from 'react';
-import SigninForm from '@/components/organism/SigninForm/SigninForm';
+import SigninForm from '@/components/organism/SignInPage/SigninForm';
 
 const page = async () => {
   return (

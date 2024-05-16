@@ -7,7 +7,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 
-const HomeUserProfile = ({ userInfo, loginBtn, rankingPanel }: any) => {
+const UserProfile = ({ userInfo, loginBtn, rankingPanel }: any) => {
   return (
     <div className="w-full">
       <div
@@ -90,4 +90,4 @@ const HomeUserProfile = ({ userInfo, loginBtn, rankingPanel }: any) => {
   );
 };
 
-export default HomeUserProfile;
+export default UserProfile;

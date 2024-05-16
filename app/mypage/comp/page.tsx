@@ -1,7 +1,7 @@
 'use client';
 
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import CompList from '@/components/organism/CompList/CompList';
+import CompList from '@/components/module/CompList/CompList';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { data } from '@/app/data.js';
