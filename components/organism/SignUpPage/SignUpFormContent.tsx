@@ -1,15 +1,20 @@
+'use client';
+
 import { useFormStatus } from 'react-dom';
 import Button from '@/components/core/Button/Button';
 import type { SignUpFormContentProps } from '@/@types/signup';
 import { FC, useState } from 'react';
-import ProfileField from './ProfileField/ProfileField';
-import PhoneField from './PhoneField/PhoneField';
-import PasswordField from './PasswordField/PasswordField';
-import ConfirmPasswordField from './ConfirmPasswordField/ConfirmPasswordField';
-import NameField from './NameField/NameField';
-import GenderField from './GenderField/GenderField';
-import BirthField from './BirthField/BirthField';
-import ClubField from './ClubField/ClubField';
+import {
+  BirthField,
+  ChangePasswordForm,
+  ClubField,
+  ConfirmPasswordField,
+  GenderField,
+  NameField,
+  PasswordField,
+  PhoneField,
+  ProfileField,
+} from '@/components/organism/SignUpPage';
 import { AnimatePresence } from 'framer-motion';
 import Dialog from '@/components/core/Dialog/Dialog';
 
@@ -70,11 +75,13 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           )}
         </div>
       </div>
-      {isOpen && (
-        <AnimatePresence>
-          <Dialog isOpen={isOpen} setIsOpen={setIsOpen} />
-        </AnimatePresence>
-      )}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <Dialog setIsOpen={setIsOpen} title="비밀번호 변경">
+            <ChangePasswordForm />
+          </Dialog>
+        )}
+      </AnimatePresence>
     </>
   );
 };

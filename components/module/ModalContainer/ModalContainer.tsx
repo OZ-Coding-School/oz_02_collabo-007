@@ -54,7 +54,10 @@ const ModalContainer: FC<ModalContainerProps> = ({
   }, [debounceSearchValue]);
 
   const handleClubItem = (selectedId: number) => {
-    setSelectedId(() => searchData.find(({ id }: { id: number }) => id === selectedId));
+    const data = searchData.find(
+      ({ id }: { id: number }) => id === selectedId,
+    ) as SimpleClubData;
+    setSelectedId(() => data);
     handleCloseModal();
   };
 

@@ -24,3 +24,21 @@ export const signUpSchema = zfd.formData({
       .regex(/^(19[0-9][0-9]|20[0-9][0-9]|2100)$/, '1900 ~ 2100 사이 값을 입력해주세요.'),
   ),
 });
+
+export const passwordSchema = zfd.formData({
+  prevPassword: zfd.text(
+    z
+      .string({ required_error: '기존 비밀번호를 입력해주세요' })
+      .min(4, '비밀번호가 너무 짧습니다.'),
+  ),
+  changedPassword: zfd.text(
+    z
+      .string({ required_error: '변경할 비밀번호를 입력해주세요' })
+      .min(4, '비밀번호가 너무 짧습니다.'),
+  ),
+  confirmPassword: zfd.text(
+    z
+      .string({ required_error: '비밀번호 확인을 입력해주세요' })
+      .min(4, '비밀번호 확인이 너무 짧습니다.'),
+  ),
+});

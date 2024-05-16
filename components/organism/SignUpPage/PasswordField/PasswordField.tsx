@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import VisibleIcon from '@/app/_asset/icons/visible.svg';
@@ -36,14 +38,14 @@ const PasswordField = ({
       </div>
       <div className="absolute right-[12px] top-[38px]">
         {passwordVisible ? (
-          <VisibleIcon
+          <VisibleOffIcon
             width={20}
             height={20}
             fill="#787878"
             onClick={() => setPasswordVisible((prev) => !prev)}
           />
         ) : (
-          <VisibleOffIcon
+          <VisibleIcon
             width={20}
             height={20}
             fill="#787878"
