@@ -1,7 +1,7 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import CompList from '@/components/module/CompList/CompList';
-import HomeUserProfile from '@/components/module/UserProfile/UserProfile';
 import { cookies } from 'next/headers';
+import UserProfile from '@/components/module/UserProfile/UserProfile';
 
 export const getUserData = async () => {
   'use server';
@@ -34,7 +34,7 @@ const Home = async () => {
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden">
-      <HomeUserProfile userInfo={userData} rankingPanel loginBtn />
+      <UserProfile userInfo={userData} rankingPanel loginBtn />
       <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
         {HOME_COMP_LIST.map(({ title, compStatus }, index) =>
           userData ? (

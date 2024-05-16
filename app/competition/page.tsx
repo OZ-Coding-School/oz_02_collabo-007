@@ -57,9 +57,9 @@ const page = () => {
             </label>
           </div>
         </div>
-        <div className="">
+        <div className="flex flex-col">
           {data.compList.comp.map((comp) => (
-            <CompList flexDirection="flex-col w-full gap-[16px]" compStatus="전체" />
+            <CompList variant="flexCol" compStatus="전체" />
           ))}
         </div>
       </div>

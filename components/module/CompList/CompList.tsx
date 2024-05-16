@@ -7,13 +7,13 @@ import { cn } from '@/lib/utils/cn';
 
 export const CompListVariants = cva(
   `
-  flex no-scrollbar pb-[10px]
+  no-scrollbar pb-[10px]
   `,
   {
     variants: {
       variant: {
-        flex: 'w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll',
-        flexCol: 'flex-col w-full gap-[16px]',
+        flex: 'flex w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll',
+        flexCol: 'flex flex-col w-full gap-[16px]',
       },
     },
     defaultVariants: {
@@ -25,13 +25,13 @@ export const CompListVariants = cva(
 interface CompListProps
   extends HTMLAttributes<HTMLElement>,
     VariantProps<typeof CompListVariants> {
-  title: string;
+  title?: string;
   compStatus?: string | null;
 }
 
 const CompList = ({ title, compStatus, variant }: CompListProps) => {
   return (
-    <div className="flex w-full flex-col gap-[12px] ">
+    <div className="flex w-full flex-col gap-[12px]">
       {title ? (
         <div className={'flex items-center justify-between'}>
           <span className="text-headline-5 text-gray-100">{title}</span>
