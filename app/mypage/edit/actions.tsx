@@ -42,8 +42,6 @@ export const editUser = async (
     }
     formData.delete('imageChange');
 
-    console.log(formData);
-
     const cookie = cookies();
     const user = cookie.get('access')!;
 
@@ -58,7 +56,6 @@ export const editUser = async (
         body: formData,
       },
     );
-    console.log(res);
 
     const data = await res.json();
 

@@ -1,5 +1,8 @@
-import ImageBanner from './ImageBanner/ImageBanner';
-import CompetitionInfo from './CompetitionInfo/CompetitionInfo';
-import CompetitionButton from './CompetitionButton/CompetitionButton';
+import ImageBanner from './DetailPage/ImageBanner/ImageBanner';
+import CompDetail from './DetailPage/CompDetail/CompDetail';
+import CompButton from './DetailPage/CompButton/CompButton';
+import ApplyForm from './ApplyPage/ApplyForm/ApplyForm';
+import FeeCard from './SuccessPage/FeeCard/FeeCard';
+import ParticipantInfo from './SuccessPage/ParticipantInfo/ParticipantInfo';
 
-export { ImageBanner, CompetitionInfo, CompetitionButton };
+export { ImageBanner, CompDetail, CompButton, ApplyForm, FeeCard, ParticipantInfo };

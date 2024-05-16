@@ -1,6 +1,6 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import InfoDetail from '@/components/organism/CompetitionPage/CompetitionInfo/InfoDetail/InfoDetail';
-import { ApplyForm } from '@/components/organism/ApplyPage';
+import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
+import { ApplyForm } from '@/components/organism/CompetitionPage';
 import React from 'react';
 
 const page = () => {
@@ -15,7 +15,7 @@ const page = () => {
           <div className="flex w-full flex-col gap-[16px]">
             <div className="text-headline-3">{data.name}</div>
 
-            <InfoDetail data={data} />
+            <CompInfoCard data={data} />
           </div>
         </div>
 

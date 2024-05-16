@@ -1,5 +1,8 @@
-import { CompRecordBoard, TotalRecord } from '@/components/organism/MyRecordPageSection';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
+import {
+  RecordSection,
+  TotalRecordSection,
+} from '@/components/organism/ProfilePage/UserPage';
 import React from 'react';
 
 const page = () => {
@@ -8,11 +11,11 @@ const page = () => {
   return (
     <div className="bg relative flex h-full w-full flex-col">
       <HeaderBar title="내 전적" backBtn />
-      <TotalRecord win={win} lose={lose} />
+      <TotalRecordSection win={win} lose={lose} />
 
       <div className="no-scrollbar flex flex-1 flex-col items-start gap-[32px] overflow-scroll bg-gray-10 px-[20px] py-[24px]">
         {records.map((matchData) => (
-          <CompRecordBoard key={matchData.id} matchData={matchData} />
+          <RecordSection key={matchData.id} matchData={matchData} />
         ))}
       </div>
     </div>

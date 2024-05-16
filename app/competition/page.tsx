@@ -15,7 +15,7 @@ const COMP_CATEGORY = [
 
 const page = () => {
   return (
-    <div className="w-full">
+    <div className="h-full">
       <div className="flex flex-col gap-[16px] p-[20px]">
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">
