@@ -25,7 +25,7 @@ const InputPhone = ({
 }) => {
   React.useEffect(() => {
     setFocus('phone');
-  }, [setFocus]);
+  }, []);
 
   return (
     <div className="relative">

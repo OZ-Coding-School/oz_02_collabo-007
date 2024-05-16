@@ -9,7 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useEffect, useTransition } from 'react';
 import SigninFormContent from './SigninFormContent';
 import { useRouter } from 'next/navigation';
-import { cookies } from 'next/headers';
 
 export interface SignInFormValues {
   phone: string;
@@ -29,7 +28,7 @@ const SigninForm = () => {
     setValue,
     setFocus,
   } = useForm<SignInFormValues>({
-    mode: 'all',
+    mode: 'onSubmit',
     resolver: zodResolver(signInFormSchema),
   });
 
