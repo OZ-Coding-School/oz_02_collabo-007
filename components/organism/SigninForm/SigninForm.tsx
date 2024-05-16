@@ -27,6 +27,7 @@ const SigninForm = () => {
     setError,
     setValue,
     setFocus,
+    clearErrors,
   } = useForm<SignInFormValues>({
     mode: 'onSubmit',
     resolver: zodResolver(signInFormSchema),
@@ -46,11 +47,14 @@ const SigninForm = () => {
     }
   }, [state, setError]);
 
+  const handleSubmit = async (formData: FormData) => {
+    clearErrors();
+
+    startTransaction(() => formAction(formData));
+  };
+
   return (
-    <form
-      className="flex w-full flex-col gap-[64px]"
-      action={(formData) => startTransaction(() => formAction(formData))}
-    >
+    <form className="flex w-full flex-col gap-[64px]" action={handleSubmit}>
       <SigninFormContent
         register={register}
         isValid={isValid}
