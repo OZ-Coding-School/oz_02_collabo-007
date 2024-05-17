@@ -8,7 +8,7 @@ import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { cn } from '@/lib/utils/cn';
 import type { ModalContainerProps } from '@/@types/modal';
 import useDebounce from '@/lib/hook/useDebounce';
-import type { SimpleClubData } from '@/@types/club';
+import type { ClubSearchData } from '@/@types/club';
 import { hangulToJamo } from '@/lib/hook/hangulToJamo';
 import ClubItem from '@/components/organism/SignUpPage/ClubField/ClubItem';
 
@@ -20,7 +20,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   setSelectedId,
 }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [filteredData, setFilteredData] = useState<SimpleClubData[]>([]);
+  const [filteredData, setFilteredData] = useState<ClubSearchData[]>([]);
   const debounceSearchValue = useDebounce<string>(searchValue, 500);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -46,7 +46,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
       return;
     }
 
-    const filtered: SimpleClubData[] = searchData.filter(({ name }: { name: string }) => {
+    const filtered: ClubSearchData[] = searchData.filter(({ name }: { name: string }) => {
       return hangulToJamo(name).includes(hangulToJamo(debounceSearchValue));
     });
 
@@ -56,7 +56,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
   const handleClubItem = (selectedId: number) => {
     const data = searchData.find(
       ({ id }: { id: number }) => id === selectedId,
-    ) as SimpleClubData;
+    ) as ClubSearchData;
     setSelectedId(() => data);
     handleCloseModal();
   };

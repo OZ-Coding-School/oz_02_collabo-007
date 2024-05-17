@@ -1,7 +1,7 @@
 'use server';
 
-import type { SignUpState } from '@/@types/signup';
-import { signUpSchema } from '@/lib/utils/validation';
+import { SignUpState } from '@/@types/signup';
+import { editSchema } from '@/lib/utils/validation';
 import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
@@ -11,20 +11,7 @@ export const editUser = async (
   formData: FormData,
 ): Promise<SignUpState> => {
   try {
-    const { password, confirmPassword } = signUpSchema.parse(formData);
-
-    if (confirmPassword !== password) {
-      return {
-        status: 'error',
-        message: 'Invalid form data',
-        errors: [
-          {
-            path: 'confirmPassword',
-            message: `비밀번호가 일치하지 않습니다.`,
-          },
-        ],
-      };
-    }
+    editSchema.parse(formData);
 
     formData.delete('confirmPassword');
     formData.delete('clubName');
@@ -38,7 +25,7 @@ export const editUser = async (
     const imageData = formData.get('imageFile');
     if (imageChange === 'true' && imageData instanceof File && imageData.size === 0) {
       formData.delete('imageFile');
-      formData.append('imageFile', '');
+      formData.append('removeImage', 'True');
     }
     formData.delete('imageChange');
 
@@ -56,7 +43,6 @@ export const editUser = async (
         body: formData,
       },
     );
-    console.log(formData);
 
     const data = await res.json();
 

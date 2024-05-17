@@ -1,4 +1,5 @@
-import { Club } from '@/@types/club';
+import type { Club } from '@/@types/club';
+import type { Team } from '@/@types/team';
 import ClubIcon from '@/app/_asset/icons/club.svg';
 import TeamIcon from '@/app/_asset/icons/team.svg';
 import Link from 'next/link';
@@ -6,7 +7,7 @@ import React, { FC } from 'react';
 
 interface ClubTabProps {
   club: Club | null;
-  team: { [key: string]: string } | null;
+  team: Team | null;
 }
 
 const ClubTab: FC<ClubTabProps> = ({ club, team }) => {

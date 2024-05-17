@@ -29,7 +29,7 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className="flex flex-col gap-[16px] bg-white px-[20px] py-[24px]">
           <InfoSection
             name={team.name}
-            imageUrl={team.imageUrl?.imageUrl}
+            imageUrl={team.imageUrl}
             description={team.description}
           />
           <TeamSection rank={32} win={32} lose={15} />

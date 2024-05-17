@@ -5,7 +5,7 @@ export type Team = {
   id: number;
   name: string;
   description: string;
-  imageUrl: ImageFile;
+  imageUrl: string | null;
 };
 
 export type TennisTeamData = {

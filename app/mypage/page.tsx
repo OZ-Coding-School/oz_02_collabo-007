@@ -6,9 +6,10 @@ import {
   MyProfileCard,
   NavigationTab,
 } from '@/components/organism/MyPage';
+import type { UserData } from '@/@types/user';
 
 const page = async () => {
-  const userData = await getUserData();
+  const userData: UserData = await getUserData();
 
   return (
     <div className="flex h-full flex-col items-center gap-[8px] self-stretch bg-gray-30  text-gray-100">

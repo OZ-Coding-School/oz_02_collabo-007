@@ -36,7 +36,7 @@ const MemberProfile: FC<MemberProfileProps> = ({
       <div className="flex items-center gap-[12px]">
         <div className="relative h-[32px] w-[32px] overflow-hidden rounded-full">
           {image ? (
-            <Image src={image} alt="tennis" fill sizes="32px" />
+            <Image src={image} alt="tennis" fill sizes="32px" priority />
           ) : (
             <div className="h-full w-full bg-gray-30"></div>
           )}

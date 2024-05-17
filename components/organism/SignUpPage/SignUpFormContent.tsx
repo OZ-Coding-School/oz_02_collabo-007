@@ -30,7 +30,7 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
     <>
       <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
         <ProfileField
-          currentImg={userData?.imageUrl ? [userData?.imageUrl?.imageUrl] : undefined}
+          currentImg={userData?.imageUrl ? [userData?.imageUrl] : undefined}
         />
 
         <PhoneField

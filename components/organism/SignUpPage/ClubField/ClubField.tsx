@@ -5,7 +5,7 @@ import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
-import type { Club, SimpleClubData } from '@/@types/club';
+import type { Club, ClubSearchData } from '@/@types/club';
 import ClubItem from './ClubItem';
 import Modal from '@/components/core/Modal/Modal';
 
@@ -13,11 +13,11 @@ const ClubField = ({
   clubList,
   clubData = null,
 }: {
-  clubList: SimpleClubData[];
+  clubList: ClubSearchData[];
   clubData?: Club | null;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<SimpleClubData | Club | null>(clubData);
+  const [selectedId, setSelectedId] = useState<ClubSearchData | Club | null>(clubData);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDelete = () => {

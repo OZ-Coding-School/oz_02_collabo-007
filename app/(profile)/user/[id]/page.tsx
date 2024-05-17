@@ -1,4 +1,4 @@
-import type { UserInfo } from '@/@types/user';
+import type { UserData } from '@/@types/user';
 import { getUserData } from '@/app/page';
 import CategoryRankingCard from '@/components/organism/ProfilePage/UserPage/UserProfileRankingCard/UserProfileRankingCard';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
@@ -7,14 +7,14 @@ import Link from 'next/link';
 import React from 'react';
 
 const page = async ({ params }: { params: { id: number } }) => {
-  const userData: UserInfo = await getUserData();
+  const userData: UserData = await getUserData();
 
   return (
     <div className="w-full bg-gray-30">
       <HeaderBar title="프로필" backBtn />
       <div className="no-scrollbar flex w-full flex-col gap-[8px] overflow-y-scroll">
         <div className="w-full bg-white">
-          <UserProfile userInfo={userData} />
+          <UserProfile userData={userData} />
         </div>
         <div className="flex flex-col gap-[40px] bg-white p-[20px]">
           <div className="flex flex-col gap-[12px]">
