@@ -38,7 +38,7 @@ const SigninFormContent = ({
             setFocus={setFocus}
           />
           <InputPassword register={register} errors={errors} setFocus={setFocus} />
-          {errors.phone?.message || errors.password?.message ? (
+          {errors.phone?.message || errors.password?.message || errors.root?.message ? (
             <div className="absolute bottom-[-35px] flex items-center gap-[4px] text-body-3 text-error-60">
               <Error className="h-[16px] w-[16px] fill-error-60" />
               {errors.phone?.message && errors.phone?.message}
