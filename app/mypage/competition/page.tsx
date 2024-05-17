@@ -29,7 +29,7 @@ const page = () => {
         </div>
       </div>
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
-        <CompList compStatus={compStatus} flexDirection="flex-col w-full gap-[16px]" />
+        <CompList compStatus={compStatus} variant="flexCol" />
       </div>
     </div>
   );
