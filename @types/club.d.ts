@@ -4,7 +4,7 @@ export type Club = {
   id: number;
   name: string;
   address: string;
-  imageUrl: ImageFile;
+  imageUrl: string | null;
   phone: string;
   description: string;
 };
@@ -18,7 +18,7 @@ export type ClubCoach = {
 export type ClubTeam = {
   id: number;
   name: string;
-  imageUrl: ImageFile;
+  imageUrl: string | null;
 };
 
 export type TennisClubData = {
@@ -32,13 +32,13 @@ export type SimpleClubData = {
   id: number;
   name: string;
   address: string;
-  imageUrl: ImageFile;
+  imageUrl: string | null;
 };
 
 export interface ClubItemProps {
   name: string;
   address: string;
-  image: ImageFile;
+  image: string | null;
   displayMode?: boolean;
   handleDelete?: Dispatch<SetStateAction<SimpleClubData | null>>;
 }

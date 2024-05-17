@@ -3,10 +3,10 @@ import ProfileTab from './ProfileTab/ProfileTab';
 import ClubTab from './ClubTab/ClubTab';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
-import { UserInfo } from '@/@types/user';
+import { UserData } from '@/@types/user';
 
 interface MyProfileCardProps {
-  userData: UserInfo;
+  userData: UserData;
 }
 
 const MyProfileCard = ({ userData }: MyProfileCardProps) => {
@@ -18,8 +18,8 @@ const MyProfileCard = ({ userData }: MyProfileCardProps) => {
         name={username}
         birth={birth}
         gender={gender}
-        imageUrl={imageUrl?.imageUrl}
-        tier={tier}
+        imageUrl={imageUrl}
+        tier={tier ? tier : null}
       />
 
       <ClubTab club={club} team={team} />

@@ -29,7 +29,7 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className="flex flex-col gap-[16px] bg-white px-[20px] py-[24px]">
           <InfoSection
             name={club.name}
-            imageUrl={club.imageUrl?.imageUrl}
+            imageUrl={club.imageUrl}
             description={club.description}
           />
           <ClubSection address={club.address} phone={club.phone} />
@@ -53,7 +53,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             <div className="text-headline-6">클럽 팀</div>
             <div className="flex items-start gap-[24px] self-stretch">
               {teams.map(({ id, name, imageUrl }) => (
-                <Avatar key={id} name={name} image={imageUrl?.imageUrl} />
+                <Avatar key={id} name={name} image={imageUrl} />
               ))}
             </div>
           </div>

@@ -15,7 +15,7 @@ const MemberSection = ({ userData }: { userData: ClubTeamUser[] }) => {
         <MemberProfile
           key={id}
           id={id}
-          image={imageUrl?.imageUrl}
+          image={imageUrl}
           name={username}
           rank={team?.rank}
           score={team?.score}

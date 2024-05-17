@@ -1,10 +1,8 @@
 'use client';
 
 import useClickOutside from '@/lib/hook/useClickOutsideModal';
-import React, { Dispatch, FC, SetStateAction, useEffect, useRef } from 'react';
+import React, { Dispatch, FC, SetStateAction, useRef } from 'react';
 import { motion } from 'framer-motion';
-import HeaderBar from '../HeaderBar/HeaderBar';
-import XIcon from '@/app/_asset/icons/x.svg';
 
 interface DialogProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;

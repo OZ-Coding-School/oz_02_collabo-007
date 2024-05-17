@@ -1,8 +1,8 @@
-import { UserInfo } from '@/@types/user';
+import type { UserData } from '@/@types/user';
 import React from 'react';
 
 interface UserProfileRankingCardProps {
-  res: UserInfo;
+  res: UserData;
   name: string;
   category: string;
 }

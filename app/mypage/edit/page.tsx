@@ -3,9 +3,14 @@ import React from 'react';
 import { getUserData } from '@/app/page';
 import { getClubList } from '@/app/signup/page';
 import { SignUpForm } from '@/components/organism/SignUpPage';
+import { UserData } from '@/@types/user';
+import { Club } from '@/@types/club';
 
 const page = async () => {
-  const [userData, clubList] = await Promise.all([getUserData(), getClubList()]);
+  const [userData, clubList]: [UserData, Club[]] = await Promise.all([
+    getUserData(),
+    getClubList(),
+  ]);
 
   return (
     <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll">
