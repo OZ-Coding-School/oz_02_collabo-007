@@ -1,15 +1,15 @@
 'use server';
 
-import { PasswordState } from '@/@types/password';
+import { SignUpState } from '@/@types/signup';
 import { editSchema } from '@/lib/utils/validation';
 import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
 export const editUser = async (
-  prevState: PasswordState | null,
+  prevState: SignUpState | null,
   formData: FormData,
-): Promise<PasswordState> => {
+): Promise<SignUpState> => {
   try {
     editSchema.parse(formData);
 
