@@ -23,18 +23,6 @@ const Dialog: FC<DialogProps> = ({ setIsOpen, title, children }) => {
     handleCloseModal();
   });
 
-  const DialogActionBtn = () => {
-    return (
-      <XIcon
-        width={24}
-        height={24}
-        fill="#393939"
-        onClick={handleCloseModal}
-        className="cursor-pointer"
-      />
-    );
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -50,9 +38,9 @@ const Dialog: FC<DialogProps> = ({ setIsOpen, title, children }) => {
           exit={{ scale: 0.5 }}
           transition={{ duration: 0.2 }}
           ref={dialogRef}
-          className="flex min-h-[200px] w-full flex-col items-center gap-[24px] rounded-[8px] bg-white p-[24px]"
+          className="flex w-full flex-col items-center gap-[24px] rounded-[8px] bg-white p-[24px]"
         >
-          <HeaderBar title={title} actionBtn={<DialogActionBtn />} />
+          <div className="w-full text-center text-headline-5">{title}</div>
           {children}
         </motion.div>
       </motion.div>
