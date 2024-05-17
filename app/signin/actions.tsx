@@ -36,7 +36,16 @@ export async function signInUser(
       body: JSON.stringify({ phone: phone, password: password }),
     });
 
+    if (res.status === 400) {
+      return {
+        status: 'error',
+        message: 'Bad request',
+        errors: [{ path: 'root', message: '아이디 혹은 비밀번호가 틀렸습니다.' }],
+      };
+    }
+
     const cookieString = res.headers.get('set-cookie');
+
     const startIndex = (cookieString as string).indexOf('refresh=') + 'refresh='.length;
     const endIndex = (cookieString as string).indexOf(';', startIndex);
     const refreshValue = (cookieString as string).substring(
@@ -57,13 +66,6 @@ export async function signInUser(
       value: data.access,
       httpOnly: true,
     });
-
-    if (!res.ok) {
-      return {
-        status: 'networkError',
-        message: data.message,
-      };
-    }
 
     return {
       status: 'success',
