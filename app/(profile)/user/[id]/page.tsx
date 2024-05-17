@@ -1,13 +1,31 @@
 import type { UserData } from '@/@types/user';
-import { getUserData } from '@/app/page';
 import CategoryRankingCard from '@/components/organism/ProfilePage/UserPage/UserProfileRankingCard/UserProfileRankingCard';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
 import Link from 'next/link';
 import React from 'react';
+import { cookies } from 'next/headers';
 
+export const getUserData = async (id: number) => {
+  'use server';
+
+  const cookie = cookies();
+  const user = cookie.get('access')!;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/${id}`, {
+    credentials: 'include',
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${user.value}`,
+      'Content-type': 'application/json',
+    },
+    cache: 'force-cache',
+    next: { tags: ['userData'] },
+  }).then((res) => res.json());
+
+  return res;
+};
 const page = async ({ params }: { params: { id: number } }) => {
-  const userData: UserData = await getUserData();
+  const userData: UserData = await getUserData(params.id);
 
   return (
     <div className="w-full bg-gray-30">
