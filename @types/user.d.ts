@@ -9,24 +9,6 @@ export type ClubTeamUser = {
   team: { id: number; name: string; rank?: number; score?: string };
 };
 
-// export type UserInfo = {
-//   id: number;
-//   username: string;
-//   phone: string;
-//   gender: 'male' | 'female';
-//   birth: number;
-//   tier: string | null;
-//   imageUrl: string | null;
-
-//   club: Club | null;
-//   team: {
-//     [key: string]: string;
-//   } | null;
-//   ranking: {
-//     [key: string]: string | null;
-//   };
-// };
-
 export type UserData = {
   id: number;
   phone: string;

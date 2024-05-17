@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import VisibleIcon from '@/app/_asset/icons/visible.svg';
-import { FieldErrors, UseFormRegister, UseFormSetError } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';

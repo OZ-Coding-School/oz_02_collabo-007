@@ -2,7 +2,14 @@ import { cn } from '@/lib/utils/cn';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import XIcon from '@/app/_asset/icons/x.svg';
-import type { ClubItemProps } from '@/@types/club';
+
+export interface ClubItemProps {
+  name: string;
+  address: string;
+  image: string | null;
+  displayMode?: boolean;
+  handleDelete?: () => void;
+}
 
 const ClubItem: FC<ClubItemProps> = ({
   name,
@@ -21,7 +28,7 @@ const ClubItem: FC<ClubItemProps> = ({
       <div className="relative h-[56px] w-[56px]">
         {image ? (
           <Image
-            src={image.imageUrl}
+            src={image}
             alt={name}
             fill
             sizes="w-[56px] h-[56px]"

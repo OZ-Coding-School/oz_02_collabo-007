@@ -1,4 +1,5 @@
 import { ImageFile } from './image';
+import { ClubTeamUser } from './user';
 
 export type Club = {
   id: number;
@@ -11,7 +12,7 @@ export type Club = {
 
 export type ClubCoach = {
   id: number;
-  user: ClubUser;
+  user: ClubTeamUser;
   club: number;
 };
 
@@ -28,17 +29,9 @@ export type TennisClubData = {
   users: ClubTeamUser[];
 };
 
-export type SimpleClubData = {
+export type ClubSearchData = {
   id: number;
   name: string;
   address: string;
   imageUrl: string | null;
 };
-
-export interface ClubItemProps {
-  name: string;
-  address: string;
-  image: string | null;
-  displayMode?: boolean;
-  handleDelete?: Dispatch<SetStateAction<SimpleClubData | null>>;
-}

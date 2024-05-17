@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { SignUpForm } from '@/components/organism/SignUpPage';
-import type { SimpleClubData } from '@/@types/club';
+import type { ClubSearchData } from '@/@types/club';
 
 export const getClubList = async () => {
   try {
@@ -17,7 +17,7 @@ export const getClubList = async () => {
 };
 
 const page = async () => {
-  const clubList: SimpleClubData[] = await getClubList();
+  const clubList: ClubSearchData[] = await getClubList();
 
   return (
     <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll">

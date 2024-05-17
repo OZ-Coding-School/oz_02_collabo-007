@@ -8,7 +8,7 @@ import { SignUpFormContent } from './SignUpFormContent';
 import { editSchema, signUpSchema } from '@/lib/utils/validation';
 import { signUpUser } from '@/app/signup/actions';
 import { useRouter } from 'next/navigation';
-import type { SimpleClubData } from '@/@types/club';
+import type { ClubSearchData } from '@/@types/club';
 import type { SignUpFormValues, SignUpState } from '@/@types/signup';
 import type { UserData } from '@/@types/user';
 import { AnimatePresence } from 'framer-motion';
@@ -21,7 +21,7 @@ export function SignUpForm({
   clubList,
   userData,
 }: {
-  clubList: SimpleClubData[];
+  clubList: ClubSearchData[];
   userData?: UserData;
 }) {
   const router = useRouter();

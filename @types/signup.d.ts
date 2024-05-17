@@ -19,7 +19,7 @@ export interface SignUpFormContentProps {
   isValid: boolean;
   errors: FieldErrors<SignUpFormValues>;
   setValue: UseFormSetValue<SignUpFormValues>;
-  clubList: SimpleClubData[];
+  clubList: ClubSearchData[];
   userData?: UserData;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
