@@ -65,7 +65,6 @@ const SigninFormContent = ({
           </Link>
         </div> */}
       </div>
-      {console.log(errors)}
       <div className="flex flex-col gap-[12px]">
         <div className="h-12 w-full">
           <Button variant="primary" label="로그인" type="submit" />
