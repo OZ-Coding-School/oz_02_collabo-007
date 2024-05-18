@@ -1,7 +1,7 @@
 'use client';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Dialog from '../Dialog/Dialog';
 import Button from '../Button/Button';
 
@@ -31,7 +31,11 @@ const Alert = () => {
   return (
     <AnimatePresence mode="wait">
       {isAlert && (
-        <Dialog setIsOpen={setIsAlert} title="로그인 후 이용가능한 서비스입니다.">
+        <Dialog
+          setIsOpen={setIsAlert}
+          title="로그인 후 이용가능한 서비스입니다."
+          outsideDisable
+        >
           <>
             <div className="">로그인 페이지로 이동하시겠습니까?</div>
             <div className="flex w-[90%] items-center justify-center gap-[12px]">

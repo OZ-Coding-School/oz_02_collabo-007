@@ -8,9 +8,15 @@ interface DialogProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   title: string;
   children: React.ReactNode;
+  outsideDisable?: boolean;
 }
 
-const Dialog: FC<DialogProps> = ({ setIsOpen, title, children }) => {
+const Dialog: FC<DialogProps> = ({
+  setIsOpen,
+  title,
+  outsideDisable = false,
+  children,
+}) => {
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
   const handleCloseModal = () => {
@@ -35,7 +41,7 @@ const Dialog: FC<DialogProps> = ({ setIsOpen, title, children }) => {
           animate={{ scale: 1 }}
           exit={{ scale: 0.5 }}
           transition={{ duration: 0.2 }}
-          ref={dialogRef}
+          ref={outsideDisable ? null : dialogRef}
           className="flex w-full flex-col items-center gap-[24px] rounded-[8px] bg-white p-[24px]"
         >
           <div className="w-full text-center text-headline-5">{title}</div>
