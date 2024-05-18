@@ -19,7 +19,7 @@ const page = () => {
         <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
           {COMPLIST_OPTIONS.map((option, index) => (
             <Link
-              href={{ pathname: `/mypage/comp`, query: { status: option } }}
+              href={{ pathname: `/mypage/competition`, query: { status: option } }}
               className={`flex h-[32px] flex-1 items-center justify-center text-body-2 ${compStatus === option ? 'border-b-[2px] border-primary-60 text-primary-60' : ''}`}
               key={index}
             >
@@ -29,7 +29,7 @@ const page = () => {
         </div>
       </div>
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
-        <CompList compStatus={compStatus} flexDirection="flex-col w-full gap-[16px]" />
+        <CompList compStatus={compStatus} variant="flexCol" />
       </div>
     </div>
   );

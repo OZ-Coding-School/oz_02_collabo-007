@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/module/Navbar/Navbar';
-import { getUserData } from '../page';
+import { getMyData } from '../page';
 import {
   SignOutButton,
   MyProfileCard,
@@ -9,7 +9,7 @@ import {
 import type { UserData } from '@/@types/user';
 
 const page = async () => {
-  const userData: UserData = await getUserData();
+  const userData: UserData = await getMyData();
 
   return (
     <div className="flex h-full flex-col items-center gap-[8px] self-stretch bg-gray-30  text-gray-100">
@@ -18,7 +18,7 @@ const page = async () => {
 
         <div className="flex flex-col items-start self-stretch bg-white py-[8px] text-body-1">
           <NavigationTab
-            link={'/mypage/comp?status=전체'}
+            link={'/mypage/competition?status=전체'}
             description="참가 신청한 대회 보기"
           />
           <NavigationTab link={'/user/1/record'} description="내 전적 보기" />

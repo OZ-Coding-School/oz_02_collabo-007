@@ -5,7 +5,7 @@ import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 
-export const getUserData = async () => {
+export const getMyData = async () => {
   'use server';
 
   const cookie = cookies();
@@ -19,7 +19,7 @@ export const getUserData = async () => {
         'Content-type': 'application/json',
       },
       cache: 'force-cache',
-      next: { tags: ['userData'] },
+      next: { tags: ['myData'] },
     }).then((res) => res.json());
 
     return res;
@@ -32,7 +32,7 @@ const HOME_COMP_LIST = [
 ];
 
 const Home = async () => {
-  const userData: UserData = await getUserData();
+  const userData: UserData = await getMyData();
 
   return (
     <>

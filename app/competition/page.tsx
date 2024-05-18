@@ -19,8 +19,11 @@ const page = () => {
       <div className="flex flex-col gap-[16px] p-[20px]">
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">
-          {COMP_CATEGORY.map((category) => (
-            <div className="flex items-center justify-center whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-body-2 text-gray-80">
+          {COMP_CATEGORY.map((category, index) => (
+            <div
+              className="flex items-center justify-center whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-body-2 text-gray-80"
+              key={index}
+            >
               {category}
             </div>
           ))}
@@ -58,9 +61,7 @@ const page = () => {
           </div>
         </div>
         <div className="flex flex-col">
-          {data.compList.comp.map((comp) => (
-            <CompList variant="flexCol" compStatus="전체" />
-          ))}
+          <CompList variant="flexCol" compStatus="전체" />
         </div>
       </div>
       <div className="sticky bottom-0 w-full">
