@@ -27,9 +27,11 @@ const InputPhone = ({
     setFocus('phone');
   }, []);
 
-  if (errors.phone?.message || errors.root?.message) {
-    setFocus('phone');
-  }
+  useEffect(() => {
+    if (errors.phone?.message || errors.root?.message) {
+      setFocus('phone');
+    }
+  }, [errors]);
 
   return (
     <div className="relative">
