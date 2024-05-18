@@ -42,9 +42,6 @@ const SigninForm = () => {
         });
       });
     }
-    if (state.status === 'networkError') {
-      setError('root', { message: state.message });
-    }
     if (state.status === 'success') {
       router.push('/');
     }

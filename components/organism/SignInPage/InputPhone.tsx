@@ -27,7 +27,7 @@ const InputPhone = ({
     setFocus('phone');
   }, []);
 
-  if (errors.phone?.message) {
+  if (errors.phone?.message || errors.root?.message) {
     setFocus('phone');
   }
 
