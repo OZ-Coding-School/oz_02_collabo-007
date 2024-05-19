@@ -2,7 +2,7 @@ import React from 'react';
 
 const CompCardSkeleton = ({ title }: { title: string | undefined }) => {
   return (
-    <div className=" mb-[10px] flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
+    <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
       <div className="flex gap-[16px]">
         <div className="skeleton relative h-[88px] w-[88px] rounded-[8px] bg-gray-20"></div>
         <div className="flex w-[199px] flex-1 flex-col gap-[4px]">

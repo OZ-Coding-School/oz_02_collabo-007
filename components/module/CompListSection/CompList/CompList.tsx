@@ -23,7 +23,7 @@ export const CompListVariants = cva(
   },
 );
 
-interface CompListProps
+export interface CompListProps
   extends HTMLAttributes<HTMLElement>,
     VariantProps<typeof CompListVariants> {
   title?: string;

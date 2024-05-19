@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { HTMLAttributes, Suspense } from 'react';
 import CompCardSkeleton from '@/components/core/Skeleton/CompCardSkeleton';
 import CompList from './CompList/CompList';
+import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
 
 const CompListSection = ({
   title,
@@ -22,7 +23,7 @@ const CompListSection = ({
           </Link>
         </div>
       )}
-      <Suspense fallback={<CompCardSkeleton title={title} />}>
+      <Suspense fallback={<CompListSkeleton title={title} variant={variant} />}>
         {/* @ts-expect-error Async Server Component */}
         <CompList title={title} compStatus={compStatus} variant={variant} />
       </Suspense>
