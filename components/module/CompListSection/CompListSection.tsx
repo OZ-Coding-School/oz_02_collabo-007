@@ -23,6 +23,7 @@ const CompListSection = ({
         </div>
       ) : null}
       <Suspense fallback={<CompCardSkeleton />}>
+        {/* @ts-expect-error Async Server Component */}
         <CompList title={title} compStatus={compStatus} variant={variant} />
       </Suspense>
     </div>
