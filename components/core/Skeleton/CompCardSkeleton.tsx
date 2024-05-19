@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CompCardSkeleton = () => {
+const CompCardSkeleton = ({ title }: { title: string | undefined }) => {
   return (
     <div className="mb-[10px] flex min-w-full basis-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
       <div className="flex gap-[16px]">
@@ -14,7 +14,9 @@ const CompCardSkeleton = () => {
           </div>
         </div>
       </div>
-      <div className="flex h-[40px] w-full rounded-[8px] bg-gray-20"></div>
+      {title !== '대회 정보' && (
+        <div className="flex h-[40px] w-full rounded-[8px] bg-gray-20"></div>
+      )}
     </div>
   );
 };
