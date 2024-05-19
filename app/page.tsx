@@ -1,5 +1,5 @@
 import Navbar from '@/components/module/Navbar/Navbar';
-import CompList from '@/components/module/CompList/CompList';
+import CompList from '@/components/module/CompListSection/CompListSection';
 import { cookies } from 'next/headers';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';

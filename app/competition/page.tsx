@@ -1,7 +1,7 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
 import { data } from '../data';
-import CompList from '@/components/module/CompList/CompList';
+import CompList from '@/components/module/CompListSection/CompListSection';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 
 const COMP_CATEGORY = [

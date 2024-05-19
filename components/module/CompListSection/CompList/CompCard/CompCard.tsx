@@ -1,4 +1,4 @@
-import CompCardMatchDetail from '@/components/module/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
+import CompCardMatchDetail from '@/components/module/CompListSection/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
 import React from 'react';
 

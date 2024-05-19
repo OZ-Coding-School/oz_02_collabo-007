@@ -1,10 +1,9 @@
 'use client';
 
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import CompList from '@/components/module/CompList/CompList';
+import CompList from '@/components/module/CompListSection/CompListSection';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { data } from '@/app/data.js';
 
 export const COMPLIST_OPTIONS = ['전체', '진행 전', '진행 중', '종료'];
 
