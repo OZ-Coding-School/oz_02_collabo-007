@@ -59,7 +59,7 @@ export const editUser = async (
       };
     }
 
-    revalidateTag('userData');
+    revalidateTag('myData');
 
     return {
       status: 'success',

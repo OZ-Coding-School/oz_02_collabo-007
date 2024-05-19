@@ -1,7 +1,6 @@
 'use server';
 
 import { PasswordState } from '@/@types/password';
-import { signOutUser } from '@/components/organism/MyPage/SignOutButton/SignOutButton';
 import { passwordSchema } from '@/lib/utils/validation';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
@@ -35,7 +34,7 @@ export const changePassword = async (
         errors: [
           {
             path: 'changedPassword',
-            message: `비밀번호가 기존의 비밀번호와 일치합니다.`,
+            message: `변경할 비밀번호와 기존의 비밀번호가 일치합니다.`,
           },
         ],
       };
@@ -43,8 +42,6 @@ export const changePassword = async (
 
     const cookie = cookies();
     const token = cookie.get('access')!;
-
-    console.log('formData', formData);
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/password`,
