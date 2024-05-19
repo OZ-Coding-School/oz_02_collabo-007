@@ -1,13 +1,16 @@
 import Link from 'next/link';
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, Suspense } from 'react';
+import CompCardSkeleton from '@/components/core/Skeleton/CompCardSkeleton';
 import CompList from './CompList/CompList';
 
 const CompListSection = ({
   title,
   compStatus,
+  variant,
 }: {
   title?: string;
-  compStatus?: string;
+  compStatus?: string | null;
+  variant?: 'flex' | 'flexCol' | null;
 }) => {
   return (
     <div className="flex w-full flex-col gap-[12px]">
@@ -19,7 +22,9 @@ const CompListSection = ({
           </Link>
         </div>
       ) : null}
-      <CompList title={title} compStatus={compStatus} />
+      <Suspense fallback={<CompCardSkeleton />}>
+        <CompList title={title} compStatus={compStatus} variant={variant} />
+      </Suspense>
     </div>
   );
 };
