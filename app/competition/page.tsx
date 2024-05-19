@@ -15,7 +15,7 @@ const COMP_CATEGORY = [
 
 const page = () => {
   return (
-    <div className="h-full">
+    <div className="flex h-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">
@@ -29,7 +29,7 @@ const page = () => {
           ))}
         </div>
       </div>
-      <div className="flex w-full flex-1 flex-col gap-[12px] border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
+      <div className="flex w-full flex-1 flex-col gap-[12px] border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <div className="flex gap-[16px]">
           <div className="flex gap-[4px]">
             <select name="tier" id="tier">
