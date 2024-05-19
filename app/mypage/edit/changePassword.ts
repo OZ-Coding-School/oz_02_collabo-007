@@ -1,7 +1,9 @@
 'use server';
 
 import { PasswordState } from '@/@types/password';
+import { signOutUser } from '@/components/organism/MyPage/SignOutButton/SignOutButton';
 import { passwordSchema } from '@/lib/utils/validation';
+import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
 export const changePassword = async (
@@ -39,7 +41,55 @@ export const changePassword = async (
       };
     }
 
-    console.log(formData);
+    const cookie = cookies();
+    const token = cookie.get('access')!;
+
+    console.log('formData', formData);
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/password`,
+      {
+        credentials: 'include',
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prevPassword: prevPassword,
+          changedPassword: changedPassword,
+        }),
+      },
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      const errorKey = Object.keys(data)[0];
+      const errorValue = data[errorKey];
+
+      return {
+        status: 'error',
+        message: 'Invalid form data',
+        errors: [
+          {
+            path: errorKey,
+            message: errorValue,
+          },
+        ],
+      };
+    }
+
+    const signOut = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/logout/`, {
+      method: 'POST',
+    });
+
+    if (!signOut.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    cookies().delete('access');
+    cookies().delete('refresh');
 
     return {
       status: 'success',
