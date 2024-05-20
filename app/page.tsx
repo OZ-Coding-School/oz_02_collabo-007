@@ -1,9 +1,9 @@
 import Navbar from '@/components/module/Navbar/Navbar';
-import CompList from '@/components/module/CompList/CompList';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 import { getMyData } from './getMyData';
+import CompList from '@/components/module/CompListSection/CompList/CompList';
 
 const HOME_COMP_LIST = [
   { title: '참가 예정 대회', compStatus: '진행 전' },
