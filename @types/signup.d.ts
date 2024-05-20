@@ -37,4 +37,12 @@ export type SignUpState =
         message: string;
       }>;
     }
+  | {
+      status: 'alert';
+      message: string;
+      errors?: Array<{
+        path: string;
+        message: string;
+      }>;
+    }
   | null;

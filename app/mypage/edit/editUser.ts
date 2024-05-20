@@ -30,7 +30,7 @@ export const editUser = async (
     formData.delete('imageChange');
 
     const cookie = cookies();
-    const user = cookie.get('access')!;
+    const token = cookie.get('access')!;
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/`,
@@ -38,7 +38,7 @@ export const editUser = async (
         credentials: 'include',
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${user.value}`,
+          Authorization: `Bearer ${token.value}`,
         },
         body: formData,
       },
@@ -59,7 +59,7 @@ export const editUser = async (
       };
     }
 
-    revalidateTag('userData');
+    revalidateTag('myData');
 
     return {
       status: 'success',

@@ -2,19 +2,7 @@ import React from 'react';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { SignUpForm } from '@/components/organism/SignUpPage';
 import type { ClubSearchData } from '@/@types/club';
-
-export const getClubList = async () => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/club/list`, {
-      next: { revalidate: 3600 },
-    });
-    const data = await res.json();
-
-    return data.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { getClubList } from './getClubList';
 
 const page = async () => {
   const clubList: ClubSearchData[] = await getClubList();

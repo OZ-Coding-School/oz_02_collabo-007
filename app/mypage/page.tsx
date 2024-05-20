@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from '@/components/module/Navbar/Navbar';
-import { getMyData } from '../page';
 import {
   SignOutButton,
   MyProfileCard,
   NavigationTab,
 } from '@/components/organism/MyPage';
 import type { UserData } from '@/@types/user';
+import { getMyData } from '../getMyData';
 
 const page = async () => {
   const userData: UserData = await getMyData();

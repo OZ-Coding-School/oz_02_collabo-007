@@ -44,13 +44,16 @@ export const signUpUser = async (
     const data = await res.json();
     console.log(data);
     if (!res.ok) {
+      const errorKey = Object.keys(data['errors'])[0];
+      const errorValue = data['errors'][errorKey];
+
       return {
-        status: 'error',
+        status: 'alert',
         message: 'Invalid form data',
         errors: [
           {
-            path: 'total',
-            message: data.message,
+            path: errorKey,
+            message: errorValue,
           },
         ],
       };

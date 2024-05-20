@@ -37,7 +37,7 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           register={register}
           errors={errors}
           setValue={setValue}
-          phoneData={userData?.phone!}
+          phoneData={userData?.phone as string}
         />
         {userData && setIsOpen ? (
           <div className="flex w-full items-center justify-between text-sub-headline-2">
@@ -59,9 +59,17 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           </>
         )}
 
-        <NameField register={register} errors={errors} nameData={userData?.username!} />
+        <NameField
+          register={register}
+          errors={errors}
+          nameData={userData?.username as string}
+        />
         <GenderField exitGender={userData?.gender} />
-        <BirthField register={register} errors={errors} birthData={userData?.birth!} />
+        <BirthField
+          register={register}
+          errors={errors}
+          birthData={userData?.birth as number}
+        />
         <ClubField clubList={clubList} clubData={userData?.club} />
 
         <div className="w-full py-[20px]">

@@ -3,7 +3,7 @@ import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { ClubTeamUser } from '@/@types/user';
 import MemberSection from '@/components/module/MemberSection/MemberSection';
 
-export const getTeamMember = async (id: string) => {
+const getTeamMember = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/team/${id}/userlist`, {
     next: { revalidate: 3600 },
   }).then((res) => res.json());
