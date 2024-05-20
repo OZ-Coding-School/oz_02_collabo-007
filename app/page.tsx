@@ -3,7 +3,7 @@ import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 import { getMyData } from './getMyData';
-import CompList from '@/components/module/CompListSection/CompList/CompList';
+import CompListSection from '@/components/module/CompListSection/CompListSection';
 
 const HOME_COMP_LIST = [
   { title: '참가 예정 대회', compStatus: '진행 전' },
@@ -20,7 +20,7 @@ const Home = async () => {
         <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
           {HOME_COMP_LIST.map(({ title, compStatus }, index) =>
             userData ? (
-              <CompList
+              <CompListSection
                 key={index}
                 title={title}
                 compStatus={compStatus}
@@ -28,7 +28,7 @@ const Home = async () => {
               />
             ) : null,
           )}
-          <CompList title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />
+          <CompListSection title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />
         </main>
         <div className="sticky bottom-0 w-full">
           <Navbar />
