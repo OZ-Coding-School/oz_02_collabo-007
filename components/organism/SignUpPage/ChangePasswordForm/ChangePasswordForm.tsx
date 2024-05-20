@@ -9,12 +9,14 @@ import ChangePasswordField from './ChangePasswordField/ChangePasswordField';
 import type { PasswordState, PasswordValues } from '@/@types/password';
 import Button from '@/components/core/Button/Button';
 import { changePassword } from '@/app/mypage/edit/changePassword';
+import { useRouter } from 'next/navigation';
 
 const ChangePasswordForm = ({
   setIsOpen,
 }: {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const router = useRouter();
   const [state, formAction] = useFormState<PasswordState, FormData>(changePassword, null);
   const [pending, startTransaction] = useTransition();
   const {
@@ -36,8 +38,8 @@ const ChangePasswordForm = ({
       });
     }
     if (state.status === 'success') {
-      console.log(state.message);
       setIsOpen(() => false);
+      router.push('/signin');
     }
   }, [state, setError]);
 

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import { cookies } from 'next/headers';
 
-export const getUserData = async (id: number) => {
+const getUserData = async (id: number) => {
   'use server';
 
   const cookie = cookies();
@@ -24,6 +24,7 @@ export const getUserData = async (id: number) => {
 
   return res;
 };
+
 const page = async ({ params }: { params: { id: number } }) => {
   const userData: UserData = await getUserData(params.id);
 

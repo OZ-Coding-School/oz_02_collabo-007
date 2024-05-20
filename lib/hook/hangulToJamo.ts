@@ -3,7 +3,7 @@ export const hangulToJamo = (text: string): string => {
     .map((char: string) => {
       if (/^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]$/.test(char)) {
         const code: number = char.charCodeAt(0) - 44032;
-        let chosungIndex: number = Math.floor(code / 588);
+        const chosungIndex: number = Math.floor(code / 588);
         const jungsungIndex: number = Math.floor((code - chosungIndex * 588) / 28);
         const jongsungIndex: number = Math.floor(
           code - chosungIndex * 588 - jungsungIndex * 28,

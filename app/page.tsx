@@ -1,30 +1,9 @@
 import Navbar from '@/components/module/Navbar/Navbar';
-import CompList from '@/components/module/CompListSection/CompListSection';
-import { cookies } from 'next/headers';
+import CompList from '@/components/module/CompList/CompList';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
-
-export const getMyData = async () => {
-  'use server';
-
-  const cookie = cookies();
-  const user = cookie.get('access')!;
-  if (user) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
-      credentials: 'include',
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${user.value}`,
-        'Content-type': 'application/json',
-      },
-      cache: 'force-cache',
-      next: { tags: ['myData'] },
-    }).then((res) => res.json());
-
-    return res;
-  }
-};
+import { getMyData } from './getMyData';
 
 const HOME_COMP_LIST = [
   { title: '참가 예정 대회', compStatus: '진행 전' },

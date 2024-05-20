@@ -6,7 +6,6 @@ import { useEffect, useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignUpFormContent } from './SignUpFormContent';
 import { editSchema, signUpSchema } from '@/lib/utils/validation';
-import { signUpUser } from '@/app/signup/actions';
 import { useRouter } from 'next/navigation';
 import type { ClubSearchData } from '@/@types/club';
 import type { SignUpFormValues, SignUpState } from '@/@types/signup';
@@ -16,6 +15,7 @@ import Dialog from '@/components/core/Dialog/Dialog';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
 import { editUser } from '@/app/mypage/edit/editUser';
 import Button from '@/components/core/Button/Button';
+import { signUpUser } from '@/app/signup/signUpUser';
 
 export function SignUpForm({
   clubList,
@@ -27,6 +27,7 @@ export function SignUpForm({
   const router = useRouter();
   const fn = userData ? editUser : signUpUser;
   const [state, formAction] = useFormState<SignUpState, FormData>(fn, null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [pending, startTransaction] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
@@ -45,6 +46,13 @@ export function SignUpForm({
     if (!state) return;
     if (state.status === 'error') {
       state.errors?.forEach((error) => {
+        setError(error.path as FieldPath<SignUpFormValues>, {
+          message: error.message,
+        });
+      });
+    }
+    if (state.status === 'alert') {
+      state.errors?.forEach((error) => {
         setIsAlert(() => true);
         setError(error.path as FieldPath<SignUpFormValues>, {
           message: error.message,
@@ -56,7 +64,6 @@ export function SignUpForm({
     }
   }, [state, setError]);
 
-  console.log(errors);
   return (
     <>
       <form action={(formData) => startTransaction(() => formAction(formData))}>
@@ -80,10 +87,10 @@ export function SignUpForm({
       </AnimatePresence>
 
       <AnimatePresence mode="wait">
-        {errors?.total && isAlert && (
+        {errors && isAlert && (
           <Dialog setIsOpen={setIsAlert} title="에러">
             <>
-              <div className="">{errors.total?.message}</div>
+              <div className="">{Object.values(errors)[0]?.message}</div>
               <div className="w-[40%]">
                 <Button
                   label="확인"

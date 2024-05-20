@@ -1,10 +1,10 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React from 'react';
-import { getMyData } from '@/app/page';
-import { getClubList } from '@/app/signup/page';
 import { SignUpForm } from '@/components/organism/SignUpPage';
 import { UserData } from '@/@types/user';
 import { Club } from '@/@types/club';
+import { getClubList } from '@/app/signup/getClubList';
+import { getMyData } from '@/app/getMyData';
 
 const page = async () => {
   const [userData, clubList]: [UserData, Club[]] = await Promise.all([

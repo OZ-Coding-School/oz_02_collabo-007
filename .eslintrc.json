@@ -1,4 +1,3 @@
-// .eslintrc.json
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -11,8 +10,6 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "airbnb-typescript",
     "plugin:prettier/recommended",
     "next/core-web-vitals",
     "plugin:storybook/recommended"
@@ -21,6 +18,8 @@
     // 'React' must be in scope when using JSX 에러 해결 (Next.js)
     "react/react-in-jsx-scope": "off",
     // ts파일에서 tsx구문 허용 (Next.js)
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    // 사용되지 않는 변수를 허용 나중에 제거
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }
