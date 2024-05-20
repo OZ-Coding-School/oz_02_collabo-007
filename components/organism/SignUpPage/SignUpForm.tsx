@@ -62,7 +62,7 @@ export function SignUpForm({
     if (state.status === 'success') {
       router.push('/');
     }
-  }, [state, setError]);
+  }, [state, setError, router]);
 
   return (
     <>
