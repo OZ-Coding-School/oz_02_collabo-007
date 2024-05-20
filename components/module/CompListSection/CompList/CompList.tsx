@@ -4,7 +4,7 @@ import CompCard from './CompCard/CompCard';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
 
-import { Competition, MyCompetition } from '@/@types/competition';
+import { Competition } from '@/@types/competition';
 
 export const CompListVariants = cva(
   `
@@ -49,7 +49,7 @@ const getMyCompetitionData = async () => {
 
 const CompList = async ({ title, compStatus, variant }: CompListProps) => {
   const competitionData: Competition[] = await getCompetitionData().then();
-  const myCompetitionData: MyCompetition[] = await getMyCompetitionData().then();
+  const myCompetitionData: Competition[] = await getMyCompetitionData().then();
 
   return (
     <div className={cn(CompListVariants({ variant }))}>

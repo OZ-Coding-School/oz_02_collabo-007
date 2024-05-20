@@ -6,8 +6,15 @@ import TeamIcon from '@/app/_asset/icons/team.svg';
 import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
+import { UserData } from '@/@types/user';
 
-const UserProfile = ({ userData, loginBtn, rankingPanel }: any) => {
+interface UserProfileProps {
+  userData: UserData;
+  loginBtn?: boolean;
+  rankingPanel?: boolean;
+}
+
+const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => {
   return (
     <div className="w-full">
       <div
@@ -46,7 +53,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: any) => {
             ) : null}
           </div>
           <div className="relative flex h-[80px] w-[80px] items-center justify-center overflow-hidden rounded-[50%] bg-gray-20">
-            {userData.imageUrl && (
+            {userData?.imageUrl && (
               <Image
                 src={userData.imageUrl}
                 fill
@@ -55,7 +62,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: any) => {
                 style={{ borderRadius: '50%' }}
               />
             )}
-            {!userData.imageUrl ? (
+            {!userData?.imageUrl ? (
               <UserIcon width={32} height={32} fill="#787878" />
             ) : null}
           </div>
@@ -64,14 +71,14 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: any) => {
           <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
             {userData.ranking ? (
               <>
-                <span className="flex gap-[4px] text-sub-headline-2 text-gray-80">
+                {/* <span className="flex gap-[4px] text-sub-headline-2 text-gray-80">
                   {userData.ranking ? userData.ranking.single.name : null}
                   <span>·</span>
                   {userData.ranking ? userData.ranking.single.tier : null}
                 </span>
                 <span className="text-headline-6 text-primary-60">
                   {userData.ranking ? userData.ranking.single.rank : null}
-                </span>
+                </span> */}
               </>
             ) : (
               <span className="text-sub-headline-2 text-primary-60">
