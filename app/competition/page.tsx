@@ -29,7 +29,7 @@ const page = () => {
           ))}
         </div>
       </div>
-      <div className="flex w-full flex-1 flex-col gap-[12px] border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
+      <div className="no-scrollbar flex w-full flex-1 flex-col gap-[12px] overflow-y-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <div className="flex gap-[16px]">
           <div className="flex gap-[4px]">
             <select name="tier" id="tier">
