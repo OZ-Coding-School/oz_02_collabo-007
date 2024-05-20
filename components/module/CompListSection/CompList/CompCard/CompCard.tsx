@@ -1,10 +1,10 @@
-import CompCardMatchDetail from '@/components/module/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
+import CompCardMatchDetail from '@/components/module/CompListSection/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
 import React from 'react';
 
 const CompCard = ({ comp }: any) => {
   return (
-    <div className="flex min-w-full basis-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
+    <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
       <div className="flex gap-[16px]">
         <div className="relative h-[88px] w-[88px] ">
           <Image

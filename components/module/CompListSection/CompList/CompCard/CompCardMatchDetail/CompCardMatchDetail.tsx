@@ -1,4 +1,4 @@
-import CompStatusInfo from '@/components/module/CompList/CompCard/CompStatusInfo/CompStatusInfo';
+import CompStatusInfo from '@/components/module/CompListSection/CompList/CompCard/CompStatusInfo/CompStatusInfo';
 import NextMatchInfo from '../NextMatchInfo/NextMatchInfo';
 
 const CompCardMatchDetail = ({ compInfo }: any) => {
