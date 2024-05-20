@@ -27,6 +27,7 @@ export function SignUpForm({
   const router = useRouter();
   const fn = userData ? editUser : signUpUser;
   const [state, formAction] = useFormState<SignUpState, FormData>(fn, null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [pending, startTransaction] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   const [isAlert, setIsAlert] = useState(false);

@@ -6,7 +6,7 @@ export type ClubTeamUser = {
   id: number;
   username: string;
   imageUrl: string | null;
-  team: { id: number; name: string; rank?: number; score?: string };
+  team: { id: number; name: string; rank?: number; score?: string } | null;
 };
 
 export type UserData = {
