@@ -30,10 +30,7 @@ export async function signInUser(
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin/`, {
       credentials: 'include',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ phone: phone, password: password }),
+      body: formData,
     });
 
     if (res.status === 400) {

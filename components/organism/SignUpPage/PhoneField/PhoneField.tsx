@@ -42,15 +42,6 @@ const PhoneField = ({
               {...register('phone')}
               placeholder="숫자만 입력"
               id="phone"
-              // onChange={(e) =>
-              //   setValue(
-              //     'phone',
-              //     e.target.value
-              //       .replace(/[^0-9]/g, '')
-              //       .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-              //       .replace(/(\-{1,2})$/g, ''),
-              //   )
-              // }
               className={cn(
                 InputVariants({
                   variant: `${errors.phone ? 'error' : 'default'}`,
