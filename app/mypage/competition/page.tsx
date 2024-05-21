@@ -1,15 +1,12 @@
-'use client';
-
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
 const COMPLIST_OPTIONS = ['전체', '진행 전', '진행 중', '종료'];
 
-const page = () => {
-  const searchParams = useSearchParams();
-  const compStatus: string | undefined | null = searchParams.get('status');
+const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
+  const { status } = searchParams;
+  const compStatus: string | undefined | null = status;
 
   return (
     <div className="relative flex h-full w-full flex-col">
