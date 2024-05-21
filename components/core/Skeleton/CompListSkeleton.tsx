@@ -9,7 +9,7 @@ import {
 const CompListSkeleton = ({ title, variant }: CompListProps) => {
   return (
     <div className={cn(CompListVariants({ variant }))}>
-      {Array.from({ length: 4 }, (v, index) => {
+      {Array.from({ length: 4 }, (_, index) => {
         return <CompCardSkeleton title={title} key={index} />;
       })}
     </div>

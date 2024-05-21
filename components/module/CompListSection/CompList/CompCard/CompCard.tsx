@@ -1,8 +1,14 @@
+import { Competition } from '@/@types/competition';
 import CompCardMatchDetail from '@/components/module/CompListSection/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
 import React from 'react';
 
-const CompCard = ({ comp }: any) => {
+interface CompCardProps {
+  comp: Competition;
+  key: number;
+}
+
+const CompCard = ({ comp }: CompCardProps) => {
   return (
     <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
       <div className="flex gap-[16px]">

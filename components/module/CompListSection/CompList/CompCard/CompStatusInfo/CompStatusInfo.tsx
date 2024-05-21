@@ -2,8 +2,9 @@ import Link from 'next/link';
 import React from 'react';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import FlagIcon from '@/app/_asset/icons/flag.svg';
+import { CompetitionProps } from '@/@types/competition';
 
-const CompStatusInfo = ({ compInfo }: any) => {
+const CompStatusInfo = ({ compInfo }: CompetitionProps) => {
   return (
     <div className="flex items-center justify-between text-sub-headline-3 ">
       <div className="flex items-center gap-[4px] text-gray-80">

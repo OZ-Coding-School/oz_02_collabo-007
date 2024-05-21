@@ -1,7 +1,8 @@
 import CompStatusInfo from '@/components/module/CompListSection/CompList/CompCard/CompStatusInfo/CompStatusInfo';
 import NextMatchInfo from '../NextMatchInfo/NextMatchInfo';
+import { CompetitionProps } from '@/@types/competition';
 
-const CompCardMatchDetail = ({ compInfo }: any) => {
+const CompCardMatchDetail = ({ compInfo }: CompetitionProps) => {
   return (
     <div className="rounded-[8px] bg-gray-20 p-[12px]">
       {compInfo.status === '진행 전' && (
