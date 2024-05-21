@@ -8,12 +8,12 @@ import { Competition } from '@/@types/competition';
 
 export const CompListVariants = cva(
   `
-    no-scrollbar pb-[10px]
+    no-scrollbar
     `,
   {
     variants: {
       variant: {
-        flex: 'flex w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll',
+        flex: 'flex w-[calc(100%+40px)] ml-[-20px] px-[20px] gap-[12px] overflow-y-scroll pb-[10px]',
         flexCol: 'flex flex-col w-full gap-[16px]',
       },
     },

@@ -7,7 +7,6 @@ interface NextMatchInfoProps {
 }
 
 const NextMatchInfo = ({ nextMatchInfo, status }: NextMatchInfoProps) => {
-  console.log(nextMatchInfo);
   return (
     <>
       <div className="flex">
