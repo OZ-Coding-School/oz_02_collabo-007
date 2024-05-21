@@ -46,7 +46,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: any) => {
             ) : null}
           </div>
           <div className="relative flex h-[80px] w-[80px] items-center justify-center overflow-hidden rounded-[50%] bg-gray-20">
-            {userData.imageUrl && (
+            {userData?.imageUrl && (
               <Image
                 src={userData.imageUrl}
                 fill
@@ -55,7 +55,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: any) => {
                 style={{ borderRadius: '50%' }}
               />
             )}
-            {!userData.imageUrl ? (
+            {!userData?.imageUrl ? (
               <UserIcon width={32} height={32} fill="#787878" />
             ) : null}
           </div>
