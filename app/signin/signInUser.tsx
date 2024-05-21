@@ -30,7 +30,6 @@ export async function signInUser(
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin/`, {
       credentials: 'include',
       method: 'POST',
-
       body: formData,
     });
 

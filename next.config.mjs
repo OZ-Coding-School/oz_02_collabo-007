@@ -20,6 +20,7 @@ const nextConfig = {
   images: {
     domains: ['search.pstatic.net', 'tennis-dev.s3.amazonaws.com'],
   },
+
   // logging: {
   //   fetches: {
   //     fullUrl: true,

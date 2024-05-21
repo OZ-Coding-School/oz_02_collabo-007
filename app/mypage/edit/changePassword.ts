@@ -50,16 +50,15 @@ export const changePassword = async (
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token.value}`,
-          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          prevPassword: prevPassword,
-          changedPassword: changedPassword,
-        }),
+        body: formData,
       },
     );
+    console.log(formData);
+    console.log(res);
 
     const data = await res.json();
+    console.log(data);
 
     if (!res.ok) {
       const errorKey = Object.keys(data)[0];
