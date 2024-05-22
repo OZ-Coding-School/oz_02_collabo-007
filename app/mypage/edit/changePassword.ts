@@ -50,11 +50,14 @@ export const changePassword = async (
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token.value}`,
+          'Content-Type': 'application/json',
         },
-        body: formData,
+        body: JSON.stringify({
+          prevPassword: prevPassword,
+          changedPassword: changedPassword,
+        }),
       },
     );
-    console.log(formData);
     console.log(res);
 
     const data = await res.json();
