@@ -5,10 +5,11 @@ import { useFormState } from 'react-dom';
 import { signInFormSchema } from '@/lib/utils/signInValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import React, { useEffect, useTransition } from 'react';
+import React, { Suspense, useEffect, useTransition } from 'react';
 import SigninFormContent from './SigninFormContent';
 import { useRouter } from 'next/navigation';
 import { State, signInUser } from '@/app/signin/signInUser';
+import Loading from '@/app/signin/loading';
 
 export interface SignInFormValues {
   phone: string;
@@ -62,6 +63,7 @@ const SigninForm = () => {
         setValue={setValue}
         setFocus={setFocus}
       />
+      {pending && <Loading />}
     </form>
   );
 };
