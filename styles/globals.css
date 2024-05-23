@@ -86,3 +86,10 @@ select::-ms-expend {
   overflow: hidden;
   position: relative;
 }
+
+.circle {
+  stroke: black;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  fill: transparent;
+}
