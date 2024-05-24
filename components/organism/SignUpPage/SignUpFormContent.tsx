@@ -2,8 +2,7 @@
 
 import { useFormStatus } from 'react-dom';
 import Button from '@/components/core/Button/Button';
-import type { SignUpFormContentProps } from '@/@types/signup';
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
 import {
   BirthField,
   ClubField,
@@ -14,17 +13,39 @@ import {
   PhoneField,
   ProfileField,
 } from '@/components/organism/SignUpPage';
+import {
+  FieldErrors,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetError,
+} from 'react-hook-form';
+import type { SignUpFormValues } from '@/@types/signup';
+import type { ClubSearchData } from '@/@types/club';
+import type { UserData } from '@/@types/user';
+
+export interface SignUpFormContentProps {
+  register: UseFormRegister<SignUpFormValues>;
+  isValid: boolean;
+  errors: FieldErrors<SignUpFormValues>;
+  setError: UseFormSetError<SignUpFormValues>;
+  getValues: UseFormGetValues<SignUpFormValues>;
+  clubList: ClubSearchData[];
+  userData?: UserData;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
+}
 
 export const SignUpFormContent: FC<SignUpFormContentProps> = ({
   register,
   isValid,
   errors,
-  setValue,
+  setError,
+  getValues,
   clubList,
   userData = null,
   setIsOpen,
 }) => {
   const { pending } = useFormStatus();
+  const [isUnique, setIsUnique] = useState(false);
 
   return (
     <>
@@ -36,7 +57,10 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
         <PhoneField
           register={register}
           errors={errors}
-          setValue={setValue}
+          getValues={getValues}
+          setError={setError}
+          isUnique={isUnique}
+          setIsUnique={setIsUnique}
           phoneData={userData?.phone as string}
         />
         {userData && setIsOpen ? (
@@ -76,7 +100,7 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           {userData ? (
             <Button label="완료" type="submit" disabled={pending || !isValid} />
           ) : (
-            <Button label="회원 가입" type="submit" disabled={pending || !isValid} />
+            <Button label="회원 가입" type="submit" disabled={!isUnique || !isValid} />
           )}
         </div>
       </div>

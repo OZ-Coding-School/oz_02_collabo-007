@@ -36,7 +36,7 @@ export function SignUpForm({
     register,
     formState: { isValid, errors },
     setError,
-    setValue,
+    getValues,
   } = useForm<SignUpFormValues>({
     mode: 'all',
     resolver: zodResolver(userData ? editSchema : signUpSchema),
@@ -71,7 +71,8 @@ export function SignUpForm({
           register={register}
           isValid={isValid}
           errors={errors}
-          setValue={setValue}
+          setError={setError}
+          getValues={getValues}
           clubList={clubList}
           userData={userData}
           setIsOpen={setIsOpen}
