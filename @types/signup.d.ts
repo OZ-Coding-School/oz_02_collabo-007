@@ -7,7 +7,6 @@ export interface SignUpFormValues {
   gender: string;
   birth: string;
   club: string;
-  total?: string;
 }
 
 export type SignUpState =

@@ -16,7 +16,6 @@ export const editUser = async (
     formData.delete('confirmPassword');
     formData.delete('clubName');
 
-    // 빈 이미지 파일 임시 조건 처리
     const imageChange = formData.get('imageChange');
     if (imageChange === 'false') {
       formData.delete('imageFile');
@@ -47,13 +46,16 @@ export const editUser = async (
     const data = await res.json();
 
     if (!res.ok) {
+      const errorKey = Object.keys(data['errors'])[0];
+      const errorValue = data['errors'][errorKey];
+
       return {
-        status: 'error',
+        status: 'alert',
         message: 'Invalid form data',
         errors: [
           {
-            path: 'total',
-            message: data.message,
+            path: errorKey,
+            message: errorValue,
           },
         ],
       };

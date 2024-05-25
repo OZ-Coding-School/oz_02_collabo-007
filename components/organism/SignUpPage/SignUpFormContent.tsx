@@ -40,7 +40,6 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
         <ProfileField
           currentImg={userData?.imageUrl ? [userData?.imageUrl] : undefined}
         />
-
         <PhoneField
           isUnique={isUnique}
           setIsUnique={setIsUnique}
@@ -74,7 +73,11 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           {userData ? (
             <Button label="완료" type="submit" disabled={pending || !isValid} />
           ) : (
-            <Button label="회원 가입" type="submit" disabled={!isUnique || !isValid} />
+            <Button
+              label="회원 가입"
+              type="submit"
+              disabled={!isUnique || pending || !isValid}
+            />
           )}
         </div>
       </div>
