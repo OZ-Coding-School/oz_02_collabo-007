@@ -1,20 +1,16 @@
 import React from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import type { SignUpFormValues } from '@/@types/signup';
 
-const BirthField = ({
-  register,
-  errors,
-  birthData,
-}: {
-  register: UseFormRegister<SignUpFormValues>;
-  errors: FieldErrors<SignUpFormValues>;
-  birthData?: number;
-}) => {
+const BirthField = ({ birthData }: { birthData?: number }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
@@ -35,7 +31,7 @@ const BirthField = ({
       {errors.birth && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
           <Error className="h-[16px] w-[16px] fill-error-60" />
-          {errors.birth.message}
+          {errors.birth.message as string}
         </div>
       )}
     </div>

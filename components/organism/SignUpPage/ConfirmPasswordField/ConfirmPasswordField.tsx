@@ -3,20 +3,17 @@
 import React, { useState } from 'react';
 import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import VisibleIcon from '@/app/_asset/icons/visible.svg';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import type { SignUpFormValues } from '@/@types/signup';
 
-const ConfirmPasswordField = ({
-  register,
-  errors,
-}: {
-  register: UseFormRegister<SignUpFormValues>;
-  errors: FieldErrors<SignUpFormValues>;
-}) => {
+const ConfirmPasswordField = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
@@ -56,7 +53,7 @@ const ConfirmPasswordField = ({
       {errors.confirmPassword && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
           <Error className="h-[16px] w-[16px] fill-error-60" />
-          {errors.confirmPassword.message}
+          {errors.confirmPassword.message as string}
         </div>
       )}
     </div>

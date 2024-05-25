@@ -1,48 +1,41 @@
 'use client';
 
-import React, { Dispatch, FC, useEffect } from 'react';
-import {
-  FieldErrors,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetError,
-} from 'react-hook-form';
+import React, { FC, useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import type { SignUpFormValues } from '@/@types/signup';
 import Button from '@/components/core/Button/Button';
 import SuccessIcon from '@/app/_asset/icons/success-circle.svg';
+import WarningIcon from '@/app/_asset/icons/warning-circle.svg';
+import { ErrorMessage } from '@hookform/error-message';
 
 interface PhoneFieldProps {
-  register: UseFormRegister<SignUpFormValues>;
-  getValues: UseFormGetValues<SignUpFormValues>;
-  errors: FieldErrors<SignUpFormValues>;
-  setError: UseFormSetError<SignUpFormValues>;
   isUnique: boolean;
   setIsUnique: React.Dispatch<React.SetStateAction<boolean>>;
   phoneData?: string;
 }
 
-const PhoneField: FC<PhoneFieldProps> = ({
-  register,
-  getValues,
-  errors,
-  setError,
-  phoneData,
-  isUnique,
-  setIsUnique,
-}) => {
+const PhoneField: FC<PhoneFieldProps> = ({ phoneData, isUnique, setIsUnique }) => {
+  const {
+    register,
+    getValues,
+    setError,
+    formState: { errors },
+    watch,
+  } = useFormContext();
+
+  const phonePattern = /^(?:01[0|1|6-9])(?:\d{3}|\d{4})\d{4}$/;
+  const watchPhone: string = watch('phone');
+
   useEffect(() => {
     if (isUnique) {
       setIsUnique(() => false);
     }
-  }, [getValues('phone')]);
+  }, [watchPhone]);
 
   const handleCheckPhoneNumber = async () => {
-    const phonePattern = /^(?:01[0|1|6-9])(?:\d{3}|\d{4})\d{4}$/;
-
     if (phonePattern.test(getValues('phone'))) {
       const formData = new FormData();
       formData.append('phone', getValues('phone'));
@@ -69,10 +62,10 @@ const PhoneField: FC<PhoneFieldProps> = ({
       }
     }
   };
-  console.log('isUnique', isUnique);
 
   return (
     <div className="relative flex w-full items-end gap-[8px] self-stretch">
+      <ErrorMessage errors={errors} name="check" />
       <div className="flex-1">
         <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
           <Label label={'휴대폰 번호'} name={'phone'} />
@@ -121,13 +114,20 @@ const PhoneField: FC<PhoneFieldProps> = ({
       {errors.phone && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
           <Error className="h-[16px] w-[16px] fill-error-60" />
-          {errors.phone.message}
+          {errors.phone.message as string}
         </div>
       )}
       {isUnique && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-success-60">
           <SuccessIcon className="h-[16px] w-[16px] fill-success-60" />
           사용가능한 휴대폰 번호입니다.
+        </div>
+      )}
+
+      {!phoneData && phonePattern.test(watchPhone) && !isUnique && (
+        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-warning-60">
+          <WarningIcon className="h-[16px] w-[16px] fill-warning-60" />
+          휴대폰 중복 검사를 진행해주세요.
         </div>
       )}
     </div>

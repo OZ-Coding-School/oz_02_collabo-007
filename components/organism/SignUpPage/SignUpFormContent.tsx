@@ -13,39 +13,26 @@ import {
   PhoneField,
   ProfileField,
 } from '@/components/organism/SignUpPage';
-import {
-  FieldErrors,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetError,
-} from 'react-hook-form';
-import type { SignUpFormValues } from '@/@types/signup';
+import { useFormContext } from 'react-hook-form';
 import type { ClubSearchData } from '@/@types/club';
 import type { UserData } from '@/@types/user';
 
 export interface SignUpFormContentProps {
-  register: UseFormRegister<SignUpFormValues>;
-  isValid: boolean;
-  errors: FieldErrors<SignUpFormValues>;
-  setError: UseFormSetError<SignUpFormValues>;
-  getValues: UseFormGetValues<SignUpFormValues>;
   clubList: ClubSearchData[];
   userData?: UserData;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const SignUpFormContent: FC<SignUpFormContentProps> = ({
-  register,
-  isValid,
-  errors,
-  setError,
-  getValues,
+const SignUpFormContent: FC<SignUpFormContentProps> = ({
   clubList,
   userData = null,
   setIsOpen,
 }) => {
   const { pending } = useFormStatus();
   const [isUnique, setIsUnique] = useState(false);
+  const {
+    formState: { isValid },
+  } = useFormContext();
 
   return (
     <>
@@ -55,10 +42,6 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
         />
 
         <PhoneField
-          register={register}
-          errors={errors}
-          getValues={getValues}
-          setError={setError}
           isUnique={isUnique}
           setIsUnique={setIsUnique}
           phoneData={userData?.phone as string}
@@ -78,22 +61,13 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
           </div>
         ) : (
           <>
-            <PasswordField register={register} errors={errors} />
-            <ConfirmPasswordField register={register} errors={errors} />
+            <PasswordField />
+            <ConfirmPasswordField />
           </>
         )}
-
-        <NameField
-          register={register}
-          errors={errors}
-          nameData={userData?.username as string}
-        />
+        <NameField nameData={userData?.username as string} />
         <GenderField exitGender={userData?.gender} />
-        <BirthField
-          register={register}
-          errors={errors}
-          birthData={userData?.birth as number}
-        />
+        <BirthField birthData={userData?.birth as number} />
         <ClubField clubList={clubList} clubData={userData?.club} />
 
         <div className="w-full py-[20px]">
@@ -107,3 +81,5 @@ export const SignUpFormContent: FC<SignUpFormContentProps> = ({
     </>
   );
 };
+
+export default SignUpFormContent;
