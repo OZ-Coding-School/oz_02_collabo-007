@@ -11,7 +11,9 @@ export const editUser = async (
   formData: FormData,
 ): Promise<SignUpState> => {
   try {
-    editSchema.parse(formData);
+    const { phone } = editSchema.parse(formData);
+
+    formData.set('phone', phone.replace(/\s+/g, ''));
 
     formData.delete('confirmPassword');
     formData.delete('clubName');
