@@ -64,9 +64,9 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
             <ConfirmPasswordField />
           </>
         )}
-        <NameField nameData={userData?.username as string} />
+        <NameField nameData={userData?.username} />
         <GenderField exitGender={userData?.gender} />
-        <BirthField birthData={userData?.birth as number} />
+        <BirthField birthData={userData?.birth} />
         <ClubField clubList={clubList} clubData={userData?.club} />
 
         <div className="w-full py-[20px]">

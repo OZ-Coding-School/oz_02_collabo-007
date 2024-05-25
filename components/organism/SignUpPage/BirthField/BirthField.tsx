@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
@@ -5,7 +7,7 @@ import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
 
-const BirthField = ({ birthData }: { birthData?: number }) => {
+const BirthField = ({ birthData }: { birthData: number | undefined }) => {
   const {
     register,
     formState: { errors },
@@ -16,7 +18,7 @@ const BirthField = ({ birthData }: { birthData?: number }) => {
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'출생년도'} name={'birth'} />
         <input
-          defaultValue={birthData}
+          defaultValue={birthData || ''}
           {...register('birth')}
           id="birth"
           placeholder="2000"

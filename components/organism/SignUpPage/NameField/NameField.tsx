@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
@@ -5,7 +7,7 @@ import { InputVariants } from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import Error from '@/app/_asset/icons/error-circle.svg';
 
-const NameField = ({ nameData }: { nameData?: string }) => {
+const NameField = ({ nameData }: { nameData: string | undefined }) => {
   const {
     register,
     formState: { errors },
@@ -16,7 +18,7 @@ const NameField = ({ nameData }: { nameData?: string }) => {
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
         <Label label={'이름'} name={'username'} />
         <input
-          defaultValue={nameData}
+          defaultValue={nameData || ''}
           {...register('username')}
           placeholder="홍길동"
           id="username"
