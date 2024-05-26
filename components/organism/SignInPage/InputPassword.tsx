@@ -1,33 +1,25 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import VisibleIcon from '@/app/_asset/icons/visible.svg';
 import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import Label from '@/components/core/Label/Label';
-import { FieldErrors, UseFormRegister, UseFormSetFocus } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils/cn';
 import { InputVariants } from '@/components/core/Input/Input';
 import Error from '@/app/_asset/icons/error-circle.svg';
-import { SignInFormValues } from './SigninForm';
 
-const InputPassword = ({
-  register,
-  errors,
-  setFocus,
-}: {
-  register: UseFormRegister<SignInFormValues>;
-  errors: FieldErrors<SignInFormValues>;
-  setFocus: UseFormSetFocus<SignInFormValues>;
-}) => {
+const InputPassword = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   const [isVisible, setVisible] = useState(false);
 
   const changeVisible = () => {
     setVisible((isVisible) => !isVisible);
   };
-
-  if (errors.password?.message && !errors.phone?.message) {
-    setFocus('password');
-  }
 
   return (
     <div className="relative">
@@ -36,14 +28,13 @@ const InputPassword = ({
         <div className="relative self-stretch">
           <input
             {...register('password')}
-            // ref={inputRef}
             type={isVisible ? 'text ' : 'password'}
             id="password"
             name="password"
             placeholder="비밀번호"
             className={cn(
               InputVariants({
-                variant: 'default',
+                variant: errors.password ? 'error' : 'default',
               }),
               'p-[12px] text-body-1',
             )}
@@ -67,6 +58,12 @@ const InputPassword = ({
           )}
         </div>
       </div>
+      {errors.password && (
+        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
+          <Error className="h-[16px] w-[16px] fill-error-60" />
+          {errors.password.message as string}
+        </div>
+      )}
     </div>
   );
 };
