@@ -7,6 +7,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Button from '@/components/core/Button/Button';
 import { UserData } from '@/@types/user';
+import ProfileAvatar from '@/components/core/Avatar/profileAvatar';
 
 interface UserProfileProps {
   userData: UserData;
@@ -52,20 +53,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => 
               </>
             ) : null}
           </div>
-          <div className="relative flex h-[80px] w-[80px] items-center justify-center overflow-hidden rounded-[50%] bg-gray-20">
-            {userData?.imageUrl && (
-              <Image
-                src={userData.imageUrl}
-                fill
-                sizes="80px"
-                alt="visible"
-                style={{ borderRadius: '50%' }}
-              />
-            )}
-            {!userData?.imageUrl ? (
-              <UserIcon width={32} height={32} fill="#787878" />
-            ) : null}
-          </div>
+          <ProfileAvatar image={userData?.imageUrl} />
         </div>
         {rankingPanel && userData ? (
           <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
