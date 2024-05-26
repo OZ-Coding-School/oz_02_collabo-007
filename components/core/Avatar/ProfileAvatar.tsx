@@ -1,13 +1,15 @@
+import Image from 'next/image';
 import React from 'react';
+import UserIcon from '@/app/_asset/icons/user.svg';
 
 interface ProfileAvatarProps {
-  image: string;
+  image: string | null;
 }
 
-const ProfileAvatar = ({ image }) => {
+const ProfileAvatar = ({ image = null }: ProfileAvatarProps) => {
   return (
     <div className="relative flex h-[80px] w-[80px] items-center justify-center overflow-hidden rounded-[50%] bg-gray-20">
-      {imagel && (
+      {image && (
         <Image
           src={image}
           fill
@@ -16,7 +18,7 @@ const ProfileAvatar = ({ image }) => {
           style={{ borderRadius: '50%' }}
         />
       )}
-      {!imagel ? <UserIcon width={32} height={32} fill="#787878" /> : null}
+      {!image ? <UserIcon width={32} height={32} fill="#787878" /> : null}
     </div>
   );
 };
