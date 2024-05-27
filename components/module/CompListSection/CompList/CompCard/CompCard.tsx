@@ -1,6 +1,7 @@
-import { Competition } from '@/@types/competition';
+import type { Competition } from '@/@types/competition';
 import CompCardMatchDetail from '@/components/module/CompListSection/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const GENDER = { female: '여성', male: '남성', mix: '혼성', team: '' };
@@ -13,7 +14,10 @@ interface CompCardProps {
 
 const CompCard = ({ comp }: CompCardProps) => {
   return (
-    <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
+    <Link
+      href={{ pathname: `/competition/${comp.id}` }}
+      className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md"
+    >
       <div className="flex gap-[16px]">
         <div className="relative h-[88px] w-[88px] ">
           <Image
@@ -27,7 +31,7 @@ const CompCard = ({ comp }: CompCardProps) => {
         <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
           <span>{comp.name}</span>
           <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
-            <span>{comp.startDate}</span>
+            <span>{comp.startDate.replace('T', ' ')}</span>
             <span>
               {`${GENDER[comp.matchTypeDetails.gender]} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
               · {comp.tier}
@@ -37,7 +41,7 @@ const CompCard = ({ comp }: CompCardProps) => {
         </div>
       </div>
       {comp.nextMatch && <CompCardMatchDetail compInfo={comp} />}
-    </div>
+    </Link>
   );
 };
 
