@@ -12,6 +12,7 @@ export interface Competition {
   imageUrl: string;
   status: string;
   waitingCount: number;
+  nextMatch?: NextMatchInfo;
 }
 
 export interface CompetitionProps {
