@@ -1,30 +1,30 @@
-'use client';
 import React, { ChangeEvent } from 'react';
 import { useRouter } from 'next/router';
 
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
+import Link from 'next/link';
 
 interface CompListFilter {
   filterOption: { name: string; info: { title: string; value: string }[] };
+  searchParams: { [key: string]: string };
 }
 
-const CompListFilter = ({ filterOption }: CompListFilter) => {
+const CompListFilter = ({ filterOption, searchParams }: CompListFilter) => {
   const { name, info } = filterOption;
-  const router = useRouter();
-
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, sort: event.target.value },
-    });
-  };
 
   return (
     <div className="flex gap-[4px]">
-      <select name={name} id={name} onChange={handleChange}>
+      <select name={name} id={name}>
         {info.map((option, index) => (
           <option key={index} value={option.value}>
-            {option.title}
+            <Link
+              href={{
+                pathname: `/competition`,
+                query: { ...searchParams, [name]: option.value },
+              }}
+            >
+              {option.title}
+            </Link>
           </option>
         ))}
       </select>

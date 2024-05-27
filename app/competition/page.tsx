@@ -69,9 +69,9 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
       </div>
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[12px] overflow-y-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <div className="flex gap-[16px]">
-          <CompListFilter filterOption={COMP_TIER} />
-          <CompListFilter filterOption={COMP_STATUS} />
-          <CompListFilter filterOption={COMP_DATA} />
+          <CompListFilter filterOption={COMP_TIER} searchParams={searchParams} />
+          <CompListFilter filterOption={COMP_STATUS} searchParams={searchParams} />
+          <CompListFilter filterOption={COMP_DATA} searchParams={searchParams} />
         </div>
         <div className="flex flex-col">
           <CompList variant="flexCol" compStatus="전체" gender={gender} type={type} />
