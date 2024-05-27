@@ -3,6 +3,9 @@ import CompCardMatchDetail from '@/components/module/CompListSection/CompList/Co
 import Image from 'next/image';
 import React from 'react';
 
+const GENDER = { female: '여성', male: '남성', mix: '혼성', team: '' };
+const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
+
 interface CompCardProps {
   comp: Competition;
   key: number;
@@ -26,7 +29,8 @@ const CompCard = ({ comp }: CompCardProps) => {
           <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
             <span>{comp.startDate}</span>
             <span>
-              {comp.category} · {comp.tier}
+              {`${GENDER[comp.matchTypeDetails.gender]} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
+              · {comp.tier}
             </span>
             <span>{comp.location}</span>
           </div>
