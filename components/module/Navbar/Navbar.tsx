@@ -1,6 +1,5 @@
 import React from 'react';
 import NavItem from '@/components/core/NavItem/NavItem';
-// icon
 import Home from '@/app/_asset/icons/home.svg';
 import HomeFilled from '@/app/_asset/icons/home-filled.svg';
 import Award from '@/app/_asset/icons/award.svg';
