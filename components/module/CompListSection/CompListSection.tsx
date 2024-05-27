@@ -7,10 +7,14 @@ const CompListSection = ({
   title,
   compStatus,
   variant,
+  gender = '',
+  type = '',
 }: {
   title?: string;
   compStatus?: string | null;
   variant?: 'flex' | 'flexCol' | null;
+  gender?: string;
+  type?: string;
 }) => {
   return (
     <div className="flex w-full flex-col gap-[12px]">
@@ -23,7 +27,13 @@ const CompListSection = ({
         </div>
       )}
       <Suspense fallback={<CompListSkeleton title={title} variant={variant} />}>
-        <CompList title={title} compStatus={compStatus} variant={variant} />
+        <CompList
+          title={title}
+          compStatus={compStatus}
+          variant={variant}
+          gender={gender}
+          type={type}
+        />
       </Suspense>
     </div>
   );

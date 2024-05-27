@@ -14,7 +14,7 @@ const CompCard = ({ comp }: CompCardProps) => {
       <div className="flex gap-[16px]">
         <div className="relative h-[88px] w-[88px] ">
           <Image
-            src={comp.image}
+            src={comp.imageUrl}
             fill
             sizes="88px"
             alt="comp"
@@ -24,9 +24,9 @@ const CompCard = ({ comp }: CompCardProps) => {
         <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
           <span>{comp.name}</span>
           <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
-            <span>{comp.date}</span>
+            <span>{comp.startDate}</span>
             <span>
-              {comp.category} · {comp.tier.name}
+              {comp.category} · {comp.tier}
             </span>
             <span>{comp.location}</span>
           </div>

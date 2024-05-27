@@ -5,6 +5,7 @@ import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
 
 import { Competition } from '@/@types/competition';
+import { getCompData } from '@/app/competition/getCompData';
 
 export const CompListVariants = cva(
   `
@@ -28,28 +29,18 @@ export interface CompListProps
     VariantProps<typeof CompListVariants> {
   title?: string;
   compStatus?: string | null;
+  gender?: string;
+  type?: string;
 }
 
-const getCompetitionData = async () => {
-  const res = await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data.compList);
-    }, 1000);
-  });
-  return res;
-};
-const getMyCompetitionData = async () => {
-  const res = await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data.myComp);
-    }, 1000);
-  });
-  return res;
-};
-
-const CompList = async ({ title, compStatus, variant }: CompListProps) => {
-  const competitionData: Competition[] = await getCompetitionData().then();
-  const myCompetitionData: Competition[] = await getMyCompetitionData().then();
+const CompList = async ({
+  title,
+  compStatus,
+  gender = '',
+  type = '',
+  variant,
+}: CompListProps) => {
+  const competitionData: Competition[] = await getCompData(gender, type);
 
   return (
     <div className={cn(CompListVariants({ variant }))}>
@@ -62,14 +53,14 @@ const CompList = async ({ title, compStatus, variant }: CompListProps) => {
       )}
       {!title && compStatus === '전체' && (
         <>
-          {myCompetitionData.map((comp, index) => (
+          {competitionData.map((comp, index) => (
             <CompCard comp={comp} key={index} />
           ))}
         </>
       )}
       {
         <>
-          {myCompetitionData.map((comp, index) =>
+          {competitionData.map((comp, index) =>
             comp.status === compStatus ? <CompCard comp={comp} key={index} /> : null,
           )}
         </>
