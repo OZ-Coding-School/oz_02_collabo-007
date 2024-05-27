@@ -3,40 +3,30 @@ import FlagIcon from '@/app/_asset/icons/flag.svg';
 import CalendarIcon from '@/app/_asset/icons/calendar.svg';
 import MapPinIcon from '@/app/_asset/icons/map-pin.svg';
 import MapIcon from '@/app/_asset/icons/map.svg';
+import { CompDetailInfo } from '@/@types/competition';
 
-interface CompInfoCardProps {
-  data: {
-    id: number;
-    name: string;
-    status: string;
-    startDate: string;
-    matchType: {
-      field: string;
-      type: string;
-    };
-    tier: string;
-    round: string;
-    location: string;
-    address: string;
-    description: string;
-    rule: string;
-    siteLink: string;
-  };
-}
+const CompInfoCard = ({ data }: { data: CompDetailInfo }) => {
+  const dataTime = data.startDate;
+  const [date, time] = dataTime.split('T');
 
-const CompInfoCard: FC<CompInfoCardProps> = ({ data }) => {
   return (
     <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
       <div className="flex gap-[8px]">
         <CalendarIcon width={16} height={16} fill="#393939" />
-        <span className="flex-1">{data.startDate}</span>
+        <span className="flex-1">
+          {date} {time}
+        </span>
       </div>
       <div className="flex gap-[8px]">
         <FlagIcon width={16} height={16} fill="#393939" />
         <span className="flex-1">
-          {[data.matchType.field, data.matchType.type, data.tier, data.round].join(
-            ' \u00B7 ',
-          )}
+          {data.matchTypeDetails && data.tier && data.totalRounds
+            ? [
+                `${data.matchTypeDetails.gender} ${data.matchTypeDetails.type}`,
+                data.tier,
+                data.totalRounds,
+              ].join(' \u00B7 ')
+            : 'No match details available'}{' '}
         </span>
       </div>
       <div className="flex gap-[8px]">
