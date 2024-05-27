@@ -3,7 +3,10 @@ export interface Competition {
   name: string;
   startDate: string;
   endData: string;
-  matchTypeDetails: { gender: 'string'; type: 'string' };
+  matchTypeDetails: {
+    gender: 'female' | 'male' | 'mix' | 'team';
+    type: 'single' | 'double' | 'team';
+  };
   tier: string;
   location: string;
   imageUrl: string;
