@@ -7,8 +7,8 @@ import NameField from './NameField/NameField';
 import PasswordField from './PasswordField/PasswordField';
 import PhoneField from './PhoneField/PhoneField';
 import ProfileField from './ProfileField/ProfileField';
-import { SignUpForm } from './SignUpForm';
-import { SignUpFormContent } from './SignUpFormContent';
+import SignUpForm from './SignUpForm';
+import SignUpFormContent from './SignUpFormContent';
 
 export {
   BirthField,

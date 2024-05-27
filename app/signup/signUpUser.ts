@@ -10,7 +10,9 @@ export const signUpUser = async (
   formData: FormData,
 ): Promise<SignUpState> => {
   try {
-    const { password, confirmPassword } = signUpSchema.parse(formData);
+    const { phone, password, confirmPassword } = signUpSchema.parse(formData);
+
+    formData.set('phone', phone.replace(/\s+/g, ''));
 
     if (confirmPassword !== password) {
       return {

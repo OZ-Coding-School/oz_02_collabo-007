@@ -1,31 +1,17 @@
 'use server';
 
-import { signInFormSchema } from '@/lib/utils/signInValidation';
+import type { SignInState } from '@/@types/signin';
+import { signInFormSchema } from '@/lib/utils/validation';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
 
-export type State =
-  | {
-      status: 'success';
-      message: string;
-      token: string;
-    }
-  | {
-      status: string;
-      message: string;
-      errors?: Array<{
-        path: string;
-        message: string;
-      }>;
-    }
-  | null;
-
 export async function signInUser(
-  prevState: State | null,
+  prevState: SignInState | null,
   formData: FormData,
-): Promise<State> {
+): Promise<SignInState> {
   try {
-    const { phone, password } = signInFormSchema.parse(formData);
+    const { phone } = signInFormSchema.parse(formData);
+    formData.set('phone', phone.replace(/\s+/g, ''));
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin/`, {
       credentials: 'include',
@@ -33,7 +19,9 @@ export async function signInUser(
       body: formData,
     });
 
-    if (res.status === 400) {
+    const data = await res.json();
+
+    if (!res.ok) {
       return {
         status: 'error',
         message: 'Bad request',
@@ -55,8 +43,6 @@ export async function signInUser(
       value: refreshValue,
       httpOnly: true,
     });
-
-    const data = await res.json();
 
     cookies().set({
       name: 'access',

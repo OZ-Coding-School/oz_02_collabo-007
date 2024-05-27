@@ -11,12 +11,13 @@ export const editUser = async (
   formData: FormData,
 ): Promise<SignUpState> => {
   try {
-    editSchema.parse(formData);
+    const { phone } = editSchema.parse(formData);
+
+    formData.set('phone', phone.replace(/\s+/g, ''));
 
     formData.delete('confirmPassword');
     formData.delete('clubName');
 
-    // 빈 이미지 파일 임시 조건 처리
     const imageChange = formData.get('imageChange');
     if (imageChange === 'false') {
       formData.delete('imageFile');
@@ -47,13 +48,16 @@ export const editUser = async (
     const data = await res.json();
 
     if (!res.ok) {
+      const errorKey = Object.keys(data['errors'])[0];
+      const errorValue = data['errors'][errorKey];
+
       return {
-        status: 'error',
+        status: 'alert',
         message: 'Invalid form data',
         errors: [
           {
-            path: 'total',
-            message: data.message,
+            path: errorKey,
+            message: errorValue,
           },
         ],
       };
