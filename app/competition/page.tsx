@@ -1,10 +1,9 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
-import { data } from '../data';
 import CompList from '@/components/module/CompListSection/CompListSection';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 import Link from 'next/link';
-import { getCompData } from './getCompData';
+import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
 
 const COMP_CATEGORY = [
   { title: '남자 단식', gender: 'male', type: 'single' },
@@ -14,6 +13,33 @@ const COMP_CATEGORY = [
   { title: '혼성 복식', gender: 'mix', type: 'double' },
   { title: '팀', gender: 'team', type: 'team' },
 ];
+
+const COMP_TIER = {
+  name: 'tier',
+  info: [
+    { title: '개나리부', value: '개나리부' },
+    { title: '국화부', value: '국화부' },
+    { title: '브론즈', value: '브론즈' },
+    { title: '실버', value: '실버' },
+  ],
+};
+
+const COMP_STATUS = {
+  name: 'status',
+  info: [
+    { title: '진행 전', value: '진행 전' },
+    { title: '진행 중', value: '진행 중' },
+    { title: '종료', value: '종료' },
+  ],
+};
+
+const COMP_DATA = {
+  name: 'date',
+  info: [
+    { title: '대회일 가까운 순', value: 'closest' },
+    { title: '대회일 먼 순', value: 'furthest' },
+  ],
+};
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { gender, type } = searchParams;
@@ -43,34 +69,9 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
       </div>
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[12px] overflow-y-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <div className="flex gap-[16px]">
-          <div className="flex gap-[4px]">
-            <select name="tier" id="tier">
-              <option value="개나리부">개나리부</option>
-              <option value="국화부">국화부</option>
-            </select>
-            <label htmlFor="tier">
-              <DropdownIcon width={24} height={24} fill="#787878" />
-            </label>
-          </div>
-          <div className="flex gap-[4px]">
-            <select name="status" id="status">
-              <option value="">진행 전</option>
-              <option value="">진행 중</option>
-              <option value="">종료</option>
-            </select>
-            <label htmlFor="status">
-              <DropdownIcon width={24} height={24} fill="#787878" />
-            </label>
-          </div>
-          <div className="flex gap-[4px]">
-            <select name="date" id="date">
-              <option value="">대회일 가까운 순</option>
-              <option value="">대회일 먼 순</option>
-            </select>
-            <label htmlFor="date">
-              <DropdownIcon width={24} height={24} fill="#787878" />
-            </label>
-          </div>
+          <CompListFilter filterOption={COMP_TIER} />
+          <CompListFilter filterOption={COMP_STATUS} />
+          <CompListFilter filterOption={COMP_DATA} />
         </div>
         <div className="flex flex-col">
           <CompList variant="flexCol" compStatus="전체" gender={gender} type={type} />
