@@ -1,14 +1,14 @@
 export interface Competition {
-  id: string;
+  id: number;
   name: string;
-  image: ImageType;
-  date: string;
+  startDate: string;
+  endData: string;
+  matchTypeDetails: { gender: 'string'; type: 'string' };
+  tier: string;
   location: string;
-  category: string;
-  tier: { name: string };
+  imageUrl: string;
   status: string;
-  nextMatch?: NextMatchInfo | null;
-  waiting?: boolean | null;
+  waitingCount: number;
 }
 
 export interface CompetitionProps {
