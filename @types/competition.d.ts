@@ -31,3 +31,22 @@ type ImageType = {
   blurWidth: number;
   blurHeight: number;
 };
+
+export type CompDetailInfo = {
+  id: number;
+  name: string;
+  startDate: string;
+  tier: string;
+  matchTypeDetails: { gender: string; type: string };
+  totalRounds: number;
+  totalSets: null;
+  location: string;
+  address: string;
+  description: string;
+  rule: string;
+  phone: string;
+  siteLink: string;
+  imageUrl: string | null;
+  status: string;
+  waitingCount: number;
+};
