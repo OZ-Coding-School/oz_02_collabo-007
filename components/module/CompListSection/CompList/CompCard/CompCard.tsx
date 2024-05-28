@@ -3,6 +3,7 @@ import CompCardMatchDetail from '@/components/module/CompListSection/CompList/Co
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
 
 const GENDER = { female: '여자', male: '남자', mix: '혼성', team: '' };
 const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
@@ -11,9 +12,10 @@ interface CompCardProps {
   comp: Competition;
   title?: string;
   key: number;
+  currentLocation?: string | null;
 }
 
-const CompCard = ({ comp, title }: CompCardProps) => {
+const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
   return (
     <>
       {comp ? (
@@ -43,7 +45,7 @@ const CompCard = ({ comp, title }: CompCardProps) => {
               </div>
             </div>
           </div>
-          {comp.nextMatch && <CompCardMatchDetail compInfo={comp} />}
+          <CompStatusButton compData={comp} currentLocation={currentLocation} />
         </Link>
       ) : (
         <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">

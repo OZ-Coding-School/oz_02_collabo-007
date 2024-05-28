@@ -1,6 +1,6 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
-import CompList from '@/components/module/CompListSection/CompListSection';
+import CompListSection from '@/components/module/CompListSection/CompListSection';
 import Link from 'next/link';
 import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
 
@@ -16,8 +16,9 @@ const COMP_CATEGORY = [
 
 const COMP_TIER = {
   name: 'tier',
-  defaultOption: '전체',
+
   options: [
+    { title: '전체' },
     { title: '개나리부', value: '개나리부' },
     { title: '국화부', value: '국화부' },
     { title: '브론즈', value: '브론즈' },
@@ -27,8 +28,9 @@ const COMP_TIER = {
 
 const COMP_STATUS = {
   name: 'status',
-  defaultOption: '전체',
+
   options: [
+    { title: '전체' },
     { title: '진행 전', value: '진행 전' },
     { title: '진행 중', value: '진행 중' },
     { title: '종료', value: '종료' },
@@ -79,7 +81,12 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           <CompListFilter filterOption={COMP_DATA} />
         </div>
         <div className="flex flex-col">
-          <CompList variant="flexCol" compStatus="전체" gender={gender} type={type} />
+          <CompListSection
+            variant="flexCol"
+            compStatus="전체"
+            searchParams={searchParams}
+            currentLocation="competition"
+          />
         </div>
       </div>
       <div className="sticky bottom-0 w-full">

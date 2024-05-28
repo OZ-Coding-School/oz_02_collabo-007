@@ -1,21 +1,23 @@
 import Link from 'next/link';
 import React, { HTMLAttributes, Suspense } from 'react';
-import CompList from './CompList/CompList';
+import CompList, { ISearchParams } from './CompList/CompList';
 import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
+
+interface CompListSectionProps {
+  title?: string;
+  compStatus?: string | null;
+  variant?: 'flex' | 'flexCol' | null;
+  currentLocation?: string | null;
+  searchParams?: ISearchParams;
+}
 
 const CompListSection = ({
   title,
   compStatus,
   variant,
-  gender = '',
-  type = '',
-}: {
-  title?: string;
-  compStatus?: string | null;
-  variant?: 'flex' | 'flexCol' | null;
-  gender?: string;
-  type?: string;
-}) => {
+  searchParams,
+  currentLocation,
+}: CompListSectionProps) => {
   return (
     <div className="flex w-full flex-col gap-[12px]">
       {title && (
@@ -31,8 +33,8 @@ const CompListSection = ({
           title={title}
           compStatus={compStatus}
           variant={variant}
-          gender={gender}
-          type={type}
+          searchParams={searchParams}
+          currentLocation={currentLocation}
         />
       </Suspense>
     </div>
