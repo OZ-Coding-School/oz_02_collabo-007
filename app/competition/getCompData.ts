@@ -1,7 +1,8 @@
-import { cookies } from 'next/headers';
+import { ISearchParams } from '@/components/module/CompListSection/CompList/CompList';
 
-export const getCompData = async (gender?: string, type?: string) => {
+export const getCompData = async (searchParams: ISearchParams | undefined) => {
   'use server';
+  const { gender, type } = searchParams ?? {};
 
   const params = new URLSearchParams();
 
