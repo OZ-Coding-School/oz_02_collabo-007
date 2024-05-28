@@ -61,7 +61,9 @@ const CompList = async ({
       {
         <>
           {competitionData.map((comp, index) =>
-            comp.status === compStatus ? <CompCard comp={comp} key={index} /> : null,
+            comp.status === compStatus ? (
+              <CompCard comp={comp} title={title} key={index} />
+            ) : null,
           )}
         </>
       }
