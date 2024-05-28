@@ -11,7 +11,6 @@ const CompButton = ({
   status: string;
   watingCount: number;
 }) => {
-  status = '대기 신청';
   const CompStatus: { [key: string]: { element: JSX.Element; link: string } } = {
     '대회 진행 전': { element: <Button label="대회 신청하기" />, link: `apply` },
     '대회 진행 중': { element: <Button label="대회 현황 보기" />, link: `progress` },

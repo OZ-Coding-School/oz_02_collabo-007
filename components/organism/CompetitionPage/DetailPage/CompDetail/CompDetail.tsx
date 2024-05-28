@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
