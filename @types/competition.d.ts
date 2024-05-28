@@ -13,10 +13,11 @@ export interface Competition {
   status: string;
   waitingCount: number;
   nextMatch?: NextMatchInfo;
+  [key: string]: string | number;
 }
 
 export interface CompetitionProps {
-  compInfo: Competition;
+  compData: Competition;
 }
 
 export type NextMatchInfo = {
