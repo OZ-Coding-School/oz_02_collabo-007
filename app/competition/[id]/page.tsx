@@ -34,8 +34,6 @@ const getCompDetail = async (id: number) => {
 
 const page = async ({ params }: { params: { id: number } }) => {
   const compDetaileData: CompDetailInfo = await getCompDetail(params.id);
-  // console.log(compDetaileData);
-  compDetaileData.status = '대회 진행전';
   return (
     <div className="flex h-full w-full flex-col">
       <HeaderBar title="대회 상세 정보" backBtn />
@@ -45,7 +43,11 @@ const page = async ({ params }: { params: { id: number } }) => {
       <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
         <CompDetail data={compDetaileData} />
 
-        <CompButton id={compDetaileData.id} status={compDetaileData.status} />
+        <CompButton
+          id={compDetaileData.id}
+          status={compDetaileData.status}
+          watingCount={compDetaileData.waitingCount}
+        />
       </div>
     </div>
   );
