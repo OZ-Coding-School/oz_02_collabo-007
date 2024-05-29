@@ -6,7 +6,7 @@ import Button from '@/components/core/Button/Button';
 import { FieldErrors } from 'react-hook-form';
 import { SignUpFormValues } from '@/@types/signup';
 
-interface SignUpDialog {
+interface SignUpDialogProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isAlert: boolean;
@@ -14,7 +14,7 @@ interface SignUpDialog {
   errors: FieldErrors<SignUpFormValues>;
 }
 
-const SignUpDialog: FC<SignUpDialog> = ({
+const SignUpDialog: FC<SignUpDialogProps> = ({
   isOpen,
   setIsOpen,
   isAlert,
