@@ -83,7 +83,7 @@ const ModalContent: React.FC<ModalContentProps> = ({
       >
         {filteredData.length === 0 ? (
           <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
-            클럽을 검색해주세요
+            {`${label}을 해주세요`}
           </span>
         ) : (
           <>
