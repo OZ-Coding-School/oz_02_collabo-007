@@ -8,6 +8,7 @@ export interface ModalProps {
   label: string;
   searchData: ClubSearchData[];
   setSelectedId: Dispatch<SetStateAction<ClubSearchData | null>>;
+  children: React.ReactNode;
 }
 
 export interface ModalContainerProps {

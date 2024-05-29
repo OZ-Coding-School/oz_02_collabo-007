@@ -1,28 +1,46 @@
 'use client';
 
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import XIcon from '@/app/_asset/icons/x.svg';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Input from '@/components/core/Input/Input';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { cn } from '@/lib/utils/cn';
-import type { ModalContainerProps } from '@/@types/modal';
-import useDebounce from '@/lib/hook/useDebounce';
 import type { ClubSearchData } from '@/@types/club';
-import { hangulToJamo } from '@/lib/hook/hangulToJamo';
-import ClubItem from '@/components/organism/SignUpPage/ClubField/ClubItem';
+import useModalContent from '@/lib/hook/useModalContent';
 
-const ModalContainer: FC<ModalContainerProps> = ({
-  handleCloseModal,
+export interface ModalContentProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLDivElement>;
+  type: string;
+  label: string;
+  searchData: ClubSearchData[];
+  setSelectedId: React.Dispatch<React.SetStateAction<ClubSearchData | null>>;
+  children: (props: ClubSearchData) => React.ReactNode;
+}
+
+const ModalContent: React.FC<ModalContentProps> = ({
+  setIsOpen,
   type,
   label,
+  inputRef,
   searchData,
   setSelectedId,
+  children,
 }) => {
-  const [searchValue, setSearchValue] = useState('');
-  const [filteredData, setFilteredData] = useState<ClubSearchData[]>([]);
-  const debounceSearchValue = useDebounce<string>(searchValue, 500);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const {
+    handleCloseModal,
+    searchValue,
+    setSearchValue,
+    searchInputRef,
+    filteredData,
+    handleClubItem,
+  } = useModalContent({
+    setIsOpen,
+    inputRef,
+    searchData,
+    setSelectedId,
+  });
 
   const ModalActionBtn = () => {
     return (
@@ -36,31 +54,6 @@ const ModalContainer: FC<ModalContainerProps> = ({
     );
   };
 
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  useEffect(() => {
-    if (debounceSearchValue === '') {
-      setFilteredData(() => []);
-      return;
-    }
-
-    const filtered: ClubSearchData[] = searchData.filter(({ name }: { name: string }) => {
-      return hangulToJamo(name).includes(hangulToJamo(debounceSearchValue));
-    });
-
-    setFilteredData(() => filtered);
-  }, [debounceSearchValue]);
-
-  const handleClubItem = (selectedId: number) => {
-    const data = searchData.find(
-      ({ id }: { id: number }) => id === selectedId,
-    ) as ClubSearchData;
-    setSelectedId(() => data);
-    handleCloseModal();
-  };
-
   return (
     <>
       <HeaderBar title={label} actionBtn={<ModalActionBtn />} />
@@ -71,7 +64,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
           placeholder={label}
           className="pl-[44px]"
           value={searchValue}
-          ref={inputRef}
+          ref={searchInputRef}
           onChange={(e) => setSearchValue(() => e.target.value)}
         />
 
@@ -94,13 +87,13 @@ const ModalContainer: FC<ModalContainerProps> = ({
           </span>
         ) : (
           <>
-            {filteredData.map(({ id, name, address, imageUrl }) => (
+            {filteredData.map((data) => (
               <div
-                key={id}
+                key={data.id}
                 className="w-full cursor-pointer rounded-[8px] bg-white p-[12px] shadow-card"
-                onClick={() => handleClubItem(id)}
+                onClick={() => handleClubItem(data.id)}
               >
-                <ClubItem name={name} address={address} image={imageUrl} />
+                {children(data)}
               </div>
             ))}
           </>
@@ -110,4 +103,4 @@ const ModalContainer: FC<ModalContainerProps> = ({
   );
 };
 
-export default ModalContainer;
+export default ModalContent;

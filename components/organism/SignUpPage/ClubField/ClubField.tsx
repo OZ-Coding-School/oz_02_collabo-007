@@ -7,7 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import type { Club, ClubSearchData } from '@/@types/club';
 import ClubItem from './ClubItem';
-import Modal from '@/components/core/Modal/Modal';
+import Modal from '@/components/module/Modal/Modal';
 import ModalContent from '@/components/module/ModalContent/ModalContent';
 
 const ClubField = ({
