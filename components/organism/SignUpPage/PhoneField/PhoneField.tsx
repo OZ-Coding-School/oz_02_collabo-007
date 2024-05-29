@@ -2,15 +2,12 @@
 
 import React, { FC, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { cn } from '@/lib/utils/cn';
-import { InputVariants } from '@/components/core/Input/Input';
+import Input from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
-import Error from '@/app/_asset/icons/error-circle.svg';
 import Button from '@/components/core/Button/Button';
-import SuccessIcon from '@/app/_asset/icons/success-circle.svg';
-import WarningIcon from '@/app/_asset/icons/warning-circle.svg';
 import { changePhoneNumber } from '@/lib/utils/changePhoneNumber';
 import { usePathname } from 'next/navigation';
+import HelperText from '@/components/core/HelperText/HelperText';
 
 interface PhoneFieldProps {
   isUnique: boolean;
@@ -79,19 +76,14 @@ const PhoneField: FC<PhoneFieldProps> = ({ phoneData, isUnique, setIsUnique }) =
       <div className="flex-1">
         <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
           <Label label={'휴대폰 번호'} name={'phone'} />
-          <input
+          <Input
             defaultValue={phoneData ? changePhoneNumber(phoneData) : ''}
             {...register('phone')}
+            variant={variant}
+            inputSize={'mdWith'}
             placeholder="숫자만 입력"
-            id="phone"
             readOnly={!!phoneData}
-            className={cn(
-              InputVariants({
-                variant,
-                inputSize: 'mdWith',
-              }),
-              `${isUnique && 'border-success-60'}`,
-            )}
+            className={`${isUnique && 'border-success-60'}`}
             onChange={handleInput}
           />
         </div>
@@ -109,15 +101,13 @@ const PhoneField: FC<PhoneFieldProps> = ({ phoneData, isUnique, setIsUnique }) =
         </div>
       )}
       {errors.phone && (
-        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-error-60">
-          <Error className="h-[16px] w-[16px] fill-error-60" />
-          {errors.phone.message as string}
+        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
+          <HelperText variant="error" helperText={errors.phone.message as string} />
         </div>
       )}
       {isUnique && (
-        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-success-60">
-          <SuccessIcon className="h-[16px] w-[16px] fill-success-60" />
-          사용가능한 휴대폰 번호입니다.
+        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
+          <HelperText variant="success" helperText={'사용가능한 휴대폰 번호입니다.'} />
         </div>
       )}
 
@@ -125,9 +115,11 @@ const PhoneField: FC<PhoneFieldProps> = ({ phoneData, isUnique, setIsUnique }) =
         phonePattern.test(watchPhone) &&
         !isUnique &&
         !errors.phone && (
-          <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px] text-body-3 text-warning-60">
-            <WarningIcon className="h-[16px] w-[16px] fill-warning-60" />
-            휴대폰 중복 검사를 진행해주세요.
+          <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
+            <HelperText
+              variant="warning"
+              helperText={'휴대폰 중복 검사를 진행해주세요.'}
+            />
           </div>
         )}
     </div>

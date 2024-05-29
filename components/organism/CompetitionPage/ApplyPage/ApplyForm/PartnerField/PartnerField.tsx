@@ -19,7 +19,7 @@ const PartnerField = () => {
 
         <Input
           name="partner"
-          inputRef={inputRef}
+          ref={inputRef}
           placeholder="파트너 검색"
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}

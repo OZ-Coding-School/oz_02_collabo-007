@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
-import React, { ButtonHTMLAttributes, FC } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 export const ButtonVariants = cva(
   `w-full h-full flex justify-center items-center self-stretch gap-[8px] rounded-lg outline-none font-pretendard disabled:cursor-not-allowed disabled:opacity-50 box-border`,
@@ -58,28 +58,21 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   label?: string;
-  btnRef?: React.Ref<HTMLButtonElement>;
-  className?: string;
 }
 
-const Button: FC<ButtonProps> = ({
-  label,
-  variant,
-  colors,
-  size,
-  btnRef,
-  className,
-  ...props
-}) => {
-  return (
-    <button
-      className={cn(ButtonVariants({ variant, colors, size }), className)}
-      ref={btnRef}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ label, variant, colors, size, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(ButtonVariants({ variant, colors, size, className }))}
+        {...props}
+      >
+        {label}
+      </button>
+    );
+  },
+);
+Button.displayName = 'Button';
 
 export default Button;

@@ -71,7 +71,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
           placeholder={label}
           className="pl-[44px]"
           value={searchValue}
-          inputRef={inputRef}
+          ref={inputRef}
           onChange={(e) => setSearchValue(() => e.target.value)}
         />
 

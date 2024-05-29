@@ -38,7 +38,7 @@ const ClubField = ({
 
         <Input
           name="clubName"
-          inputRef={inputRef}
+          ref={inputRef}
           placeholder="소속 클럽 검색"
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}

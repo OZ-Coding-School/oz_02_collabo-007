@@ -21,11 +21,9 @@ const InputModule = ({
     <div
       className={`${props.disabled ? 'opacity-30' : ''} flex flex-col items-start gap-[8px] self-stretch`}
     >
-      {label && <Label label={label} disabled={props.disabled} name={props.name} />}
+      {label && <Label label={label} name={props.name} />}
       <Input variant={variant} inputSize={inputSize} {...props} />
-      {helperText && (
-        <HelperText variant={variant} helperText={helperText} disabled={props.disabled} />
-      )}
+      {helperText && <HelperText variant={variant} helperText={helperText} />}
     </div>
   );
 };
