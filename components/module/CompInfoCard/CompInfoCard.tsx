@@ -13,11 +13,13 @@ const CompInfoCard = ({ data }: { data: CompDetailInfo }) => {
   const GENDER: { [key: string]: string } = {
     female: '여자',
     male: '남자',
+    team: '팀',
   };
 
   const CompType: { [key: string]: string } = {
     single: '단식',
     double: '복식',
+    team: '',
   };
 
   return (
