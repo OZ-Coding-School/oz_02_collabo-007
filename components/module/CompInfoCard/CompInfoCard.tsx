@@ -1,51 +1,53 @@
-import React, { FC } from 'react';
+import React from 'react';
 import FlagIcon from '@/app/_asset/icons/flag.svg';
 import CalendarIcon from '@/app/_asset/icons/calendar.svg';
 import MapPinIcon from '@/app/_asset/icons/map-pin.svg';
 import MapIcon from '@/app/_asset/icons/map.svg';
+import type { CompDetailInfo } from '@/@types/competition';
+import CopyButton from '../../core/CopyButton/CopyButton';
 
-interface CompInfoCardProps {
-  data: {
-    id: number;
-    name: string;
-    status: string;
-    startDate: string;
-    matchType: {
-      field: string;
-      type: string;
-    };
-    tier: string;
-    round: string;
-    location: string;
-    address: string;
-    description: string;
-    rule: string;
-    siteLink: string;
+const CompInfoCard = ({ data }: { data: CompDetailInfo }) => {
+  const dataTime = data.startDate;
+  const [date, time] = dataTime.split('T');
+
+  const GENDER: { [key: string]: string } = {
+    female: '여자',
+    male: '남자',
   };
-}
 
-const CompInfoCard: FC<CompInfoCardProps> = ({ data }) => {
+  const CompType: { [key: string]: string } = {
+    single: '단식',
+    double: '복식',
+  };
+
   return (
-    <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
-      <div className="flex gap-[8px]">
+    <div className="flex flex-col gap-[10px] text-body-2 text-gray-80 ">
+      <div className="flex items-center gap-[8px]">
         <CalendarIcon width={16} height={16} fill="#393939" />
-        <span className="flex-1">{data.startDate}</span>
-      </div>
-      <div className="flex gap-[8px]">
-        <FlagIcon width={16} height={16} fill="#393939" />
         <span className="flex-1">
-          {[data.matchType.field, data.matchType.type, data.tier, data.round].join(
-            ' \u00B7 ',
-          )}
+          {date} {time}
         </span>
       </div>
-      <div className="flex gap-[8px]">
+      <div className="flex items-center gap-[8px]">
+        <FlagIcon width={16} height={16} fill="#393939" />
+        <span className="flex-1">
+          {data.matchTypeDetails && data.tier && data.totalRounds
+            ? [
+                `${GENDER[data.matchTypeDetails.gender]} ${CompType[data.matchTypeDetails.type]}`,
+                data.tier,
+                data.totalRounds,
+              ].join(' \u00B7 ')
+            : 'No match details available'}
+        </span>
+      </div>
+      <div className="flex items-center gap-[8px]">
         <MapPinIcon className="h-[16px] w-[16px] fill-gray-80" />
         <span className="flex-1">{data.location}</span>
       </div>
-      <div className="flex gap-[8px]">
-        <MapIcon className="h-[16px] w-[16px] fill-gray-80" />
-        <span className="flex-1">{data.address}</span>
+      <div className="flex items-center justify-start gap-[8px]">
+        <MapIcon className="h-[16px] w-[16px]  fill-gray-80" />
+        <span className="flex ">{data.address}</span>
+        <CopyButton text={data.address} />
       </div>
     </div>
   );

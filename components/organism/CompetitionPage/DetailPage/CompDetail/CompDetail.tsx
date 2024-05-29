@@ -1,33 +1,14 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
+import type { CompDetailInfo } from '@/@types/competition';
 
-interface CompDetailProps {
-  data: {
-    id: number;
-    name: string;
-    status: string;
-    startDate: string;
-    matchType: {
-      field: string;
-      type: string;
-    };
-    tier: string;
-    round: string;
-    location: string;
-    address: string;
-    description: string;
-    rule: string;
-    siteLink: string;
-  };
-}
-
-const CompDetail: FC<CompDetailProps> = ({ data }) => {
+const CompDetail = ({ data }: { data: CompDetailInfo }) => {
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
       <div className="flex w-full flex-col gap-[16px]">
-        <div className="text-headline-3">{data.name}</div>
+        <div className="text-headline-3">{data.name as string}</div>
 
         <CompInfoCard data={data} />
       </div>
