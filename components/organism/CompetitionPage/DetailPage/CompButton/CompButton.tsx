@@ -12,8 +12,8 @@ const CompButton = ({
   watingCount: number;
 }) => {
   const CompStatus: { [key: string]: { element: JSX.Element; link: string } } = {
-    '대회 진행 전': { element: <Button label="대회 신청하기" />, link: `apply` },
-    '대회 진행 중': { element: <Button label="대회 현황 보기" />, link: `progress` },
+    '대회 진행전': { element: <Button label="대회 신청하기" />, link: `apply` },
+    '대회 진행중': { element: <Button label="대회 현황 보기" />, link: `progress` },
     '대회 종료': { element: <Button label="대회 결과보기" />, link: `result` },
     '신청 불가능': {
       element: (
