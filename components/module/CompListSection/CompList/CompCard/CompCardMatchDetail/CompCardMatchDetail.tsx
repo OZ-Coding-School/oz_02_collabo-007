@@ -2,20 +2,20 @@ import CompStatusInfo from '@/components/module/CompListSection/CompList/CompCar
 import NextMatchInfo from '../NextMatchInfo/NextMatchInfo';
 import { CompetitionProps } from '@/@types/competition';
 
-const CompCardMatchDetail = ({ compInfo }: CompetitionProps) => {
+const CompCardMatchDetail = ({ compData }: CompetitionProps) => {
   return (
     <div className="rounded-[8px] bg-gray-20 p-[12px]">
-      {compInfo.status === '진행 전' && (
-        <NextMatchInfo nextMatchInfo={compInfo.nextMatch} status={compInfo.status} />
+      {compData.status === '진행 전' && (
+        <NextMatchInfo nextMatchInfo={compData.nextMatch} status={compData.status} />
       )}
-      {compInfo.status === '진행 중' && (
+      {compData.status === '진행 중' && (
         <div>
-          <CompStatusInfo compInfo={compInfo} />
+          <CompStatusInfo compData={compData} />
           <div className="my-[12px] border-b-[1.5px] border-gray-30"></div>
-          <NextMatchInfo nextMatchInfo={compInfo.nextMatch} />
+          <NextMatchInfo nextMatchInfo={compData.nextMatch} />
         </div>
       )}
-      {compInfo.status === '종료' && <CompStatusInfo compInfo={compInfo} />}
+      {compData.status === '종료' && <CompStatusInfo compData={compData} />}
     </div>
   );
 };

@@ -1,18 +1,23 @@
 export interface Competition {
-  id: string;
+  id: number;
   name: string;
-  image: ImageType;
-  date: string;
+  startDate: string;
+  endData: string;
+  matchTypeDetails: {
+    gender: 'female' | 'male' | 'mix' | 'team';
+    type: 'single' | 'double' | 'team';
+  };
+  tier: string;
   location: string;
-  category: string;
-  tier: { name: string };
+  imageUrl: string;
   status: string;
-  nextMatch?: NextMatchInfo | null;
-  waiting?: boolean | null;
+  waitingCount: number;
+  nextMatch?: NextMatchInfo;
+  [key: string]: string | number;
 }
 
 export interface CompetitionProps {
-  compInfo: Competition;
+  compData: Competition;
 }
 
 export type NextMatchInfo = {

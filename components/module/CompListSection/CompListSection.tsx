@@ -1,17 +1,23 @@
 import Link from 'next/link';
 import React, { HTMLAttributes, Suspense } from 'react';
-import CompList from './CompList/CompList';
+import CompList, { ISearchParams } from './CompList/CompList';
 import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
+
+interface CompListSectionProps {
+  title?: string;
+  compStatus?: string | null;
+  variant?: 'flex' | 'flexCol' | null;
+  currentLocation?: string | null;
+  searchParams?: ISearchParams;
+}
 
 const CompListSection = ({
   title,
   compStatus,
   variant,
-}: {
-  title?: string;
-  compStatus?: string | null;
-  variant?: 'flex' | 'flexCol' | null;
-}) => {
+  searchParams,
+  currentLocation,
+}: CompListSectionProps) => {
   return (
     <div className="flex w-full flex-col gap-[12px]">
       {title && (
@@ -23,7 +29,13 @@ const CompListSection = ({
         </div>
       )}
       <Suspense fallback={<CompListSkeleton title={title} variant={variant} />}>
-        <CompList title={title} compStatus={compStatus} variant={variant} />
+        <CompList
+          title={title}
+          compStatus={compStatus}
+          variant={variant}
+          searchParams={searchParams}
+          currentLocation={currentLocation}
+        />
       </Suspense>
     </div>
   );

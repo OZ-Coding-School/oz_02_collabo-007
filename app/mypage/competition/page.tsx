@@ -25,7 +25,11 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         </div>
       </div>
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
-        <CompListSection compStatus={compStatus} variant="flexCol" />
+        <CompListSection
+          compStatus={compStatus}
+          variant="flexCol"
+          searchParams={searchParams}
+        />
       </div>
     </div>
   );
