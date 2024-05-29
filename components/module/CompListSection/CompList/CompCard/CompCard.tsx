@@ -11,7 +11,6 @@ const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
 interface CompCardProps {
   comp: Competition;
   title?: string;
-  key: number;
   currentLocation?: string | null;
 }
 
