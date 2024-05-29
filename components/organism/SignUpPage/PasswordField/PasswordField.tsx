@@ -43,9 +43,9 @@ const PasswordField = () => {
       <div className="absolute right-[12px] top-[38px]">
         <IconComponent />
       </div>
-      {errors.password && (
+      {typeof errors.password?.message === 'string' && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText variant="error" helperText={errors.password.message as string} />
+          <HelperText variant="error" helperText={errors.password.message} />
         </div>
       )}
     </div>

@@ -8,6 +8,7 @@ import Input from '@/components/core/Input/Input';
 import type { Club, ClubSearchData } from '@/@types/club';
 import ClubItem from './ClubItem';
 import Modal from '@/components/core/Modal/Modal';
+import ModalContent from '@/components/module/ModalContent/ModalContent';
 
 const ClubField = ({
   clubList,
@@ -69,14 +70,20 @@ const ClubField = ({
 
       <AnimatePresence>
         {isOpen && (
-          <Modal
-            setIsOpen={setIsOpen}
-            inputRef={inputRef}
-            type="club"
-            label="클럽 검색"
-            searchData={clubList}
-            setSelectedId={setSelectedId}
-          ></Modal>
+          <Modal setIsOpen={setIsOpen} inputRef={inputRef}>
+            <ModalContent
+              setIsOpen={setIsOpen}
+              inputRef={inputRef}
+              type="club"
+              label="클럽 검색"
+              searchData={clubList}
+              setSelectedId={setSelectedId}
+            >
+              {(data) => (
+                <ClubItem name={data.name} address={data.address} image={data.imageUrl} />
+              )}
+            </ModalContent>
+          </Modal>
         )}
       </AnimatePresence>
     </div>
