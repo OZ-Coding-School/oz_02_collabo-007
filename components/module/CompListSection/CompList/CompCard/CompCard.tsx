@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
+import { formatDate } from '@/lib/utils/formatDate';
 
 const GENDER = { female: '여자', male: '남자', mix: '혼성', team: '' };
 const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
@@ -35,7 +36,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
             <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
               <span>{comp.name}</span>
               <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
-                <span>{comp.startDate.replace('T', ' ')}</span>
+                <span>{formatDate(comp.startDate)}</span>
                 <span>
                   {`${GENDER[comp.matchTypeDetails.gender]} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
                   · {comp.tier}
