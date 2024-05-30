@@ -5,8 +5,10 @@ import InputPassword from './InputPassword';
 import Button from '@/components/core/Button/Button';
 import InputPhone from './InputPhone';
 import HelperText from '@/components/core/HelperText/HelperText';
+import { useFormStatus } from 'react-dom';
 
 const SignInFormContent = () => {
+  const { pending } = useFormStatus();
   const {
     formState: { isValid, errors },
   } = useFormContext();
@@ -29,7 +31,12 @@ const SignInFormContent = () => {
       </div>
       <div className="flex flex-col gap-[12px]">
         <div className="h-12 w-full">
-          <Button variant="primary" label="로그인" type="submit" disabled={!isValid} />
+          <Button
+            variant="primary"
+            label="로그인"
+            type="submit"
+            disabled={!isValid || pending}
+          />
         </div>
         <Link href="/signup">
           <div className="h-12 w-full">
