@@ -5,7 +5,6 @@ import Label from '@/components/core/Label/Label';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { changePhoneNumber } from '@/lib/utils/changePhoneNumber';
-import HelperText from '@/components/core/HelperText/HelperText';
 
 const InputPhone = () => {
   const {
@@ -31,6 +30,7 @@ const InputPhone = () => {
           variant={errors.phone ? 'error' : 'default'}
           className={'p-[12px] text-body-1'}
           onChange={handleInput}
+          type="tel"
         />
       </div>
     </div>
