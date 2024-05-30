@@ -100,9 +100,9 @@ const PhoneField: FC<PhoneFieldProps> = ({ phoneData, isUnique, setIsUnique }) =
           />
         </div>
       )}
-      {errors.phone && (
+      {typeof errors.phone?.message === 'string' && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText variant="error" helperText={errors.phone.message as string} />
+          <HelperText variant="error" helperText={errors.phone.message} />
         </div>
       )}
       {isUnique && (

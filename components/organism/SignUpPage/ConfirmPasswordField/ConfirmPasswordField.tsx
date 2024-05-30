@@ -42,12 +42,9 @@ const ConfirmPasswordField = () => {
       <div className="absolute right-[12px] top-[38px]">
         <IconComponent />
       </div>
-      {errors.confirmPassword && (
+      {typeof errors.confirmPassword?.message === 'string' && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText
-            variant="error"
-            helperText={errors.confirmPassword.message as string}
-          />
+          <HelperText variant="error" helperText={errors.confirmPassword.message} />
         </div>
       )}
     </div>

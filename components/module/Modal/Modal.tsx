@@ -3,17 +3,14 @@
 import useClickOutside from '@/lib/hook/useClickOutsideModal';
 import React, { FC, useRef } from 'react';
 import { motion, useMotionValue, PanInfo } from 'framer-motion';
-import type { ModalProps } from '@/@types/modal';
-import ModalContainer from '@/components/module/ModalContainer/ModalContainer';
 
-const Modal: FC<ModalProps> = ({
-  setIsOpen,
-  inputRef,
-  type,
-  label,
-  searchData,
-  setSelectedId,
-}) => {
+export interface ModalProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLDivElement>;
+  children: React.ReactNode;
+}
+
+const Modal: FC<ModalProps> = ({ setIsOpen, inputRef, children }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const y = useMotionValue(0);
 
@@ -50,13 +47,7 @@ const Modal: FC<ModalProps> = ({
         onDragEnd={handleDragEnd}
         className="relative m-auto flex h-full w-full max-w-[500px] flex-col items-center bg-gray-10"
       >
-        <ModalContainer
-          handleCloseModal={handleCloseModal}
-          type={type}
-          label={label}
-          searchData={searchData}
-          setSelectedId={setSelectedId}
-        ></ModalContainer>
+        {children}
       </motion.div>
     </motion.div>
   );

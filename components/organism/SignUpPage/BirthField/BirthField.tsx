@@ -24,9 +24,9 @@ const BirthField = ({ birthData }: { birthData: number | undefined }) => {
           inputSize={'mdWith'}
         />
       </div>
-      {errors.birth && (
+      {typeof errors.birth?.message === 'string' && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText variant="error" helperText={errors.birth.message as string} />
+          <HelperText variant="error" helperText={errors.birth.message} />
         </div>
       )}
     </div>

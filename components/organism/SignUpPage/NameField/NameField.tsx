@@ -24,9 +24,9 @@ const NameField = ({ nameData }: { nameData: string | undefined }) => {
           inputSize={'mdWith'}
         />
       </div>
-      {errors.username && (
+      {typeof errors.username?.message === 'string' && (
         <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText variant="error" helperText={errors.username.message as string} />
+          <HelperText variant="error" helperText={errors.username.message} />
         </div>
       )}
     </div>

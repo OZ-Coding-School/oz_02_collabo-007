@@ -41,7 +41,7 @@ const ChangePasswordForm = ({
       setIsOpen(() => false);
       router.push('/signin');
     }
-  }, [state, setError]);
+  }, [state, setError, setIsOpen, router]);
 
   return (
     <form

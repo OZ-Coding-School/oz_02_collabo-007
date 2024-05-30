@@ -43,7 +43,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
         <PhoneField
           isUnique={isUnique}
           setIsUnique={setIsUnique}
-          phoneData={userData?.phone as string}
+          phoneData={userData?.phone}
         />
         {userData && setIsOpen ? (
           <div className="flex w-full items-center justify-between text-sub-headline-2">
