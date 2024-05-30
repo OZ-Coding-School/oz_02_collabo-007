@@ -48,11 +48,6 @@ const InputPassword = () => {
           <IconComponent />
         </div>
       </div>
-      {typeof errors.password?.message === 'string' && (
-        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText variant="error" helperText={errors.password.message} />
-        </div>
-      )}
     </div>
   );
 };
