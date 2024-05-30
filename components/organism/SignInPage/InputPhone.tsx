@@ -2,7 +2,7 @@
 
 import Input from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { changePhoneNumber } from '@/lib/utils/changePhoneNumber';
 
@@ -11,7 +11,16 @@ const InputPhone = () => {
     register,
     formState: { errors },
     setValue,
+    setFocus,
   } = useFormContext();
+
+  useEffect(() => {
+    setFocus('phone');
+  }, []);
+
+  if (errors.root?.message) {
+    setFocus('phone');
+  }
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const phoneNumber = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
