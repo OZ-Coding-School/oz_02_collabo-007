@@ -40,6 +40,7 @@ const useSignInForm = () => {
     methods,
     formAction,
     startTransaction,
+    pending,
   };
 };
 
