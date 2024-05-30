@@ -90,26 +90,26 @@ const CompList = async ({
     <div className={cn(CompListVariants({ variant }))}>
       {title === '대회 정보' && (
         <>
-          {sortedArr.map((comp, index) => (
-            <CompCard comp={comp} key={index} currentLocation={currentLocation} />
+          {sortedArr.map((comp) => (
+            <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
           ))}
         </>
       )}
       {!title && compStatus === '전체' && (
         <>
-          {sortedArr.map((comp, index) => (
-            <CompCard comp={comp} key={index} currentLocation={currentLocation} />
+          {sortedArr.map((comp) => (
+            <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
           ))}
         </>
       )}
       {
         <>
-          {sortedArr.map((comp, index) =>
+          {sortedArr.map((comp) =>
             comp.status === compStatus ? (
               <CompCard
                 comp={comp}
                 title={title}
-                key={index}
+                key={comp.id}
                 currentLocation={currentLocation}
               />
             ) : null,
