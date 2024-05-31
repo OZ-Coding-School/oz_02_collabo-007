@@ -5,11 +5,11 @@ import React from 'react';
 const CompButton = ({
   id,
   status,
-  watingCount,
+  waitingCount,
 }: {
   id: number;
   status: string;
-  watingCount: number;
+  waitingCount: number;
 }) => {
   const CompStatus: { [key: string]: { element: JSX.Element; link: string } } = {
     '대회 진행전': { element: <Button label="대회 신청하기" />, link: `apply` },
@@ -23,7 +23,7 @@ const CompButton = ({
     },
     '대기 신청': {
       element: (
-        <Button label={`대기 신청하기 (${watingCount}명 대기 중)`} variant="tertiary" />
+        <Button label={`대기 신청하기 (${waitingCount}명 대기 중)`} variant="tertiary" />
       ),
       link: `apply`,
     },
