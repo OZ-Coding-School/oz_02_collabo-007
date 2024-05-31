@@ -1,46 +1,75 @@
+'use client';
+
 import Button from '@/components/core/Button/Button';
-import InputModule from '@/components/module/InputModule/InputModule';
-import React from 'react';
-import PartnerField from './PartnerField/PartnerField';
+import React, { useEffect, useState, useTransition } from 'react';
+import type { UserData } from '@/@types/user';
+import ApplyFormContent from './ApplyFormContent';
+import { useFormState } from 'react-dom';
+import { applyCompetition } from '@/app/competition/[id]/apply/applyCompetition';
+import { useRouter } from 'next/navigation';
+import { AnimatePresence } from 'framer-motion';
+import Dialog from '@/components/core/Dialog/Dialog';
 
-const ApplyForm = () => {
+export type ApplyState =
+  | {
+      status: 'success';
+      message: string;
+    }
+  | {
+      status: 'error';
+      message: string;
+    }
+  | null;
+
+const ApplyForm = ({
+  userData,
+  competitionId,
+}: {
+  userData: UserData;
+  competitionId: number;
+}) => {
+  const router = useRouter();
+  const [state, formAction] = useFormState<ApplyState, FormData>(applyCompetition, null);
+  const [, startTransaction] = useTransition();
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    if (!state) return;
+
+    if (state.status === 'error') setIsError(() => true);
+
+    if (state.status === 'success') {
+      router.push(`/competition/${competitionId}/success/`);
+    }
+  }, [state, router, competitionId]);
+
   return (
-    <form className="flex flex-1 flex-col">
-      <div className="no-scrollbar flex flex-1 flex-col gap-[16px] overflow-scroll bg-white px-[20px] py-[24px] ">
-        <div className="text-headline-6">참가자 정보</div>
+    <>
+      <form
+        className="flex flex-1 flex-col"
+        action={(formData) => startTransaction(() => formAction(formData))}
+      >
+        <ApplyFormContent userData={userData} competitionId={competitionId} />
+      </form>
 
-        <div className="flex flex-col gap-[24px]">
-          <InputModule
-            label="이름"
-            name="userName"
-            value={'김형섭'}
-            variant="display"
-            readOnly
-          />
-
-          <InputModule
-            label="휴대폰 번호"
-            name="phone"
-            value={'010-1234-1234'}
-            variant="display"
-            readOnly
-          />
-
-          <PartnerField />
-
-          <InputModule
-            label="신청 코드"
-            name="code"
-            type="number"
-            placeholder="신청코드"
-          />
-        </div>
-      </div>
-
-      <div className="w-full bg-white p-[20px]">
-        <Button label="대회 신청하기" />
-      </div>
-    </form>
+      <AnimatePresence mode="wait">
+        {isError && state?.status === 'error' && (
+          <Dialog setIsOpen={setIsError} title="에러">
+            <>
+              <div className="">{state.message}</div>
+              <div className="w-[40%]">
+                <Button
+                  label="확인"
+                  size="sm"
+                  className="bg-error-60"
+                  onClick={() => setIsError(() => false)}
+                />
+              </div>
+            </>
+          </Dialog>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

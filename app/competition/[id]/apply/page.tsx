@@ -1,10 +1,16 @@
+import { getMyData } from '@/app/getMyData';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
 import { ApplyForm } from '@/components/organism/CompetitionPage';
 import React from 'react';
+import { getCompDetail } from '../getCompDetail';
+import type { UserData } from '@/@types/user';
+import type { CompDetailInfo } from '@/@types/competition';
 
-const page = () => {
-  const data = TEST_DATA;
+const page = async ({ params }: { params: { id: number } }) => {
+  const [userData, competitionDetailData]: [UserData, CompDetailInfo] = await Promise.all(
+    [getMyData(), getCompDetail(params.id)],
+  );
 
   return (
     <div className="flex h-full w-full flex-col">
@@ -13,34 +19,15 @@ const page = () => {
       <div className="no-scrollbar flex flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex bg-white px-[20px] py-[24px]">
           <div className="flex w-full flex-col gap-[16px]">
-            <div className="text-headline-3">{data.name}</div>
+            <div className="text-headline-3">{competitionDetailData.name}</div>
 
-            <CompInfoCard data={data} />
+            <CompInfoCard data={competitionDetailData} />
           </div>
         </div>
-
-        <ApplyForm />
+        <ApplyForm userData={userData} competitionId={params.id} />
       </div>
     </div>
   );
 };
 
 export default page;
-
-const TEST_DATA = {
-  id: 1,
-  name: '챔피언스리그',
-  status: '신청가능 --> 좀 더 구체적인 설계 필요할 듯?',
-  startDate: '2024-04-10 14:00',
-  matchType: {
-    field: '남성',
-    type: '복식',
-  },
-  tier: '개나리부',
-  round: '128강',
-  location: '열우물 테니스장',
-  address: '서울시 서초구 강남대로 99길 45',
-  description: '열우물 테니스장에서 열리는 테니스 대회',
-  rule: '대회 규칙',
-  siteLink: '#',
-};

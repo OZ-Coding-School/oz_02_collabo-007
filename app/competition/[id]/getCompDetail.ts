@@ -3,8 +3,7 @@ import { cookies } from 'next/headers';
 export const getCompDetail = async (id: number) => {
   try {
     const cookie = cookies();
-    const token = cookie.get('token');
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const token = cookie.get('access');
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/details/`,
