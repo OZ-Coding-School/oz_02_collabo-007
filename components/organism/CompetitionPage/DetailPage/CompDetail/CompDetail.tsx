@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
@@ -8,8 +9,7 @@ const CompDetail = ({ data }: { data: CompDetailInfo }) => {
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
       <div className="flex w-full flex-col gap-[16px]">
-        <div className="text-headline-3">{data.name as string}</div>
-
+        <div className="text-headline-3">{data.name}</div>
         <CompInfoCard data={data} />
       </div>
 
