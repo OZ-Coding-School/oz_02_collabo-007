@@ -20,7 +20,7 @@ const useSignInForm = () => {
     resolver: zodResolver(signInFormSchema),
   });
 
-  const { setError, setFocus } = methods;
+  const { setError } = methods;
 
   useEffect(() => {
     if (!state) return;
@@ -41,7 +41,6 @@ const useSignInForm = () => {
     formAction,
     startTransaction,
     pending,
-    setFocus,
   };
 };
 

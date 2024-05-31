@@ -11,16 +11,7 @@ const InputPhone = () => {
     register,
     formState: { errors },
     setValue,
-    setFocus,
   } = useFormContext();
-
-  useEffect(() => {
-    setFocus('phone');
-  }, []);
-
-  if (errors.root?.message) {
-    setFocus('phone');
-  }
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const phoneNumber = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
@@ -36,10 +27,11 @@ const InputPhone = () => {
         <Input
           {...register('phone')}
           placeholder="휴대폰번호"
-          variant={errors.phone ? 'error' : 'default'}
+          variant={errors.phone || errors.root ? 'error' : 'default'}
           className={'p-[12px] text-body-1'}
           onChange={handleInput}
           type="tel"
+          enterKeyHint="next"
         />
       </div>
     </div>
