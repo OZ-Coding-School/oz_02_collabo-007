@@ -23,16 +23,16 @@ const SignUpDialog: FC<SignUpDialogProps> = ({
 }) => {
   return (
     <>
-      {isOpen && (
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        {isOpen && (
           <Dialog setIsOpen={setIsOpen} title="비밀번호 변경">
             <ChangePasswordForm setIsOpen={setIsOpen} />
           </Dialog>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
 
-      {errors && isAlert && (
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        {errors && isAlert && (
           <Dialog setIsOpen={setIsAlert} title="에러">
             <>
               <div className="">{Object.values(errors)[0]?.message}</div>
@@ -46,8 +46,8 @@ const SignUpDialog: FC<SignUpDialogProps> = ({
               </div>
             </>
           </Dialog>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -9,6 +9,7 @@ import type { CompDetailInfo } from '@/@types/competition';
 
 const CompDetailSection = async ({ id }: { id: number }) => {
   const compDetailData: CompDetailInfo = await getCompDetail(id);
+  console.log(compDetailData);
 
   return (
     <div className="flex h-full w-full flex-col">
