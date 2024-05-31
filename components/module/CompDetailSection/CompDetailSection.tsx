@@ -12,7 +12,7 @@ const CompDetailSection = async ({ id }: { id: number }) => {
   console.log(compDetailData);
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-full w-full flex-col overflow-scroll">
       <ImageBanner img={compDetailData.imageUrl} />
 
       <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
