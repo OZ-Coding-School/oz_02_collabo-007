@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CompCardSkeleton = ({ title }: { title: string | undefined }) => {
+const CompCardSkeleton = ({ title }: { title?: string }) => {
   return (
     <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
       <div className="flex gap-[16px]">

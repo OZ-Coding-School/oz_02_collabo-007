@@ -3,7 +3,7 @@ import React from 'react';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import Link from 'next/link';
 import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils/cn';
 
 const COMP_CATEGORY = [
   { title: '전체' },
@@ -66,7 +66,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
                   type: option.type,
                 },
               }}
-              className={twMerge(
+              className={cn(
                 'flex items-center justify-center whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-body-2 text-gray-80',
                 gender === option.gender &&
                   type === option.type &&

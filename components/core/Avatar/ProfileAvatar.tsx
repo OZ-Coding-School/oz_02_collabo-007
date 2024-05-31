@@ -6,10 +6,10 @@ interface ProfileAvatarProps {
   image: string | null;
 }
 
-const ProfileAvatar = ({ image = null }: ProfileAvatarProps) => {
+const ProfileAvatar = ({ image }: ProfileAvatarProps) => {
   return (
     <div className="relative flex h-[80px] w-[80px] items-center justify-center overflow-hidden rounded-[50%] bg-gray-20">
-      {image && (
+      {image ? (
         <Image
           src={image}
           fill
@@ -17,8 +17,9 @@ const ProfileAvatar = ({ image = null }: ProfileAvatarProps) => {
           alt="visible"
           style={{ borderRadius: '50%' }}
         />
+      ) : (
+        <UserIcon width={32} height={32} fill="#787878" />
       )}
-      {!image ? <UserIcon width={32} height={32} fill="#787878" /> : null}
     </div>
   );
 };

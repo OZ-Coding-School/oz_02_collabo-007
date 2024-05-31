@@ -3,10 +3,11 @@
 import { FormProvider } from 'react-hook-form';
 import React from 'react';
 import useSignInForm from '@/lib/hook/useSignInForm';
-import SignInFormContent from './SignInFormContent';
+import SignInFormContent from '@/components/organism/SignInPage/SignInFormContent';
+import Loading from '@/app/signin/loading';
 
 const SignInForm = () => {
-  const { methods, startTransaction, formAction } = useSignInForm();
+  const { methods, startTransaction, formAction, pending } = useSignInForm();
 
   return (
     <FormProvider {...methods}>
@@ -16,6 +17,7 @@ const SignInForm = () => {
       >
         <SignInFormContent />
       </form>
+      {pending && <Loading />}
     </FormProvider>
   );
 };

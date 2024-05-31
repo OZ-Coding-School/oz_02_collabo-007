@@ -6,7 +6,6 @@ import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import Label from '@/components/core/Label/Label';
 import { useFormContext } from 'react-hook-form';
 import Input from '@/components/core/Input/Input';
-import HelperText from '@/components/core/HelperText/HelperText';
 
 const InputPassword = () => {
   const {
@@ -48,11 +47,6 @@ const InputPassword = () => {
           <IconComponent />
         </div>
       </div>
-      {typeof errors.password?.message === 'string' && (
-        <div className="absolute bottom-[-20px] left-[15px] flex items-center gap-[4px]">
-          <HelperText variant="error" helperText={errors.password.message} />
-        </div>
-      )}
     </div>
   );
 };

@@ -4,13 +4,17 @@ import { useFormContext } from 'react-hook-form';
 import InputPassword from './InputPassword';
 import Button from '@/components/core/Button/Button';
 import InputPhone from './InputPhone';
-import Error from '@/app/_asset/icons/error-circle.svg';
-import { ErrorMessage } from '@hookform/error-message';
+import HelperText from '@/components/core/HelperText/HelperText';
+import { useFormStatus } from 'react-dom';
 
 const SignInFormContent = () => {
+  const { pending } = useFormStatus();
   const {
     formState: { isValid, errors },
   } = useFormContext();
+
+  const errorMessage =
+    errors.phone?.message || errors.password?.message || errors.root?.message;
 
   return (
     <>
@@ -18,17 +22,21 @@ const SignInFormContent = () => {
         <div className="relative flex flex-col gap-[28px]">
           <InputPhone />
           <InputPassword />
-          {errors.root && (
-            <div className="absolute bottom-[-50px] left-1/2 flex -translate-x-1/2 transform items-center gap-[4px] text-body-3 text-error-60">
-              <Error className="h-[16px] w-[16px] fill-error-60" />
-              <ErrorMessage errors={errors} name="root" />
+          {typeof errorMessage === 'string' && (
+            <div className="absolute bottom-[-35px] flex items-center gap-[4px] text-body-3">
+              <HelperText variant="error" helperText={errorMessage} />
             </div>
           )}
         </div>
       </div>
       <div className="flex flex-col gap-[12px]">
         <div className="h-12 w-full">
-          <Button variant="primary" label="로그인" type="submit" disabled={!isValid} />
+          <Button
+            variant="primary"
+            label="로그인"
+            type="submit"
+            disabled={!isValid || pending}
+          />
         </div>
         <Link href="/signup">
           <div className="h-12 w-full">

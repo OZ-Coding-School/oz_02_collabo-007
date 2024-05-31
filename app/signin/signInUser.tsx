@@ -25,7 +25,9 @@ export async function signInUser(
       return {
         status: 'error',
         message: 'Bad request',
-        errors: [{ path: 'root', message: '아이디 혹은 비밀번호가 틀렸습니다.' }],
+        errors: [
+          { path: 'root', message: '아이디 혹은 비밀번호를 잘못 입력하였습니다.' },
+        ],
       };
     }
 
