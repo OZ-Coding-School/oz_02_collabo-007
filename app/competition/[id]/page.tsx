@@ -5,7 +5,7 @@ import CompDetailSkeleton from '@/components/core/Skeleton/CompDetailSkeleton';
 
 const page = async ({ params }: { params: { id: number } }) => {
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-full w-full flex-col overflow-scroll">
       <HeaderBar title="대회 상세 정보" backBtn />
       <Suspense fallback={<CompDetailSkeleton />}>
         <CompDetailSection id={params.id}></CompDetailSection>
