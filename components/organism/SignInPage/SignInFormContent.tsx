@@ -22,11 +22,11 @@ const SignInFormContent = () => {
         <div className="relative flex flex-col gap-[28px]">
           <InputPhone />
           <InputPassword />
-          <div className="absolute bottom-[-35px] flex items-center gap-[4px] text-body-3">
-            {typeof errorMessage === 'string' && (
+          {typeof errorMessage === 'string' && (
+            <div className="absolute bottom-[-35px] flex items-center gap-[4px] text-body-3">
               <HelperText variant="error" helperText={errorMessage} />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="flex flex-col gap-[12px]">

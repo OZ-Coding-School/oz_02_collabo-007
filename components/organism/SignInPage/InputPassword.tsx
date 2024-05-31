@@ -6,7 +6,6 @@ import VisibleOffIcon from '@/app/_asset/icons/visible-off.svg';
 import Label from '@/components/core/Label/Label';
 import { useFormContext } from 'react-hook-form';
 import Input from '@/components/core/Input/Input';
-import HelperText from '@/components/core/HelperText/HelperText';
 
 const InputPassword = () => {
   const {
