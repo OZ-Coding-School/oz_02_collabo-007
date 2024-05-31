@@ -1,9 +1,14 @@
 import React from 'react';
+import ImageIcon from '@/app/_asset/icons/image.svg';
 
 const CompDetailSkeleton = () => {
   return (
     <>
-      <div className="skeleton h-[200px] w-full bg-gray-20"></div>
+      <div className="skeleton flex h-[200px] w-full items-center justify-center bg-gray-20">
+        <div className="h-[50px] w-[50px]">
+          <ImageIcon className="skeleton h-[50px] w-[50px]"></ImageIcon>
+        </div>
+      </div>
       <div className="no-scrollbar flex flex-1 flex-col items-start gap-[26px] overflow-scroll px-[20px] py-[24px]">
         <div className="flex h-[full] w-[full] flex-col gap-[20px]">
           <div className="skeleton h-[30px] w-[250px] rounded-[2px] bg-gray-20"></div>

@@ -8,7 +8,6 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
 
   if (gender) params.append('gender', gender);
   if (type) params.append('matchType', type);
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/?${params.toString()}`,
     {
