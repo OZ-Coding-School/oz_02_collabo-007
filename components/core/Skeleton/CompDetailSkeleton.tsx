@@ -1,12 +1,12 @@
 import React from 'react';
-import ImageIcon from '@/app/_asset/icons/image.svg';
+import TennisIcon from '@/app/_asset/icons/tennis-ball.svg';
 
 const CompDetailSkeleton = () => {
   return (
     <>
       <div className="skeleton flex h-[200px] w-full items-center justify-center bg-gray-20">
         <div className="h-[50px] w-[50px]">
-          <ImageIcon className="skeleton h-[50px] w-[50px]"></ImageIcon>
+          <TennisIcon className="skeleton h-[40px] w-[40px]"></TennisIcon>
         </div>
       </div>
       <div className="no-scrollbar flex flex-1 flex-col items-start gap-[26px] overflow-scroll px-[20px] py-[24px]">
