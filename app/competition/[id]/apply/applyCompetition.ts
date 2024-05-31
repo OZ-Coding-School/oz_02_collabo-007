@@ -28,7 +28,6 @@ export const applyCompetition = async (
     );
 
     const data = await res.json();
-    console.log('data', data);
 
     if (!res.ok) {
       return {
@@ -44,7 +43,7 @@ export const applyCompetition = async (
   } catch (error) {
     return {
       status: 'error',
-      message: '서버 에러',
+      message: 'Error occurred on the server. Please try again later.',
     };
   }
 };
