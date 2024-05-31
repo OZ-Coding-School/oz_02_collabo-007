@@ -1,5 +1,5 @@
 'use server';
-import { ApplyState } from '@/components/organism/CompetitionPage/ApplyPage/ApplyForm/ApplyForm';
+import { ApplyState } from '@/lib/hook/useApplyForm';
 import { cookies } from 'next/headers';
 
 export const applyCompetition = async (
