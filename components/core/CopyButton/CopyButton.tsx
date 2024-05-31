@@ -30,7 +30,7 @@ const CopyButton = ({ text }: { text: string }) => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <div className="absolute bottom-[24px] left-[20px] z-50 w-[460px]">
+          <div className="absolute bottom-[24px] left-0 z-50 w-full px-[20px]">
             <CopyModal />
           </div>
         )}
