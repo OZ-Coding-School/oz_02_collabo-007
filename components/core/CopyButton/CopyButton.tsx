@@ -13,7 +13,7 @@ const CopyButton = ({ text }: { text: string }) => {
       setIsOpen(true);
       setTimeout(() => {
         setIsOpen(false);
-      }, 1000);
+      }, 1500);
     } catch (error) {
       console.log(error);
     }
@@ -28,13 +28,13 @@ const CopyButton = ({ text }: { text: string }) => {
       >
         <CopyIcon className=" h-[16px] w-[16px] cursor-pointer fill-gray-80" />
       </div>
-      {isOpen && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {isOpen && (
           <div className="absolute bottom-[24px] left-[20px] z-50 w-[460px]">
             <CopyModal />
           </div>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 };
