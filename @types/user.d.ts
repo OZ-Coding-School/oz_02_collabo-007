@@ -23,3 +23,10 @@ export type UserData = {
     [key: string]: string | null;
   };
 };
+
+export type PartnerData = {
+  id: number;
+  username: string;
+  imageUrl: string | null;
+  club: Club | null;
+};
