@@ -1,22 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import XIcon from '@/app/_asset/icons/x.svg';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Input from '@/components/core/Input/Input';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { cn } from '@/lib/utils/cn';
-import type { ClubSearchData } from '@/@types/club';
-import useModalContent from '@/lib/hook/useModalContent';
+import useDebounce from '@/lib/hook/useDebounce';
 
 export interface ModalContentProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   inputRef: React.RefObject<HTMLDivElement>;
   type: string;
   label: string;
-  searchData: ClubSearchData[];
-  setSelectedId: React.Dispatch<React.SetStateAction<ClubSearchData | null>>;
-  children: (props: ClubSearchData) => React.ReactNode;
+  children: (props: string) => React.ReactNode;
 }
 
 const ModalContent: React.FC<ModalContentProps> = ({
@@ -24,23 +21,20 @@ const ModalContent: React.FC<ModalContentProps> = ({
   type,
   label,
   inputRef,
-  searchData,
-  setSelectedId,
   children,
 }) => {
-  const {
-    handleCloseModal,
-    searchValue,
-    setSearchValue,
-    searchInputRef,
-    filteredData,
-    handleClubItem,
-  } = useModalContent({
-    setIsOpen,
-    inputRef,
-    searchData,
-    setSelectedId,
-  });
+  const [searchValue, setSearchValue] = useState('');
+  const debounceSearchValue = useDebounce<string>(searchValue, 500);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleCloseModal = () => {
+    inputRef.current?.blur();
+    setIsOpen((prev: boolean) => !prev);
+  };
+
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
 
   const ModalActionBtn = () => {
     return (
@@ -77,27 +71,11 @@ const ModalContent: React.FC<ModalContentProps> = ({
       </div>
       <div
         className={cn(
-          'flex flex-1 flex-col items-center self-stretch text-body-2',
+          'no-scrollbar flex h-full w-full flex-1 flex-col items-center self-stretch overflow-scroll bg-white px-[20px] py-[24px] text-body-2',
           `${type === 'club' ? 'gap-[16px] px-[20px] py-[24px]' : 'py-[12px]'}`,
         )}
       >
-        {filteredData.length === 0 ? (
-          <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
-            {`${label}을 해주세요`}
-          </span>
-        ) : (
-          <>
-            {filteredData.map((data) => (
-              <div
-                key={data.id}
-                className="w-full cursor-pointer rounded-[8px] bg-white p-[12px] shadow-card"
-                onClick={() => handleClubItem(data.id)}
-              >
-                {children(data)}
-              </div>
-            ))}
-          </>
-        )}
+        {children(debounceSearchValue)}
       </div>
     </>
   );
