@@ -20,16 +20,18 @@ import type { UserData } from '@/@types/user';
 export interface SignUpFormContentProps {
   clubList: ClubSearchData[];
   userData?: UserData;
-  setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setIsChangePassword?: Dispatch<SetStateAction<boolean>>;
 }
 
 const SignUpFormContent: FC<SignUpFormContentProps> = ({
   clubList,
   userData = null,
-  setIsOpen,
+  setIsChangePassword,
 }) => {
   const { pending } = useFormStatus();
+  const [isOpen, setIsOpen] = useState(false);
   const [isUnique, setIsUnique] = useState(false);
+
   const {
     formState: { isValid },
   } = useFormContext();
@@ -45,7 +47,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           setIsUnique={setIsUnique}
           phoneData={userData?.phone}
         />
-        {userData && setIsOpen ? (
+        {userData && setIsChangePassword ? (
           <div className="flex w-full items-center justify-between text-sub-headline-2">
             <div>비밀번호</div>
             <div>
@@ -54,7 +56,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
                 variant="tertiary"
                 size="sm"
                 type="button"
-                onClick={() => setIsOpen(() => true)}
+                onClick={() => setIsChangePassword(() => true)}
               />
             </div>
           </div>
@@ -67,7 +69,12 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
         <NameField nameData={userData?.username} />
         <GenderField exitGender={userData?.gender} />
         <BirthField birthData={userData?.birth} />
-        <ClubField clubList={clubList} clubData={userData?.club} />
+        <ClubField
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          clubList={clubList}
+          clubData={userData?.club}
+        />
 
         <div className="w-full py-[20px]">
           {userData ? (
@@ -76,7 +83,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
             <Button
               label="회원 가입"
               type="submit"
-              disabled={!isUnique || pending || !isValid}
+              disabled={!isUnique || pending || !isValid || isOpen}
             />
           )}
         </div>

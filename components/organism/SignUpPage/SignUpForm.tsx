@@ -21,8 +21,8 @@ const SignUpForm = ({
     formAction,
     errors,
     startTransaction,
-    isOpen,
-    setIsOpen,
+    isChangePassword,
+    setIsChangePassword,
   } = useSignUpForm(userData);
 
   return (
@@ -32,14 +32,14 @@ const SignUpForm = ({
           <SignUpFormContent
             clubList={clubList}
             userData={userData}
-            setIsOpen={setIsOpen}
+            setIsChangePassword={setIsChangePassword}
           />
         </form>
       </FormProvider>
 
       <SignUpDialog
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isChangePassword={isChangePassword}
+        setIsChangePassword={setIsChangePassword}
         isAlert={isAlert}
         setIsAlert={setIsAlert}
         errors={errors}

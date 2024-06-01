@@ -15,7 +15,7 @@ const useSignUpForm = (userData: UserData | undefined) => {
   const fn = userData ? editUser : signUpUser;
   const [state, formAction] = useFormState<SignUpState, FormData>(fn, null);
   const [pending, startTransaction] = useTransition();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isChangePassword, setIsChangePassword] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
 
   const methods = useForm<SignUpFormValues>({
@@ -50,8 +50,8 @@ const useSignUpForm = (userData: UserData | undefined) => {
     formAction,
     errors,
     state,
-    isOpen,
-    setIsOpen,
+    isChangePassword,
+    setIsChangePassword,
     pending,
     startTransaction,
   };

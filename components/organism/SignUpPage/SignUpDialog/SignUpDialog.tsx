@@ -7,16 +7,16 @@ import { FieldErrors } from 'react-hook-form';
 import { SignUpFormValues } from '@/@types/signup';
 
 interface SignUpDialogProps {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isChangePassword: boolean;
+  setIsChangePassword: Dispatch<SetStateAction<boolean>>;
   isAlert: boolean;
   setIsAlert: Dispatch<SetStateAction<boolean>>;
   errors: FieldErrors<SignUpFormValues>;
 }
 
 const SignUpDialog: FC<SignUpDialogProps> = ({
-  isOpen,
-  setIsOpen,
+  isChangePassword,
+  setIsChangePassword,
   isAlert,
   setIsAlert,
   errors,
@@ -24,9 +24,9 @@ const SignUpDialog: FC<SignUpDialogProps> = ({
   return (
     <>
       <AnimatePresence mode="wait">
-        {isOpen && (
-          <Dialog setIsOpen={setIsOpen} title="비밀번호 변경">
-            <ChangePasswordForm setIsOpen={setIsOpen} />
+        {isChangePassword && (
+          <Dialog setIsOpen={setIsChangePassword} title="비밀번호 변경">
+            <ChangePasswordForm setIsOpen={setIsChangePassword} />
           </Dialog>
         )}
       </AnimatePresence>
