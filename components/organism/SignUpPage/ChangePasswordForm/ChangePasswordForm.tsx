@@ -8,8 +8,8 @@ import { FieldPath, useForm } from 'react-hook-form';
 import ChangePasswordField from './ChangePasswordField/ChangePasswordField';
 import type { PasswordState, PasswordValues } from '@/@types/password';
 import Button from '@/components/core/Button/Button';
-import { changePassword } from '@/app/mypage/edit/changePassword';
 import { useRouter } from 'next/navigation';
+import { changePassword } from '@/app/_actions/changePassword';
 
 const ChangePasswordForm = ({
   setIsOpen,

@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { SignUpForm } from '@/components/organism/SignUpPage';
 import type { ClubSearchData } from '@/@types/club';
-import { getClubList } from './getClubList';
+import { getClubList } from '../_actions/getClubList';
 
 const page = async () => {
   const clubList: ClubSearchData[] = await getClubList();

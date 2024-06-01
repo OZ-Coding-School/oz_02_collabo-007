@@ -1,4 +1,4 @@
-import { applyCompetition } from '@/app/competition/[id]/apply/applyCompetition';
+import { applyCompetition } from '@/app/_actions/applyCompetition';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useTransition } from 'react';
 import { useFormState } from 'react-dom';

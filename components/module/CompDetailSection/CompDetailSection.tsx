@@ -1,11 +1,11 @@
 import React from 'react';
-import { getCompDetail } from '../../../app/competition/[id]/getCompDetail';
 import {
   CompButton,
   CompDetail,
   ImageBanner,
 } from '@/components/organism/CompetitionPage';
 import type { CompDetailInfo } from '@/@types/competition';
+import { getCompDetail } from '@/app/_actions/getCompDetail';
 
 const CompDetailSection = async ({ id }: { id: number }) => {
   const compDetailData: CompDetailInfo = await getCompDetail(id);

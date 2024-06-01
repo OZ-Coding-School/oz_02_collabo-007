@@ -1,4 +1,4 @@
-import getPartner from '@/app/competition/[id]/apply/getPartner';
+import getPartner from '@/app/_actions/getPartner';
 
 export async function GET(request: Request, { params }: { params: { id: number } }) {
   const { searchParams } = new URL(request.url);

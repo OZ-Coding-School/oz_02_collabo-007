@@ -1,11 +1,11 @@
-import { getMyData } from '@/app/getMyData';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
 import { ApplyForm } from '@/components/organism/CompetitionPage';
 import React from 'react';
-import { getCompDetail } from '../getCompDetail';
 import type { UserData } from '@/@types/user';
 import type { CompDetailInfo } from '@/@types/competition';
+import { getCompDetail } from '@/app/_actions/getCompDetail';
+import { getMyData } from '@/app/_actions/getMyData';
 
 const page = async ({ params }: { params: { id: number } }) => {
   const [userData, competitionDetailData]: [UserData, CompDetailInfo] = await Promise.all(
