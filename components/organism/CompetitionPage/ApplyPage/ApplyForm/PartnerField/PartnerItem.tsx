@@ -1,40 +1,60 @@
 import { cn } from '@/lib/utils/cn';
-import Image, { StaticImageData } from 'next/image';
-import React, { FC } from 'react';
+import Image from 'next/image';
+import React from 'react';
 import XIcon from '@/app/_asset/icons/x.svg';
+import UserIcon from '@/app/_asset/icons/user.svg';
 
-interface Props {
+interface PartnerItemProps {
   name: string;
-  clubName: string;
-  image: StaticImageData;
+  clubName?: string;
+  image: string | null;
+  handleDelete?: () => void;
   displayMode?: boolean;
 }
 
-const PartnerItem: FC<Props> = ({ name, clubName, image, displayMode = false }) => {
+const PartnerItem = ({
+  name,
+  clubName,
+  image,
+  handleDelete,
+  displayMode = false,
+}: PartnerItemProps) => {
   return (
     <div
       className={cn(
         `${displayMode && 'bg-gray-20'}`,
-        'flex w-full items-center gap-[12px] self-stretch rounded-[8px] px-[20px] py-[12px] ',
+        'flex w-full items-center gap-[16px] self-stretch rounded-[8px]',
       )}
     >
-      <div className="relative h-[32px] w-[32px] overflow-hidden rounded-full">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          sizes="w-[56px] h-[56px]"
-          className="rounded-[8px] object-cover"
-        />
+      <div className="flex w-full flex-1 items-center gap-[12px] rounded-[8px]">
+        <div className="relative h-[32px] w-[32px] overflow-hidden rounded-full">
+          {image ? (
+            <Image
+              src={image}
+              alt={name}
+              fill
+              sizes="w-[56px] h-[56px]"
+              className="rounded-[8px] object-cover"
+              priority
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gray-30">
+              <UserIcon className="h-[50%] w-[50%] fill-gray-60" />
+            </div>
+          )}
+        </div>
+        <div className="flex flex-1 items-center gap-[4px] text-body-2 text-gray-80">
+          <div>{name}</div>
+          {clubName && <div>{`(${clubName})`}</div>}
+        </div>
       </div>
-      <div className="flex flex-1 items-center gap-[4px] text-body-2 text-gray-80">
-        <div>{name}</div>
-        <div>({clubName})</div>
-      </div>
-      {displayMode && (
-        <div>
+
+      {displayMode ? (
+        <div onClick={handleDelete}>
           <XIcon width={20} height={20} fill="#393939" />
         </div>
+      ) : (
+        <div className="flex items-center justify-center px-[12px] py-[6px]">선택</div>
       )}
     </div>
   );

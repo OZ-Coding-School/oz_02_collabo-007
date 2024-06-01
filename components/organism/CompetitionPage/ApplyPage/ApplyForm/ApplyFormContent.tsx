@@ -4,8 +4,9 @@ import Button from '@/components/core/Button/Button';
 import Input from '@/components/core/Input/Input';
 import Label from '@/components/core/Label/Label';
 import { changePhoneNumber } from '@/lib/utils/changePhoneNumber';
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormStatus } from 'react-dom';
+import PartnerField from './PartnerField/PartnerField';
 
 const ApplyFormContent = ({
   userData,
@@ -15,6 +16,7 @@ const ApplyFormContent = ({
   competitionId: number;
 }) => {
   const { pending } = useFormStatus();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -36,7 +38,11 @@ const ApplyFormContent = ({
             />
           </div>
 
-          {/* <PartnerField /> */}
+          <PartnerField
+            competitionId={competitionId}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
 
           <div className="flex flex-col gap-[8px]">
             <Label label="신청 코드" name="code" />
@@ -47,7 +53,7 @@ const ApplyFormContent = ({
       </div>
 
       <div className="w-full bg-white p-[20px]">
-        <Button label="대회 신청하기" type="submit" disabled={pending} />
+        <Button label="대회 신청하기" type="submit" disabled={pending || isOpen} />
       </div>
     </>
   );

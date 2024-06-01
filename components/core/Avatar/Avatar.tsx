@@ -3,11 +3,11 @@ import Image from 'next/image';
 import UserIcon from '@/app/_asset/icons/user.svg';
 
 interface AvatarProps {
-  name: string;
+  name?: string;
   image?: string | null;
 }
 
-const Avatar: FC<AvatarProps> = ({ image = null, name }) => {
+const Avatar: FC<AvatarProps> = ({ image = null, name = null }) => {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-[8px]">
       <div className="relative h-[64px] w-[64px] overflow-hidden rounded-full">
@@ -19,7 +19,7 @@ const Avatar: FC<AvatarProps> = ({ image = null, name }) => {
           <Image src={image} alt="avatar" fill sizes="64px" />
         )}
       </div>
-      <div className="w-full text-center text-sub-headline-2">{name}</div>
+      {name && <div className="w-full text-center text-sub-headline-2">{name}</div>}
     </div>
   );
 };
