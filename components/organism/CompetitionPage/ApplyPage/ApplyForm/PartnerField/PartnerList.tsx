@@ -2,6 +2,7 @@ import React from 'react';
 import PartnerItem from './PartnerItem';
 import usePartnerList from '@/lib/hook/usePartnerList';
 import type { PartnerData } from '@/@types/user';
+import TennisIcon from '@/app/_asset/icons/tennis-ball.svg';
 
 export interface PartnerListProps {
   id: number;
@@ -16,12 +17,20 @@ const PartnerList = ({
   setSelectedId,
   handleCloseModal,
 }: PartnerListProps) => {
-  const { filteredData, handlePartnerItem } = usePartnerList({
+  const { filteredData, handlePartnerItem, isLoading } = usePartnerList({
     id,
     debounceSearchValue,
     setSelectedId,
     handleCloseModal,
   });
+
+  if (isLoading) {
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <TennisIcon className="tennis-loader" />
+      </div>
+    );
+  }
 
   return (
     <>

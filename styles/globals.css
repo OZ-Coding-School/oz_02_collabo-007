@@ -93,3 +93,23 @@ select::-ms-expend {
   stroke-linecap: round;
   fill: transparent;
 }
+
+.tennis-loader {
+  width: 45px;
+  height: 45px;
+  box-sizing: content-box;
+  border-radius: 100%;
+  position: relative;
+  animation: 1s starRotate linear infinite;
+}
+@keyframes starRotate {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+  }
+}

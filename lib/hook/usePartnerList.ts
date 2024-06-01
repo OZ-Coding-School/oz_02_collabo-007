@@ -9,6 +9,7 @@ const usePartnerList = ({
   handleCloseModal,
 }: PartnerListProps) => {
   const [filteredData, setFilteredData] = useState<PartnerData[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (debounceSearchValue === '') {
@@ -17,9 +18,11 @@ const usePartnerList = ({
     }
 
     const filterPartner = async () => {
+      setIsLoading(() => true);
       const res = await fetch(`/api/${id}/search?query=${debounceSearchValue}`);
       const data = await res.json();
       setFilteredData(() => data);
+      setIsLoading(() => false);
     };
 
     filterPartner();
@@ -33,7 +36,7 @@ const usePartnerList = ({
     handleCloseModal();
   };
 
-  return { filteredData, handlePartnerItem };
+  return { filteredData, handlePartnerItem, isLoading };
 };
 
 export default usePartnerList;
