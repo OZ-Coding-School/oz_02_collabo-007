@@ -7,8 +7,8 @@ const getPartner = async (query: string, id: number) => {
     const token = cookie.get('access');
 
     const params = new URLSearchParams();
-
     params.append('query', query);
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/partnersearch/?${params.toString()}`,
       {
@@ -20,7 +20,6 @@ const getPartner = async (query: string, id: number) => {
       },
     );
     const data = await res.json();
-    console.log('data', data);
 
     return data;
   } catch (error) {
