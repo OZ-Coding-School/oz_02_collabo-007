@@ -13,6 +13,8 @@ export const getCompDetail = async (id: number) => {
         headers: {
           Authorization: token ? `Bearer ${token.value}` : '',
         },
+        cache: 'force-cache',
+        next: { tags: [`competition-detail-${id}`] },
       },
     );
     const data = await res.json();
