@@ -2,7 +2,7 @@ import React from 'react';
 import PartnerItem from './PartnerItem';
 import usePartnerList from '@/lib/hook/usePartnerList';
 import type { PartnerData } from '@/@types/user';
-import TennisIcon from '@/app/_asset/icons/tennis-ball.svg';
+import LoadingTennisBall from '@/components/core/LoadingTennisBall/LoadingTennisBall';
 
 export interface PartnerListProps {
   id: number;
@@ -25,11 +25,7 @@ const PartnerList = ({
   });
 
   if (isLoading) {
-    return (
-      <div className="flex h-full w-full items-center justify-center">
-        <TennisIcon className="tennis-loader" />
-      </div>
-    );
+    return <LoadingTennisBall />;
   }
 
   return (
