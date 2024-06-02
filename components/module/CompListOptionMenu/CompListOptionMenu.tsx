@@ -11,19 +11,19 @@ const CompListOptionMenuVariants = cva('flex items-center justify-center text-bo
       underBar: `h-[32px] flex-1`,
     },
     selected: {
-      true: 'bg-primary-10 text-primary-60 border-b-[2px] border-primary-60',
+      true: 'bg-primary-10 text-primary-60 border-primary-60',
       false: 'text-gray-80',
     },
   },
   compoundVariants: [
     {
       variant: 'round',
-      selected: 'true',
+      selected: true,
       class: 'bg-primary-10 text-primary-60',
     },
     {
       variant: 'underBar',
-      selected: 'true',
+      selected: true,
       class: 'border-b-[2px] border-primary-60 text-primary-60',
     },
   ],
@@ -31,58 +31,38 @@ const CompListOptionMenuVariants = cva('flex items-center justify-center text-bo
 
 interface CompListOptionMenuProps
   extends VariantProps<typeof CompListOptionMenuVariants> {
-  options: any[];
   pathName: string;
-  query: any;
-  gender?: string;
-  type?: string;
+  title: string;
+  query?: { [key: string]: string | undefined };
+  isSelected: boolean;
   compStatus?: string;
 }
 
 const CompListOptionMenu = ({
-  options,
   pathName,
   query,
   variant,
-  gender,
-  type,
-  compStatus,
+  isSelected,
+  title,
 }: CompListOptionMenuProps) => {
   return (
     <>
-      {options.map((option, index) => {
-        const isSelected =
-          variant === 'round'
-            ? gender === option.gender && type === option.type
-            : compStatus === option.title;
-        const dynamicQuery = {
-          ...query,
-          title: option.title,
-          gender: option.gender,
-          type: option.type,
-        };
-
-        return (
-          <Link
-            href={{
-              pathname: pathName,
-              query: variant === 'round' ? dynamicQuery : { status: option.title },
-            }}
-            className={cn(
-              CompListOptionMenuVariants({
-                variant,
-                selected: isSelected ? 'true' : 'false',
-              }),
-            )}
-            key={index}
-            replace
-          >
-            {option.title}
-          </Link>
-        );
-      })}
+      <Link
+        href={{
+          pathname: pathName,
+          query: query,
+        }}
+        className={cn(
+          CompListOptionMenuVariants({
+            variant,
+            selected: isSelected ? true : false,
+          }),
+        )}
+        replace
+      >
+        {title}
+      </Link>
     </>
   );
 };
-
 export default CompListOptionMenu;
