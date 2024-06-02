@@ -24,7 +24,11 @@ const page = async ({ params }: { params: { id: number } }) => {
             <CompInfoCard data={competitionDetailData} />
           </div>
         </div>
-        <ApplyForm userData={userData} competitionId={params.id} />
+        <ApplyForm
+          userData={userData}
+          competitionId={params.id}
+          matchType={competitionDetailData.matchTypeDetails.type}
+        />
       </div>
     </div>
   );

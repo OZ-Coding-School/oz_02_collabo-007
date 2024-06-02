@@ -11,12 +11,16 @@ import PartnerField from './PartnerField/PartnerField';
 const ApplyFormContent = ({
   userData,
   competitionId,
+  matchType,
 }: {
   userData: UserData;
   competitionId: number;
+  matchType: string;
 }) => {
   const { pending } = useFormStatus();
   const [isOpen, setIsOpen] = useState(false);
+
+  matchType = 'double';
 
   return (
     <>
@@ -38,11 +42,13 @@ const ApplyFormContent = ({
             />
           </div>
 
-          <PartnerField
-            competitionId={competitionId}
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-          />
+          {matchType === 'double' && (
+            <PartnerField
+              competitionId={competitionId}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+            />
+          )}
 
           <div className="flex flex-col gap-[8px]">
             <Label label="신청 코드" name="code" />
