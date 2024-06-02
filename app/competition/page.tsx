@@ -1,9 +1,8 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
-import Link from 'next/link';
 import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
-import { cn } from '@/lib/utils/cn';
+import CompListOptionMenu from '@/components/module/CompListOptionMenu/CompListOptionMenu';
 
 const COMP_CATEGORY = [
   { title: '전체' },
@@ -49,34 +48,25 @@ const COMP_DATA = {
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { gender, type } = searchParams;
-
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">
           {COMP_CATEGORY.map((option, index) => (
-            <Link
-              href={{
-                pathname: `/competition`,
-                query: {
-                  ...searchParams,
-                  title: option.title,
-                  gender: option.gender,
-                  type: option.type,
-                },
+            <CompListOptionMenu
+              pathName="/competition"
+              query={{
+                ...searchParams,
+                title: option.title,
+                gender: option.gender,
+                type: option.type,
               }}
-              className={cn(
-                'flex items-center justify-center whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-body-2 text-gray-80',
-                gender === option.gender &&
-                  type === option.type &&
-                  'bg-primary-10 text-primary-60',
-              )}
+              variant="round"
+              isSelected={gender === option.gender && type === option.type && true}
+              title={option.title}
               key={index}
-              replace
-            >
-              {option.title}
-            </Link>
+            />
           ))}
         </div>
       </div>
