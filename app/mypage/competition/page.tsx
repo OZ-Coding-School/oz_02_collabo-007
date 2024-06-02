@@ -1,6 +1,6 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
+import CompListOptionMenu from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
-import Link from 'next/link';
 
 const COMPLIST_OPTIONS = [
   { title: '전체' },
@@ -19,13 +19,14 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         <HeaderBar title="참가 신청한 대회" backBtn={true} />
         <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
           {COMPLIST_OPTIONS.map((option, index) => (
-            <Link
-              href={{ pathname: `/mypage/competition`, query: { status: option.title } }}
-              className={`flex h-[32px] flex-1 items-center justify-center text-body-2 ${compStatus === option.title ? 'border-b-[2px] border-primary-60 text-primary-60' : ''}`}
+            <CompListOptionMenu
+              pathName="/myapege/competition"
+              query={{ status: option.title }}
+              variant="underBar"
+              isSelected={compStatus === option.title && true}
+              title={option.title}
               key={index}
-            >
-              {option.title}
-            </Link>
+            />
           ))}
         </div>
       </div>
