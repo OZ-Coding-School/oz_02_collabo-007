@@ -2,7 +2,7 @@ import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
-import CompListOptionMenu from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
+import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 
 const COMP_CATEGORY = [
   { title: '전체' },
@@ -54,7 +54,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">
           {COMP_CATEGORY.map((option, index) => (
-            <CompListOptionMenu
+            <CompListOptionMenuButton
               pathName="/competition"
               query={{
                 ...searchParams,

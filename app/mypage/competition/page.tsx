@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import CompListOptionMenu from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
+import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 
 const COMPLIST_OPTIONS = [
@@ -19,7 +19,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         <HeaderBar title="참가 신청한 대회" backBtn={true} />
         <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
           {COMPLIST_OPTIONS.map((option, index) => (
-            <CompListOptionMenu
+            <CompListOptionMenuButton
               pathName="/myapege/competition"
               query={{ status: option.title }}
               variant="underBar"
