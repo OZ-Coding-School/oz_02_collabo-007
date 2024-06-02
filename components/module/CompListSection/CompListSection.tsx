@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { HTMLAttributes, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import CompList, { ISearchParams } from './CompList/CompList';
 import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
 
