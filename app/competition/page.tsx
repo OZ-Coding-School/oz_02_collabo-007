@@ -2,7 +2,7 @@ import Navbar from '@/components/module/Navbar/Navbar';
 import React from 'react';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
-import CompListOptionMenu from '@/components/module/CompListOptionMenu/CompListOptionMenu';
+import CompListOptionMenu from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 
 const COMP_CATEGORY = [
   { title: '전체' },
