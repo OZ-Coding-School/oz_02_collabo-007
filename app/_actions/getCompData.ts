@@ -1,8 +1,9 @@
+import type { Competition } from '@/@types/competition';
 import { ISearchParams } from '@/components/module/CompListSection/CompList/CompList';
 
 export const getCompData = async (searchParams: ISearchParams | undefined) => {
   'use server';
-  const { gender, type } = searchParams ?? {};
+  const { gender, type, status = '전체', tier = '전체' } = searchParams ?? {};
 
   const params = new URLSearchParams();
 
@@ -17,5 +18,24 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
     },
   ).then((res) => res.json());
 
-  return res;
+  const category: { [key: string]: string } = {
+    '신청 가능': '진행 전',
+    '신청 불가능': '진행 전',
+    '대기 가능': '진행 전',
+    '대회 진행전': '진행 전',
+    '대회 진행중': '진행 중',
+    '대회 종료': '종료',
+  };
+
+  const setCategory = (comp: Competition): Competition => {
+    comp['category'] = category[comp.status];
+    return comp;
+  };
+
+  const newArr = res
+    .map((ele: Competition) => setCategory(ele))
+    .filter((ele: Competition) => (tier !== '전체' ? ele.tier.includes(tier) : ele))
+    .filter((ele: Competition) => (status !== '전체' ? ele.category === status : ele));
+
+  return newArr;
 };
