@@ -16,6 +16,7 @@ import {
 import { useFormContext } from 'react-hook-form';
 import type { ClubSearchData } from '@/@types/club';
 import type { UserData } from '@/@types/user';
+import LoadingTennisBall from '@/components/core/LoadingTennisBall/LoadingTennisBall';
 
 export interface SignUpFormContentProps {
   clubList: ClubSearchData[];
@@ -88,6 +89,12 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           )}
         </div>
       </div>
+
+      {pending && (
+        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+          <LoadingTennisBall />
+        </div>
+      )}
     </>
   );
 };

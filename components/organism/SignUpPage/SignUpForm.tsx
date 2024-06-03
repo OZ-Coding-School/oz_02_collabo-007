@@ -28,7 +28,10 @@ const SignUpForm = ({
   return (
     <>
       <FormProvider {...methods}>
-        <form action={(formData) => startTransaction(() => formAction(formData))}>
+        <form
+          className="relative"
+          action={(formData) => startTransaction(() => formAction(formData))}
+        >
           <SignUpFormContent
             clubList={clubList}
             userData={userData}
