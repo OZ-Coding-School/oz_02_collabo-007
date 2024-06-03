@@ -11,7 +11,7 @@ const CompDetailSection = async ({ id }: { id: number }) => {
   const compDetailData: CompDetailInfo = await getCompDetail(id);
 
   return (
-    <div className="flex h-full w-full flex-col overflow-scroll">
+    <div className="no-scrollbar flex h-full w-full flex-col overflow-scroll">
       <ImageBanner img={compDetailData.imageUrl} />
 
       <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
