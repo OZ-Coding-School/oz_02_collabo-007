@@ -5,11 +5,9 @@ import MapPinIcon from '@/app/_asset/icons/map-pin.svg';
 import MapIcon from '@/app/_asset/icons/map.svg';
 import type { CompDetailInfo } from '@/@types/competition';
 import CopyButton from '../../core/CopyButton/CopyButton';
+import { formatDate } from '@/lib/utils/formatDate';
 
 const CompInfoCard = ({ data }: { data: CompDetailInfo }) => {
-  const dataTime = data.startDate;
-  const [date, time] = dataTime.split('T');
-
   const GENDER: { [key: string]: string } = {
     female: '여자',
     male: '남자',
@@ -26,9 +24,7 @@ const CompInfoCard = ({ data }: { data: CompDetailInfo }) => {
     <div className="flex flex-col gap-[10px] text-body-2 text-gray-80 ">
       <div className="flex items-center gap-[8px]">
         <CalendarIcon width={16} height={16} fill="#393939" />
-        <span className="flex-1">
-          {date} {time}
-        </span>
+        <span className="flex-1">{formatDate(data.startDate)}</span>
       </div>
       <div className="flex items-center gap-[8px]">
         <FlagIcon width={16} height={16} fill="#393939" />
