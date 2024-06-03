@@ -1,9 +1,7 @@
 import React, { HTMLAttributes } from 'react';
-import { data } from '@/app/data.js';
 import CompCard from './CompCard/CompCard';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
-
 import { Competition, CompetitionProps } from '@/@types/competition';
 import { getCompData } from '@/app/_actions/getCompData';
 
