@@ -1,7 +1,7 @@
 'use client';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dialog from '../Dialog/Dialog';
 import Button from '../Button/Button';
 

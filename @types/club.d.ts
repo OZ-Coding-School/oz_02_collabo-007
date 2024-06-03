@@ -1,11 +1,16 @@
 import { ImageFile } from './image';
 import { ClubTeamUser } from './user';
 
-export type Club = {
+export type ClubSearchData = {
   id: number;
   name: string;
   address: string;
   imageUrl: string | null;
+  phone?: string;
+  description?: string;
+};
+
+export type Club = ClubSearchData & {
   phone: string;
   description: string;
 };
@@ -27,11 +32,4 @@ export type TennisClubData = {
   coaches: ClubCoach[];
   teams: ClubTeam[];
   users: ClubTeamUser[];
-};
-
-export type ClubSearchData = {
-  id: number;
-  name: string;
-  address: string;
-  imageUrl: string | null;
 };

@@ -1,6 +1,5 @@
 'use client';
 
-import { signInUser } from '@/app/signin/signInUser';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useTransition } from 'react';
 import { useFormState } from 'react-dom';
@@ -8,6 +7,7 @@ import { FieldPath, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { signInFormSchema } from '../utils/validation';
 import type { SignInFormValues, SignInState } from '@/@types/signin';
+import { signInUser } from '@/app/_actions/signInUser';
 
 const useSignInForm = () => {
   const [state, formAction] = useFormState<SignInState, FormData>(signInUser, null);

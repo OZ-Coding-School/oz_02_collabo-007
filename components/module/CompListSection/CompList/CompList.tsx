@@ -2,8 +2,8 @@ import React, { HTMLAttributes } from 'react';
 import CompCard from './CompCard/CompCard';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
-import { Competition } from '@/@types/competition';
-import { getCompData } from '@/app/competition/getCompData';
+import { Competition, CompetitionProps } from '@/@types/competition';
+import { getCompData } from '@/app/_actions/getCompData';
 
 export const CompListVariants = cva(
   `

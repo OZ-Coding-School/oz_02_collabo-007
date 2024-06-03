@@ -7,18 +7,20 @@ import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import type { Club, ClubSearchData } from '@/@types/club';
 import ClubItem from './ClubItem';
-import Modal from '@/components/module/Modal/Modal';
-import ModalContent from '@/components/module/ModalContent/ModalContent';
+import ClubModal from './ClubModal';
 
 const ClubField = ({
+  isOpen,
+  setIsOpen,
   clubList,
   clubData = null,
 }: {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   clubList: ClubSearchData[];
   clubData?: Club | null;
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState<ClubSearchData | Club | null>(clubData);
+  const [selectedId, setSelectedId] = useState<ClubSearchData | null>(clubData);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDelete = () => {
@@ -46,6 +48,7 @@ const ClubField = ({
           value={selectedId ? selectedId.name : ''}
           onChange={(e) => e.target.value}
           variant={selectedId ? 'display' : 'default'}
+          autoComplete="off"
         />
 
         <SearchIcon
@@ -70,20 +73,12 @@ const ClubField = ({
 
       <AnimatePresence>
         {isOpen && (
-          <Modal setIsOpen={setIsOpen} inputRef={inputRef}>
-            <ModalContent
-              setIsOpen={setIsOpen}
-              inputRef={inputRef}
-              type="club"
-              label="클럽 검색"
-              searchData={clubList}
-              setSelectedId={setSelectedId}
-            >
-              {(data) => (
-                <ClubItem name={data.name} address={data.address} image={data.imageUrl} />
-              )}
-            </ModalContent>
-          </Modal>
+          <ClubModal
+            setIsOpen={setIsOpen}
+            inputRef={inputRef}
+            clubList={clubList}
+            setSelectedId={setSelectedId}
+          />
         )}
       </AnimatePresence>
     </div>

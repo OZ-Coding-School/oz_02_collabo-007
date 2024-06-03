@@ -11,9 +11,11 @@ import useApplyForm from '@/lib/hook/useApplyForm';
 const ApplyForm = ({
   userData,
   competitionId,
+  matchType,
 }: {
   userData: UserData;
   competitionId: number;
+  matchType: string;
 }) => {
   const { state, formAction, startTransaction, isError, setIsError } =
     useApplyForm(competitionId);
@@ -24,7 +26,11 @@ const ApplyForm = ({
         className="flex flex-1 flex-col"
         action={(formData) => startTransaction(() => formAction(formData))}
       >
-        <ApplyFormContent userData={userData} competitionId={competitionId} />
+        <ApplyFormContent
+          userData={userData}
+          competitionId={competitionId}
+          matchType={matchType}
+        />
       </form>
 
       <AnimatePresence mode="wait">
