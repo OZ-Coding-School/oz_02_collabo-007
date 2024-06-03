@@ -1,18 +1,18 @@
-import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
-import { ApplyForm } from '@/components/organism/CompetitionPage';
-import React from 'react';
-import type { UserData } from '@/@types/user';
-import type { CompDetailInfo } from '@/@types/competition';
+import { CompDetailInfo } from '@/@types/competition';
+import { UserData } from '@/@types/user';
 import { getCompDetail } from '@/app/_actions/getCompDetail';
 import { getMyData } from '@/app/_actions/getMyData';
+import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
+import React from 'react';
+import ApplyForm from './ApplyForm/ApplyForm';
 
-const page = async ({ params }: { params: { id: number } }) => {
+const ApplyPageSection = async ({ id }: { id: number }) => {
   const [userData, competitionDetailData]: [UserData, CompDetailInfo] = await Promise.all(
-    [getMyData(), getCompDetail(params.id)],
+    [getMyData(), getCompDetail(id)],
   );
 
   return (
-    <div className="no-scrollbar flex flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
+    <>
       <div className="flex bg-white px-[20px] py-[24px]">
         <div className="flex w-full flex-col gap-[16px]">
           <div className="text-headline-3">{competitionDetailData.name}</div>
@@ -22,11 +22,11 @@ const page = async ({ params }: { params: { id: number } }) => {
       </div>
       <ApplyForm
         userData={userData}
-        competitionId={params.id}
+        competitionId={id}
         matchType={competitionDetailData.matchTypeDetails.type}
       />
-    </div>
+    </>
   );
 };
 
-export default page;
+export default ApplyPageSection;

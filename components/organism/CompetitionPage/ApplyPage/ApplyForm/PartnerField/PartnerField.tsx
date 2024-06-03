@@ -5,12 +5,23 @@ import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
-import tennisImg from '@/public/tennis.jpeg';
 import PartnerItem from './PartnerItem';
+import PartnerModal from './PartnerModal';
+import type { PartnerData } from '@/@types/user';
 
-const PartnerField = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface PartnerFieldProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  competitionId: number;
+}
+
+const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [selectedId, setSelectedId] = useState<PartnerData | null>(null);
+
+  const handleDelete = () => {
+    setSelectedId(() => null);
+  };
 
   return (
     <div className="relative w-full">
@@ -19,10 +30,21 @@ const PartnerField = () => {
 
         <Input
           name="partner"
+          className="hidden pl-[44px]"
+          value={selectedId ? selectedId.id : ''}
+          readOnly
+        />
+
+        <Input
+          name="partnerName"
           ref={inputRef}
           placeholder="파트너 검색"
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}
+          value={selectedId ? selectedId.username : ''}
+          onChange={(e) => e.target.value}
+          variant={selectedId ? 'display' : 'default'}
+          autoComplete="off"
         />
 
         <SearchIcon
@@ -32,18 +54,28 @@ const PartnerField = () => {
           className="absolute left-[12px] top-[38px]"
         />
 
-        <PartnerItem name="이인호" clubName="라온테니스" image={tennisImg} displayMode />
+        {selectedId && (
+          <div className="w-full cursor-pointer rounded-[8px] bg-gray-20 p-[12px]">
+            <PartnerItem
+              name={selectedId.username}
+              clubName={selectedId.club?.name}
+              image={selectedId.imageUrl}
+              handleDelete={handleDelete}
+              displayMode
+            />
+          </div>
+        )}
       </div>
 
       <AnimatePresence>
-        {/* {isOpen && (
-          <Modal
+        {isOpen && (
+          <PartnerModal
+            id={competitionId}
             setIsOpen={setIsOpen}
             inputRef={inputRef}
-            type="partner"
-            label="파트너 검색"
-          ></Modal>
-        )} */}
+            setSelectedId={setSelectedId}
+          />
+        )}
       </AnimatePresence>
     </div>
   );

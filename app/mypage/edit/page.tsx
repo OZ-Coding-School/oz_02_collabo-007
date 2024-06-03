@@ -3,8 +3,8 @@ import React from 'react';
 import { SignUpForm } from '@/components/organism/SignUpPage';
 import { UserData } from '@/@types/user';
 import { Club } from '@/@types/club';
-import { getClubList } from '@/app/signup/getClubList';
-import { getMyData } from '@/app/getMyData';
+import { getMyData } from '@/app/_actions/getMyData';
+import { getClubList } from '@/app/_actions/getClubList';
 
 const page = async () => {
   const [userData, clubList]: [UserData, Club[]] = await Promise.all([

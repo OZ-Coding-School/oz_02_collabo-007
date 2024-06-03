@@ -1,18 +1,17 @@
 import React from 'react';
-import { getCompDetail } from '../../../app/competition/[id]/getCompDetail';
 import {
   CompButton,
   CompDetail,
   ImageBanner,
 } from '@/components/organism/CompetitionPage';
 import type { CompDetailInfo } from '@/@types/competition';
+import { getCompDetail } from '@/app/_actions/getCompDetail';
 
 const CompDetailSection = async ({ id }: { id: number }) => {
   const compDetailData: CompDetailInfo = await getCompDetail(id);
-  console.log(compDetailData);
 
   return (
-    <div className="flex h-full w-full flex-col overflow-scroll">
+    <div className="no-scrollbar flex h-full w-full flex-col overflow-scroll">
       <ImageBanner img={compDetailData.imageUrl} />
 
       <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">

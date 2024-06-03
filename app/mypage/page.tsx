@@ -6,7 +6,7 @@ import {
   NavigationTab,
 } from '@/components/organism/MyPage';
 import type { UserData } from '@/@types/user';
-import { getMyData } from '../getMyData';
+import { getMyData } from '../_actions/getMyData';
 
 const page = async () => {
   const userData: UserData = await getMyData();
