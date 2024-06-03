@@ -10,7 +10,7 @@ const GENDER = { female: '여자', male: '남자', mix: '혼성', team: '' };
 const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
 
 interface CompCardProps {
-  comp: Competition;
+  comp?: Competition | null;
   title?: string;
   currentLocation?: string | null;
 }
@@ -48,7 +48,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
           <CompStatusButton compData={comp} currentLocation={currentLocation} />
         </Link>
       ) : (
-        <div className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md">
+        <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
           {title === '참가 예정 대회' && '참가 예정 대회가 없습니다.'}
           {title === '최근 참가 대회' && '최근 참가한 대회가 없습니다.'}
         </div>
