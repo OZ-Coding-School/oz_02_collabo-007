@@ -66,12 +66,6 @@ const CompList = async ({
 
   return (
     <div className={cn(CompListVariants({ variant }))}>
-      {title === '대회 정보' &&
-        competitionData.map((comp) => (
-          <>
-            <CompCard comp={comp} key={1} currentLocation={currentLocation} />
-          </>
-        ))}
       {!title &&
         compStatus === '전체' &&
         sortedArr.map((comp) => (
@@ -79,14 +73,20 @@ const CompList = async ({
             <CompCard comp={comp} key={2} currentLocation={currentLocation} />
           </>
         ))}
-      {myCompetitionData && (
+      {title === '참가 예정 대회' || title === '최근 참가 대회' ? (
         <CompCard
           comp={myCompetitionData}
           title={title}
           // key={comp.id}
           currentLocation={currentLocation}
         />
-      )}
+      ) : null}
+      {title === '대회 정보' &&
+        competitionData.map((comp) => (
+          <>
+            <CompCard comp={comp} key={1} currentLocation={currentLocation} />
+          </>
+        ))}
     </div>
   );
 };
