@@ -48,29 +48,16 @@ const CompList = async ({
   currentLocation,
   variant,
 }: CompListProps) => {
-  const { date = 'closest' } = searchParams ?? {};
   const competitionData: Competition[] = await getCompData(searchParams);
   const myCompetitionData = null;
-  // status,tier 가 둘 다 있으면 둘 다 필터링이 되어야한다.
-  // 한 가지만 있다면 한 가지만 필터링이 되어야 한다.
-  // 없으면 아무것도 안 함
-
-  const sortedArr =
-    date === 'closest'
-      ? competitionData.sort(
-          (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
-        )
-      : competitionData.sort(
-          (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
-        );
 
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {!title &&
         compStatus === '전체' &&
-        sortedArr.map((comp) => (
+        competitionData.map((comp) => (
           <>
-            <CompCard comp={comp} key={2} currentLocation={currentLocation} />
+            <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
           </>
         ))}
       {title === '참가 예정 대회' || title === '최근 참가 대회' ? (
@@ -84,7 +71,7 @@ const CompList = async ({
       {title === '대회 정보' &&
         competitionData.map((comp) => (
           <>
-            <CompCard comp={comp} key={1} currentLocation={currentLocation} />
+            <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
           </>
         ))}
     </div>
