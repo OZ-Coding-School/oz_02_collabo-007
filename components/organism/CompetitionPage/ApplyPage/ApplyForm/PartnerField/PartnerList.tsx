@@ -29,7 +29,7 @@ const PartnerList = ({
   }
 
   return (
-    <>
+    <div className="no-scrollbar flex h-full w-full flex-1 flex-col items-center gap-[16px] self-stretch overflow-scroll bg-gray-80 px-[20px] py-[12px] text-body-2">
       {filteredData.length === 0 ? (
         <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
           {`파트너 검색을 해주세요`}
@@ -51,7 +51,7 @@ const PartnerList = ({
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

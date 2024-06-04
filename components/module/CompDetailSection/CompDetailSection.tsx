@@ -12,16 +12,18 @@ const CompDetailSection = async ({ id }: { id: number }) => {
 
   return (
     <div className="no-scrollbar flex h-full w-full flex-col overflow-scroll">
-      <ImageBanner img={compDetailData.imageUrl} />
+      <>
+        <ImageBanner img={compDetailData.imageUrl} />
 
-      <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
-        <CompDetail data={compDetailData} />
-        <CompButton
-          id={compDetailData.id}
-          status={compDetailData.status}
-          waitingCount={compDetailData.waitingCount}
-        />
-      </div>
+        <div className="no-scrollbar flex flex-1 flex-col items-start overflow-scroll px-[20px] py-[24px]">
+          <CompDetail data={compDetailData} />
+          <CompButton
+            id={compDetailData.id}
+            status={compDetailData.status}
+            waitingCount={compDetailData.waitingCount}
+          />
+        </div>
+      </>
     </div>
   );
 };
