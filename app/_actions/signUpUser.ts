@@ -36,6 +36,7 @@ export const signUpUser = async (
       formData.delete('imageFile');
       formData.append('imageFile', '');
     }
+    formData.delete('imageChange');
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/`, {
       method: 'POST',

@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import SearchIcon from '@/app/_asset/icons/search.svg';
+import React, { useState } from 'react';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
 import type { Club, ClubSearchData } from '@/@types/club';
 import ClubItem from './ClubItem';
 import ClubModal from './ClubModal';
+import Button from '@/components/core/Button/Button';
+import AddIcon from '@/app/_asset/icons/add.svg';
 
 const ClubField = ({
   isOpen,
@@ -21,7 +22,6 @@ const ClubField = ({
   clubData?: Club | null;
 }) => {
   const [selectedId, setSelectedId] = useState<ClubSearchData | null>(clubData);
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDelete = () => {
     setSelectedId(() => null);
@@ -29,33 +29,29 @@ const ClubField = ({
 
   return (
     <div className="relative w-full">
-      <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
-        <Label label={'소속 클럽 검색'} name={'club'} />
+      <div className={`flex flex-col items-start gap-[12px] self-stretch`}>
+        <div className="flex flex-col gap-[4px]">
+          <Label label={'소속 클럽 (옵션)'} name={'club'} />
+          <div className="text-body-3 text-gray-60">
+            클럽을 추가하고 회원가입을 완료하면 클럽 가입 신청이 됩니다
+          </div>
+        </div>
+
+        <Button
+          type="button"
+          variant={selectedId ? 'tertiary' : 'secondary'}
+          label={selectedId ? '클럽 변경하기' : '클럽 추가'}
+          icon={!selectedId && <AddIcon className="h-[20px] w-[20px] fill-gray-80" />}
+          colors="gray"
+          size="md"
+          onClick={() => setIsOpen((prev) => !prev)}
+        />
 
         <Input
           name="club"
           className="hidden pl-[44px]"
           value={selectedId ? selectedId.id : ''}
           readOnly
-        />
-
-        <Input
-          name="clubName"
-          ref={inputRef}
-          placeholder="소속 클럽 검색"
-          className="pl-[44px]"
-          onFocus={() => setIsOpen((prev) => !prev)}
-          value={selectedId ? selectedId.name : ''}
-          onChange={(e) => e.target.value}
-          variant={selectedId ? 'display' : 'default'}
-          autoComplete="off"
-        />
-
-        <SearchIcon
-          width={20}
-          height={20}
-          fill="#A6A6A6"
-          className="absolute left-[12px] top-[38px]"
         />
 
         {selectedId && (
@@ -75,7 +71,6 @@ const ClubField = ({
         {isOpen && (
           <ClubModal
             setIsOpen={setIsOpen}
-            inputRef={inputRef}
             clubList={clubList}
             setSelectedId={setSelectedId}
           />

@@ -10,6 +10,7 @@ const useClubList = ({
   handleCloseModal,
 }: ClubListProps) => {
   const [filteredData, setFilteredData] = useState<ClubSearchData[]>([]);
+  const [checkedItem, setCheckedItem] = useState<number | null>(null);
 
   useEffect(() => {
     if (debounceSearchValue === '') {
@@ -32,7 +33,7 @@ const useClubList = ({
     handleCloseModal();
   };
 
-  return { filteredData, handleClubItem };
+  return { filteredData, handleClubItem, checkedItem, setCheckedItem };
 };
 
 export default useClubList;
