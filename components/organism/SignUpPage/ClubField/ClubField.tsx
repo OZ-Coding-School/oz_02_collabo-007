@@ -15,16 +15,20 @@ const ClubField = ({
   setIsOpen,
   clubList,
   clubData = null,
+  editMode = false,
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   clubList: ClubSearchData[];
   clubData?: Club | null;
+  editMode?: boolean;
 }) => {
   const [selectedId, setSelectedId] = useState<ClubSearchData | null>(clubData);
+  const [isChanged, setIsChanged] = useState(false);
 
   const handleDelete = () => {
     setSelectedId(() => null);
+    setIsChanged(() => true);
   };
 
   return (
@@ -60,6 +64,7 @@ const ClubField = ({
               name={selectedId.name}
               address={selectedId.address}
               image={selectedId.imageUrl}
+              isChanged={isChanged}
               displayMode
               handleDelete={handleDelete}
             />
@@ -73,6 +78,8 @@ const ClubField = ({
             setIsOpen={setIsOpen}
             clubList={clubList}
             setSelectedId={setSelectedId}
+            setIsChanged={setIsChanged}
+            editMode={editMode}
           />
         )}
       </AnimatePresence>

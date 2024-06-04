@@ -22,12 +22,14 @@ export interface SignUpFormContentProps {
   clubList: ClubSearchData[];
   userData?: UserData;
   setIsChangePassword?: Dispatch<SetStateAction<boolean>>;
+  editMode?: boolean;
 }
 
 const SignUpFormContent: FC<SignUpFormContentProps> = ({
   clubList,
   userData = null,
   setIsChangePassword,
+  editMode = false,
 }) => {
   const { pending } = useFormStatus();
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +50,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           setIsUnique={setIsUnique}
           phoneData={userData?.phone}
         />
-        {userData && setIsChangePassword ? (
+        {editMode && setIsChangePassword ? (
           <div className="flex w-full items-center justify-between text-sub-headline-2">
             <div>비밀번호</div>
             <div>
@@ -75,10 +77,11 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           setIsOpen={setIsOpen}
           clubList={clubList}
           clubData={userData?.club}
+          editMode={editMode}
         />
 
         <div className="w-full py-[20px]">
-          {userData ? (
+          {editMode ? (
             <Button label="완료" type="submit" disabled={pending || !isValid} />
           ) : (
             <Button

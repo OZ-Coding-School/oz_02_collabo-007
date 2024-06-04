@@ -10,9 +10,17 @@ interface ClubModalProp {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   clubList: ClubSearchData[];
   setSelectedId: React.Dispatch<React.SetStateAction<ClubSearchData | null>>;
+  setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
+  editMode?: boolean;
 }
 
-const ClubModal = ({ setIsOpen, clubList, setSelectedId }: ClubModalProp) => {
+const ClubModal = ({
+  setIsOpen,
+  clubList,
+  setSelectedId,
+  setIsChanged,
+  editMode = false,
+}: ClubModalProp) => {
   const handleCloseModal = () => {
     setIsOpen((prev: boolean) => !prev);
   };
@@ -26,6 +34,8 @@ const ClubModal = ({ setIsOpen, clubList, setSelectedId }: ClubModalProp) => {
             clubData={clubList}
             setSelectedId={setSelectedId}
             handleCloseModal={handleCloseModal}
+            setIsChanged={setIsChanged}
+            editMode={editMode}
           />
         )}
       </ModalContent>

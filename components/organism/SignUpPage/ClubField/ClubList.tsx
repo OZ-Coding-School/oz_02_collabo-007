@@ -4,12 +4,15 @@ import useClubList from '@/lib/hook/useClubList';
 import type { ClubSearchData } from '@/@types/club';
 import { cn } from '@/lib/utils/cn';
 import Button from '@/components/core/Button/Button';
+import HelperText from '@/components/core/HelperText/HelperText';
 
 export interface ClubListProps {
   debounceSearchValue: string;
   clubData: ClubSearchData[];
   setSelectedId: React.Dispatch<React.SetStateAction<ClubSearchData | null>>;
   handleCloseModal: () => void;
+  setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
+  editMode?: boolean;
 }
 
 const ClubList = ({
@@ -17,12 +20,15 @@ const ClubList = ({
   clubData,
   setSelectedId,
   handleCloseModal,
+  setIsChanged,
+  editMode = false,
 }: ClubListProps) => {
   const { filteredData, handleClubItem, checkedItem, setCheckedItem } = useClubList({
     debounceSearchValue,
     clubData,
     setSelectedId,
     handleCloseModal,
+    setIsChanged,
   });
 
   return (
@@ -48,7 +54,15 @@ const ClubList = ({
         </div>
       )}
       {checkedItem && (
-        <div className="w-full bg-white p-[20px]">
+        <div className="flex w-full flex-col gap-[16px] bg-white p-[20px]">
+          {editMode && (
+            <div>
+              <HelperText
+                variant="error"
+                helperText="클럽을 변경하면 현재 소속된 클럽에서 탈퇴 처리됩니다."
+              />
+            </div>
+          )}
           <Button
             type="button"
             label="클럽 가입 신청하기"
