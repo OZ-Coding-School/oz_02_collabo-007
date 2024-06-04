@@ -2,6 +2,8 @@ import React from 'react';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 import Navbar from '@/components/module/Navbar/Navbar';
 import RankingInfoCard from '@/components/module/RankingInfoCard/RankingInfoCard';
+import InputModule from '@/components/module/InputModule/InputModule';
+import SearchIcon from '@/app/_asset/icons/search.svg';
 
 const COMP_CATEGORY = [
   { key: 1, title: '전체' },
@@ -60,7 +62,13 @@ const page = () => {
         <div className="flex flex-col gap-[16px]">
           <div className="flex flex-col gap-[12px]">
             <div>전체랭킹</div>
-            <div></div>
+            <div>
+              <SearchIcon className="relative  left-[12px] top-[30px] z-50 h-[20px] w-[20px] fill-gray-50" />
+              <InputModule
+                placeholder="남자 단식 선수 검색"
+                className=" border-gray-30 py-[10px] pl-[44px] pr-[12px]"
+              ></InputModule>
+            </div>
           </div>
           <div className="flex gap-[16px]">
             <div className="flex flex-1 flex-col gap-[8px]">
