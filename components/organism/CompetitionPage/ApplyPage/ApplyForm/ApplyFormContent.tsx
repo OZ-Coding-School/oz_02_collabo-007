@@ -12,15 +12,15 @@ const ApplyFormContent = ({
   userData,
   competitionId,
   matchType,
+  isError,
 }: {
   userData: UserData;
   competitionId: number;
   matchType: string;
+  isError: boolean;
 }) => {
   const { pending } = useFormStatus();
   const [isOpen, setIsOpen] = useState(false);
-
-  matchType = 'double';
 
   return (
     <>
@@ -59,7 +59,11 @@ const ApplyFormContent = ({
       </div>
 
       <div className="w-full bg-white p-[20px]">
-        <Button label="대회 신청하기" type="submit" disabled={pending || isOpen} />
+        <Button
+          label="대회 신청하기"
+          type="submit"
+          disabled={pending || isOpen || isError}
+        />
       </div>
     </>
   );
