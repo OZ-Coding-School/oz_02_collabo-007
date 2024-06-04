@@ -25,13 +25,17 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
         >
           <div className="flex gap-[16px]">
             <div className="relative h-[88px] w-[88px] ">
-              <Image
-                src={comp.imageUrl}
-                fill
-                sizes="88px"
-                alt="comp"
-                style={{ borderRadius: '8px' }}
-              />
+              {comp.imageUrl ? (
+                <Image
+                  src={comp.imageUrl}
+                  fill
+                  sizes="88px"
+                  alt="comp"
+                  style={{ borderRadius: '8px' }}
+                />
+              ) : (
+                <div className="h-[88px] w-[88px] rounded-[8px] bg-gray-20"></div>
+              )}
             </div>
             <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
               <span>{comp.name}</span>
