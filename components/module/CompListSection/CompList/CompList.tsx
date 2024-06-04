@@ -40,20 +40,6 @@ export interface ISearchParams {
   date?: string;
 }
 
-const category: { [key: string]: string } = {
-  '신청 가능': '진행 전',
-  '신청 불가능': '진행 전',
-  '대기 가능': '진행 전',
-  '대회 진행전': '진행 전',
-  '대회 진행중': '진행 중',
-  '대회 종료': '종료',
-};
-
-const setCategory = (comp: Competition): Competition => {
-  comp['category'] = category[comp.status];
-  return comp;
-};
-
 //
 const CompList = async ({
   title,
@@ -62,58 +48,32 @@ const CompList = async ({
   currentLocation,
   variant,
 }: CompListProps) => {
-  const { status = '전체', tier = '전체', date = 'closest' } = searchParams ?? {};
-
   const competitionData: Competition[] = await getCompData(searchParams);
-  // status,tier 가 둘 다 있으면 둘 다 필터링이 되어야한다.
-  // 한 가지만 있다면 한 가지만 필터링이 되어야 한다.
-  // 없으면 아무것도 안 함
-
-  const newArr = competitionData
-    .map((ele: Competition) => setCategory(ele))
-    .filter((ele: Competition) => (tier !== '전체' ? ele.tier.includes(tier) : ele))
-    .filter((ele: Competition) => (status !== '전체' ? ele.category === status : ele));
-
-  const sortedArr =
-    date === 'closest'
-      ? newArr.sort(
-          (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
-        )
-      : newArr.sort(
-          (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
-        );
-  // .filter((ele: Competition) => tier?.includes(ele.tier));
+  const myCompetitionData = null;
 
   return (
     <div className={cn(CompListVariants({ variant }))}>
-      {title === '대회 정보' && (
-        <>
-          {sortedArr.map((comp) => (
+      {!title &&
+        compStatus === '전체' &&
+        competitionData.map((comp) => (
+          <>
             <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
-          ))}
-        </>
-      )}
-      {!title && compStatus === '전체' && (
-        <>
-          {sortedArr.map((comp) => (
+          </>
+        ))}
+      {title === '참가 예정 대회' || title === '최근 참가 대회' ? (
+        <CompCard
+          comp={myCompetitionData}
+          title={title}
+          // key={comp.id}
+          currentLocation={currentLocation}
+        />
+      ) : null}
+      {title === '대회 정보' &&
+        competitionData.map((comp) => (
+          <>
             <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
-          ))}
-        </>
-      )}
-      {
-        <>
-          {sortedArr.map((comp) =>
-            comp.status === compStatus ? (
-              <CompCard
-                comp={comp}
-                title={title}
-                key={comp.id}
-                currentLocation={currentLocation}
-              />
-            ) : null,
-          )}
-        </>
-      }
+          </>
+        ))}
     </div>
   );
 };
