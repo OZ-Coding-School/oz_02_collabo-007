@@ -108,7 +108,7 @@ select::-ms-expend {
   position: absolute;
   inset: 0px;
   border-radius: 50%;
-  border: 5px solid #FFF;
+  border: 5px solid #ff7700;
   animation: prixClipFix 2s linear infinite ;
 }
 
