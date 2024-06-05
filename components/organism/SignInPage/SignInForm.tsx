@@ -4,7 +4,7 @@ import { FormProvider } from 'react-hook-form';
 import React from 'react';
 import useSignInForm from '@/lib/hook/useSignInForm';
 import SignInFormContent from '@/components/organism/SignInPage/SignInFormContent';
-import LoadingContainer from '@/app/signin/LoadingContainer';
+import LoadingSpinner from '@/components/core/LoadingSpinner/LoadingSpinner';
 
 const SignInForm = () => {
   const { methods, startTransaction, formAction, pending } = useSignInForm();
@@ -17,7 +17,7 @@ const SignInForm = () => {
       >
         <SignInFormContent />
       </form>
-      {pending && <LoadingContainer />}
+      {pending && <LoadingSpinner />}
     </FormProvider>
   );
 };

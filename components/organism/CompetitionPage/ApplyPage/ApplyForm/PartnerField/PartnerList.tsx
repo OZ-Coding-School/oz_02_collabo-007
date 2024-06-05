@@ -2,7 +2,7 @@ import React from 'react';
 import PartnerItem from './PartnerItem';
 import usePartnerList from '@/lib/hook/usePartnerList';
 import type { PartnerData } from '@/@types/user';
-import LoadingTennisBall from '@/components/core/LoadingTennisBall/LoadingTennisBall';
+import LoadingSpinner from '@/components/core/LoadingSpinner/LoadingSpinner';
 
 export interface PartnerListProps {
   id: number;
@@ -25,7 +25,7 @@ const PartnerList = ({
   });
 
   if (isLoading) {
-    return <LoadingTennisBall />;
+    return <LoadingSpinner />;
   }
 
   return (

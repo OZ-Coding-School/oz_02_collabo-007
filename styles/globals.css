@@ -88,59 +88,22 @@ select::-ms-expend {
   background: #e9e9e9;
 }
 
-.circle {
-  stroke: black;
-  stroke-width: 2px;
-  stroke-linecap: round;
-  fill: transparent;
-}
-
 .loader {
   width: 48px;
   height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
   border-radius: 50%;
-  position: relative;
-  animation: rotate 1s linear infinite
-}
-.loader::before {
-  content: "";
+  display: inline-block;
   box-sizing: border-box;
-  position: absolute;
-  inset: 0px;
-  border-radius: 50%;
-  border: 5px solid #ff7700;
-  animation: prixClipFix 2s linear infinite ;
-}
-
-@keyframes rotate {
-  100%   {transform: rotate(360deg)}
-}
-
-@keyframes prixClipFix {
-    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
-}
-
-.tennis-loader {
-  width: 45px;
-  height: 45px;
-  box-sizing: content-box;
-  border-radius: 100%;
-  position: relative;
-  animation: 1s starRotate linear infinite;
-}
-@keyframes starRotate {
-  0% {
-    transform: rotate(0deg) scale(0.8);
+  animation: rotation 1s linear infinite;
   }
-  50% {
-    transform: rotate(180deg) scale(1);
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) scale(0.8);
+      transform: rotate(360deg);
   }
 }
-
