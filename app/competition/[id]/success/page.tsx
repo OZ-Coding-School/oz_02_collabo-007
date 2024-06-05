@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@/components/core/Button/Button';
 import CheckCircleIcon from '@/app/_asset/icons/check-circle.svg';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
 import { FeeCard, ParticipantInfo } from '@/components/organism/CompetitionPage';
