@@ -2,6 +2,8 @@ import type { ApplicantInfo } from '@/@types/apply';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
 import React from 'react';
+import { cookies } from 'next/headers';
+import { Secondary } from '@/stories/Avatar.stories';
 
 const CompButton = ({
   id,
@@ -14,6 +16,9 @@ const CompButton = ({
   waitingCount: number;
   applicantsInfo?: ApplicantInfo;
 }) => {
+  const cookie = cookies();
+  const token = cookie.get('access');
+
   const CompStatus: { [key: string]: { element: JSX.Element; link: string } } = {
     '신청 가능': { element: <Button label="대회 신청하기" />, link: `apply` },
     '대회 진행중': { element: <Button label="대회 현황 보기" />, link: `progress` },
@@ -47,12 +52,18 @@ const CompButton = ({
 
   return (
     <>
-      <Link
-        href={`/competition/${id}/${STATUS.link}`}
-        className="flex w-full flex-col items-start pt-[20px]"
-      >
-        {STATUS.element}
-      </Link>
+      {token ? (
+        <Link
+          href={`/competition/${id}/${STATUS.link}`}
+          className="flex w-full flex-col items-start pt-[20px]"
+        >
+          {STATUS.element}
+        </Link>
+      ) : (
+        <Link href={'/signin'} className="flex w-full flex-col items-start pt-[20px]">
+          <Button label="로그인 후 이용 가능합니다" variant="secondary" />
+        </Link>
+      )}
     </>
   );
 };
