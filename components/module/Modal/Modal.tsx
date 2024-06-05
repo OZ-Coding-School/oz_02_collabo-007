@@ -5,19 +5,13 @@ import React, { FC, useRef } from 'react';
 import { motion, useMotionValue, PanInfo } from 'framer-motion';
 
 export interface ModalProps {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  inputRef: React.RefObject<HTMLDivElement>;
+  handleCloseModal: () => void;
   children: React.ReactNode;
 }
 
-const Modal: FC<ModalProps> = ({ setIsOpen, inputRef, children }) => {
+const Modal: FC<ModalProps> = ({ handleCloseModal, children }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const y = useMotionValue(0);
-
-  const handleCloseModal = () => {
-    inputRef.current?.blur();
-    setIsOpen((prev: boolean) => !prev);
-  };
 
   const handleDragEnd = (event: MouseEvent | TouchEvent, info: PanInfo) => {
     if (info.offset.y > window.innerHeight * 0.3) {

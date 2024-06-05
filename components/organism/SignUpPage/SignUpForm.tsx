@@ -10,9 +10,11 @@ import SignUpDialog from './SignUpDialog/SignUpDialog';
 const SignUpForm = ({
   clubList,
   userData,
+  editMode = false,
 }: {
   clubList: ClubSearchData[];
   userData?: UserData;
+  editMode?: boolean;
 }) => {
   const {
     methods,
@@ -36,6 +38,7 @@ const SignUpForm = ({
             clubList={clubList}
             userData={userData}
             setIsChangePassword={setIsChangePassword}
+            editMode={editMode}
           />
         </form>
       </FormProvider>
