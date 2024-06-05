@@ -1,39 +1,26 @@
-import type { Competition } from '@/@types/competition';
-import { ISearchParams } from '@/components/module/CompListSection/CompList/CompList';
+interface Competition {
+  id: number;
+  name: string;
+  startDate: string;
+  endData: string;
+  matchTypeDetails: {
+    gender: 'female' | 'male' | 'mix' | 'team';
+    type: 'single' | 'double' | 'team';
+  };
+  tier: string;
+  location: string;
+  imageUrl: string;
+  status: string;
+  waitingCount: number;
+  category: string;
+}
 
-export const getCompData = async (searchParams: ISearchParams | undefined) => {
-  'use server';
-
-  // status,tier 가 둘 다 있으면 둘 다 필터링이 되어야한다.
-  // 한 가지만 있다면 한 가지만 필터링이 되어야 한다.
-  // 없으면 아무것도 안 함
-
-  const {
-    gender,
-    type,
-    status = '전체',
-    tier = '전체',
-    date = 'closest',
-  } = searchParams ?? {};
-
-  const params = new URLSearchParams();
-
-  if (gender) params.append('gender', gender);
-  if (type) params.append('matchType', type);
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/?${params.toString()}`,
-    {
-      credentials: 'include',
-      method: 'GET',
-      cache: 'no-cache',
-    },
-  );
-  if (!res.ok) {
-    return;
-  }
-
-  const data = await res.json();
-
+export const filterCompetition = (
+  compData: Competition[],
+  status: string,
+  tier: string,
+  date: string,
+) => {
   const category: { [key: string]: string } = {
     '신청 가능': '진행 전',
     '신청 불가능': '진행 전',
@@ -48,7 +35,7 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
     return comp;
   };
 
-  const newArr = data
+  const newArr = compData
     .map((ele: Competition) => setCategory(ele))
     .filter((ele: Competition) => (tier !== '전체' ? ele.tier.includes(tier) : ele))
     .filter((ele: Competition) => (status !== '전체' ? ele.category === status : ele));
@@ -66,5 +53,6 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
           (a: Competition, b: Competition) =>
             new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
         );
+
   return sortedArr;
 };
