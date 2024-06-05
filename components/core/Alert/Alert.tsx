@@ -20,12 +20,12 @@ const Alert = () => {
 
   const handlerRoute = () => {
     setIsAlert(() => false);
-    router.push('/signin');
+    router.replace('/signin');
   };
 
   const cancel = () => {
     setIsAlert(() => false);
-    router.push('/');
+    router.replace('/');
   };
 
   return (
