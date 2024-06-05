@@ -1,8 +1,11 @@
 import PhoneIcon from '@/app/_asset/icons/phone.svg';
 import UserIcon from '@/app/_asset/icons/user.svg';
 import React from 'react';
+import type { Applicant } from '@/@types/apply';
+import { changePhoneNumber } from '@/lib/utils/changePhoneNumber';
 
-const ParticipantInfo = () => {
+const ParticipantInfo = ({ applicants }: { applicants: Applicant }) => {
+  const { userName, userPhone } = applicants;
   return (
     <div className="flex flex-col gap-[8px]">
       <div className="text-headline-6">참가자 정보</div>
@@ -12,25 +15,11 @@ const ParticipantInfo = () => {
           <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
             <div className="flex items-center justify-start gap-[8px]">
               <UserIcon width={16} height={16} fill="#393939" />
-              김형섭
+              {userName}
             </div>
             <div className="flex items-center justify-start gap-[8px]">
               <PhoneIcon width={16} height={16} fill="#393939" />
-              010-1234-1234
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-[8px]">
-          <div className="text-sub-headline-2">참가자 1</div>
-          <div className="flex flex-col gap-[10px] text-body-2 text-gray-80">
-            <div className="flex items-center justify-start gap-[8px]">
-              <UserIcon width={16} height={16} fill="#393939" />
-              김형섭
-            </div>
-            <div className="flex items-center justify-start gap-[8px]">
-              <PhoneIcon width={16} height={16} fill="#393939" />
-              010-1234-1234
+              {changePhoneNumber(userPhone)}
             </div>
           </div>
         </div>

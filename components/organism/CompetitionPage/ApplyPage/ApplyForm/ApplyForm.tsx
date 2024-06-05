@@ -30,12 +30,13 @@ const ApplyForm = ({
           userData={userData}
           competitionId={competitionId}
           matchType={matchType}
+          isError={isError}
         />
       </form>
 
       <AnimatePresence mode="wait">
         {isError && state?.status === 'error' && (
-          <Dialog setIsOpen={setIsError} title="에러">
+          <Dialog setIsOpen={setIsError} title="에러" outsideDisable>
             <>
               <div className="">{state.message}</div>
               <div className="w-[40%]">
