@@ -16,6 +16,12 @@ export const getCompDetail = async (id: number) => {
         next: { revalidate: 3600, tags: [`competition-detail-${id}`] },
       },
     );
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error('Failed to fetch data');
+    }
+
     const data = await res.json();
 
     return data;

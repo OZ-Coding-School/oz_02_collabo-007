@@ -6,9 +6,12 @@ import {
 } from '@/components/organism/CompetitionPage';
 import type { CompDetailInfo } from '@/@types/competition';
 import { getCompDetail } from '@/app/_actions/getCompDetail';
+import { getApplyResult } from '@/app/_actions/getApplyResult';
 
 const CompDetailSection = async ({ id }: { id: number }) => {
   const compDetailData: CompDetailInfo = await getCompDetail(id);
+  const res = await getApplyResult(id);
+  console.log(res);
 
   return (
     <div className="no-scrollbar flex h-full w-full flex-col overflow-scroll">
@@ -20,6 +23,7 @@ const CompDetailSection = async ({ id }: { id: number }) => {
           id={compDetailData.id}
           status={compDetailData.status}
           waitingCount={compDetailData.waitingCount}
+          applicantsInfo={res && res}
         />
       </div>
     </div>
