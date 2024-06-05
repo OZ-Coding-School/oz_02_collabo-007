@@ -58,16 +58,18 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   label?: string;
+  icon?: React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ label, variant, colors, size, className, ...props }, ref) => {
+  ({ label, icon, variant, colors, size, className, ...props }, ref) => {
     return (
       <button
         ref={ref}
         className={cn(ButtonVariants({ variant, colors, size, className }))}
         {...props}
       >
+        {icon && icon}
         {label}
       </button>
     );

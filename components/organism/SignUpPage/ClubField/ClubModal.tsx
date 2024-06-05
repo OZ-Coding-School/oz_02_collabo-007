@@ -8,31 +8,34 @@ import ClubList from './ClubList';
 
 interface ClubModalProp {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  inputRef: React.RefObject<HTMLDivElement>;
   clubList: ClubSearchData[];
   setSelectedId: React.Dispatch<React.SetStateAction<ClubSearchData | null>>;
+  setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
+  editMode?: boolean;
 }
 
-const ClubModal = ({ setIsOpen, inputRef, clubList, setSelectedId }: ClubModalProp) => {
+const ClubModal = ({
+  setIsOpen,
+  clubList,
+  setSelectedId,
+  setIsChanged,
+  editMode = false,
+}: ClubModalProp) => {
   const handleCloseModal = () => {
-    inputRef.current?.blur();
     setIsOpen((prev: boolean) => !prev);
   };
 
   return (
-    <Modal setIsOpen={setIsOpen} inputRef={inputRef}>
-      <ModalContent
-        setIsOpen={setIsOpen}
-        inputRef={inputRef}
-        type="club"
-        label="클럽 검색"
-      >
+    <Modal handleCloseModal={handleCloseModal}>
+      <ModalContent type="club" label="클럽 검색" handleCloseModal={handleCloseModal}>
         {(debounceSearchValue) => (
           <ClubList
             debounceSearchValue={debounceSearchValue}
             clubData={clubList}
             setSelectedId={setSelectedId}
             handleCloseModal={handleCloseModal}
+            setIsChanged={setIsChanged}
+            editMode={editMode}
           />
         )}
       </ModalContent>

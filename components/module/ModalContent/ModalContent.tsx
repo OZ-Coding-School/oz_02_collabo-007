@@ -5,32 +5,24 @@ import XIcon from '@/app/_asset/icons/x.svg';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Input from '@/components/core/Input/Input';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import { cn } from '@/lib/utils/cn';
 import useDebounce from '@/lib/hook/useDebounce';
 
 export interface ModalContentProps {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  inputRef: React.RefObject<HTMLDivElement>;
   type: string;
   label: string;
+  handleCloseModal: () => void;
   children: (props: string) => React.ReactNode;
 }
 
 const ModalContent: React.FC<ModalContentProps> = ({
-  setIsOpen,
   type,
   label,
-  inputRef,
+  handleCloseModal,
   children,
 }) => {
   const [searchValue, setSearchValue] = useState('');
   const debounceSearchValue = useDebounce<string>(searchValue, 500);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
-
-  const handleCloseModal = () => {
-    inputRef.current?.blur();
-    setIsOpen((prev: boolean) => !prev);
-  };
 
   useEffect(() => {
     searchInputRef.current?.focus();
@@ -69,14 +61,8 @@ const ModalContent: React.FC<ModalContentProps> = ({
           className="absolute left-[32px] top-[26px]"
         />
       </div>
-      <div
-        className={cn(
-          'no-scrollbar flex h-full w-full flex-1 flex-col items-center self-stretch overflow-scroll bg-white px-[20px] py-[24px] text-body-2',
-          `${type === 'club' ? 'gap-[16px] px-[20px] py-[24px]' : 'py-[12px]'}`,
-        )}
-      >
-        {children(debounceSearchValue)}
-      </div>
+
+      {children(debounceSearchValue)}
     </>
   );
 };

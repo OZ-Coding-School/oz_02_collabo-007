@@ -20,12 +20,11 @@ const PartnerModal = ({ id, setIsOpen, inputRef, setSelectedId }: PartnerModalPr
   };
 
   return (
-    <Modal setIsOpen={setIsOpen} inputRef={inputRef}>
+    <Modal handleCloseModal={handleCloseModal}>
       <ModalContent
-        setIsOpen={setIsOpen}
-        inputRef={inputRef}
         type="partner"
         label="파트너 검색"
+        handleCloseModal={handleCloseModal}
       >
         {(debounceSearchValue) => (
           <PartnerList

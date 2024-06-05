@@ -8,8 +8,10 @@ const useClubList = ({
   clubData,
   setSelectedId,
   handleCloseModal,
+  setIsChanged,
 }: ClubListProps) => {
   const [filteredData, setFilteredData] = useState<ClubSearchData[]>([]);
+  const [checkedItem, setCheckedItem] = useState<number | null>(null);
 
   useEffect(() => {
     if (debounceSearchValue === '') {
@@ -29,10 +31,11 @@ const useClubList = ({
       ({ id }: { id: number }) => id === selectedId,
     ) as ClubSearchData;
     setSelectedId(() => data);
+    setIsChanged(() => true);
     handleCloseModal();
   };
 
-  return { filteredData, handleClubItem };
+  return { filteredData, handleClubItem, checkedItem, setCheckedItem };
 };
 
 export default useClubList;

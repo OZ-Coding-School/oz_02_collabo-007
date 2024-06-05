@@ -15,7 +15,7 @@ const page = async () => {
   return (
     <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll">
       <HeaderBar title="프로필 수정" backBtn />
-      <SignUpForm clubList={clubList} userData={userData} />
+      <SignUpForm clubList={clubList} userData={userData} editMode />
     </div>
   );
 };
