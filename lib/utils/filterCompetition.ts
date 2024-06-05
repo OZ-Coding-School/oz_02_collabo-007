@@ -17,9 +17,9 @@ interface Competition {
 
 export const filterCompetition = (
   compData: Competition[],
-  status = '전체',
-  tier = '전체',
-  date = 'closest',
+  status: string,
+  tier: string,
+  date: string,
 ) => {
   const category: { [key: string]: string } = {
     '신청 가능': '진행 전',
