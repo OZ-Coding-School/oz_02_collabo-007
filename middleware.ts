@@ -8,7 +8,10 @@ export function middleware(request: NextRequest) {
   // 로그인하지 않은 사용자를 홈으로 리다이렉트
   if (
     !refreshToken &&
-    !['/', '/signin/', '/signup/', '/competition/'].includes(pathname)
+    !['/', '/signin/', '/signup/', '/competition/'].includes(pathname) &&
+    !/^\/competition\/\d+\/$/.test(pathname) &&
+    !/^\/competition\/\d+\/progress\/$/.test(pathname) &&
+    !/^\/competition\/\d+\/result\/$/.test(pathname)
   ) {
     return NextResponse.redirect(
       new URL('/?alert=로그인 후 이용 가능한 서비스입니다.', request.url),
