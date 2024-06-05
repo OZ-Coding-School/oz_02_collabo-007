@@ -5,13 +5,15 @@ import { FeeCard, ParticipantInfo } from '@/components/organism/CompetitionPage'
 import { getApplyResult } from '@/app/_actions/getApplyResult';
 import type { ApplyResultData } from '@/@types/apply';
 import SuccessButtons from '@/components/organism/CompetitionPage/SuccessPage/SuccessButtons/SuccessButtons';
+import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 
 const page = async ({ params }: { params: { id: number } }) => {
   const { applicants, applicantsInfo, competitionInfo }: ApplyResultData =
     await getApplyResult(params.id);
 
   return (
-    <>
+    <div className="flex h-full w-full flex-col">
+      <HeaderBar title="대회 신청 완료" backBtn />
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex flex-col gap-[24px] bg-white px-[20px] py-[24px]">
           <div className="flex items-center justify-start gap-[8px]">
@@ -38,7 +40,7 @@ const page = async ({ params }: { params: { id: number } }) => {
       <div className="flex w-full items-center justify-center gap-[12px] p-[20px]">
         <SuccessButtons />
       </div>
-    </>
+    </div>
   );
 };
 
