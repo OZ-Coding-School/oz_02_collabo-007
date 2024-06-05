@@ -53,12 +53,15 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
     .filter((ele: Competition) => (tier !== '전체' ? ele.tier.includes(tier) : ele))
     .filter((ele: Competition) => (status !== '전체' ? ele.category === status : ele));
 
+  const today = new Date().getTime();
+
   const sortedArr =
     date === 'closest'
-      ? newArr.sort(
-          (a: Competition, b: Competition) =>
-            new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
-        )
+      ? newArr.sort((a: Competition, b: Competition) => {
+          const diffA = Math.abs(new Date(a.startDate).getTime() - today);
+          const diffB = Math.abs(new Date(b.startDate).getTime() - today);
+          return diffA - diffB;
+        })
       : newArr.sort(
           (a: Competition, b: Competition) =>
             new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
