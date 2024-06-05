@@ -10,21 +10,26 @@ import ClubModal from './ClubModal';
 import Button from '@/components/core/Button/Button';
 import AddIcon from '@/app/_asset/icons/add.svg';
 
+interface ClubFieldProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  clubList: ClubSearchData[];
+  clubData?: Club | null;
+  editMode?: boolean;
+  isChanged: boolean;
+  setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const ClubField = ({
   isOpen,
   setIsOpen,
   clubList,
   clubData = null,
   editMode = false,
-}: {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  clubList: ClubSearchData[];
-  clubData?: Club | null;
-  editMode?: boolean;
-}) => {
+  isChanged,
+  setIsChanged,
+}: ClubFieldProps) => {
   const [selectedId, setSelectedId] = useState<ClubSearchData | null>(clubData);
-  const [isChanged, setIsChanged] = useState(false);
 
   const handleDelete = () => {
     setSelectedId(() => null);

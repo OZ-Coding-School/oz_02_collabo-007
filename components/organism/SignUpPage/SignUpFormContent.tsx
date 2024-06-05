@@ -17,6 +17,9 @@ import { useFormContext } from 'react-hook-form';
 import type { ClubSearchData } from '@/@types/club';
 import type { UserData } from '@/@types/user';
 import LoadingTennisBall from '@/components/core/LoadingTennisBall/LoadingTennisBall';
+import Dialog from '@/components/core/Dialog/Dialog';
+import { AnimatePresence } from 'framer-motion';
+import HelperText from '@/components/core/HelperText/HelperText';
 
 export interface SignUpFormContentProps {
   clubList: ClubSearchData[];
@@ -34,10 +37,17 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
   const { pending } = useFormStatus();
   const [isOpen, setIsOpen] = useState(false);
   const [isUnique, setIsUnique] = useState(false);
+  const [isChanged, setIsChanged] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
+  const existClub = userData?.club ? true : false;
 
   const {
     formState: { isValid },
   } = useFormContext();
+
+  const checkClubChange = () => {
+    setIsAlert(() => true);
+  };
 
   return (
     <>
@@ -78,11 +88,20 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           clubList={clubList}
           clubData={userData?.club}
           editMode={editMode}
+          isChanged={isChanged}
+          setIsChanged={setIsChanged}
         />
 
         <div className="w-full py-[20px]">
           {editMode ? (
-            <Button label="완료" type="submit" disabled={pending || !isValid} />
+            <Button
+              label="완료"
+              type={isChanged && existClub ? 'button' : 'submit'}
+              disabled={pending || !isValid || isOpen}
+              onClick={() => {
+                if (isChanged && existClub) checkClubChange();
+              }}
+            />
           ) : (
             <Button
               label="회원 가입"
@@ -98,6 +117,43 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
           <LoadingTennisBall />
         </div>
       )}
+
+      <AnimatePresence>
+        {isAlert && (
+          <Dialog
+            setIsOpen={setIsAlert}
+            title="클럽을 정말로 변경하시겠습니까?"
+            outsideDisable
+          >
+            <>
+              <div className="text-center">
+                <HelperText
+                  variant="error"
+                  helperText="클럽을 변경하면 현재 소속된 클럽에서 탈퇴 처리됩니다."
+                />
+              </div>
+
+              <div className="flex w-full items-center justify-center gap-[12px]">
+                <Button
+                  type="button"
+                  label="취소"
+                  variant="secondary"
+                  colors="gray"
+                  size="sm"
+                  onClick={() => setIsAlert(() => false)}
+                />
+                <Button
+                  type="submit"
+                  label="확인"
+                  size="sm"
+                  className="bg-error-60"
+                  onClick={() => setIsAlert(() => false)}
+                />
+              </div>
+            </>
+          </Dialog>
+        )}
+      </AnimatePresence>
     </>
   );
 };
