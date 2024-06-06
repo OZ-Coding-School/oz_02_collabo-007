@@ -35,6 +35,7 @@ const CompButton = ({
       ),
       link: `apply`,
     },
+    '신청 완료': { element: <Button label="신청 조회하기" />, link: `success` },
   };
 
   const STATUS = CompStatus[status];
