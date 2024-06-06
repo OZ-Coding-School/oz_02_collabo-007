@@ -5,8 +5,8 @@ export const GENDER: { [key: string]: string } = {
   male: '남자',
   mix: '혼성',
   null: '',
-};
-export const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
+} as const;
+export const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' } as const;
 
 export const COMP_CATEGORY = [
   { title: '전체' },
@@ -16,11 +16,10 @@ export const COMP_CATEGORY = [
   { title: '여자 복식', gender: 'female', type: 'double' },
   { title: '혼성 복식', gender: 'mix', type: 'double' },
   { title: '팀', gender: 'team', type: 'team' },
-];
+] as const;
 
 export const COMP_TIER = {
   name: 'tier',
-
   options: [
     { title: '전체' },
     { title: '개나리부', value: '개나리부' },
@@ -28,7 +27,7 @@ export const COMP_TIER = {
     { title: '브론즈', value: '브론즈' },
     { title: '실버', value: '실버' },
   ],
-};
+} as const;
 
 export const COMP_STATUS = {
   name: 'status',
@@ -38,7 +37,7 @@ export const COMP_STATUS = {
     { title: '진행 중', value: '진행 중' },
     { title: '종료', value: '종료' },
   ],
-};
+} as const;
 
 export const COMP_DATA = {
   name: 'date',
@@ -47,7 +46,7 @@ export const COMP_DATA = {
     { title: '대회일 가까운 순', value: 'closest' },
     { title: '대회일 먼 순', value: 'furthest' },
   ],
-};
+} as const;
 
 export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
   '신청 가능': {
@@ -92,4 +91,16 @@ export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
     colors: 'gray',
     endPoint: 'result',
   },
-};
+} as const;
+
+export const COMPLIST_OPTIONS = [
+  { title: '전체' },
+  { title: '진행 전' },
+  { title: '진행 중' },
+  { title: '종료' },
+] as const;
+
+export const HOME_COMP_LIST = [
+  { title: '참가 예정 대회' },
+  { title: '최근 참가 대회' },
+] as const;
