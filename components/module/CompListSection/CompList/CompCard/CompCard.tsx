@@ -6,7 +6,7 @@ import React from 'react';
 import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
 import { formatDate } from '@/lib/utils/formatDate';
 
-const GENDER = { female: '여자', male: '남자', mix: '혼성', team: '' };
+const GENDER = { female: '여자', male: '남자', mix: '혼성', null: '' };
 const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
 
 interface CompCardProps {
@@ -16,6 +16,7 @@ interface CompCardProps {
 }
 
 const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
+  console.log(comp?.matchTypeDetails.gender);
   return (
     <>
       {comp ? (
