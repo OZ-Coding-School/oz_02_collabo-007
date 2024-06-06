@@ -3,47 +3,12 @@ import React from 'react';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
 import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
-
-const COMP_CATEGORY = [
-  { title: '전체' },
-  { title: '남자 단식', gender: 'male', type: 'single' },
-  { title: '여자 단식', gender: 'female', type: 'single' },
-  { title: '남자 복식', gender: 'male', type: 'double' },
-  { title: '여자 복식', gender: 'female', type: 'double' },
-  { title: '혼성 복식', gender: 'mix', type: 'double' },
-  { title: '팀', gender: 'team', type: 'team' },
-];
-
-const COMP_TIER = {
-  name: 'tier',
-
-  options: [
-    { title: '전체' },
-    { title: '개나리부', value: '개나리부' },
-    { title: '국화부', value: '국화부' },
-    { title: '브론즈', value: '브론즈' },
-    { title: '실버', value: '실버' },
-  ],
-};
-
-const COMP_STATUS = {
-  name: 'status',
-  defaultOption: '진행 전',
-  options: [
-    { title: '진행 전', value: '진행 전' },
-    { title: '진행 중', value: '진행 중' },
-    { title: '종료', value: '종료' },
-  ],
-};
-
-const COMP_DATA = {
-  name: 'date',
-  defaultOption: '대회일 가까운 순',
-  options: [
-    { title: '대회일 가까운 순', value: 'closest' },
-    { title: '대회일 먼 순', value: 'furthest' },
-  ],
-};
+import {
+  COMP_CATEGORY,
+  COMP_DATA,
+  COMP_STATUS,
+  COMP_TIER,
+} from '@/constants/competition/competition';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { gender, type } = searchParams;

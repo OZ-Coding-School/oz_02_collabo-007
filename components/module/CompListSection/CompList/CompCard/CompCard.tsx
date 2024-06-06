@@ -4,14 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
 import { formatDate } from '@/lib/utils/formatDate';
-
-const GENDER: { [key: string]: string } = {
-  female: '여자',
-  male: '남자',
-  mix: '혼성',
-  null: '',
-};
-const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
+import { GENDER, MATCH_TYPE } from '@/constants/competition/competition';
 
 interface CompCardProps {
   comp?: Competition | null;

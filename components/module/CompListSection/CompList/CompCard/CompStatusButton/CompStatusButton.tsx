@@ -93,7 +93,3 @@ const CompStatusButton = ({ compData, currentLocation }: CompStatusButtonProps) 
 };
 
 export default CompStatusButton;
-//competition/2/apply
-//competition/2/progress
-//competition/2/result
-//competition/2/success
