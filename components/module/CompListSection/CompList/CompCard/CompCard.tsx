@@ -6,6 +6,7 @@ import CompStatusButton from '@/components/module/CompListSection/CompList/CompC
 import { formatDate } from '@/lib/utils/formatDate';
 import { GENDER, MATCH_TYPE } from '@/constants/competition/competition';
 import { truncateText } from '@/lib/utils/truncateText';
+import Flag from '@/app/_asset/icons/flag.svg';
 
 interface CompCardProps {
   comp?: Competition | null;
@@ -32,7 +33,9 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
                   style={{ borderRadius: '8px' }}
                 />
               ) : (
-                <div className="flex h-[88px] w-[88px] items-center justify-center rounded-[8px] bg-gray-20"></div>
+                <div className="flex h-[88px] w-[88px] items-center justify-center rounded-[8px] bg-gray-20">
+                  <Flag width={24} height={24} fill="#787878" />
+                </div>
               )}
             </div>
             <div className="relative flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
