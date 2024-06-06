@@ -5,7 +5,6 @@ import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
 
 interface CompListSectionProps {
   title?: string;
-  compStatus?: string | null;
   variant?: 'flex' | 'flexCol' | null;
   currentLocation?: string | null;
   searchParams?: ISearchParams;
@@ -13,7 +12,6 @@ interface CompListSectionProps {
 
 const CompListSection = ({
   title,
-  compStatus,
   variant,
   searchParams,
   currentLocation,
@@ -31,7 +29,6 @@ const CompListSection = ({
       <Suspense fallback={<CompListSkeleton title={title} variant={variant} />}>
         <CompList
           title={title}
-          compStatus={compStatus}
           variant={variant}
           searchParams={searchParams}
           currentLocation={currentLocation}

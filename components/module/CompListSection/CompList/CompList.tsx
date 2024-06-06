@@ -26,7 +26,6 @@ export interface CompListProps
   extends HTMLAttributes<HTMLElement>,
     VariantProps<typeof CompListVariants> {
   title?: string;
-  compStatus?: string | null;
   currentLocation?: string | null;
   searchParams?: ISearchParams;
 }
@@ -40,10 +39,8 @@ export interface ISearchParams {
   date?: string;
 }
 
-//
 const CompList = async ({
   title,
-  compStatus,
   searchParams,
   currentLocation,
   variant,
@@ -54,7 +51,6 @@ const CompList = async ({
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {!title &&
-        compStatus === '전체' &&
         competitionData.map((comp) => (
           <>
             <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
@@ -64,7 +60,6 @@ const CompList = async ({
         <CompCard
           comp={myCompetitionData}
           title={title}
-          // key={comp.id}
           currentLocation={currentLocation}
         />
       ) : null}

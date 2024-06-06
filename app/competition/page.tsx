@@ -43,7 +43,6 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         <div className="flex flex-col">
           <CompListSection
             variant="flexCol"
-            compStatus="전체"
             searchParams={searchParams}
             currentLocation="competition"
           />
