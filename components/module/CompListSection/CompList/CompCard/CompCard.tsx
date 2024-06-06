@@ -28,6 +28,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
                 <Image
                   src={comp.imageUrl}
                   fill
+                  objectFit="cover"
                   sizes="88px"
                   alt="comp"
                   style={{ borderRadius: '8px' }}
