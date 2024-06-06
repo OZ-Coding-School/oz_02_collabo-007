@@ -1,5 +1,4 @@
 import type { Competition } from '@/@types/competition';
-import CompCardMatchDetail from '@/components/module/CompListSection/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
