@@ -32,10 +32,13 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
                   style={{ borderRadius: '8px' }}
                 />
               ) : (
-                <div className="h-[88px] w-[88px] rounded-[8px] bg-gray-20"></div>
+                <div className="flex h-[88px] w-[88px] items-center justify-center rounded-[8px] bg-gray-20"></div>
               )}
             </div>
-            <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
+            <div className="relative flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
+              <span className="absolute right-[5px] top-[-4px] text-[10px] font-thin text-gray-70">
+                대회 신청 시 신청하기 버튼을 눌러주세요
+              </span>
               <span>{truncateText(comp.name, 10)}</span>
               <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
                 <span>{formatDate(comp.startDate)}</span>
@@ -47,7 +50,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
               </div>
             </div>
           </div>
-          <CompStatusButton compData={comp} currentLocation={currentLocation} isSignIn />
+          <CompStatusButton compData={comp} currentLocation={currentLocation} />
         </Link>
       ) : (
         <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
