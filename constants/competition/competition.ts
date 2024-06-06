@@ -57,7 +57,7 @@ export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
     endPoint: 'apply',
   },
   '신청 불가능': {
-    label: '신청 불가(성별 또는 실력 제한)',
+    label: '신청 불가 (성별 또는 실력 제한)',
     variant: 'primary',
     size: 'md',
     colors: 'default',
