@@ -31,6 +31,7 @@ const CompStatusButton = ({ compData, currentLocation }: CompStatusButtonProps) 
           size={size}
           colors={colors}
           onClick={handleClick}
+          disabled={compData.status === '신청 불가능'}
         />
       ) : null}
       {compData.nextMatch && <CompCardMatchDetail compData={compData} />}

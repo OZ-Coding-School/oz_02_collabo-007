@@ -47,7 +47,7 @@ const CompList = async ({
 }: CompListProps) => {
   const competitionData: Competition[] = await getCompData(searchParams);
   const myCompetitionData = null;
-
+  console.log(competitionData);
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {!title &&
