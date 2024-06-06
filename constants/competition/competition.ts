@@ -104,3 +104,9 @@ export const HOME_COMP_LIST = [
   { title: '참가 예정 대회' },
   { title: '최근 참가 대회' },
 ] as const;
+
+export const COMP_LIST_SECTION_LINK: { [key: string]: string } = {
+  '참가 예정 대회': '/mypage/competition/?status=진행 전',
+  '최근 참가 대회': '/mypage/competition/?status=종료',
+  '대회 정보': '/competition/?status=진행 전',
+} as const;
