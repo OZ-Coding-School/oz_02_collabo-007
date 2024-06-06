@@ -28,9 +28,8 @@ const COMP_TIER = {
 
 const COMP_STATUS = {
   name: 'status',
-
+  defaultOption: '진행 전',
   options: [
-    { title: '전체' },
     { title: '진행 전', value: '진행 전' },
     { title: '진행 중', value: '진행 중' },
     { title: '종료', value: '종료' },
