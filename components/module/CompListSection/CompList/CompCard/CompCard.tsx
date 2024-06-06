@@ -13,7 +13,6 @@ interface CompCardProps {
 }
 
 const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
-  console.log(comp?.matchTypeDetails.gender);
   return (
     <>
       {comp ? (
