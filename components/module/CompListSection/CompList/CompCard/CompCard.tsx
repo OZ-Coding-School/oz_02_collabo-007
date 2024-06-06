@@ -40,7 +40,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
             </div>
             <div className="relative flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
               <span className="absolute right-[5px] top-[-4px] text-[10px] font-thin text-gray-70">
-                대회 신청 시 신청하기 버튼을 눌러주세요
+                대회 신청/조회시 아래 버튼을 눌러주세요
               </span>
               <span>{truncateText(comp.name, 10)}</span>
               <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
