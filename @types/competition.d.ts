@@ -55,3 +55,13 @@ export type CompDetailInfo = {
   status: string;
   waitingCount: number;
 };
+
+interface CompStatusButtonContent {
+  [key: string]: {
+    label: string;
+    variant: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+    size: 'sm' | 'md' | 'lg';
+    colors: 'default' | 'gray';
+    endPoint: string;
+  };
+}

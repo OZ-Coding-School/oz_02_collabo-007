@@ -1,3 +1,5 @@
+import { CompStatusButtonContent } from '@/@types/competition';
+
 export const GENDER: { [key: string]: string } = {
   female: '여자',
   male: '남자',
@@ -45,4 +47,49 @@ export const COMP_DATA = {
     { title: '대회일 가까운 순', value: 'closest' },
     { title: '대회일 먼 순', value: 'furthest' },
   ],
+};
+
+export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
+  '신청 가능': {
+    label: '대회 신청하기',
+    variant: 'primary',
+    size: 'md',
+    colors: 'default',
+    endPoint: 'apply',
+  },
+  '신청 불가능': {
+    label: '대회 신청하기',
+    variant: 'primary',
+    size: 'md',
+    colors: 'default',
+    endPoint: 'apply',
+  },
+  '신청 완료': {
+    label: '대회 신청하기',
+    variant: 'primary',
+    size: 'md',
+    colors: 'default',
+    endPoint: 'success',
+  },
+  '대기 가능': {
+    label: '대기 신청하기',
+    variant: 'tertiary',
+    size: 'md',
+    colors: 'default',
+    endPoint: 'apply',
+  },
+  '대회 진행중': {
+    label: '대회 현황 보기',
+    variant: 'tertiary',
+    size: 'md',
+    colors: 'gray',
+    endPoint: 'progress',
+  },
+  '대회 종료': {
+    label: '대회 결과 보기',
+    variant: 'tertiary',
+    size: 'md',
+    colors: 'gray',
+    endPoint: 'result',
+  },
 };
