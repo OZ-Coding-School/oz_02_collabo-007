@@ -5,6 +5,7 @@ import React from 'react';
 import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
 import { formatDate } from '@/lib/utils/formatDate';
 import { GENDER, MATCH_TYPE } from '@/constants/competition/competition';
+import { truncateText } from '@/lib/utils/truncateText';
 
 interface CompCardProps {
   comp?: Competition | null;
@@ -35,7 +36,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
               )}
             </div>
             <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
-              <span>{comp.name}</span>
+              <span>{truncateText(comp.name, 10)}</span>
               <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
                 <span>{formatDate(comp.startDate)}</span>
                 <span>
@@ -46,7 +47,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
               </div>
             </div>
           </div>
-          <CompStatusButton compData={comp} currentLocation={currentLocation} />
+          <CompStatusButton compData={comp} currentLocation={currentLocation} isSignIn />
         </Link>
       ) : (
         <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
