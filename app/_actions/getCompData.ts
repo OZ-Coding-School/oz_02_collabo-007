@@ -1,9 +1,11 @@
 import type { Competition } from '@/@types/competition';
 import { ISearchParams } from '@/components/module/CompListSection/CompList/CompList';
+import { cookies } from 'next/headers';
 
 export const getCompData = async (searchParams: ISearchParams | undefined) => {
   'use server';
-
+  const cookie = cookies();
+  const token = cookie.get('access');
   // status,tier 가 둘 다 있으면 둘 다 필터링이 되어야한다.
   // 한 가지만 있다면 한 가지만 필터링이 되어야 한다.
   // 없으면 아무것도 안 함
@@ -25,6 +27,9 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
     {
       credentials: 'include',
       method: 'GET',
+      headers: {
+        Authorization: token ? `Bearer ${token.value}` : '',
+      },
       cache: 'no-cache',
     },
   );
@@ -37,6 +42,7 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
   const category: { [key: string]: string } = {
     '신청 가능': '진행 전',
     '신청 불가능': '진행 전',
+    '신청 완료': '진행 전',
     '대기 가능': '진행 전',
     '대회 진행전': '진행 전',
     '대회 진행중': '진행 중',
