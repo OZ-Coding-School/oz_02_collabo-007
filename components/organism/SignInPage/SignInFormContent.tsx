@@ -46,8 +46,8 @@ const SignInFormContent = () => {
         </Link>
         <Link href="/">
           <div className="flex w-full items-center justify-center px-[20px]">
-            <span className="text-body-2">회원가입 없이 둘러보기</span>
-            <ChevronRightIcon className="h-[20px] w-[20px]" />
+            <span className="text-body-2 text-primary-60">회원가입 없이 둘러보기</span>
+            <ChevronRightIcon className="h-[20px] w-[20px] fill-primary-60" />
           </div>
         </Link>
       </div>
