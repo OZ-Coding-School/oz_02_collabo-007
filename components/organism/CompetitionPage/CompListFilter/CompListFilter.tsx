@@ -35,7 +35,11 @@ const CompListFilter = ({ filterOption }: CompListFilter) => {
     <div className="flex gap-[4px]">
       <select name={name} id={name} onChange={handleChange}>
         {options.map((option, index) => (
-          <option key={index} value={option.value}>
+          <option
+            key={index}
+            value={option.value}
+            selected={option.value === searchParams.get(name)}
+          >
             {option.title}
           </option>
         ))}
