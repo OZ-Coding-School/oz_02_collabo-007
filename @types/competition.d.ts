@@ -65,3 +65,9 @@ interface CompStatusButtonContent {
     endPoint: string;
   };
 }
+
+type CompCategory = {
+  title: string;
+  gender?: 'male' | 'female' | 'mix' | 'team' | undefined;
+  type?: 'single' | 'double' | 'team' | undefined;
+};

@@ -38,7 +38,7 @@ interface CompListOptionMenuButtonProps
   extends VariantProps<typeof CompListOptionMenuButtonVariants> {
   pathName: string;
   title: string;
-  query?: { [key: string]: string | undefined };
+  query: { [key: string]: string | undefined };
   isSelected: boolean;
   compStatus?: string;
 }

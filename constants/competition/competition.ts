@@ -1,4 +1,4 @@
-import { CompStatusButtonContent } from '@/@types/competition';
+import { CompCategory, CompStatusButtonContent } from '@/@types/competition';
 
 export const GENDER: { [key: string]: string } = {
   female: '여자',
@@ -8,7 +8,7 @@ export const GENDER: { [key: string]: string } = {
 } as const;
 export const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' } as const;
 
-export const COMP_CATEGORY = [
+export const COMP_CATEGORY: CompCategory[] = [
   { title: '전체' },
   { title: '남자 단식', gender: 'male', type: 'single' },
   { title: '여자 단식', gender: 'female', type: 'single' },
@@ -16,12 +16,12 @@ export const COMP_CATEGORY = [
   { title: '여자 복식', gender: 'female', type: 'double' },
   { title: '혼성 복식', gender: 'mix', type: 'double' },
   { title: '팀', gender: 'team', type: 'team' },
-] as const;
+];
 
 export const COMP_TIER = {
   name: 'tier',
   options: [
-    { title: '전체' },
+    { title: '전체', value: '' },
     { title: '개나리부', value: '개나리부' },
     { title: '국화부', value: '국화부' },
     { title: '브론즈', value: '브론즈' },
