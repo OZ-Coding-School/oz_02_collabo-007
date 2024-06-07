@@ -4,7 +4,7 @@ export interface Competition {
   startDate: string;
   endData: string;
   matchTypeDetails: {
-    gender: 'female' | 'male' | 'mix' | 'team';
+    gender: 'female' | 'male' | 'mix' | null;
     type: 'single' | 'double' | 'team';
   };
   tier: string;
@@ -55,3 +55,13 @@ export type CompDetailInfo = {
   status: string;
   waitingCount: number;
 };
+
+interface CompStatusButtonContent {
+  [key: string]: {
+    label: string;
+    variant: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+    size: 'sm' | 'md' | 'lg';
+    colors: 'default' | 'gray';
+    endPoint: string;
+  };
+}

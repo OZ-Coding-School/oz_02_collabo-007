@@ -1,13 +1,7 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
-
-const COMPLIST_OPTIONS = [
-  { title: '전체' },
-  { title: '진행전' },
-  { title: '진행중' },
-  { title: '종료' },
-];
+import { COMPLIST_OPTIONS } from '@/constants/competition/competition';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { status } = searchParams;
@@ -20,7 +14,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
           {COMPLIST_OPTIONS.map((option, index) => (
             <CompListOptionMenuButton
-              pathName="/myapege/competition"
+              pathName="/mypage/competition"
               query={{ status: option.title }}
               variant="underBar"
               isSelected={compStatus === option.title && true}
@@ -31,11 +25,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         </div>
       </div>
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
-        <CompListSection
-          compStatus={compStatus}
-          variant="flexCol"
-          searchParams={searchParams}
-        />
+        <CompListSection variant="flexCol" searchParams={searchParams} />
       </div>
     </div>
   );
