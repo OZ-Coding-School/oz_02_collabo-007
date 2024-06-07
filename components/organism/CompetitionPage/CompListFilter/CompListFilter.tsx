@@ -5,7 +5,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 
 interface CompListFilter {
-  filterOption: { name: string; options: { title: string; value?: string }[] };
+  filterOption: {
+    name: string;
+    options: readonly { title: string; value: string }[];
+  };
 }
 
 const CompListFilter = ({ filterOption }: CompListFilter) => {
