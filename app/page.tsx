@@ -4,13 +4,7 @@ import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import { getMyData } from './_actions/getMyData';
-import LoadingSpinner from '@/components/core/LoadingSpinner/LoadingSpinner';
-import LoadingContainer from './signin/LoadingContainer';
-
-const HOME_COMP_LIST = [
-  { title: '참가 예정 대회', compStatus: '진행 전' },
-  { title: '최근 참가 대회', compStatus: '종료' },
-];
+import { HOME_COMP_LIST } from '@/constants/competition/competition';
 
 const Home = async () => {
   const userData: UserData = await getMyData();
@@ -21,13 +15,8 @@ const Home = async () => {
         <UserProfile userData={userData} rankingPanel loginBtn />
         <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
           {userData &&
-            HOME_COMP_LIST.map(({ title, compStatus }, index) => (
-              <CompListSection
-                key={index}
-                title={title}
-                compStatus={compStatus}
-                variant="flex"
-              />
+            HOME_COMP_LIST.map(({ title }, index) => (
+              <CompListSection key={index} title={title} variant="flex" />
             ))}
           <CompListSection title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />
         </main>

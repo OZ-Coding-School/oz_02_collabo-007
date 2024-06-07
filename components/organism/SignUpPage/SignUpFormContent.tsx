@@ -16,10 +16,10 @@ import {
 import { useFormContext } from 'react-hook-form';
 import type { ClubSearchData } from '@/@types/club';
 import type { UserData } from '@/@types/user';
-import LoadingTennisBall from '@/components/core/LoadingTennisBall/LoadingTennisBall';
 import Dialog from '@/components/core/Dialog/Dialog';
 import { AnimatePresence } from 'framer-motion';
 import HelperText from '@/components/core/HelperText/HelperText';
+import LoadingSpinner from '@/components/core/LoadingSpinner/LoadingSpinner';
 
 export interface SignUpFormContentProps {
   clubList: ClubSearchData[];
@@ -114,7 +114,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
 
       {pending && (
         <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
-          <LoadingTennisBall />
+          <LoadingSpinner />
         </div>
       )}
 

@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import CompCard from './CompCard/CompCard';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
-import { Competition, CompetitionProps } from '@/@types/competition';
+import { Competition } from '@/@types/competition';
 import { getCompData } from '@/app/_actions/getCompData';
 
 export const CompListVariants = cva(
@@ -26,7 +26,6 @@ export interface CompListProps
   extends HTMLAttributes<HTMLElement>,
     VariantProps<typeof CompListVariants> {
   title?: string;
-  compStatus?: string | null;
   currentLocation?: string | null;
   searchParams?: ISearchParams;
 }
@@ -40,39 +39,31 @@ export interface ISearchParams {
   date?: string;
 }
 
-//
 const CompList = async ({
   title,
-  compStatus,
   searchParams,
   currentLocation,
   variant,
 }: CompListProps) => {
   const competitionData: Competition[] = await getCompData(searchParams);
   const myCompetitionData = null;
-
+  console.log(competitionData);
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {!title &&
-        compStatus === '전체' &&
         competitionData.map((comp) => (
-          <>
-            <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
-          </>
+          <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
         ))}
       {title === '참가 예정 대회' || title === '최근 참가 대회' ? (
         <CompCard
           comp={myCompetitionData}
           title={title}
-          // key={comp.id}
           currentLocation={currentLocation}
         />
       ) : null}
       {title === '대회 정보' &&
         competitionData.map((comp) => (
-          <>
-            <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
-          </>
+          <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
         ))}
     </div>
   );

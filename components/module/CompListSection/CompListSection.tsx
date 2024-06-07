@@ -2,10 +2,10 @@ import Link from 'next/link';
 import React, { Suspense } from 'react';
 import CompList, { ISearchParams } from './CompList/CompList';
 import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
+import { COMP_LIST_SECTION_LINK } from '@/constants/competition/competition';
 
 interface CompListSectionProps {
   title?: string;
-  compStatus?: string | null;
   variant?: 'flex' | 'flexCol' | null;
   currentLocation?: string | null;
   searchParams?: ISearchParams;
@@ -13,7 +13,6 @@ interface CompListSectionProps {
 
 const CompListSection = ({
   title,
-  compStatus,
   variant,
   searchParams,
   currentLocation,
@@ -23,7 +22,10 @@ const CompListSection = ({
       {title && (
         <div className={'flex items-center justify-between'}>
           <span className="text-headline-5 text-gray-100">{title}</span>
-          <Link href="/#" className="text-sub-headline-2 text-gray-60">
+          <Link
+            href={COMP_LIST_SECTION_LINK[title]}
+            className="text-sub-headline-2 text-gray-60"
+          >
             전체 목록 보기
           </Link>
         </div>
@@ -31,7 +33,6 @@ const CompListSection = ({
       <Suspense fallback={<CompListSkeleton title={title} variant={variant} />}>
         <CompList
           title={title}
-          compStatus={compStatus}
           variant={variant}
           searchParams={searchParams}
           currentLocation={currentLocation}

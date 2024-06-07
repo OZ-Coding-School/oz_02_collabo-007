@@ -1,13 +1,12 @@
 import type { Competition } from '@/@types/competition';
-import CompCardMatchDetail from '@/components/module/CompListSection/CompList/CompCard/CompCardMatchDetail/CompCardMatchDetail';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
 import { formatDate } from '@/lib/utils/formatDate';
-
-const GENDER = { female: '여자', male: '남자', mix: '혼성', team: '' };
-const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' };
+import { GENDER, MATCH_TYPE } from '@/constants/competition/competition';
+import { truncateText } from '@/lib/utils/truncateText';
+import Flag from '@/app/_asset/icons/flag.svg';
 
 interface CompCardProps {
   comp?: Competition | null;
@@ -29,20 +28,26 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
                 <Image
                   src={comp.imageUrl}
                   fill
+                  objectFit="cover"
                   sizes="88px"
                   alt="comp"
                   style={{ borderRadius: '8px' }}
                 />
               ) : (
-                <div className="h-[88px] w-[88px] rounded-[8px] bg-gray-20"></div>
+                <div className="flex h-[88px] w-[88px] items-center justify-center rounded-[8px] bg-gray-20">
+                  <Flag width={24} height={24} fill="#787878" />
+                </div>
               )}
             </div>
-            <div className="flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
-              <span>{comp.name}</span>
+            <div className="relative flex w-[199px] flex-1 flex-col gap-[4px] text-headline-6 text-gray-100">
+              <span className="absolute right-[5px] top-[-4px] text-[10px] font-thin text-gray-70">
+                대회 신청/조회시 아래 버튼을 눌러주세요
+              </span>
+              <span>{truncateText(comp.name, 10)}</span>
               <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
                 <span>{formatDate(comp.startDate)}</span>
                 <span>
-                  {`${GENDER[comp.matchTypeDetails.gender]} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
+                  {`${GENDER[`${comp.matchTypeDetails.gender}`]} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
                   · {comp.tier}
                 </span>
                 <span>{comp.location}</span>
