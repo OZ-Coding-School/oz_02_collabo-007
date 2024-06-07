@@ -4,8 +4,8 @@ export const GENDER: { [key: string]: string } = {
   female: '여자',
   male: '남자',
   mix: '혼성',
-  null: '',
 } as const;
+
 export const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' } as const;
 
 export const COMP_CATEGORY: CompCategory[] = [

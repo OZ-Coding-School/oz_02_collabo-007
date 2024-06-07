@@ -13,7 +13,6 @@ interface CompCardProps {
   title?: string;
   currentLocation?: string | null;
 }
-
 const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
   return (
     <>
@@ -48,7 +47,7 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
               <div className="text-gary-80 flex flex-col gap-[4px] text-body-3">
                 <span>{formatDate(comp.startDate)}</span>
                 <span>
-                  {`${GENDER[`${comp.matchTypeDetails.gender}`]} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
+                  {`${comp.matchTypeDetails.type !== 'team' ? GENDER[comp.matchTypeDetails.gender] : ''} ${MATCH_TYPE[comp.matchTypeDetails.type]}`}
                   · {comp.tier}
                 </span>
                 <span>{comp.location}</span>
