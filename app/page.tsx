@@ -4,8 +4,6 @@ import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import { getMyData } from './_actions/getMyData';
-import LoadingSpinner from '@/components/core/LoadingSpinner/LoadingSpinner';
-import LoadingContainer from './signin/LoadingContainer';
 
 const HOME_COMP_LIST = [
   { title: '참가 예정 대회', compStatus: '진행 전' },
