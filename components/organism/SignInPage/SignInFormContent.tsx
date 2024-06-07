@@ -6,6 +6,7 @@ import Button from '@/components/core/Button/Button';
 import InputPhone from './InputPhone';
 import HelperText from '@/components/core/HelperText/HelperText';
 import { useFormStatus } from 'react-dom';
+import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 
 const SignInFormContent = () => {
   const { pending } = useFormStatus();
@@ -41,6 +42,12 @@ const SignInFormContent = () => {
         <Link href="/signup">
           <div className="h-12 w-full">
             <Button variant="ghost" colors="gray" label="회원 가입" type="button" />
+          </div>
+        </Link>
+        <Link href="/">
+          <div className="flex w-full items-center justify-center px-[20px]">
+            <span className="text-body-2 text-primary-60">회원가입 없이 둘러보기</span>
+            <ChevronRightIcon className="h-[20px] w-[20px] fill-primary-60" />
           </div>
         </Link>
       </div>
