@@ -1,20 +1,16 @@
-import type { ApplicantInfo } from '@/@types/apply';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
 import React from 'react';
 import { cookies } from 'next/headers';
-import { Secondary } from '@/stories/Avatar.stories';
 
 const CompButton = ({
   id,
   status,
   waitingCount,
-  applicantsInfo,
 }: {
   id: number;
   status: string;
   waitingCount: number;
-  applicantsInfo?: ApplicantInfo;
 }) => {
   const cookie = cookies();
   const token = cookie.get('access');
@@ -39,17 +35,6 @@ const CompButton = ({
   };
 
   const STATUS = CompStatus[status];
-
-  if (applicantsInfo && (status === '신청 가능' || '대기 신청')) {
-    return (
-      <Link
-        href={`/competition/${id}/success`}
-        className="flex w-full flex-col items-start pt-[20px]"
-      >
-        <Button label="참가 신청 조회" />
-      </Link>
-    );
-  }
 
   return (
     <>

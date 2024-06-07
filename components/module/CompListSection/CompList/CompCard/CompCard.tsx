@@ -28,10 +28,11 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
                 <Image
                   src={comp.imageUrl}
                   fill
-                  objectFit="cover"
                   sizes="88px"
                   alt="comp"
                   style={{ borderRadius: '8px' }}
+                  className="rounded-[8px] object-cover"
+                  priority
                 />
               ) : (
                 <div className="flex h-[88px] w-[88px] items-center justify-center rounded-[8px] bg-gray-20">
