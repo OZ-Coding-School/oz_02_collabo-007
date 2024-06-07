@@ -7,7 +7,7 @@ import type { CompDetailInfo } from '@/@types/competition';
 import CopyButton from '../../core/CopyButton/CopyButton';
 import { formatDate } from '@/lib/utils/formatDate';
 import type { AppliedCompetition } from '@/@types/apply';
-import { GENDER, CompType } from '@/constants/competitionDetail/competitionDetail';
+import { GENDER, CompType } from '@/constants/competitionDetail';
 
 const CompInfoCard = ({ data }: { data: CompDetailInfo | AppliedCompetition }) => {
   const { startDate, matchTypeDetails, tier, totalRounds, location, address } = data;
