@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import FlagIcon from '@/app/_asset/icons/flag.svg';
 
 const ImageBanner = ({ img }: { img: string | null }) => {
   return (
@@ -14,7 +15,9 @@ const ImageBanner = ({ img }: { img: string | null }) => {
           priority
         />
       ) : (
-        <div className="h-full w-full bg-gray-30"></div>
+        <div className="flex h-full w-full items-center justify-center bg-gray-30">
+          <FlagIcon width={40} height={40} fill="#787878" />
+        </div>
       )}
     </div>
   );
