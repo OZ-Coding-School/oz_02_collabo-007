@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { Suspense } from 'react';
 import CompList, { ISearchParams } from './CompList/CompList';
 import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
-import { COMP_LIST_SECTION_LINK } from '@/constants/competition/competition';
+import { COMP_LIST_SECTION_LINK } from '@/constants/competition';
 
 interface CompListSectionProps {
   title?: string;

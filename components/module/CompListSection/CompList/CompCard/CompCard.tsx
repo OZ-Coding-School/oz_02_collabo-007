@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import CompStatusButton from '@/components/module/CompListSection/CompList/CompCard/CompStatusButton/CompStatusButton';
 import { formatDate } from '@/lib/utils/formatDate';
-import { GENDER, MATCH_TYPE } from '@/constants/competition/competition';
+import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import { truncateText } from '@/lib/utils/truncateText';
 import Flag from '@/app/_asset/icons/flag.svg';
 

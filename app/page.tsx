@@ -4,7 +4,7 @@ import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import { getMyData } from './_actions/getMyData';
-import { HOME_COMP_LIST } from '@/constants/competition/competition';
+import { HOME_COMP_LIST } from '@/constants/competition';
 
 const Home = async () => {
   const userData: UserData = await getMyData();

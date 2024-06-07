@@ -8,7 +8,7 @@ import {
   COMP_DATA,
   COMP_STATUS,
   COMP_TIER,
-} from '@/constants/competition/competition';
+} from '@/constants/competition';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { gender, type } = searchParams;
