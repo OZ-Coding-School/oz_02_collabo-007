@@ -26,7 +26,7 @@ const useApplyForm = (competitionId: number) => {
     if (state.status === 'error') setIsError(() => true);
 
     if (state.status === 'success') {
-      router.push(`/competition/${competitionId}/success/`);
+      router.replace(`/competition/${competitionId}/success/`);
     }
   }, [state, router, competitionId]);
 

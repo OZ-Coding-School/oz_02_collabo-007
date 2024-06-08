@@ -12,6 +12,7 @@ export async function GET(request: Request, { params }: { params: { id: number }
 
   try {
     const data = await getPartner(query, params.id);
+    console.log('route -> data', data);
     return Response.json(data);
   } catch (error) {
     return new Response('Failed to fetch data', {

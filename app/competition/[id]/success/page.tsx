@@ -55,7 +55,7 @@ const page = async ({ params }: { params: { id: number } }) => {
       </div>
 
       <div className="flex w-full items-center justify-center gap-[12px] p-[20px]">
-        <SuccessButtons />
+        <SuccessButtons waiting={waiting} applicantsId={applicantsInfo.id} />
       </div>
     </div>
   );
