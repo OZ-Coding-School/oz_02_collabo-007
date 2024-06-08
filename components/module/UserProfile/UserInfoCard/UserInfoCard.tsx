@@ -4,6 +4,7 @@ import ClubIcon from '@/app/_asset/icons/group.svg';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Link from 'next/link';
 import { UserData } from '@/@types/user';
+import { cn } from '@/lib/utils/cn';
 
 interface UserInfoCardProps {
   userData: UserData;
@@ -11,6 +12,8 @@ interface UserInfoCardProps {
 }
 
 const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
+  const clubPending = userData.club?.status ? true : false;
+
   return (
     <div className="flex flex-col gap-[8px]">
       {userData ? (
@@ -28,10 +31,17 @@ const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
       )}
       {userData ? (
         <>
-          <div className="flex gap-[8px]">
+          <div
+            className={cn(
+              'flex gap-[8px] text-body-2 text-gray-80',
+              `${clubPending && 'text-gray-50'}`,
+            )}
+          >
             <ClubIcon width={20} height={20} fill="#393939" />
-            <span className="flex text-body-2 text-gray-80">
-              {userData.club ? userData.club.name : '현재 소속된 클럽이 없습니다'}
+            <span className="flex text-body-2">
+              {userData.club
+                ? `${userData.club.name} ${clubPending && '(수락 대기)'}`
+                : '현재 소속된 클럽이 없습니다'}
             </span>
           </div>
           <div className="flex gap-[8px]">
