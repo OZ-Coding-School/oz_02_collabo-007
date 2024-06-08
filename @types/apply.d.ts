@@ -4,6 +4,7 @@ export interface Applicant {
 }
 
 export interface ApplicantInfo {
+  id: number;
   expiredDate: string;
   waitingNumber: number | null;
 }
