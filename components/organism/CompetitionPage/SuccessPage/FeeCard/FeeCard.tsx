@@ -38,7 +38,9 @@ const FeeCard = ({
 
       <div className="flex items-center justify-center gap-[8px] self-stretch">
         <div className="flex-1 text-gray-60">참가비</div>
-        <div className="text-headline-7 text-primary-60">{fee.toLocaleString()}원</div>
+        <div className="text-headline-7 text-primary-60">
+          {fee && fee.toLocaleString()}원
+        </div>
       </div>
     </div>
   );
