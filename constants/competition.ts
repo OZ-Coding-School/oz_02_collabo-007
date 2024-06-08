@@ -4,8 +4,8 @@ export const GENDER: { [key: string]: string } = {
   female: '여자',
   male: '남자',
   mix: '혼성',
-  null: '',
 } as const;
+
 export const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' } as const;
 
 export const COMP_CATEGORY: CompCategory[] = [
@@ -31,7 +31,6 @@ export const COMP_TIER = {
 
 export const COMP_STATUS = {
   name: 'status',
-  defaultOption: '진행 전',
   options: [
     { title: '진행 전', value: '진행 전' },
     { title: '진행 중', value: '진행 중' },
@@ -41,7 +40,6 @@ export const COMP_STATUS = {
 
 export const COMP_DATA = {
   name: 'date',
-  defaultOption: '대회일 가까운 순',
   options: [
     { title: '대회일 가까운 순', value: 'closest' },
     { title: '대회일 먼 순', value: 'furthest' },

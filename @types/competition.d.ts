@@ -4,7 +4,7 @@ export interface Competition {
   startDate: string;
   endData: string;
   matchTypeDetails: {
-    gender: 'female' | 'male' | 'mix' | null;
+    gender: 'female' | 'male' | 'mix';
     type: 'single' | 'double' | 'team';
   };
   tier: string;

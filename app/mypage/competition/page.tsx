@@ -1,7 +1,7 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
-import { COMPLIST_OPTIONS } from '@/constants/competition/competition';
+import { COMPLIST_OPTIONS } from '@/constants/competition';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { status } = searchParams;

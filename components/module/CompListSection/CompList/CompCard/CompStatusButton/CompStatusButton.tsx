@@ -4,7 +4,7 @@ import React, { ButtonHTMLAttributes, MouseEvent } from 'react';
 import CompCardMatchDetail from '../CompCardMatchDetail/CompCardMatchDetail';
 import Button from '@/components/core/Button/Button';
 import { useRouter } from 'next/navigation';
-import { COMP_STATUS_BUTTON_CONTENT } from '@/constants/competition/competition';
+import { COMP_STATUS_BUTTON_CONTENT } from '@/constants/competition';
 
 interface CompStatusButtonProps {
   compData: Competition;
