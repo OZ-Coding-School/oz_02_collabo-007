@@ -26,10 +26,10 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
   return (
     <div className="relative w-full">
       <div className={`flex flex-col items-start gap-[8px] self-stretch`}>
-        <Label label={'파트너 검색'} name={'partner'} />
+        <Label label={'파트너 검색'} name={'partnerId'} />
 
         <Input
-          name="partner"
+          name="partnerId"
           className="hidden pl-[44px]"
           value={selectedId ? selectedId.id : ''}
           readOnly
