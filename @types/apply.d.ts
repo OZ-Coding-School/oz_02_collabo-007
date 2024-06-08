@@ -26,7 +26,7 @@ export interface AppliedCompetition {
 }
 
 export interface ApplyResultData {
-  applicants: Applicant;
+  applicants: Applicant[];
   applicantsInfo: ApplicantInfo;
   competitionInfo: AppliedCompetition;
 }

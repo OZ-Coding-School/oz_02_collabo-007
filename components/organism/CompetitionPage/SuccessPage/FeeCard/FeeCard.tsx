@@ -12,7 +12,7 @@ const FeeCard = ({
   const { bankAccountName, bankAccountNumber, bankName, fee } = competitionInfo;
 
   return (
-    <div className="flex flex-col items-start gap-[12px] rounded-[8px] p-[16px] shadow-card ">
+    <div className="flex w-full flex-col items-start gap-[12px] rounded-[8px] p-[16px] shadow-card ">
       <div className="text-headline-6">참가비 입금 안내</div>
 
       <div className="flex flex-col items-start gap-[8px] self-stretch text-body-2">
