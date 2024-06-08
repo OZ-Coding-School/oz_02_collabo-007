@@ -7,19 +7,9 @@ import type { CompDetailInfo } from '@/@types/competition';
 import CopyButton from '../../core/CopyButton/CopyButton';
 import { formatDate } from '@/lib/utils/formatDate';
 import type { AppliedCompetition } from '@/@types/apply';
+import { GENDER, CompType } from '@/constants/competitionDetail';
 
 const CompInfoCard = ({ data }: { data: CompDetailInfo | AppliedCompetition }) => {
-  const GENDER: { [key: string]: string } = {
-    female: '여자',
-    male: '남자',
-    team: '팀',
-  };
-
-  const CompType: { [key: string]: string } = {
-    single: '단식',
-    double: '복식',
-    team: '',
-  };
   const { startDate, matchTypeDetails, tier, totalRounds, location, address } = data;
 
   return (
