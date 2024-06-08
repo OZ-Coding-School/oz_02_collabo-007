@@ -24,7 +24,7 @@ export const NAV_LINK = [
   },
   {
     name: '대회',
-    url: '/competition/?status=진행+전',
+    url: '/competition/',
     icon: <Flag width={24} height={24} fill="#393939" />,
     fillIcon: <FlagFilled width={24} height={24} fill="#FC5214" />,
   },
