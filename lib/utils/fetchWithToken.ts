@@ -16,7 +16,7 @@ export const fetchWithToken = async (url: string, options: FetchOptions = {}) =>
     ...options,
     headers: {
       ...options.headers,
-      Authorization: accessToken ? `Bearer ${accessToken.value}1` : '',
+      Authorization: accessToken ? `Bearer ${accessToken.value}` : '',
     },
   };
 
