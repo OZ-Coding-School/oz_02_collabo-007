@@ -20,7 +20,9 @@ export const TabGroup = ({
   variant: 'circle' | 'round' | 'underBar' | undefined | null;
 }) => {
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div
+      className={`no-scrollbar sticky top-0 flex gap-[12px] overflow-x-scroll ${variant === 'circle' ? 'flex-row-reverse' : ''}`}
+    >
       {items.map((item) => (
         <Tab
           key={path + item.option + '=' + item.value}

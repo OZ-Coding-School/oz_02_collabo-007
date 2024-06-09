@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils/cn';
 const TabVariants = cva('flex items-center justify-center', {
   variants: {
     variant: {
-      circle: 'text-sub-headline-2 px-[16px] py-[10px] bg-gray-20 rounded-[99px]',
+      circle: 'text-sub-headline-2 w-[52px] h-[52px] bg-gray-20 rounded-[99px]',
       round: `whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-body-2`,
       underBar: `h-[32px] flex-1 text-body-2`,
     },
