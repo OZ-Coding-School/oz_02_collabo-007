@@ -22,7 +22,6 @@ const cancelCompetition = async (id: number) => {
     }
 
     const data = await res.json();
-    console.log('cancel -> data', data);
     return data;
   } catch (error) {
     console.log(error);

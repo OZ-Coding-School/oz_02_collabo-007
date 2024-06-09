@@ -24,7 +24,7 @@ export const getApplyResult = async (id: number) => {
     }
 
     if (!res.ok) {
-      return null;
+      throw new Error('failed');
     }
 
     const data = await res.json();

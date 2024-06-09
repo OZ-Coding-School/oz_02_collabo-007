@@ -1,4 +1,5 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
+import CancelAlert from '@/components/module/CancelAlert/CancelAlert';
 import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
 import CompListSection from '@/components/module/CompListSection/CompListSection';
 import { COMPLIST_OPTIONS } from '@/constants/competition';
@@ -27,6 +28,8 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
         <CompListSection variant="flexCol" searchParams={searchParams} />
       </div>
+
+      <CancelAlert />
     </div>
   );
 };

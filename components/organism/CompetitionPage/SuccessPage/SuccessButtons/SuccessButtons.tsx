@@ -15,15 +15,20 @@ const SuccessButtons = ({
 }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [pending, setPending] = useState(false);
 
   const handleCancel = async () => {
+    // setPending(() => true);
     // const res = await fetch(`/api/competitions/${applicantsId}/application/cancel`, {
     //   method: 'PUT',
     // });
 
+    // setPending(() => false);
     // if (res.ok) {
+    router.replace(
+      `/mypage/competition?message=${waiting ? '대기를 취소했습니다.' : '참가 신청을 취소했습니다.'}`,
+    );
     // }
-    router.replace('/mypage/competition?message=cancel-success');
   };
 
   return (
@@ -57,12 +62,14 @@ const SuccessButtons = ({
                   colors="gray"
                   variant="secondary"
                   onClick={() => setIsOpen(() => false)}
+                  disabled={pending}
                 />
                 <Button
                   label={waiting ? '대기 취소' : '참가 신청 취소'}
                   variant="primary"
                   className="bg-error-60"
                   onClick={handleCancel}
+                  disabled={pending}
                 />
               </div>
             </>
