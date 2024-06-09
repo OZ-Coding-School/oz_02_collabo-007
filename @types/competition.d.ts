@@ -1,3 +1,5 @@
+import { UserData } from './user';
+
 export interface Competition {
   id: number;
   name: string;
@@ -70,4 +72,23 @@ type CompCategory = {
   title: string;
   gender?: 'male' | 'female' | 'mix' | 'team' | undefined;
   type?: 'single' | 'double' | 'team' | undefined;
+};
+
+export interface Match {
+  id: number;
+  matchround: number;
+  matchnumber: number;
+  courtnumber: number;
+  description: string;
+  winnerUser?: UserData[];
+  aTeamUsers?: UserData[];
+  bTeamUsers?: UserData[];
+  sets?: Set[];
+}
+
+export type Set = {
+  id: number;
+  setNumber: number;
+  aScore: number;
+  bScore: number;
 };
