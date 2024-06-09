@@ -1,106 +1,74 @@
-import Button from '@/components/core/Button/Button';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
 import React from 'react';
+import CompInfoCard from '@/components/organism/CompetitionProgressPage/CompInfoCard';
+import MatchList from '@/components/organism/CompetitionProgressPage/MatchList';
+import type { CompDetailInfo } from '@/@types/competition';
+import { getCompDetail } from '@/app/_actions/getCompDetail';
+import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
+import Button from '@/components/core/Button/Button';
+import Link from 'next/link';
 
-const page = () => {
-  const { matches } = TEST_DATA;
+const page = async ({
+  params,
+  searchParams,
+}: {
+  params: { id: number };
+  searchParams: { roundnumber?: string };
+}) => {
+  const compDetailData: CompDetailInfo = await getCompDetail(params.id);
+
+  function powersOfTwo(totalRounds: number) {
+    return Array.from({ length: totalRounds }, (_, i) => Math.pow(2, i + 1));
+  }
+
+  const rounds = powersOfTwo(compDetailData.totalRounds);
+  console.log(searchParams.roundnumber);
   return (
     <div className="flex h-full w-full flex-col">
       <HeaderBar title="대회 현황" backBtn />
-
-      <div className="flex w-full flex-col items-start gap-[16px] self-stretch p-[20px]">
-        <div className="flex flex-col gap-[8px] self-stretch">
-          <div className="text-headline-2">챔피언스리그</div>
-          <div className="text-sub-headline-2 text-gray-80">남자 복식 개나리부</div>
+      <div className="no-scrollbar relative flex h-full flex-1 flex-col overflow-y-scroll">
+        <div className="px-[20px] pt-[20px]">
+          <CompInfoCard compDetailData={compDetailData} />
         </div>
-
-        <div className="no-scrollbar flex w-full items-center gap-[12px] overflow-scroll">
-          <div>
-            <Button
-              className="h-[52px] w-[52px] rounded-full p-0 text-[14px] text-white"
-              label={'32강'}
+        <div className="sticky top-0 flex justify-start bg-white p-[20px]">
+          {searchParams.roundnumber && (
+            <TabGroup
+              path={`/competition/${params.id}/progress/`}
+              items={rounds.map((round, index) => ({
+                text: `${index === 0 ? '결승' : index === 1 ? '준결승' : `${round}강`}`,
+                option: `roundnumber`,
+                value: `${index + 1}`,
+              }))}
+              variant="circle"
             />
-          </div>
-          {['16강', '8강', '준결승', '결승'].map((round, index) => (
-            <div key={index}>
-              <Button
-                className="h-[52px] w-[52px] rounded-full p-0 text-[14px] text-gray-80"
-                variant={'secondary'}
-                colors="gray"
-                label={round}
-              />
-            </div>
-          ))}
+          )}
         </div>
+        <MatchList
+          params={params.id}
+          searchParams={searchParams}
+          matchType={compDetailData.matchTypeDetails.type}
+        />
       </div>
-      <div className="no-scrollbar flex w-full flex-1 flex-col gap-[16px] overflow-scroll bg-gray-10 px-[20px] py-[16px]">
-        {matches.map((match, index) => (
-          <MatchResultCard match={match} key={index} />
-        ))}
+      <div className="w-full p-[20px]">
+        <Link
+          href={{
+            pathname: `/competition/${params.id}/progress/`,
+            query: searchParams.roundnumber
+              ? {}
+              : {
+                  roundnumber: compDetailData.totalRounds,
+                },
+          }}
+          replace
+        >
+          <Button
+            label={searchParams.roundnumber ? '경기 목록 보기' : '대진표 보기'}
+            variant="secondary"
+          />
+        </Link>
       </div>
     </div>
   );
 };
 
 export default page;
-
-const TEST_DATA = {
-  matches: [
-    {
-      court: 1,
-      winner: {
-        users: [{ name: '김형섭' }, { name: '이인호' }],
-        scores: ['6', '6', '-'],
-      },
-      loser: {
-        users: [{ name: '박성진' }, { name: '강민석' }],
-        scores: ['3', '2', '-'],
-      },
-    },
-    {
-      court: 1,
-      winner: {
-        users: [{ name: '김형섭' }, { name: '이인호' }],
-        scores: ['6', '6', '-'],
-      },
-      loser: {
-        users: [{ name: '박성진' }, { name: '강민석' }],
-        scores: ['3', '2', '-'],
-      },
-    },
-    {
-      court: 1,
-      winner: {
-        users: [{ name: '김형섭' }, { name: '이인호' }],
-        scores: ['6', '6', '-'],
-      },
-      loser: {
-        users: [{ name: '박성진' }, { name: '강민석' }],
-        scores: ['3', '2', '-'],
-      },
-    },
-    {
-      court: 1,
-      winner: {
-        users: [{ name: '김형섭' }, { name: '이인호' }],
-        scores: ['6', '6', '-'],
-      },
-      loser: {
-        users: [{ name: '박성진' }, { name: '강민석' }],
-        scores: ['3', '2', '-'],
-      },
-    },
-    {
-      court: 1,
-      winner: {
-        users: [{ name: '김형섭' }, { name: '이인호' }],
-        scores: ['6', '6', '-'],
-      },
-      loser: {
-        users: [{ name: '박성진' }, { name: '강민석' }],
-        scores: ['3', '2', '-'],
-      },
-    },
-  ],
-};
