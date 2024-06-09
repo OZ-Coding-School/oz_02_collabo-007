@@ -10,7 +10,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
   return (
     <div className="relative flex h-full w-full flex-col">
       <div className="sticky top-0 z-10">
-        <HeaderBar title="참가 신청한 대회" backBtn={true} route="/mypage" />
+        <HeaderBar title="참가 신청한 대회" backBtn route="/mypage" />
         <div className={`flex gap-[4px] bg-white px-[20px] pt-[12px]`}>
           {COMPLIST_OPTIONS.map((option, index) => (
             <CompListOptionMenuButton

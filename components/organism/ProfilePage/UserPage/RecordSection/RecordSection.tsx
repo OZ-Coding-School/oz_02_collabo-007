@@ -1,4 +1,4 @@
-import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
+// import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
 import { FC } from 'react';
 import RecordSectionHeader from './RecordSectionHeader/RecordSectionHeader';
 
@@ -35,9 +35,9 @@ const RecordSection: FC<Props> = ({ matchData }) => {
         tier={tier}
       />
 
-      {matches.map((match, index) => (
+      {/* {matches.map((match, index) => (
         <MatchResultCard match={match} key={index} />
-      ))}
+      ))} */}
     </div>
   );
 };
