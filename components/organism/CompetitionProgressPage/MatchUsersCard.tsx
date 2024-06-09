@@ -5,13 +5,20 @@ import CheckIcon from '@/app/_asset/icons/check-circle.svg';
 interface MatchUsersCardProps {
   users?: UserData[];
   winnerUser?: UserData[];
+  matchType: string;
 }
 
-const MatchUsersCard = ({ users, winnerUser }: MatchUsersCardProps) => {
+const MatchUsersCard = ({ users, winnerUser, matchType }: MatchUsersCardProps) => {
   return (
     <div className="flex flex-col">
-      <div className="flex items-center gap-[8px] text-gray-80">
-        {users ? users.map((userData) => userData.username).join(' \u00B7 ') : '미정'}
+      <div
+        className={`flex items-center gap-[8px] ${users ? 'text-black' : 'text-gray-50'}`}
+      >
+        {users
+          ? users.map((userData) => userData.username).join(' \u00B7 ')
+          : matchType === 'double' || 'team'
+            ? '미정 \u00B7 미정'
+            : '미정'}
         {winnerUser &&
           users?.map((userInfo, index) =>
             userInfo.id === winnerUser[0].id ? (
