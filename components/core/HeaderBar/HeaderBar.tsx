@@ -8,10 +8,19 @@ interface Props {
   title: string;
   backBtn?: boolean;
   actionBtn?: React.ReactNode;
+  route?: string;
 }
 
-const HeaderBar: FC<Props> = ({ title, backBtn = false, actionBtn }) => {
+const HeaderBar: FC<Props> = ({ title, backBtn = false, route, actionBtn }) => {
   const router = useRouter();
+
+  const handleRoute = () => {
+    if (route) {
+      router.push(route);
+      return;
+    }
+    router.back();
+  };
 
   return (
     <div className="flex w-full items-center justify-center gap-[16px] bg-white">
@@ -21,7 +30,7 @@ const HeaderBar: FC<Props> = ({ title, backBtn = false, actionBtn }) => {
             width={24}
             height={24}
             fill="#121212"
-            onClick={() => router.back()}
+            onClick={handleRoute}
             className="cursor-pointer"
           />
         )}

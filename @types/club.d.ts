@@ -13,6 +13,8 @@ export type ClubSearchData = {
 export type Club = ClubSearchData & {
   phone: string;
   description: string;
+  status?: string;
+  dateApplied?: string;
 };
 
 export type ClubCoach = {

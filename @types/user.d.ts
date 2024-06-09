@@ -29,4 +29,5 @@ export type PartnerData = {
   username: string;
   imageUrl: string | null;
   club: Club | null;
+  applicationStatus: boolean;
 };

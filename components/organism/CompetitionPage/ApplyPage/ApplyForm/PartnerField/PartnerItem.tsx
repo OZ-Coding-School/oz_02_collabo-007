@@ -10,6 +10,7 @@ interface PartnerItemProps {
   image: string | null;
   handleDelete?: () => void;
   displayMode?: boolean;
+  status?: boolean;
 }
 
 const PartnerItem = ({
@@ -18,12 +19,35 @@ const PartnerItem = ({
   image,
   handleDelete,
   displayMode = false,
+  status,
 }: PartnerItemProps) => {
+  const Buttons = () => {
+    if (displayMode) {
+      return (
+        <div onClick={handleDelete}>
+          <XIcon width={20} height={20} fill="#393939" />
+        </div>
+      );
+    }
+
+    if (!status) {
+      return (
+        <div className="flex items-center justify-center px-[12px] py-[6px] text-gray-50">
+          신청 불가
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex items-center justify-center px-[12px] py-[6px]">선택</div>
+    );
+  };
+
   return (
     <div
       className={cn(
-        `${displayMode && 'bg-gray-20'}`,
         'flex w-full items-center gap-[16px] self-stretch rounded-[8px]',
+        `${displayMode && 'bg-gray-20'}`,
       )}
     >
       <div className="flex w-full flex-1 items-center gap-[12px] rounded-[8px]">
@@ -43,19 +67,18 @@ const PartnerItem = ({
             </div>
           )}
         </div>
-        <div className="flex flex-1 items-center gap-[4px] text-body-2 text-gray-80">
+        <div
+          className={cn(
+            'flex flex-1 items-center gap-[4px] text-body-2 text-gray-80',
+            `${!status && 'text-gray-50'}`,
+          )}
+        >
           <div>{name}</div>
           {clubName && <div>{`(${clubName})`}</div>}
         </div>
       </div>
 
-      {displayMode ? (
-        <div onClick={handleDelete}>
-          <XIcon width={20} height={20} fill="#393939" />
-        </div>
-      ) : (
-        <div className="flex items-center justify-center px-[12px] py-[6px]">선택</div>
-      )}
+      <Buttons />
     </div>
   );
 };

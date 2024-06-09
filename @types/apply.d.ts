@@ -4,6 +4,7 @@ export interface Applicant {
 }
 
 export interface ApplicantInfo {
+  id: number;
   expiredDate: string;
   waitingNumber: number | null;
 }
@@ -26,7 +27,7 @@ export interface AppliedCompetition {
 }
 
 export interface ApplyResultData {
-  applicants: Applicant;
+  applicants: Applicant[];
   applicantsInfo: ApplicantInfo;
   competitionInfo: AppliedCompetition;
 }

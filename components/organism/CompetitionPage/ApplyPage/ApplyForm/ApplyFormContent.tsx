@@ -52,7 +52,7 @@ const ApplyFormContent = ({
 
           <div className="flex flex-col gap-[8px]">
             <Label label="신청 코드" name="code" />
-            <Input type="number" name="code" placeholder="신청코드" />
+            <Input type="number" name="code" placeholder="신청코드" autoComplete="off" />
           </div>
           <input type="hidden" name="id" value={competitionId} />
         </div>
