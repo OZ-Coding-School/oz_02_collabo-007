@@ -1,3 +1,4 @@
+'use server';
 import { cookies } from 'next/headers';
 
 export const renewAccessToken = async (): Promise<string> => {
@@ -8,15 +9,14 @@ export const renewAccessToken = async (): Promise<string> => {
     method: 'POST',
     credentials: 'include',
     headers: {
-      Authorization: refreshToken ? `Bearer ${refreshToken.value}` : '',
+      Cookie: `refresh=${refreshToken?.value}`,
     },
   });
   const data = await res.json();
-  console.log('data', data);
 
   if (!res.ok) {
     throw new Error('Failed to refresh token');
   }
 
-  return data.accessToken;
+  return data.access;
 };
