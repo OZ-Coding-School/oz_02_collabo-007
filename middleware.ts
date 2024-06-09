@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+
   const refreshToken = request.cookies.get('refresh')?.value || null;
   const { pathname } = request.nextUrl;
 
@@ -23,7 +25,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  return NextResponse.next();
+  // return NextResponse.next();
+  return response;
 }
 
 export const config = {
