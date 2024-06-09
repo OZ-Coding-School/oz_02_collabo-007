@@ -76,9 +76,9 @@ type CompCategory = {
 
 export interface Match {
   id: number;
-  matchround: number;
-  matchnumber: number;
-  courtnumber: number;
+  matchRound: number;
+  matchNumber: number;
+  courtNumber: number;
   description: string;
   winnerUser?: UserData[];
   aTeamUsers?: UserData[];
