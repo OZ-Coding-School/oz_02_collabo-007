@@ -21,7 +21,6 @@ const usePartnerList = ({
       setIsLoading(() => true);
       const res = await fetch(`/api/${id}/search?query=${debounceSearchValue}`);
       const data = await res.json();
-      console.log(data);
       setFilteredData(() => data);
       setIsLoading(() => false);
     };

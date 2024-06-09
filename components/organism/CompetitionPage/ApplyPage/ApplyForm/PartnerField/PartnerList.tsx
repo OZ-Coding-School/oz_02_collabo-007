@@ -40,12 +40,13 @@ const PartnerList = ({
             <div
               key={data.id}
               className="w-full cursor-pointer border-b border-gray-30 bg-gray-10 py-[16px]"
-              onClick={() => handlePartnerItem(data.id)}
+              onClick={() => data.applicationStatus && handlePartnerItem(data.id)}
             >
               <PartnerItem
                 name={data.username}
                 clubName={data.club?.name}
                 image={data.imageUrl}
+                status={data.applicationStatus}
               />
             </div>
           ))}
