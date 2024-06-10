@@ -39,6 +39,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
             variant="flexCol"
             searchParams={searchParams}
             currentLocation="competition"
+            competitionType="competition"
           />
         </div>
       </div>
