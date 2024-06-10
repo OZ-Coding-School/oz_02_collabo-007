@@ -20,8 +20,8 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
 
   const params = new URLSearchParams();
 
-  if (gender) params.append('gender', gender);
-  if (type) params.append('matchType', type);
+  if (gender && gender !== 'all') params.append('gender', gender);
+  if (type && type !== 'all') params.append('matchType', type);
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/?${params.toString()}`,
     {

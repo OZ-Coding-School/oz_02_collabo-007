@@ -9,7 +9,7 @@ export const GENDER: { [key: string]: string } = {
 export const MATCH_TYPE = { single: '단식', double: '복식', team: '팀' } as const;
 
 export const COMP_CATEGORY: CompCategory[] = [
-  { title: '전체' },
+  { title: '전체', gender: 'all', type: 'all' },
   { title: '남자 단식', gender: 'male', type: 'single' },
   { title: '여자 단식', gender: 'female', type: 'single' },
   { title: '남자 복식', gender: 'male', type: 'double' },

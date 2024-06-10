@@ -70,8 +70,8 @@ interface CompStatusButtonContent {
 
 type CompCategory = {
   title: string;
-  gender?: 'male' | 'female' | 'mix' | 'team' | undefined;
-  type?: 'single' | 'double' | 'team' | undefined;
+  gender?: 'male' | 'female' | 'mix' | 'team' | 'all' | undefined;
+  type?: 'single' | 'double' | 'team' | 'all' | undefined;
 };
 
 export interface Match {
