@@ -57,6 +57,7 @@ export const Tab = ({ path, item, variant }: TabProps) => {
 
   return (
     <Link
+      replace
       href={`${path}?${params.toString()}`}
       className={cn(TabVariants({ variant, selected: isActive ? true : false }))}
     >
