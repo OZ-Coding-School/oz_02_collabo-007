@@ -15,27 +15,19 @@ const MatchScoreCard = ({
     <div className="flex items-start gap-[4px] text-center text-headline-7">
       {sets ? (
         sets.map((set: Set, index: number) => (
-          <div key={index} className="flex w-[18px] flex-col gap-[12px]">
-            <span
-              className={
-                set.aScore < set.bScore || !aTeamUsers ? 'text-gray-50' : 'text-black'
-              }
-            >
+          <div key={set.id} className="flex w-[18px] flex-col gap-[12px]">
+            <span className={set.aScore < set.bScore ? 'text-gray-50' : 'text-black'}>
               {set.aScore ? set.aScore : `-`}
             </span>
-            <span
-              className={
-                set.bScore < set.aScore || !bTeamUsers ? 'text-gray-50' : 'text-black'
-              }
-            >
+            <span className={set.bScore < set.aScore ? 'text-gray-50' : 'text-black'}>
               {set.bScore ? set.bScore : `-`}
             </span>
           </div>
         ))
       ) : (
-        <div>
-          <div>- - -</div>
-          <div>- - -</div>
+        <div className={`flex w-[18px] flex-col gap-[12px]`}>
+          <span className={`${!aTeamUsers ? 'text-gray-50' : 'text-black'}`}>-</span>
+          <span className={`${!bTeamUsers ? 'text-gray-50' : 'text-black'}`}>-</span>
         </div>
       )}
     </div>
