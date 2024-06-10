@@ -15,9 +15,11 @@ export const getApplyResult = async (id: number) => {
         headers: {
           Authorization: token ? `Bearer ${token.value}` : '',
         },
-        next: { revalidate: 3600, tags: [`competition-apply-success-${id}`] },
+        // next: { revalidate: 3600, tags: [`competition-apply-success-${id}`] },
       },
     );
+
+    console.log(res);
 
     if (res.status === 500) {
       throw new Error('Failed to fetch data');

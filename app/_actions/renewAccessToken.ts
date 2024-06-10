@@ -1,4 +1,5 @@
 'use server';
+
 import { cookies } from 'next/headers';
 
 export const renewAccessToken = async (): Promise<string> => {
@@ -12,6 +13,7 @@ export const renewAccessToken = async (): Promise<string> => {
       Cookie: `refresh=${refreshToken?.value}`,
     },
   });
+
   const data = await res.json();
 
   if (!res.ok) {

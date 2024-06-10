@@ -1,22 +1,22 @@
+'use server';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 import { cookies } from 'next/headers';
 
 export const getMyData = async () => {
-  'use server';
+  // const cookie = cookies();
+  // const user = cookie.get('access')!;
+  const res = await fetchWithToken(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
+    credentials: 'include',
+    method: 'GET',
+    headers: {
+      // Authorization: `Bearer ${user.value}`,
+      'Content-type': 'application/json',
+    },
+    cache: 'force-cache',
+    next: { tags: ['myData'] },
+  });
 
-  const cookie = cookies();
-  const user = cookie.get('access')!;
-  if (user) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile`, {
-      credentials: 'include',
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${user.value}`,
-        'Content-type': 'application/json',
-      },
-      cache: 'force-cache',
-      next: { tags: ['myData'] },
-    }).then((res) => res.json());
+  const data = await res.json();
 
-    return res;
-  }
+  return data;
 };
