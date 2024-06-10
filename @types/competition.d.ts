@@ -19,7 +19,7 @@ export interface Competition {
 }
 
 export interface CompetitionProps {
-  compData: Competition;
+  compData: Competition | MyCompData;
 }
 
 export type NextMatchInfo = {
@@ -91,4 +91,34 @@ export type Set = {
   setNumber: number;
   aScore: number;
   bScore: number;
+};
+
+export type MyCompData = {
+  id: number;
+  name: string;
+  startDate: string;
+  tier: string;
+  matchTypeDetails: { gender: string; type: string };
+  totalRounds: number;
+  totalSets: number;
+  location: string | null;
+  address: string | null;
+  description: string;
+  rule: string;
+  phone: string | null;
+  siteLink: string;
+  imageUrl: string | null;
+  status: string;
+  applyStatus: string;
+  matches: Matches | null;
+};
+
+export type Matches = {
+  id: number;
+  matchround: number;
+  matchnumber: number;
+  courtnumber: number;
+  winnerName: string[];
+  aTeamUser: string[];
+  bTeamUser: string[];
 };
