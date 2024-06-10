@@ -22,7 +22,6 @@ const page = async ({
   }
 
   const rounds = powersOfTwo(compDetailData.totalRounds);
-  console.log(searchParams.roundnumber);
   return (
     <div className="flex h-full w-full flex-col">
       <HeaderBar title="대회 현황" backBtn />
@@ -36,8 +35,7 @@ const page = async ({
               path={`/competition/${params.id}/progress/`}
               items={rounds.map((round, index) => ({
                 text: `${index === 0 ? '결승' : index === 1 ? '준결승' : `${round}강`}`,
-                option: `roundnumber`,
-                value: `${index + 1}`,
+                option: [{ roundnumber: `${index + 1}` }],
               }))}
               variant="circle"
             />
