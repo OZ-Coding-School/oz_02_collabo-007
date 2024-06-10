@@ -52,7 +52,7 @@ const CompList = async ({
   const [myCompetitionData, competitionData]: [MyCompData[], Competition[]] =
     await Promise.all([
       competitionType === 'mycompetition' || competitionType === 'both'
-        ? getMyCompData()
+        ? getMyCompData(searchParams)
         : Promise.resolve(null),
       competitionType === 'competition' || competitionType === 'both'
         ? getCompData(searchParams)
