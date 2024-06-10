@@ -18,17 +18,17 @@ const SuccessButtons = ({
   const [pending, setPending] = useState(false);
 
   const handleCancel = async () => {
-    // setPending(() => true);
-    // const res = await fetch(`/api/competitions/${applicantsId}/application/cancel`, {
-    //   method: 'PUT',
-    // });
+    setPending(() => true);
+    const res = await fetch(`/api/competitions/${applicantsId}/application/cancel`, {
+      method: 'PUT',
+    });
 
-    // setPending(() => false);
-    // if (res.ok) {
-    router.replace(
-      `/mypage/competition?message=${waiting ? '대기를 취소했습니다.' : '참가 신청을 취소했습니다.'}`,
-    );
-    // }
+    setPending(() => false);
+    if (res.ok) {
+      router.replace(
+        `/mypage/competition?message=${waiting ? '대기를 취소했습니다.' : '참가 신청을 취소했습니다.'}`,
+      );
+    }
   };
 
   return (
