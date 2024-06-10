@@ -12,7 +12,6 @@ export const getCompProgress = async (
     const params = new URLSearchParams();
 
     if (roundnumber) params.append('round_number', roundnumber);
-    console.log(params.toString());
 
     const res = await fetch(
       ` ${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/status/?${params.toString()}`,

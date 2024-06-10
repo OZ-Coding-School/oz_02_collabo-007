@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
+import MatchCard from '@/components/organism/CompetitionProgressPage/MatchCard';
 
 const meta = {
   title: 'Module/MatchResultCard',
-  component: MatchResultCard,
+  component: MatchCard,
   parameters: {
     layout: 'centered',
   },
@@ -16,7 +16,7 @@ const meta = {
   ],
 
   tags: ['autodocs'],
-} satisfies Meta<typeof MatchResultCard>;
+} satisfies Meta<typeof MatchCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -2,20 +2,17 @@ import { Tab } from './Tab';
 
 export type Item = {
   text: string;
-  option?: string;
-  value?: string;
+  option: { [key: string]: string | undefined }[];
   segment?: string;
   parallelRoutesKey?: string;
 };
 
 export const TabGroup = ({
   path,
-  parallelRoutesKey,
   items,
   variant,
 }: {
   path: string;
-  parallelRoutesKey?: string;
   items: Item[];
   variant: 'circle' | 'round' | 'underBar' | undefined | null;
 }) => {
@@ -23,14 +20,8 @@ export const TabGroup = ({
     <div
       className={`no-scrollbar sticky top-0 flex gap-[12px] overflow-x-scroll ${variant === 'circle' ? 'flex-row-reverse' : ''}`}
     >
-      {items.map((item) => (
-        <Tab
-          key={path + item.option + '=' + item.value}
-          item={item}
-          path={path}
-          parallelRoutesKey={parallelRoutesKey}
-          variant={variant}
-        />
+      {items.map((item, index) => (
+        <Tab key={index} item={item} path={path} variant={variant} />
       ))}
     </div>
   );
