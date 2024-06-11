@@ -38,12 +38,6 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           <Suspense fallback={<div>loading...</div>}>
             <CompInfo searchParams={searchParams} />
           </Suspense>
-          {/* <CompListSection
-            variant="flexCol"
-            searchParams={searchParams}
-            currentLocation="competition"
-            competitionType="competition"
-          /> */}
         </div>
       </div>
       <div className="sticky bottom-0 w-full">

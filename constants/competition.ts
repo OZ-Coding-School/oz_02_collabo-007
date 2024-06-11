@@ -115,6 +115,8 @@ export const COMP_LIST_SECTION_LINK: { [key: string]: string } = {
 
 export const COMP_INFO_LINK = '/competition/';
 
+// TODO: 상수 정리하기
+
 export const MY_COMP_LIST: { title: string; link: string }[] = [
   { title: '참가 예정 대회', link: '/mypage/competition/?status=before' },
   { title: '참가 중인 대회', link: '/mypage/competition/?status=during' },
