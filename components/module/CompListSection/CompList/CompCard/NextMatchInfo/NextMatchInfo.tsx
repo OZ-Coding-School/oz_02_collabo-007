@@ -9,7 +9,7 @@ interface NextMatchInfoProps {
 const NextMatchInfo = ({ nextMatchInfo, status }: NextMatchInfoProps) => {
   return (
     <>
-      <div className="flex">
+      <div className="flex rounded-[8px] bg-gray-20 p-[12px]">
         {status === '진행 전' && !nextMatchInfo?.opponent ? (
           <div className="flex w-full justify-center text-sub-headline-3 text-gray-60">
             <span>아직 경기가 배정되지 않았습니다.</span>

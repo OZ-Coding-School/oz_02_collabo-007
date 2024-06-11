@@ -8,6 +8,7 @@ import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import { truncateText } from '@/lib/utils/truncateText';
 import Flag from '@/app/_asset/icons/flag.svg';
 import MyCompMatchCard from '@/components/module/MyCompMatchCard/MyCompMatchCard';
+import NextMatchInfo from './NextMatchInfo/NextMatchInfo';
 
 interface CompCardProps {
   comp?: Competition | MyCompData | null;
@@ -51,7 +52,8 @@ const CompCard = ({ comp, title, competitionType }: CompCardProps) => {
             </div>
           </div>
           {competitionType === 'competition' && <CompStatusButton compData={comp} />}
-          {competitionType === 'mycompetition' && <MyCompMatchCard />}
+          {/* {competitionType === 'mycompetition' && <MyCompMatchCard />} */}
+          {competitionType === 'mycompetition' && <NextMatchInfo />}
         </Link>
       ) : (
         <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
