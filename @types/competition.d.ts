@@ -79,6 +79,7 @@ export interface Match {
   matchRound: number;
   matchNumber: number;
   courtNumber: number;
+  totalSets: number;
   description: string;
   winnerUser?: UserData[];
   aTeamUsers?: UserData[];
