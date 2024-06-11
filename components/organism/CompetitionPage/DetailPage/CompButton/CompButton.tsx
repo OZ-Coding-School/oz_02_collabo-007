@@ -16,22 +16,28 @@ const CompButton = ({
   const token = cookie.get('access');
 
   const CompStatus: { [key: string]: { element: JSX.Element; link: string } } = {
-    '신청 가능': { element: <Button label="대회 신청하기" />, link: `apply` },
-    '대회 진행중': { element: <Button label="대회 현황 보기" />, link: `progress` },
-    '대회 종료': { element: <Button label="대회 결과보기" />, link: `result` },
-    '신청 불가능': {
+    'Registration Available': {
+      element: <Button label="대회 신청하기" />,
+      link: `apply`,
+    },
+    during: { element: <Button label="대회 현황 보기" />, link: `progress` },
+    ended: { element: <Button label="대회 결과보기" />, link: `result` },
+    'Registration Unavailable': {
       element: (
         <Button label="신청 불가 (성별 또는 실력 제한)" variant="primary" disabled />
       ),
       link: '#',
     },
-    '대기 신청': {
+    'Waitlist Available': {
       element: (
         <Button label={`대기 신청하기 (${waitingCount}명 대기 중)`} variant="tertiary" />
       ),
       link: `apply`,
     },
-    '신청 완료': { element: <Button label="신청 조회하기" />, link: `success` },
+    'Registration Confirmed': {
+      element: <Button label="신청 조회하기" />,
+      link: `success`,
+    },
   };
 
   const STATUS = CompStatus[status];
