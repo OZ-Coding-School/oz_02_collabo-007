@@ -28,7 +28,7 @@ const CompStatusButton = ({ compData }: CompStatusButtonProps) => {
         size={size}
         colors={colors}
         onClick={handleClick}
-        disabled={compData.status === '신청 불가능'}
+        disabled={compData.status === 'Registration Unavailable'}
       />
     </>
   );
