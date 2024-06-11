@@ -28,7 +28,7 @@ const MatchScoreCard = ({
           </span>
           <span
             className={
-              (match?.aTeamUsers && !match.sets) ||
+              (match?.bTeamUsers && !match.sets) ||
               (match?.bTeamUsers && match.sets && !match.sets[index]) ||
               (match?.sets && match.sets[index]?.aScore < match.sets[index]?.bScore)
                 ? 'text-black'

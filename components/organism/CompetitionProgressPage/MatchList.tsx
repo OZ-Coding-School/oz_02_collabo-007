@@ -22,17 +22,26 @@ const MatchList = async ({
   const getMatchData = (index: number) => {
     return compProgressData.find((match) => match.matchNumber === index + 1);
   };
-
+  console.log(searchParams.roundnumber);
   return (
     <div className="no-scrollbar flex w-full flex-1 flex-col gap-[16px] border-t-[1px] border-gray-30 bg-gray-10 px-[20px] py-[16px]">
-      {Array.from({ length: matchCount }, (_, index) => (
-        <MatchCard
-          match={getMatchData(index)}
-          key={index}
-          matchType={matchType}
-          totalSets={totalSets}
-        />
-      ))}
+      {searchParams.roundnumber !== undefined
+        ? Array.from({ length: matchCount }, (_, index) => (
+            <MatchCard
+              match={getMatchData(index)}
+              key={index}
+              matchType={matchType}
+              totalSets={totalSets}
+            />
+          ))
+        : compProgressData.map((match, index) => (
+            <MatchCard
+              match={match}
+              key={index}
+              matchType={matchType}
+              totalSets={totalSets}
+            />
+          ))}
     </div>
   );
 };
