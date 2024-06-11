@@ -1,10 +1,6 @@
 import React from 'react';
 import CompCardSkeleton from './CompCardSkeleton';
 import { cn } from '@/lib/utils/cn';
-import {
-  CompListProps,
-  CompListVariants,
-} from '@/components/module/CompListSection/CompList/CompList';
 
 const CompListSkeleton = ({
   title,
@@ -14,7 +10,8 @@ const CompListSkeleton = ({
   variant?: 'flex' | 'flexCol' | null;
 }) => {
   return (
-    <div className={cn(CompListVariants({ variant }))}>
+    // <div className={cn(CompListVariants({ variant }))}>
+    <div>
       {Array.from({ length: 4 }, (_, index) => {
         return <CompCardSkeleton title={title} key={index} />;
       })}

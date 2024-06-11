@@ -1,7 +1,15 @@
-import { ISearchParams } from '@/components/module/CompListSection/CompList/CompList';
 import { cookies } from 'next/headers';
 
-export const getMyCompData = async (searchParams: ISearchParams | undefined) => {
+export interface ISearchParams {
+  status?: string;
+  tier?: string;
+  gender?: string;
+  type?: string;
+  title?: string;
+  date?: string;
+}
+
+export const getMyCompData = async (searchParams?: ISearchParams, count?: number) => {
   const cookie = cookies();
   const token = cookie.get('access');
 

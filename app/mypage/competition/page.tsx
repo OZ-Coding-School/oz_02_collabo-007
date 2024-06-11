@@ -2,8 +2,7 @@ import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import CancelAlert from '@/components/module/CancelAlert/CancelAlert';
 import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
-import CompListSection from '@/components/module/CompListSection/CompListSection';
-import { COMPLIST_OPTIONS } from '@/constants/competition';
+import { COMP_LIST_OPTIONS } from '@/constants/competition';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const { status } = searchParams;
@@ -16,7 +15,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         <div className={`flex w-full gap-[4px] bg-white px-[20px] pt-[12px]`}>
           <TabGroup
             path={'/mypage/competition/'}
-            items={COMPLIST_OPTIONS.map((option, index) => ({
+            items={COMP_LIST_OPTIONS.map((option, index) => ({
               text: `${option.title}`,
               option: [{ status: `${option.status}` }],
             }))}
@@ -25,12 +24,12 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         </div>
       </div>
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10  p-[20px]">
-        <CompListSection
+        {/* <CompListSection
           variant="flexCol"
           searchParams={searchParams}
           competitionType="mycompetition"
           currentLocation="mycompetition"
-        />
+        /> */}
       </div>
 
       <CancelAlert />
