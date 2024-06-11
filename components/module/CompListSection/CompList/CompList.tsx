@@ -63,7 +63,6 @@ const CompList = async ({
   const requests = requestFunc[competitionType];
   const competitionData: MyCompData[] | Competition[] = await sendRequests(requests);
 
-  console.log(competitionData);
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {competitionData &&
