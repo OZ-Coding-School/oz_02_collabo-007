@@ -2,32 +2,28 @@ import Navbar from '@/components/module/Navbar/Navbar';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
-import CompListSection from '@/components/module/CompListSection/CompListSection';
 import { getMyData } from './_actions/getMyData';
-import { HOME_COMP_LIST } from '@/constants/competition';
+import { Suspense } from 'react';
+import HomeMyCompInfo from '@/components/organism/HomPage/HomeMyCompInfo/HomeMyCompInfo';
+import HomeCompInfo from '@/components/organism/HomPage/HomeCompInfo/HomeCompInfo';
 
 const Home = async () => {
-  const userData: UserData = await getMyData();
+  const userData: UserData | null = await getMyData();
 
   return (
     <>
       <div className="flex h-full w-full flex-col overflow-hidden">
-        <UserProfile userData={userData} rankingPanel loginBtn />
+        <UserProfile userData={userData && userData} rankingPanel loginBtn />
         <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
-          {userData.id &&
-            HOME_COMP_LIST.map(({ title }, index) => (
-              <CompListSection
-                key={index}
-                title={title}
-                variant="flex"
-                competitionType="mycompetition"
-              />
-            ))}
-          <CompListSection
-            title="대회 정보"
-            variant={userData ? 'flex' : 'flexCol'}
-            competitionType="competition"
-          />
+          {/* TODO: 스켈레톤 추가 */}
+          {userData && (
+            <Suspense fallback={<div>loading...</div>}>
+              <HomeMyCompInfo />
+            </Suspense>
+          )}
+          <Suspense fallback={<div>loading...</div>}>
+            <HomeCompInfo isUser={userData ? true : false} />
+          </Suspense>
         </main>
         <div className="sticky bottom-0 w-full">
           <Navbar />

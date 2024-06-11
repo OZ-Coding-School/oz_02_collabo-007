@@ -19,8 +19,6 @@ export const getApplyResult = async (id: number) => {
       },
     );
 
-    console.log(res);
-
     if (res.status === 500) {
       throw new Error('Failed to fetch data');
     }

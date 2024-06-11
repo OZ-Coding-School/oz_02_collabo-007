@@ -8,7 +8,7 @@ import UserInfoCard from './UserInfoCard/UserInfoCard';
 import UserHighlightRankingCard from './UserHighlightRankingCard/UserHighlightRankingCard';
 
 interface UserProfileProps {
-  userData: UserData;
+  userData: UserData | null;
   loginBtn?: boolean;
   rankingPanel?: boolean;
 }
@@ -24,7 +24,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => 
           <ProfileAvatar image={userData?.imageUrl} />
         </div>
         <UserHighlightRankingCard rankingPanel={rankingPanel} userData={userData} />
-        {!userData.id && loginBtn && (
+        {!userData && loginBtn && (
           <Link href="/signin">
             <Button size="lg" label="로그인하러 가기" variant="primary" />
           </Link>

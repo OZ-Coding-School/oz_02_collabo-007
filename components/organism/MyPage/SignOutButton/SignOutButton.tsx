@@ -10,10 +10,13 @@ const SignOutButton = () => {
   return (
     <>
       <form
-        className="flex cursor-pointer items-center gap-[16px] self-stretch px-[24px] py-[16px] text-error-60"
+        className="flex cursor-pointer items-center self-stretch text-error-60"
         action={() => startTransition(() => signOutUser())}
       >
-        <button type="submit" className="flex w-full items-center justify-start">
+        <button
+          type="submit"
+          className="flex w-full items-center justify-start px-[24px] py-[16px]"
+        >
           로그아웃
         </button>
       </form>

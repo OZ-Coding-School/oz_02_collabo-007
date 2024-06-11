@@ -22,7 +22,7 @@ export const fetchWithToken = async (url: string, options: FetchOptions = {}) =>
 
   const res = await fetch(url, request);
 
-  if (res.status === 401) {
+  if (accessToken && res.status === 401) {
     // 토큰 만료 또는 인증 실패
     try {
       const renew = await renewAccessToken();

@@ -1,7 +1,7 @@
-import { ISearchParams } from '@/components/module/CompListSection/CompList/CompList';
 import { cookies } from 'next/headers';
+import { ISearchParams } from './getCompData';
 
-export const getMyCompData = async (searchParams: ISearchParams | undefined) => {
+export const getMyCompData = async (searchParams?: ISearchParams, count?: number) => {
   const cookie = cookies();
   const token = cookie.get('access');
 

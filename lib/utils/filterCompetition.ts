@@ -1,33 +1,24 @@
-interface Competition {
-  id: number;
-  name: string;
-  startDate: string;
-  endData: string;
-  matchTypeDetails: {
-    gender: 'female' | 'male' | 'mix' | 'team';
-    type: 'single' | 'double' | 'team';
-  };
-  tier: string;
-  location: string;
-  imageUrl: string;
-  status: string;
-  waitingCount: number;
-  category: string;
-}
+import type { Competition } from '@/@types/competition';
 
-export const filterCompetition = (
-  compData: Competition[],
-  status: string,
-  tier: string,
-  date: string,
-) => {
+export const filterCompetition = ({
+  data,
+  status,
+  tier,
+  date,
+}: {
+  data: Competition[];
+  status: string;
+  tier: string;
+  date: string;
+}) => {
   const category: { [key: string]: string } = {
-    '신청 가능': '진행 전',
-    '신청 불가능': '진행 전',
-    '대기 가능': '진행 전',
-    '대회 진행전': '진행 전',
-    '대회 진행중': '진행 중',
-    '대회 종료': '종료',
+    'Registration Available': 'before',
+    'Registration Unavailable': 'before',
+    'Registration Confirmed': 'before',
+    'Waitlist Available': 'before',
+    before: 'before',
+    during: 'during',
+    ended: 'ended',
   };
 
   const setCategory = (comp: Competition): Competition => {
@@ -35,7 +26,7 @@ export const filterCompetition = (
     return comp;
   };
 
-  const newArr = compData
+  const newArr = data
     .map((ele: Competition) => setCategory(ele))
     .filter((ele: Competition) => (tier !== '전체' ? ele.tier.includes(tier) : ele))
     .filter((ele: Competition) => (status !== '전체' ? ele.category === status : ele));
@@ -53,6 +44,5 @@ export const filterCompetition = (
           (a: Competition, b: Competition) =>
             new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
         );
-
   return sortedArr;
 };

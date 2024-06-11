@@ -36,9 +36,9 @@ export const COMP_TIER = {
 export const COMP_STATUS = {
   name: 'status',
   options: [
-    { title: '진행 전', value: '진행 전' },
-    { title: '진행 중', value: '진행 중' },
-    { title: '종료', value: '종료' },
+    { title: '진행 전', value: 'before' },
+    { title: '진행 중', value: 'during' },
+    { title: '종료', value: 'ended' },
   ],
 } as const;
 
@@ -95,7 +95,7 @@ export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
   },
 } as const;
 
-export const COMPLIST_OPTIONS = [
+export const COMP_LIST_OPTIONS = [
   { title: '전체', status: 'all' },
   { title: '진행 전', status: 'before' },
   { title: '진행 중', status: 'during' },
@@ -108,7 +108,21 @@ export const HOME_COMP_LIST = [
 ] as const;
 
 export const COMP_LIST_SECTION_LINK: { [key: string]: string } = {
-  '참가 예정 대회': '/mypage/competition/?status=진행 전',
-  '최근 참가 대회': '/mypage/competition/?status=종료',
-  '대회 정보': '/competition/?status=진행 전',
+  '참가 예정 대회': '/mypage/competition/?status=before',
+  '참가 중인 대회': '/mypage/competition/?status=during',
+  '최근 참가 대회': '/mypage/competition/?status=ended',
 } as const;
+
+export const COMP_INFO_LINK = '/competition/';
+
+// TODO: 상수 정리하기
+
+export const MY_COMP_LIST: { title: string; link: string }[] = [
+  { title: '참가 예정 대회', link: '/mypage/competition/?status=before' },
+  { title: '참가 중인 대회', link: '/mypage/competition/?status=during' },
+  { title: '최근 참가 대회', link: '/mypage/competition/?status=ended' },
+] as const;
+
+export const BEFORE = 'before';
+export const DURING = 'during';
+export const ENDED = 'ended';

@@ -111,15 +111,15 @@ export type MyCompData = {
   imageUrl: string | null;
   status: string;
   applyStatus: string;
-  matches: Matches | null;
+  matches: Matches;
 };
 
 export type Matches = {
   id: number;
-  matchround: number;
-  matchnumber: number;
-  courtnumber: number;
+  matchRound: number;
+  matchNumber: number;
+  courtNumber: number;
   winnerName: string[];
-  aTeamUser: string[];
-  bTeamUser: string[];
+  myteamUser: string[];
+  opponentUser: string[];
 };

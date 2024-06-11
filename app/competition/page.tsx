@@ -1,8 +1,5 @@
 import Navbar from '@/components/module/Navbar/Navbar';
-import React from 'react';
-import CompListSection from '@/components/module/CompListSection/CompListSection';
-import CompListFilter from '@/components/organism/CompetitionPage/CompListFilter/CompListFilter';
-import CompListOptionMenuButton from '@/components/module/CompListOptionMenuButton/CompListOptionMenuButton';
+import React, { Suspense } from 'react';
 import {
   COMP_CATEGORY,
   COMP_DATA,
@@ -10,7 +7,8 @@ import {
   COMP_TIER,
 } from '@/constants/competition';
 import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
-import { redirect } from 'next/navigation';
+import CompListFilter from '@/components/organism/CompetitionPage/CompetitionHomePage/CompListFilter/CompListFilter';
+import CompInfo from '@/components/organism/CompetitionPage/CompetitionHomePage/CompInfo/CompInfo';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   return (
@@ -18,6 +16,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
       <div className="flex flex-col gap-[16px] p-[20px]">
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">
+          {/* TODO: 소분류 필터도 적용 */}
           <TabGroup
             path={'/competition'}
             items={COMP_CATEGORY.map((category, index) => ({
@@ -35,12 +34,10 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           <CompListFilter filterOption={COMP_DATA} />
         </div>
         <div className="flex flex-col">
-          <CompListSection
-            variant="flexCol"
-            searchParams={searchParams}
-            currentLocation="competition"
-            competitionType="competition"
-          />
+          {/* TODO: 스켈레톤 해줘 */}
+          <Suspense fallback={<div>loading...</div>}>
+            <CompInfo searchParams={searchParams} />
+          </Suspense>
         </div>
       </div>
       <div className="sticky bottom-0 w-full">
