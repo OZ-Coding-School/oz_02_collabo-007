@@ -13,12 +13,12 @@ const page = async ({
   searchParams,
 }: {
   params: { id: number };
-  searchParams: { roundnumber?: string };
+  searchParams: { roundnumber?: number };
 }) => {
   const compDetailData: CompDetailInfo = await getCompDetail(params.id);
 
   function powersOfTwo(totalRounds: number) {
-    return Array.from({ length: totalRounds }, (_, i) => Math.pow(2, i + 1));
+    return Array.from({ length: totalRounds }, (_, i) => Math.pow(2, i));
   }
 
   const rounds = powersOfTwo(compDetailData.totalRounds);
@@ -44,7 +44,9 @@ const page = async ({
         <MatchList
           params={params.id}
           searchParams={searchParams}
+          rounds={rounds}
           matchType={compDetailData.matchTypeDetails.type}
+          totalSets={compDetailData.totalSets}
         />
       </div>
       <div className="w-full p-[20px]">
