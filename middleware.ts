@@ -23,6 +23,15 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (refreshToken) {
+    const refreshVerify = await verifyToken(`${refreshToken}`);
+
+    if (refreshVerify.code) {
+      response.cookies.delete('access');
+      response.cookies.delete('refresh');
+    }
+  }
+
   // 로그인하지 않은 사용자를 홈으로 리다이렉트
   if (
     !refreshToken &&
