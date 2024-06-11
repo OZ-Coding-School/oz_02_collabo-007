@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { hangulToJamo } from './hangulToJamo';
 import type { ClubSearchData } from '@/@types/club';
 import type { ClubListProps } from '@/components/organism/SignUpPage/ClubField/ClubList';
+import { hangulToJamo } from '@/lib/utils/hangulToJamo';
 
 const useClubList = ({
   debounceSearchValue,

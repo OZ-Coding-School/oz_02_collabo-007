@@ -55,7 +55,10 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
         />
 
         {selectedId && (
-          <div className="w-full cursor-pointer rounded-[8px] bg-gray-20 p-[12px]">
+          <div
+            className="w-full cursor-pointer rounded-[8px] bg-gray-20 p-[12px] text-body-2
+          "
+          >
             <PartnerItem
               name={selectedId.username}
               clubName={selectedId.club?.name}

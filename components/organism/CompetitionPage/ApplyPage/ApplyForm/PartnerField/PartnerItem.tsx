@@ -19,7 +19,7 @@ const PartnerItem = ({
   image,
   handleDelete,
   displayMode = false,
-  status,
+  status = true,
 }: PartnerItemProps) => {
   const Buttons = () => {
     if (displayMode) {

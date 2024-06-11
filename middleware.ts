@@ -1,11 +1,27 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { renewAccessToken } from './app/_actions/renewAccessToken';
+import { verifyToken } from './app/_actions/verifyToken';
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   const refreshToken = request.cookies.get('refresh')?.value || null;
+  const accessToken = request.cookies.get('access')?.value || null;
   const { pathname } = request.nextUrl;
+
+  if (accessToken) {
+    const isVerify = await verifyToken(accessToken);
+
+    if (isVerify.code) {
+      const token = await renewAccessToken();
+      response.cookies.set({
+        name: 'access',
+        value: token,
+        httpOnly: true,
+      });
+    }
+  }
 
   // 로그인하지 않은 사용자를 홈으로 리다이렉트
   if (

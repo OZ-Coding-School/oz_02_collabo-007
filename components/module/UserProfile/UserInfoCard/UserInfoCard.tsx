@@ -14,6 +14,8 @@ interface UserInfoCardProps {
 const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
   const clubPending = userData.club?.status ? true : false;
 
+  const clubName = `${userData.club?.name} ${clubPending ? '(수락 대기)' : ''}`;
+
   return (
     <div className="flex flex-col gap-[8px]">
       {userData ? (
@@ -39,9 +41,7 @@ const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
           >
             <ClubIcon width={20} height={20} fill="#393939" />
             <span className="flex text-body-2">
-              {userData.club
-                ? `${userData.club.name} ${clubPending && '(수락 대기)'}`
-                : '현재 소속된 클럽이 없습니다'}
+              {userData.club ? `${clubName}` : '현재 소속된 클럽이 없습니다'}
             </span>
           </div>
           <div className="flex gap-[8px]">

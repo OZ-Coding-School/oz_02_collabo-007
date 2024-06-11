@@ -1,4 +1,5 @@
 'use server';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 import { cookies } from 'next/headers';
 
 const getPartner = async (query: string, id: number) => {
@@ -9,13 +10,13 @@ const getPartner = async (query: string, id: number) => {
     const params = new URLSearchParams();
     params.append('query', query);
 
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/partnersearch/?${params.toString()}`,
       {
         credentials: 'include',
         method: 'GET',
         headers: {
-          Authorization: token ? `Bearer ${token.value}` : '',
+          // Authorization: token ? `Bearer ${token.value}` : '',
         },
       },
     );
