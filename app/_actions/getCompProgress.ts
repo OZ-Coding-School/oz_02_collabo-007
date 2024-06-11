@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 
 export const getCompProgress = async (
   id: number,
-  searchParams: { roundnumber?: string },
+  searchParams: { roundnumber?: number },
 ) => {
   try {
     const cookie = cookies();
@@ -11,7 +11,7 @@ export const getCompProgress = async (
     const { roundnumber } = searchParams ?? {};
     const params = new URLSearchParams();
 
-    if (roundnumber) params.append('roundnumber', roundnumber);
+    if (roundnumber) params.append('roundnumber', `${roundnumber}`);
 
     const res = await fetch(
       ` ${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/status/?${params.toString()}`,
