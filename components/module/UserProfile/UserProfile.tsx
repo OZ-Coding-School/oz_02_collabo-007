@@ -24,7 +24,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => 
           <ProfileAvatar image={userData?.imageUrl} />
         </div>
         <UserHighlightRankingCard rankingPanel={rankingPanel} userData={userData} />
-        {!userData && loginBtn && (
+        {!userData.id && loginBtn && (
           <Link href="/signin">
             <Button size="lg" label="로그인하러 가기" variant="primary" />
           </Link>

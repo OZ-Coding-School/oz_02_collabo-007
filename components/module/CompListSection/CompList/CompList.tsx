@@ -63,16 +63,18 @@ const CompList = async ({
   const requests = requestFunc[competitionType];
   const competitionData: MyCompData[] | Competition[] = await sendRequests(requests);
 
+  console.log(competitionData);
   return (
     <div className={cn(CompListVariants({ variant }))}>
-      {competitionData.map((comp) => (
-        <CompCard
-          comp={comp}
-          key={comp.id}
-          title={title}
-          competitionType={competitionType}
-        />
-      ))}
+      {competitionData &&
+        competitionData.map((comp) => (
+          <CompCard
+            comp={comp}
+            key={comp.id}
+            title={title}
+            competitionType={competitionType}
+          />
+        ))}
     </div>
   );
 };

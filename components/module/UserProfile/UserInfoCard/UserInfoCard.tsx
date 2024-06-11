@@ -18,7 +18,7 @@ const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
 
   return (
     <div className="flex flex-col gap-[8px]">
-      {userData ? (
+      {userData.id ? (
         <Link
           href="/mypage/edit/"
           className="flex items-center gap-[8px] text-headline-4"
@@ -31,7 +31,7 @@ const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
           대회를 신청하려면 <br /> 로그인 해주세요
         </span>
       )}
-      {userData ? (
+      {userData.id ? (
         <>
           <div
             className={cn(

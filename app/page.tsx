@@ -14,7 +14,7 @@ const Home = async () => {
       <div className="flex h-full w-full flex-col overflow-hidden">
         <UserProfile userData={userData} rankingPanel loginBtn />
         <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
-          {userData &&
+          {userData.id &&
             HOME_COMP_LIST.map(({ title }, index) => (
               <CompListSection
                 key={index}
