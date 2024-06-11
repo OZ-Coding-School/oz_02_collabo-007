@@ -1,16 +1,13 @@
 'use client';
 import type { Competition, MyCompData } from '@/@types/competition';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { formatDate } from '@/lib/utils/formatDate';
 import { GENDER, MATCH_TYPE } from '@/constants/competition';
-import { truncateText } from '@/lib/utils/truncateText';
 import Flag from '@/app/_asset/icons/flag.svg';
-import MyCompMatchCard from '@/components/module/MyCompMatchCard/MyCompMatchCard';
-import NextMatchInfo from './NextMatchInfo/NextMatchInfo';
 import CompCardMatchDetail from './CompCardMatchDetail/CompCardMatchDetail';
 import { useRouter } from 'next/navigation';
+import CompStatusButton from './CompStatusButton/CompStatusButton';
 
 const CompCard = ({
   comp,
@@ -24,7 +21,7 @@ const CompCard = ({
   return (
     <>
       <div
-        className="flex min-w-full flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md"
+        className="flex min-w-full cursor-pointer flex-col gap-[16px] rounded-[8px] bg-white p-[16px] shadow-md"
         onClick={() => router.push(`/competition/${comp.id}`)}
       >
         <div className="flex gap-[16px]">
@@ -55,10 +52,9 @@ const CompCard = ({
             </div>
           </div>
         </div>
-        {/* 진행 전 */}
         {status === 'my' && <CompCardMatchDetail compData={comp as MyCompData} />}
-        {/* {status === 'comp' && <CompStatusButton compData={comp} />} */}
-        {/* {competitionType === 'mycompetition' && <MyCompMatchCard />} */}
+
+        {status === 'comp' && <CompStatusButton compData={comp} />}
       </div>
     </>
   );

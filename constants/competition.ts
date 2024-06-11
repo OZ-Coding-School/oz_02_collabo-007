@@ -36,9 +36,9 @@ export const COMP_TIER = {
 export const COMP_STATUS = {
   name: 'status',
   options: [
-    { title: '진행 전', value: '진행 전' },
-    { title: '진행 중', value: '진행 중' },
-    { title: '종료', value: '종료' },
+    { title: '진행 전', value: 'before' },
+    { title: '진행 중', value: 'during' },
+    { title: '종료', value: 'ended' },
   ],
 } as const;
 

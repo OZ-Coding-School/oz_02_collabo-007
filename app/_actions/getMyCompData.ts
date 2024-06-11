@@ -1,13 +1,5 @@
 import { cookies } from 'next/headers';
-
-export interface ISearchParams {
-  status?: string;
-  tier?: string;
-  gender?: string;
-  type?: string;
-  title?: string;
-  date?: string;
-}
+import { ISearchParams } from './getCompData';
 
 export const getMyCompData = async (searchParams?: ISearchParams, count?: number) => {
   const cookie = cookies();

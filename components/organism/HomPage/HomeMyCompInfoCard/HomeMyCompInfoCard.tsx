@@ -1,7 +1,7 @@
 import type { MyCompData } from '@/@types/competition';
 import { cn } from '@/lib/utils/cn';
 import React from 'react';
-import { CompListVariants } from '../HomeInfo/HomeCompInfo';
+import { CompListVariants } from '../HomeCompInfo/HomeCompInfo';
 import CompCard from '@/components/module/CompCard/CompCard';
 
 interface HomeMyCompInfoCardProps {

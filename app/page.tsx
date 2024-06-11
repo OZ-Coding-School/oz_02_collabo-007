@@ -3,9 +3,9 @@ import UserProfile from '@/components/module/UserProfile/UserProfile';
 import type { UserData } from '@/@types/user';
 import Alert from '@/components/core/Alert/Alert';
 import { getMyData } from './_actions/getMyData';
-import HomeCompInfo from '@/components/organism/HomPage/HomeInfo/HomeCompInfo';
 import { Suspense } from 'react';
 import HomeMyCompInfo from '@/components/organism/HomPage/HomeMyCompInfo/HomeMyCompInfo';
+import HomeCompInfo from '@/components/organism/HomPage/HomeCompInfo/HomeCompInfo';
 
 const Home = async () => {
   const userData: UserData | null = await getMyData();
