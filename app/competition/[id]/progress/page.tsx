@@ -33,8 +33,8 @@ const page = async ({
           {searchParams.roundnumber && (
             <TabGroup
               path={`/competition/${params.id}/progress/`}
-              items={rounds.map((round, index) => ({
-                text: `${index === 0 ? '결승' : index === 1 ? '준결승' : `${round}강`}`,
+              items={rounds.reverse().map((round, index) => ({
+                text: `${index === rounds.length - 1 ? '결승' : index === rounds.length - 2 ? '준결승' : `${round}강`}`,
                 option: [{ roundnumber: `${index + 1}` }],
               }))}
               variant="circle"
@@ -54,7 +54,7 @@ const page = async ({
             query: searchParams.roundnumber
               ? {}
               : {
-                  roundnumber: compDetailData.totalRounds,
+                  roundnumber: 1,
                 },
           }}
           replace

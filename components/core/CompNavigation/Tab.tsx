@@ -46,14 +46,14 @@ export const Tab = ({ path, item, variant }: TabProps) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams();
 
-  item.option.forEach((option) => {
+  item.option?.forEach((option) => {
     const key = Object.keys(option)[0];
     const value = option[key];
 
     if (value) params.set(key, value);
   });
 
-  const isActive = params.toString() === searchParams.toString();
+  const isActive = searchParams.toString().includes(params.toString());
 
   return (
     <Link

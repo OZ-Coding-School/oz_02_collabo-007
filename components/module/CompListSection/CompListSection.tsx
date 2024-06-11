@@ -9,6 +9,7 @@ interface CompListSectionProps {
   variant?: 'flex' | 'flexCol' | null;
   currentLocation?: string | null;
   searchParams?: ISearchParams;
+  competitionType: string;
 }
 
 const CompListSection = ({
@@ -16,6 +17,7 @@ const CompListSection = ({
   variant,
   searchParams,
   currentLocation,
+  competitionType,
 }: CompListSectionProps) => {
   return (
     <div className="flex w-full flex-col gap-[12px]">
@@ -36,6 +38,7 @@ const CompListSection = ({
           variant={variant}
           searchParams={searchParams}
           currentLocation={currentLocation}
+          competitionType={competitionType}
         />
       </Suspense>
     </div>

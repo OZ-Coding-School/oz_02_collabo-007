@@ -13,8 +13,9 @@ interface Props {
 
 const NavItem: FC<Props> = ({ name, url, icon, fillIcon }) => {
   const pathname = usePathname();
-  const [currentTab, setCurrentTab] = useState(pathname === url);
-
+  const queryStartIndex = url.indexOf('?');
+  const basePath = queryStartIndex !== -1 ? url.slice(0, queryStartIndex) : url;
+  const [currentTab, setCurrentTab] = useState(basePath === pathname);
   return (
     <Link
       href={url}

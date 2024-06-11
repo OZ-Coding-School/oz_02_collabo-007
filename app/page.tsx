@@ -16,9 +16,18 @@ const Home = async () => {
         <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
           {userData &&
             HOME_COMP_LIST.map(({ title }, index) => (
-              <CompListSection key={index} title={title} variant="flex" />
+              <CompListSection
+                key={index}
+                title={title}
+                variant="flex"
+                competitionType="mycompetition"
+              />
             ))}
-          <CompListSection title="대회 정보" variant={userData ? 'flex' : 'flexCol'} />
+          <CompListSection
+            title="대회 정보"
+            variant={userData ? 'flex' : 'flexCol'}
+            competitionType="competition"
+          />
         </main>
         <div className="sticky bottom-0 w-full">
           <Navbar />

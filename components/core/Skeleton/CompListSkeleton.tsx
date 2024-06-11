@@ -6,7 +6,13 @@ import {
   CompListVariants,
 } from '@/components/module/CompListSection/CompList/CompList';
 
-const CompListSkeleton = ({ title, variant }: CompListProps) => {
+const CompListSkeleton = ({
+  title,
+  variant,
+}: {
+  title?: string;
+  variant?: 'flex' | 'flexCol' | null;
+}) => {
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {Array.from({ length: 4 }, (_, index) => {

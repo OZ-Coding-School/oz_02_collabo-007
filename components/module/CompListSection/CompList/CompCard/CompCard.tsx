@@ -1,4 +1,4 @@
-import type { Competition } from '@/@types/competition';
+import type { Competition, MyCompData } from '@/@types/competition';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -7,13 +7,15 @@ import { formatDate } from '@/lib/utils/formatDate';
 import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import { truncateText } from '@/lib/utils/truncateText';
 import Flag from '@/app/_asset/icons/flag.svg';
+import MyCompMatchCard from '@/components/module/MyCompMatchCard/MyCompMatchCard';
+import NextMatchInfo from './NextMatchInfo/NextMatchInfo';
 
 interface CompCardProps {
-  comp?: Competition | null;
+  comp?: Competition | MyCompData | null;
   title?: string;
-  currentLocation?: string | null;
+  competitionType: string;
 }
-const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
+const CompCard = ({ comp, title, competitionType }: CompCardProps) => {
   return (
     <>
       {comp ? (
@@ -49,7 +51,9 @@ const CompCard = ({ comp, title, currentLocation }: CompCardProps) => {
               </div>
             </div>
           </div>
-          <CompStatusButton compData={comp} currentLocation={currentLocation} />
+          {competitionType === 'competition' && <CompStatusButton compData={comp} />}
+          {/* {competitionType === 'mycompetition' && <MyCompMatchCard />} */}
+          {competitionType === 'mycompetition' && <NextMatchInfo />}
         </Link>
       ) : (
         <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">

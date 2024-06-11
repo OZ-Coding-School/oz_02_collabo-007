@@ -1,9 +1,11 @@
 import React, { HTMLAttributes } from 'react';
+import { getMyCompData } from '@/app/_actions/getMyCompData';
 import CompCard from './CompCard/CompCard';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
 import { Competition } from '@/@types/competition';
 import { getCompData } from '@/app/_actions/getCompData';
+import type { MyCompData } from '@/@types/competition';
 
 export const CompListVariants = cva(
   `
@@ -28,6 +30,7 @@ export interface CompListProps
   title?: string;
   currentLocation?: string | null;
   searchParams?: ISearchParams;
+  competitionType: string;
 }
 
 export interface ISearchParams {
@@ -44,26 +47,43 @@ const CompList = async ({
   searchParams,
   currentLocation,
   variant,
+  competitionType,
 }: CompListProps) => {
-  const competitionData: Competition[] = await getCompData(searchParams);
-  const myCompetitionData = null;
-
+  const [myCompetitionData, competitionData]: [MyCompData[], Competition[]] =
+    await Promise.all([
+      competitionType === 'mycompetition' || competitionType === 'both'
+        ? getMyCompData(searchParams)
+        : Promise.resolve(null),
+      competitionType === 'competition' || competitionType === 'both'
+        ? getCompData(searchParams)
+        : Promise.resolve(null),
+    ]);
   return (
     <div className={cn(CompListVariants({ variant }))}>
       {!title &&
+        currentLocation === 'competition' &&
         competitionData.map((comp) => (
-          <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
+          <CompCard comp={comp} key={comp.id} competitionType={competitionType} />
         ))}
-      {title === '참가 예정 대회' || title === '최근 참가 대회' ? (
-        <CompCard
-          comp={myCompetitionData}
-          title={title}
-          currentLocation={currentLocation}
-        />
-      ) : null}
+      {!title &&
+        currentLocation === 'mycompetition' &&
+        myCompetitionData.map((comp) => (
+          <CompCard comp={comp} key={comp.id} competitionType={competitionType} />
+        ))}
+
+      {title === '참가 예정 대회' || title === '최근 참가 대회'
+        ? myCompetitionData.map((comp) => (
+            <CompCard
+              key={comp.id}
+              comp={comp}
+              title={title}
+              competitionType={competitionType}
+            />
+          ))
+        : null}
       {title === '대회 정보' &&
         competitionData.map((comp) => (
-          <CompCard comp={comp} key={comp.id} currentLocation={currentLocation} />
+          <CompCard comp={comp} key={comp.id} competitionType={competitionType} />
         ))}
     </div>
   );
