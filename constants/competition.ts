@@ -51,42 +51,42 @@ export const COMP_DATA = {
 } as const;
 
 export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
-  '신청 가능': {
+  'Registration Available': {
     label: '대회 신청하기',
     variant: 'primary',
     size: 'md',
     colors: 'default',
     endPoint: 'apply',
   },
-  '신청 불가능': {
+  'Registration Unavailable': {
     label: '신청 불가 (성별 또는 실력 제한)',
     variant: 'primary',
     size: 'md',
     colors: 'default',
     endPoint: 'apply',
   },
-  '신청 완료': {
+  'Registration Confirmed': {
     label: '참가 신청 조회',
     variant: 'primary',
     size: 'md',
     colors: 'default',
     endPoint: 'success',
   },
-  '대기 가능': {
+  'Waitlist Available': {
     label: '대기 신청하기',
     variant: 'tertiary',
     size: 'md',
     colors: 'default',
     endPoint: 'apply',
   },
-  '대회 진행중': {
+  during: {
     label: '대회 현황 보기',
     variant: 'tertiary',
     size: 'md',
     colors: 'gray',
     endPoint: 'progress',
   },
-  '대회 종료': {
+  ended: {
     label: '대회 결과 보기',
     variant: 'tertiary',
     size: 'md',

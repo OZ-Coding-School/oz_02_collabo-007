@@ -12,7 +12,7 @@ const UserHighlightRankingCard = ({
 }: UserHighlightRankingCardProps) => {
   return (
     <>
-      {rankingPanel && userData ? (
+      {rankingPanel && userData.id ? (
         <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
           {userData.ranking ? (
             <>

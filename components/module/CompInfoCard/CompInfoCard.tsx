@@ -25,7 +25,7 @@ const CompInfoCard = ({ data }: { data: CompDetailInfo | AppliedCompetition }) =
             ? [
                 `${GENDER[matchTypeDetails.gender]} ${CompType[matchTypeDetails.type]}`,
                 tier,
-                totalRounds,
+                `${Math.pow(2, totalRounds)}강`,
               ].join(' \u00B7 ')
             : 'No match details available'}
         </span>

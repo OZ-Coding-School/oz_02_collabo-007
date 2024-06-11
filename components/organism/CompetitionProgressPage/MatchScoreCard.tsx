@@ -1,35 +1,46 @@
-import type { Set } from '@/@types/competition';
+import type { Match, Set } from '@/@types/competition';
 import { UserData } from '@/@types/user';
 import React from 'react';
 
 const MatchScoreCard = ({
-  sets,
-  aTeamUsers,
-  bTeamUsers,
+  match,
+  totalSets,
 }: {
-  sets?: Set[];
-  aTeamUsers?: UserData[];
-  bTeamUsers?: UserData[];
+  match: Match | undefined;
+  totalSets: number;
 }) => {
   return (
     <div className="flex items-start gap-[4px] text-center text-headline-7">
-      {sets ? (
-        sets.map((set: Set, index: number) => (
-          <div key={set.id} className="flex w-[18px] flex-col gap-[12px]">
-            <span className={set.aScore < set.bScore ? 'text-gray-50' : 'text-black'}>
-              {set.aScore ? set.aScore : `-`}
-            </span>
-            <span className={set.bScore < set.aScore ? 'text-gray-50' : 'text-black'}>
-              {set.bScore ? set.bScore : `-`}
-            </span>
-          </div>
-        ))
-      ) : (
-        <div className={`flex w-[18px] flex-col gap-[12px]`}>
-          <span className={`${!aTeamUsers ? 'text-gray-50' : 'text-black'}`}>-</span>
-          <span className={`${!bTeamUsers ? 'text-gray-50' : 'text-black'}`}>-</span>
+      {Array.from({ length: totalSets }, (_, index) => (
+        <div key={index} className="flex w-[18px] flex-col gap-[12px] text-gray-50">
+          <span
+            className={
+              (match?.aTeamUsers && !match.sets) ||
+              (match?.aTeamUsers && match.sets && !match.sets[index]) ||
+              (match?.sets && match.sets[index]?.bScore < match.sets[index]?.aScore)
+                ? 'text-black'
+                : 'text-gray-50'
+            }
+          >
+            {!match || !match.sets || typeof match.sets[index]?.aScore !== 'number'
+              ? '-'
+              : match.sets[index].aScore}
+          </span>
+          <span
+            className={
+              (match?.bTeamUsers && !match.sets) ||
+              (match?.bTeamUsers && match.sets && !match.sets[index]) ||
+              (match?.sets && match.sets[index]?.aScore < match.sets[index]?.bScore)
+                ? 'text-black'
+                : 'text-gray-50'
+            }
+          >
+            {!match || !match.sets || typeof match.sets[index]?.bScore !== 'number'
+              ? '-'
+              : match.sets[index].bScore}
+          </span>
         </div>
-      )}
+      ))}
     </div>
   );
 };

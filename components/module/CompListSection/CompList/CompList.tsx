@@ -45,45 +45,35 @@ export interface ISearchParams {
 const CompList = async ({
   title,
   searchParams,
-  currentLocation,
+  currentLocation, // 제거 해도 됨
   variant,
   competitionType,
 }: CompListProps) => {
-  const [myCompetitionData, competitionData]: [MyCompData[], Competition[]] =
-    await Promise.all([
-      competitionType === 'mycompetition' || competitionType === 'both'
-        ? getMyCompData(searchParams)
-        : Promise.resolve(null),
-      competitionType === 'competition' || competitionType === 'both'
-        ? getCompData(searchParams)
-        : Promise.resolve(null),
-    ]);
+  type FunctionType = (
+    searchParams?: ISearchParams,
+  ) => Promise<MyCompData[] | Competition[]>;
+
+  const requestFunc: { [key: string]: FunctionType } = {
+    mycompetition: getMyCompData,
+    competition: getCompData,
+  };
+
+  const sendRequests = (endpoint: FunctionType) => endpoint(searchParams);
+
+  const requests = requestFunc[competitionType];
+  const competitionData: MyCompData[] | Competition[] = await sendRequests(requests);
+
+  console.log(competitionData);
   return (
     <div className={cn(CompListVariants({ variant }))}>
-      {!title &&
-        currentLocation === 'competition' &&
+      {competitionData &&
         competitionData.map((comp) => (
-          <CompCard comp={comp} key={comp.id} competitionType={competitionType} />
-        ))}
-      {!title &&
-        currentLocation === 'mycompetition' &&
-        myCompetitionData.map((comp) => (
-          <CompCard comp={comp} key={comp.id} competitionType={competitionType} />
-        ))}
-
-      {title === '참가 예정 대회' || title === '최근 참가 대회'
-        ? myCompetitionData.map((comp) => (
-            <CompCard
-              key={comp.id}
-              comp={comp}
-              title={title}
-              competitionType={competitionType}
-            />
-          ))
-        : null}
-      {title === '대회 정보' &&
-        competitionData.map((comp) => (
-          <CompCard comp={comp} key={comp.id} competitionType={competitionType} />
+          <CompCard
+            comp={comp}
+            key={comp.id}
+            title={title}
+            competitionType={competitionType}
+          />
         ))}
     </div>
   );

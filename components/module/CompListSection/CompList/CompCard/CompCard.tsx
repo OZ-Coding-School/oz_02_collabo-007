@@ -12,7 +12,7 @@ import NextMatchInfo from './NextMatchInfo/NextMatchInfo';
 
 interface CompCardProps {
   comp?: Competition | MyCompData | null;
-  title?: string;
+  title?: string | undefined;
   competitionType: string;
 }
 const CompCard = ({ comp, title, competitionType }: CompCardProps) => {

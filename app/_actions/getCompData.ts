@@ -40,13 +40,13 @@ export const getCompData = async (searchParams: ISearchParams | undefined) => {
   const data = await res.json();
 
   const category: { [key: string]: string } = {
-    '신청 가능': '진행 전',
-    '신청 불가능': '진행 전',
-    '신청 완료': '진행 전',
-    '대기 가능': '진행 전',
-    '대회 진행전': '진행 전',
-    '대회 진행중': '진행 중',
-    '대회 종료': '종료',
+    'Registration Available': '진행 전',
+    'Registration Unavailable': '진행 전',
+    'Registration Confirmed': '진행 전',
+    'Waitlist Available': '진행 전',
+    before: '진행 전',
+    during: '진행 중',
+    ended: '종료',
   };
 
   const setCategory = (comp: Competition): Competition => {
