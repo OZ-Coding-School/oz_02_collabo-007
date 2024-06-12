@@ -14,9 +14,9 @@ const page = () => {
       <TotalRecordSection win={win} lose={lose} />
 
       <div className="no-scrollbar flex flex-1 flex-col items-start gap-[32px] overflow-scroll bg-gray-10 px-[20px] py-[24px]">
-        {records.map((matchData) => (
+        {/* {records.map((matchData) => (
           <RecordSection key={matchData.id} matchData={matchData} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

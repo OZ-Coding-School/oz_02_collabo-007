@@ -3,7 +3,6 @@ import Link from 'next/link';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import { InfoSection, TeamSection } from '@/components/organism/ProfilePage';
 import MemberSection from '@/components/module/MemberSection/MemberSection';
-import MatchResultCard from '@/components/module/MatchResultCard/MatchResultCard';
 import type { TennisTeamData } from '@/@types/team';
 
 const getTeamData = async (id: string) => {
@@ -59,9 +58,9 @@ const page = async ({ params }: { params: { id: string } }) => {
               </Link>
             </div>
             <div className="flex flex-col gap-[16px]">
-              {MATCHES_DATA.map((match, index) => (
+              {/* {MATCHES_DATA.map((match, index) => (
                 <MatchResultCard match={match} key={index} />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
