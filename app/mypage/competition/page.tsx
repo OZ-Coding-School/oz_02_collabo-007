@@ -1,5 +1,6 @@
 import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
+import CompCardSkeleton from '@/components/core/Skeleton/CompCardSkeleton';
 import CancelAlert from '@/components/module/CancelAlert/CancelAlert';
 import MyCompInfo from '@/components/organism/MyPage/MyCompInfo/MyCompInfo';
 import { COMP_LIST_OPTIONS } from '@/constants/competition';
@@ -24,8 +25,15 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
         </div>
       </div>
       <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
-        {/* TODO: 스켈레톤 추가 */}
-        <Suspense fallback={<div>loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="flex w-full flex-col gap-[32px]">
+              {Array.from({ length: 5 }, (_, index) => {
+                return <CompCardSkeleton key={index} />;
+              })}
+            </div>
+          }
+        >
           <MyCompInfo status={status} />
         </Suspense>
       </div>
