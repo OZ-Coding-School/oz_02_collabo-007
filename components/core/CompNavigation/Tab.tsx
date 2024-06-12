@@ -44,7 +44,7 @@ interface TabProps extends VariantProps<typeof TabVariants> {
 
 export const Tab = ({ path, item, variant }: TabProps) => {
   const searchParams = useSearchParams();
-  const params = new URLSearchParams();
+  const params = new URLSearchParams(searchParams);
 
   item.option?.forEach((option) => {
     const key = Object.keys(option)[0];
@@ -54,7 +54,7 @@ export const Tab = ({ path, item, variant }: TabProps) => {
   });
 
   const isActive = searchParams.toString().includes(params.toString());
-
+  const href = path + '?' + params.toString;
   return (
     <Link
       replace
