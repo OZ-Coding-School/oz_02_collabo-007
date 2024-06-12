@@ -7,13 +7,16 @@ import { useRouter } from 'next/navigation';
 
 const CompStatusInfo = ({ compData }: { compData: MyCompData }) => {
   const { totalRounds, matches } = compData;
-  let round = `${Math.round(2 ** (totalRounds - matches.matchRound + 1))}강`;
+  let round = `${Math.round(2 ** (totalRounds - matches?.matchRound + 1))}강`;
   if (round == '2강') round = '결승';
   if (round == '4강') round = '준경승';
+
+  console.log(compData);
+
   const router = useRouter();
   const endPoint =
     compData.status === 'during' ? 'progress' : compData.status === 'ended' && 'result';
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
     router.push(`/competition/${compData.id}/${endPoint}`);
