@@ -35,7 +35,9 @@ const HomeCompInfo = async ({ isUser }: { isUser: boolean }) => {
         className={cn(CompListVariants({ variant: isUser ? 'horizontal' : 'vertical' }))}
       >
         {Array.isArray(compData) ? (
-          compData.map((comp) => <CompCard key={comp.id} comp={comp} status="all" />)
+          compData
+            .filter((comp) => (isUser ? comp.status === 'Registration Available' : comp))
+            .map((comp) => <CompCard key={comp.id} comp={comp} status="all" />)
         ) : (
           <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
             {compData.detail}
