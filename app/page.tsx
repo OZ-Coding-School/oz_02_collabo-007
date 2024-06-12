@@ -25,7 +25,7 @@ const Home = async () => {
             <HomeCompInfo isUser={userData ? true : false} />
           </Suspense>
         </main>
-        <div className="sticky bottom-0 w-full">
+        <div className="w-full">
           <Navbar />
         </div>
       </div>
