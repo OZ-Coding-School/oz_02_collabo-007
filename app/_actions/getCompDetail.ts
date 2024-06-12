@@ -14,7 +14,6 @@ export const getCompDetail = async (id: number) => {
         headers: {
           Authorization: token ? `Bearer ${token.value}` : '',
         },
-        next: { revalidate: 3600, tags: [`competition-detail-${id}`] },
       },
     );
 
@@ -24,6 +23,8 @@ export const getCompDetail = async (id: number) => {
     }
 
     const data = await res.json();
+
+    console.log(data);
 
     return data;
   } catch (error) {
