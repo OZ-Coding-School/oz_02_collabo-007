@@ -23,12 +23,13 @@ const MatchList = async ({
     return compProgressData.find((match) => match.matchNumber === index + 1);
   };
   return (
-    <div className="no-scrollbar flex w-full flex-1 flex-col gap-[16px] border-t-[1px] border-gray-30 bg-gray-10 px-[20px] py-[16px]">
+    <div className="no-scrollbar flex w-full flex-1 flex-col gap-[16px] overflow-x-hidden border-t-[1px] border-gray-30 bg-gray-10 px-[20px] py-[16px]">
       {searchParams.roundnumber !== undefined
         ? Array.from({ length: matchCount }, (_, index) => (
             <MatchCard
               match={getMatchData(index)}
               key={index}
+              index={index}
               matchType={matchType}
               totalSets={totalSets}
             />

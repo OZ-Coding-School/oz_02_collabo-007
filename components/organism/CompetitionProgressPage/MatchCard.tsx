@@ -2,18 +2,32 @@ import React from 'react';
 import MatchUsersCard from './MatchUsersCard';
 import MatchScoreCard from './MatchScoreCard';
 import { Match } from '@/@types/competition';
+import { cn } from '@/lib/utils/cn';
 
 const MatchCard = ({
   match,
   matchType,
   totalSets,
+  index,
 }: {
   match: Match | undefined;
   matchType: string;
   totalSets: number;
+  index?: number;
 }) => {
+  const LineClass = () => {
+    if (index !== 0 && !index) return '';
+    if (index % 2 === 0) return 'evenLine';
+    return 'oddLine';
+  };
+
   return (
-    <div className="flex flex-col items-start gap-[12px] self-stretch rounded-[8px] bg-white p-[16px] shadow-card">
+    <div
+      className={cn(
+        'relative flex flex-col items-start gap-[12px] self-stretch rounded-[8px] bg-white p-[16px] shadow-card',
+        `${LineClass()}`,
+      )}
+    >
       <div className="text-body-3 text-gray-60">
         {match && match.courtNumber ? `${match.courtNumber}번 코트` : '코트 미배정'}
       </div>
