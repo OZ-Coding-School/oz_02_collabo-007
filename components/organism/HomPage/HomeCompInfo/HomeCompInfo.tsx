@@ -1,7 +1,6 @@
 import type { Competition } from '@/@types/competition';
 import { getCompData } from '@/app/_actions/getCompData';
 import CompCard from '@/components/module/CompCard/CompCard';
-import { COMP_INFO_LINK } from '@/constants/competition';
 import { cn } from '@/lib/utils/cn';
 import { cva } from 'class-variance-authority';
 import Link from 'next/link';
