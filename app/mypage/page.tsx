@@ -12,7 +12,7 @@ const page = async () => {
   const userData: UserData = await getMyData();
 
   return (
-    <div className="flex h-full flex-col items-center gap-[8px] self-stretch bg-gray-30  text-gray-100">
+    <div className="relative flex h-full flex-col items-center gap-[8px] self-stretch  bg-gray-30 text-gray-100">
       <div className="no-scrollbar relative flex flex-1 flex-col items-center gap-[8px] self-stretch overflow-scroll">
         <MyProfileCard userData={userData} />
 

@@ -17,7 +17,7 @@ const COMP_CATEGORY = [
 
 const page = () => {
   return (
-    <div className="flex h-full flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
         <div className="flex flex-row gap-[8px]">
           <div>

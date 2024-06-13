@@ -16,7 +16,7 @@ const page = async ({ params }: { params: { id: number } }) => {
   const waiting = applicantsInfo.waitingNumber ? true : false;
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <HeaderBar title="대회 신청 완료" backBtn />
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[8px] overflow-scroll bg-gray-30">
         <div className="flex w-full flex-col gap-[24px] bg-white px-[20px] py-[24px]">
@@ -54,7 +54,7 @@ const page = async ({ params }: { params: { id: number } }) => {
         </div>
       </div>
 
-      <div className="flex w-full items-center justify-center gap-[12px] p-[20px]">
+      <div className="sticky bottom-0 flex w-full items-center justify-center gap-[12px] p-[20px]">
         <SuccessButtons waiting={waiting} applicantsId={applicantsInfo.id} />
       </div>
     </div>

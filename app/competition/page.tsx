@@ -13,7 +13,7 @@ import CompCardSkeleton from '@/components/core/Skeleton/CompCardSkeleton';
 
 const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   return (
-    <div className="flex h-full flex-col">
+    <div className="relative flex h-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
         <h1 className="text-headline-2 text-gray-100">대회</h1>
         <div className="no-scrollbar flex gap-[8px] overflow-x-scroll">

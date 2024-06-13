@@ -23,7 +23,7 @@ const page = async ({
 
   const rounds = powersOfTwo(compDetailData.totalRounds);
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <HeaderBar title="대회 현황" backBtn />
       <div className="no-scrollbar relative flex flex-1 flex-col overflow-x-hidden overflow-y-scroll ">
         <div className="px-[20px] pt-[20px]">
@@ -49,7 +49,7 @@ const page = async ({
           totalSets={compDetailData.totalSets}
         />
       </div>
-      <div className="w-full p-[20px]">
+      <div className="sticky bottom-0 w-full p-[20px]">
         <Link
           href={{
             pathname: `/competition/${params.id}/progress/`,

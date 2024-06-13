@@ -13,9 +13,9 @@ const Home = async () => {
   const userData: UserData | null = await getMyData();
   return (
     <>
-      <div className="flex h-full w-full flex-col overflow-hidden">
+      <div className="relative flex h-full w-full flex-col">
         <UserProfile userData={userData && userData} rankingPanel loginBtn />
-        <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-x-scroll bg-gray-10 p-[20px]">
+        <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-scroll bg-gray-10 p-[20px]">
           {userData && (
             <Suspense
               fallback={
@@ -33,7 +33,6 @@ const Home = async () => {
             <HomeCompInfo isUser={userData ? true : false} />
           </Suspense>
         </main>
-
         <Navbar />
       </div>
       <Alert />
