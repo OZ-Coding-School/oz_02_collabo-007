@@ -17,9 +17,7 @@ export const TabGroup = ({
   variant: 'circle' | 'round' | 'underBar' | undefined | null;
 }) => {
   return (
-    <div
-      className={`no-scrollbar sticky top-0 flex w-full gap-[12px] overflow-x-scroll `}
-    >
+    <div className={`no-scrollbar flex w-full gap-[12px] overflow-x-scroll `}>
       {items.map((item, index) => (
         <Tab key={index} item={item} path={path} variant={variant} />
       ))}

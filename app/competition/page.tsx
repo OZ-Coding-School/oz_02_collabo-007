@@ -47,9 +47,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           </Suspense>
         </div>
       </div>
-      <div className="sticky bottom-0 w-full">
-        <Navbar />
-      </div>
+      <Navbar />
     </div>
   );
 };
