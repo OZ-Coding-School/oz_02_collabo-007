@@ -35,17 +35,13 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
           readOnly
         />
 
-        <Input
-          name="partnerName"
-          ref={inputRef}
-          placeholder="파트너 검색"
-          className="pl-[44px]"
-          onFocus={() => setIsOpen((prev) => !prev)}
-          value={selectedId ? selectedId.username : ''}
-          onChange={(e) => e.target.value}
-          variant={selectedId ? 'display' : 'default'}
-          autoComplete="off"
-        />
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="flex w-full items-center justify-start rounded-[8px] border-[1px] border-gray-30 py-[10px] pl-[44px] pr-[10px] text-body-2 text-gray-50"
+        >
+          {selectedId ? selectedId.username : '파트너 검색'}
+        </button>
 
         <SearchIcon
           width={20}

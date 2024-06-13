@@ -7,6 +7,7 @@ import { changePhoneNumber } from '@/lib/utils/changePhoneNumber';
 import React, { useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import PartnerField from './PartnerField/PartnerField';
+import LoadingSpinner from '@/components/core/LoadingSpinner/LoadingSpinner';
 
 const ApplyFormContent = ({
   userData,
@@ -65,6 +66,11 @@ const ApplyFormContent = ({
           disabled={pending || isOpen || isError}
         />
       </div>
+      {pending && (
+        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+          <LoadingSpinner />
+        </div>
+      )}
     </>
   );
 };
