@@ -1,7 +1,6 @@
 import type { Competition } from '@/@types/competition';
 import { getCompData } from '@/app/_actions/getCompData';
 import CompCard from '@/components/module/CompCard/CompCard';
-import { COMP_INFO_LINK } from '@/constants/competition';
 import { cn } from '@/lib/utils/cn';
 import { cva } from 'class-variance-authority';
 import Link from 'next/link';
@@ -36,7 +35,9 @@ const HomeCompInfo = async ({ isUser }: { isUser: boolean }) => {
         className={cn(CompListVariants({ variant: isUser ? 'horizontal' : 'vertical' }))}
       >
         {Array.isArray(compData) ? (
-          compData.map((comp) => <CompCard key={comp.id} comp={comp} status="all" />)
+          compData
+            .filter((comp) => (isUser ? comp.status === 'Registration Available' : comp))
+            .map((comp) => <CompCard key={comp.id} comp={comp} status="all" />)
         ) : (
           <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
             {compData.detail}

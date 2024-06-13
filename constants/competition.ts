@@ -102,21 +102,6 @@ export const COMP_LIST_OPTIONS = [
   { title: '종료', status: 'ended' },
 ] as const;
 
-export const HOME_COMP_LIST = [
-  { title: '참가 예정 대회' },
-  { title: '최근 참가 대회' },
-] as const;
-
-export const COMP_LIST_SECTION_LINK: { [key: string]: string } = {
-  '참가 예정 대회': '/mypage/competition/?status=before',
-  '참가 중인 대회': '/mypage/competition/?status=during',
-  '최근 참가 대회': '/mypage/competition/?status=ended',
-} as const;
-
-export const COMP_INFO_LINK = '/competition/';
-
-// TODO: 상수 정리하기
-
 export const MY_COMP_LIST: { title: string; link: string }[] = [
   { title: '참가 예정 대회', link: '/mypage/competition/?status=before' },
   { title: '참가 중인 대회', link: '/mypage/competition/?status=during' },
