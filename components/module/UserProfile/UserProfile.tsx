@@ -25,7 +25,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => 
         </div>
         <UserHighlightRankingCard rankingPanel={rankingPanel} userData={userData} />
         {!userData && loginBtn && (
-          <Link href="/signin">
+          <Link href="/mypage">
             <Button size="lg" label="로그인하러 가기" variant="primary" />
           </Link>
         )}
