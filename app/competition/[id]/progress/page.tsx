@@ -1,5 +1,5 @@
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import React from 'react';
+import React, { Suspense } from 'react';
 import CompInfoCard from '@/components/organism/CompetitionProgressPage/CompInfoCard';
 import MatchList from '@/components/organism/CompetitionProgressPage/MatchList';
 import type { CompDetailInfo } from '@/@types/competition';
@@ -7,6 +7,7 @@ import { getCompDetail } from '@/app/_actions/getCompDetail';
 import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
+import MatchListSkeleton from '@/components/core/Skeleton/MatchListSkeleton';
 
 const page = async ({
   params,
@@ -41,13 +42,15 @@ const page = async ({
             />
           )}
         </div>
-        <MatchList
-          params={params.id}
-          searchParams={searchParams}
-          rounds={rounds}
-          matchType={compDetailData.matchTypeDetails.type}
-          totalSets={compDetailData.totalSets}
-        />
+        <Suspense fallback={<MatchListSkeleton />}>
+          <MatchList
+            params={params.id}
+            searchParams={searchParams}
+            rounds={rounds}
+            matchType={compDetailData.matchTypeDetails.type}
+            totalSets={compDetailData.totalSets}
+          />
+        </Suspense>
       </div>
       <div className="sticky bottom-0 w-full p-[20px]">
         <Link
