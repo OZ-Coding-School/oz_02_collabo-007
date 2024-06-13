@@ -42,7 +42,6 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
           className="pl-[44px]"
           onFocus={() => setIsOpen((prev) => !prev)}
           value={selectedId ? selectedId.username : ''}
-          onChange={(e) => e.target.value}
           variant={selectedId ? 'display' : 'default'}
           autoComplete="off"
         />

@@ -1,11 +1,17 @@
 import React from 'react';
 import CrownIcon from '@/app/_asset/icons/crown.svg';
 import StarIcon from '@/app/_asset/icons/star.svg';
-import testImg from '@/public/tennis.jpeg';
 import Image from 'next/image';
 import { cn } from '@/lib/utils/cn';
+import UserIcon from '@/app/_asset/icons/user.svg';
 
-const ResultCard = ({ winner }: { winner?: boolean }) => {
+const ResultCard = ({
+  userData,
+  winner,
+}: {
+  userData: { username: string; imageUrl: string | null; clubName: string | null }[];
+  winner?: boolean;
+}) => {
   return (
     <div
       className={cn(
@@ -26,24 +32,34 @@ const ResultCard = ({ winner }: { winner?: boolean }) => {
       </div>
 
       <div className="flex items-start gap-[12px] self-stretch">
-        <div className="flex flex-1 flex-col items-center justify-center gap-[8px]">
-          <div className="relative h-[48px] w-[48px] overflow-hidden rounded-full">
-            <Image src={testImg} alt="user" fill sizes="48px" className="object-cover" />
+        {userData.map(({ username, imageUrl, clubName }, index) => (
+          <div
+            key={index}
+            className="flex flex-1 flex-col items-center justify-center gap-[8px]"
+          >
+            <div className="relative h-[48px] w-[48px] overflow-hidden rounded-full">
+              {imageUrl ? (
+                <Image
+                  src={imageUrl}
+                  alt="user"
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-gray-30">
+                  <UserIcon className="h-[40%] w-[40%] fill-gray-60" />
+                </div>
+              )}
+            </div>
+            <div className="flex w-full flex-col items-center justify-center">
+              <div className="text-sub-headline-2">{username}</div>
+              <div className="text-body-3 text-gray-60">
+                {clubName ? clubName : '무소속'}
+              </div>
+            </div>
           </div>
-          <div className="flex w-full flex-col items-center justify-center">
-            <div className="text-sub-headline-2">김형섭</div>
-            <div className="text-body-3 text-gray-60">라온 테니스</div>
-          </div>
-        </div>
-        <div className="flex flex-1 flex-col items-center justify-center gap-[8px]">
-          <div className="relative h-[48px] w-[48px] overflow-hidden rounded-full">
-            <Image src={testImg} alt="user" fill sizes="48px" className="object-cover" />
-          </div>
-          <div className="flex w-full flex-col items-center justify-center">
-            <div className="text-sub-headline-2">김형섭</div>
-            <div className="text-body-3 text-gray-60">라온 테니스</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
