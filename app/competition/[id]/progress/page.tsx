@@ -34,7 +34,7 @@ const page = async ({
             <TabGroup
               path={`/competition/${params.id}/progress/`}
               items={rounds.reverse().map((round, index) => ({
-                text: `${index === rounds.length - 1 ? '결승' : index === rounds.length - 2 ? '준결승' : `${round}강`}`,
+                text: `${index === rounds.length - 1 ? '결승' : index === rounds.length - 2 ? '준결승' : `${round * 2}강`}`,
                 option: [{ roundnumber: `${index + 1}` }],
               }))}
               variant="circle"
