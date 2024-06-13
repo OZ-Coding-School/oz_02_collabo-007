@@ -24,9 +24,9 @@ const ModalContent: React.FC<ModalContentProps> = ({
   const debounceSearchValue = useDebounce<string>(searchValue, 500);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    searchInputRef.current?.focus();
-  }, []);
+  // useEffect(() => {
+  //   searchInputRef.current?.focus();
+  // }, []);
 
   const ModalActionBtn = () => {
     return (
@@ -44,7 +44,7 @@ const ModalContent: React.FC<ModalContentProps> = ({
     <>
       <HeaderBar title={label} actionBtn={<ModalActionBtn />} />
 
-      <div className="relative flex flex-col gap-[10px] self-stretch bg-white px-[20px] py-[16px]">
+      <div className="relative flex h-auto w-full flex-col gap-[10px] self-stretch bg-white px-[20px] py-[16px]">
         <Input
           name={`${type}Search`}
           placeholder={label}
