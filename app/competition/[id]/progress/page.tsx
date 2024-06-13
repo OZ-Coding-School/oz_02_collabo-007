@@ -25,11 +25,11 @@ const page = async ({
   return (
     <div className="flex h-full w-full flex-col">
       <HeaderBar title="대회 현황" backBtn />
-      <div className="no-scrollbar relative flex h-full flex-1 flex-col overflow-y-scroll">
+      <div className="no-scrollbar relative flex flex-1 flex-col overflow-x-hidden overflow-y-scroll ">
         <div className="px-[20px] pt-[20px]">
           <CompInfoCard compDetailData={compDetailData} />
         </div>
-        <div className="sticky top-0 flex justify-start bg-white p-[20px]">
+        <div className="sticky top-0 z-10 flex justify-start bg-white p-[20px]">
           {searchParams.roundnumber && (
             <TabGroup
               path={`/competition/${params.id}/progress/`}

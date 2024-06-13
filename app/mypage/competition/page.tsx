@@ -11,7 +11,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
 
   return (
     <div className="relative flex h-full w-full flex-col">
-      <div className="sticky top-0 z-10">
+      <div className="">
         <HeaderBar title="참가 신청한 대회" backBtn route="/mypage" />
         <div className={`flex w-full gap-[4px] bg-white px-[20px] pt-[12px]`}>
           <TabGroup
@@ -24,7 +24,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           />
         </div>
       </div>
-      <div className="flex w-full flex-1 border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
+      <div className="no-scrollbar flex w-full flex-1 overflow-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <Suspense
           fallback={
             <div className="flex w-full flex-col gap-[32px]">

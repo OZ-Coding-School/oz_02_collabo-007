@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { Pretendard } from './fonts';
 import clsx from 'clsx';
+import Container from '@/components/core/Container/Container';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,10 +18,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${clsx(Pretendard.variable)} no-scrollbar box-border h-screen w-screen bg-gray-40`}
+      className={`${clsx(Pretendard.variable)} no-scrollbar h-screen w-screen`}
     >
-      <body className="no-scrollbar relative m-auto box-border h-full max-w-[500px] bg-white font-pretendard text-gray-100">
-        {children}
+      <body className="no-scrollbar relative h-full max-w-[500px]">
+        <Container>
+          <div className="no-scrollbar relative m-auto box-border h-full max-w-[500px] bg-white font-pretendard text-gray-100">
+            {children}
+          </div>
+        </Container>
       </body>
     </html>
   );
