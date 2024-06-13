@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { Pretendard } from './fonts';
 import clsx from 'clsx';
-import Container from '@/components/core/Container/Container';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
