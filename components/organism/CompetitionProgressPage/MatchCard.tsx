@@ -9,13 +9,16 @@ const MatchCard = ({
   matchType,
   totalSets,
   index,
+  matchCount,
 }: {
   match: Match | undefined;
   matchType: string;
   totalSets: number;
+  matchCount?: number;
   index?: number;
 }) => {
   const LineClass = () => {
+    if (matchCount === 1) return '';
     if (index !== 0 && !index) return '';
     if (index % 2 === 0) return 'evenLine';
     return 'oddLine';

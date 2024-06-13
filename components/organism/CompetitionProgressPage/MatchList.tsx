@@ -30,6 +30,7 @@ const MatchList = async ({
               match={getMatchData(index)}
               key={index}
               index={index}
+              matchCount={matchCount}
               matchType={matchType}
               totalSets={totalSets}
             />

@@ -11,8 +11,6 @@ const CompStatusInfo = ({ compData }: { compData: MyCompData }) => {
   if (round == '2강') round = '결승';
   if (round == '4강') round = '준경승';
 
-  console.log(compData);
-
   const router = useRouter();
   const endPoint =
     compData.status === 'during' ? 'progress' : compData.status === 'ended' && 'result';
