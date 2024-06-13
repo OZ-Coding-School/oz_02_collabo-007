@@ -1,4 +1,4 @@
-import type { Matches } from '@/@types/competition';
+import type { Matches, MyCompData } from '@/@types/competition';
 import React from 'react';
 
 interface NextMatchInfoProps {
@@ -6,7 +6,7 @@ interface NextMatchInfoProps {
   status?: string;
 }
 
-const NextMatchInfo = ({ matches, status }: NextMatchInfoProps) => {
+const NextMatchInfo = ({ compData }: MyCompData) => {
   return (
     <>
       <div className="flex rounded-[8px] bg-gray-20">
