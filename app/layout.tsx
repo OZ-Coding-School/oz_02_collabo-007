@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${clsx(Pretendard.variable)} no-scrollbar box-border h-screen w-screen bg-gray-40`}
+      className={`${clsx(Pretendard.variable)} no-scrollbar box-border h-full w-full bg-gray-40`}
     >
       <body className="no-scrollbar relative m-auto box-border h-full max-w-[500px] bg-white font-pretendard text-gray-100">
         {children}

@@ -33,7 +33,7 @@ const Dialog: FC<DialogProps> = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed left-0 top-0 z-10 h-screen w-screen bg-black/30"
+      className="fixed left-0 top-0 z-10 h-full w-full bg-black/30"
     >
       <motion.div className="relative m-auto flex h-full w-full max-w-[500px] flex-col items-center justify-center px-[20px]">
         <motion.div
