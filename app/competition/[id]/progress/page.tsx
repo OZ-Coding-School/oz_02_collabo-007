@@ -8,6 +8,7 @@ import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
 import MatchListSkeleton from '@/components/core/Skeleton/MatchListSkeleton';
+import { cn } from '@/lib/utils/cn';
 
 const page = async ({
   params,
@@ -27,11 +28,13 @@ const page = async ({
     <div className="relative flex h-full w-full flex-col">
       <HeaderBar title="대회 현황" backBtn />
       <div className="no-scrollbar relative flex flex-1 flex-col overflow-x-hidden overflow-y-scroll ">
-        <div className="px-[20px] pt-[20px]">
+        <div
+          className={cn('px-[20px] pt-[20px]', !searchParams.roundnumber && 'pb-[20px]')}
+        >
           <CompInfoCard compDetailData={compDetailData} />
         </div>
-        <div className="sticky top-0 z-10 flex justify-start bg-white p-[20px]">
-          {searchParams.roundnumber && (
+        {searchParams.roundnumber && (
+          <div className="sticky top-0 z-10 flex justify-start bg-white p-[20px]">
             <TabGroup
               path={`/competition/${params.id}/progress/`}
               items={rounds.reverse().map((round, index) => ({
@@ -40,8 +43,8 @@ const page = async ({
               }))}
               variant="circle"
             />
-          )}
-        </div>
+          </div>
+        )}
         <Suspense fallback={<MatchListSkeleton />}>
           <MatchList
             params={params.id}
