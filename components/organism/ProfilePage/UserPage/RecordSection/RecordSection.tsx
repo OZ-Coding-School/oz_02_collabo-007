@@ -1,43 +1,34 @@
-import { FC } from 'react';
 import RecordSectionHeader from './RecordSectionHeader/RecordSectionHeader';
+import { UserMatches } from '@/@types/record';
+import MatchCard from '@/components/organism/CompetitionProgressPage/MatchCard';
 
-interface Props {
-  matchData: {
-    id: number;
-    compName: string;
-    date: string;
-    category: string;
-    tier: string;
-    matches: {
-      court: number;
-      winner: {
-        users: { name: string }[];
-        scores: string[];
-      };
-      loser: {
-        users: { name: string }[];
-        scores: string[];
-      };
-    }[];
-  };
-}
-
-const RecordSection: FC<Props> = ({ matchData }) => {
-  const { compName, date, category, tier, matches } = matchData;
-
+const RecordSection = ({ matchData }: { matchData: UserMatches }) => {
+  const { name, start, matchTypeDetails, tier, matches } = matchData;
+  console.log(matchData);
   return (
-    <div className="flex flex-col items-start gap-[12px] self-stretch">
-      <RecordSectionHeader
-        compName={compName}
-        date={date}
-        category={category}
-        tier={tier}
-      />
-      {/* 
-      {matches.map((match, index) => (
-        <MatchResultCard match={match} key={index} />
-      ))} */}
-    </div>
+    <>
+      {matches.length !== 0 && (
+        <div className="flex flex-col items-start gap-[12px] self-stretch">
+          <RecordSectionHeader
+            compName={name}
+            date={start}
+            category={matchTypeDetails}
+            tier={tier}
+          />
+
+          <div className="flex w-full flex-col gap-[16px]">
+            {matches.map((match, index) => (
+              <MatchCard
+                match={match}
+                matchType={matchTypeDetails.type}
+                totalSets={match.totalSets}
+                key={index}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
