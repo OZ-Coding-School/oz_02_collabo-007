@@ -35,12 +35,13 @@ const TierFilter = ({ tiers }: { tiers: Tier[] }) => {
   };
 
   return (
-    <div className="flex gap-[4px]">
+    <div className="relative flex gap-[4px]">
       <select
         name={'tier'}
         id={'tier'}
         onChange={handleChange}
         value={searchParams.get('tier') ?? ''}
+        className="z-10 w-full appearance-none pr-[24px] outline-none"
       >
         <option value="all">전체</option>
         {filteredTiers.map((tier) => (
@@ -49,7 +50,7 @@ const TierFilter = ({ tiers }: { tiers: Tier[] }) => {
           </option>
         ))}
       </select>
-      <label htmlFor={'tier'}>
+      <label htmlFor={'tier'} className="absolute right-0 top-1/2 -translate-y-1/2">
         <DropdownIcon width={24} height={24} fill="#787878" />
       </label>
     </div>
