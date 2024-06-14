@@ -18,6 +18,26 @@ export const CompListVariants = cva(`no-scrollbar`, {
 
 const HomeCompInfo = async ({ isUser }: { isUser: boolean }) => {
   const compData: Competition[] | { detail: string } = await getCompData({}, 4);
+  const AvailableCompData = ({ compData }: { compData: Competition[] }) => {
+    const availableCompData = compData.filter((comp) =>
+      isUser ? comp.status === 'Registration Available' : comp,
+    );
+
+    if (availableCompData.length === 0)
+      return (
+        <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
+          신청 가능한 대회가 없습니다.
+        </div>
+      );
+
+    return (
+      <>
+        {availableCompData.map((comp) => (
+          <CompCard key={comp.id} comp={comp} status="all" />
+        ))}
+      </>
+    );
+  };
 
   return (
     <div className="flex w-full flex-col gap-[12px]">
@@ -35,17 +55,10 @@ const HomeCompInfo = async ({ isUser }: { isUser: boolean }) => {
         className={cn(CompListVariants({ variant: isUser ? 'horizontal' : 'vertical' }))}
       >
         {Array.isArray(compData) ? (
-          compData
-            .filter((comp) => (isUser ? comp.status === 'Registration Available' : comp))
-            .map((comp) => <CompCard key={comp.id} comp={comp} status="all" />).length ===
-            0 && (
-            <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
-              현재 신청 가능한 대회가 없습니다
-            </div>
-          )
+          <AvailableCompData compData={compData} />
         ) : (
           <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
-            {compData.detail}
+            {compData.detail && compData.detail}
           </div>
         )}
       </div>

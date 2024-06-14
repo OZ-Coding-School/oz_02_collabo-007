@@ -38,7 +38,7 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex w-full items-center justify-start rounded-[8px] border-[1px] border-gray-30 py-[10px] pl-[44px] pr-[10px] text-body-2 text-gray-50"
+          className="flex w-full items-center justify-start rounded-[8px] border-[1px] border-gray-30 py-[10px] pl-[44px] pr-[10px] text-body-1 text-gray-50"
         >
           {selectedId ? selectedId.username : '파트너 검색'}
         </button>
@@ -47,7 +47,7 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
           width={20}
           height={20}
           fill="#A6A6A6"
-          className="absolute left-[12px] top-[38px]"
+          className="absolute left-[12px] top-[40px]"
         />
 
         {selectedId && (

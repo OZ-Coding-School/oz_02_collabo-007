@@ -97,6 +97,7 @@ const PhoneField: FC<PhoneFieldProps> = ({ phoneData, isUnique, setIsUnique }) =
             type="button"
             size="md"
             onClick={handleCheckPhoneNumber}
+            className="px-[12px] py-[11px] text-[16px] leading-[24px]"
           />
         </div>
       )}

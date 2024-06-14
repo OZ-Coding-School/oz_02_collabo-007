@@ -46,7 +46,7 @@ const ChangePasswordField = ({
           placeholder={label}
         />
       </div>
-      <div className="absolute right-[12px] top-[38px]">
+      <div className="absolute right-[12px] top-[40px]">
         <IconComponent />
       </div>
       {type in errors && (

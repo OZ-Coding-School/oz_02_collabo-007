@@ -39,7 +39,7 @@ const ConfirmPasswordField = () => {
           placeholder="비밀번호 확인"
         />
       </div>
-      <div className="absolute right-[12px] top-[38px]">
+      <div className="absolute right-[12px] top-[40px]">
         <IconComponent />
       </div>
       {typeof errors.confirmPassword?.message === 'string' && (
