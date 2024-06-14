@@ -19,10 +19,7 @@ const UserInfoCard = ({ userData, loginBtn }: UserInfoCardProps) => {
     <div className="flex flex-col gap-[8px]">
       {userData ? (
         <>
-          <Link
-            href="/mypage/edit/"
-            className="flex items-center gap-[8px] text-headline-4"
-          >
+          <Link href="/mypage/" className="flex items-center gap-[8px] text-headline-4">
             {userData.username}
             {loginBtn && <ChevronRightIcon width={18} height={18} fill="#393939" />}
           </Link>
