@@ -82,6 +82,14 @@ const config: Config = {
             fontWeight: '700',
           },
         ],
+        'headline-8': [
+          '12px',
+          {
+            lineHeight: '16px',
+            letterSpacing: '0%',
+            fontWeight: '700',
+          },
+        ],
         'sub-headline-1': [
           '16px',
           {

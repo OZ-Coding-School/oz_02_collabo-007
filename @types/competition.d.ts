@@ -111,6 +111,8 @@ export type MyCompData = {
   imageUrl: string | null;
   status: string;
   applyStatus: string;
+  myteam: string[];
+  matchStatus: string | null;
   matches: Matches;
 };
 
@@ -120,6 +122,5 @@ export type Matches = {
   matchNumber: number;
   courtNumber: number;
   winnerName: string[];
-  myteamUser: string[];
   opponentUser: string[];
 };
