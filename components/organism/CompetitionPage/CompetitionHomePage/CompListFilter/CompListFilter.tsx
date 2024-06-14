@@ -32,12 +32,13 @@ const CompListFilter = ({ filterOption }: CompListFilter) => {
   };
 
   return (
-    <div className="flex gap-[4px]">
+    <div className="relative flex gap-[4px]">
       <select
         name={name}
         id={name}
         onChange={handleChange}
         value={searchParams.get(name) ?? ''}
+        className="z-10 w-full appearance-none pr-[24px] outline-none"
       >
         {options.map((option, index) => (
           <option key={index} value={option.value}>
@@ -45,7 +46,7 @@ const CompListFilter = ({ filterOption }: CompListFilter) => {
           </option>
         ))}
       </select>
-      <label htmlFor={name}>
+      <label htmlFor={name} className="absolute right-0 top-1/2 -translate-y-1/2">
         <DropdownIcon width={24} height={24} fill="#787878" />
       </label>
     </div>
