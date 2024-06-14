@@ -10,8 +10,13 @@ import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import CompListFilter from '@/components/organism/CompetitionPage/CompetitionHomePage/CompListFilter/CompListFilter';
 import CompInfo from '@/components/organism/CompetitionPage/CompetitionHomePage/CompInfo/CompInfo';
 import CompCardSkeleton from '@/components/core/Skeleton/CompCardSkeleton';
+import { getTiers } from '../_actions/getTiers';
+import type { Tier } from '@/@types/tier';
+import TierFilter from '@/components/organism/CompetitionPage/CompetitionHomePage/TierFilter/TierFilter';
 
-const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => {
+const page = async ({ searchParams }: { searchParams: { [key: string]: string } }) => {
+  const tiers: Tier[] = await getTiers();
+
   return (
     <div className="relative flex h-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
@@ -29,7 +34,7 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
       </div>
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[12px] overflow-y-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <div className="flex gap-[16px]">
-          <CompListFilter filterOption={COMP_TIER} />
+          <TierFilter tiers={tiers} />
           <CompListFilter filterOption={COMP_STATUS} />
           <CompListFilter filterOption={COMP_DATA} />
         </div>

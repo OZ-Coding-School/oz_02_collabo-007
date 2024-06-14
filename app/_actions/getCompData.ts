@@ -19,8 +19,8 @@ export const getCompData = async (searchParams?: ISearchParams, count?: number) 
   const {
     gender,
     type,
-    status = '전체',
-    tier = '전체',
+    status = 'all',
+    tier = 'all',
     date = 'closest',
   } = searchParams ?? {};
 
@@ -47,7 +47,12 @@ export const getCompData = async (searchParams?: ISearchParams, count?: number) 
   const data = await res.json();
 
   if (!count) {
-    return filterCompetition({ data, status, tier, date });
+    return filterCompetition({
+      data,
+      currentStatus: status,
+      currentTier: tier,
+      date,
+    });
   }
 
   return data;
