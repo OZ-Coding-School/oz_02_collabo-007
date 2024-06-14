@@ -37,7 +37,12 @@ const HomeCompInfo = async ({ isUser }: { isUser: boolean }) => {
         {Array.isArray(compData) ? (
           compData
             .filter((comp) => (isUser ? comp.status === 'Registration Available' : comp))
-            .map((comp) => <CompCard key={comp.id} comp={comp} status="all" />)
+            .map((comp) => <CompCard key={comp.id} comp={comp} status="all" />).length ===
+            0 && (
+            <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
+              현재 신청 가능한 대회가 없습니다
+            </div>
+          )
         ) : (
           <div className="flex min-w-full flex-col items-center justify-center gap-[16px] rounded-[8px] bg-white p-[16px] text-gray-60 shadow-md">
             {compData.detail}

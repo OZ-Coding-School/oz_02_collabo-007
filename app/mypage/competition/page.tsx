@@ -24,19 +24,18 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           />
         </div>
       </div>
-      <div className="no-scrollbar flex w-full flex-1 overflow-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
-        <Suspense
-          fallback={
-            <div className="flex w-full flex-col gap-[32px]">
-              {Array.from({ length: 5 }, (_, index) => {
-                return <CompCardSkeleton key={index} />;
-              })}
-            </div>
-          }
-        >
-          <MyCompInfo status={status} />
-        </Suspense>
-      </div>
+
+      <Suspense
+        fallback={
+          <div className="flex w-full flex-col gap-[32px]">
+            {Array.from({ length: 5 }, (_, index) => {
+              return <CompCardSkeleton key={index} />;
+            })}
+          </div>
+        }
+      >
+        <MyCompInfo status={status} />
+      </Suspense>
 
       <CancelAlert />
     </div>

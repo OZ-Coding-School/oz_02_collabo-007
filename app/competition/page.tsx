@@ -33,19 +33,17 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
           <CompListFilter filterOption={COMP_STATUS} />
           <CompListFilter filterOption={COMP_DATA} />
         </div>
-        <div className="flex flex-col">
-          <Suspense
-            fallback={
-              <div className="flex w-full flex-col gap-[32px]">
-                {Array.from({ length: 5 }, (_, index) => {
-                  return <CompCardSkeleton key={index} />;
-                })}
-              </div>
-            }
-          >
-            <CompInfo searchParams={searchParams} />
-          </Suspense>
-        </div>
+        <Suspense
+          fallback={
+            <div className="flex w-full flex-col gap-[16px]">
+              {Array.from({ length: 5 }, (_, index) => {
+                return <CompCardSkeleton key={index} />;
+              })}
+            </div>
+          }
+        >
+          <CompInfo searchParams={searchParams} />
+        </Suspense>
       </div>
       <Navbar />
     </div>
