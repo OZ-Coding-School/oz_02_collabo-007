@@ -5,14 +5,12 @@ import type { MyCompData } from '@/@types/competition';
 const CompCardMatchDetail = ({ compData }: { compData: MyCompData }) => {
   return (
     <div className="rounded-[8px] bg-gray-20 p-[12px]">
-      {compData.status === 'before' && (
-        <NextMatchInfo matches={compData.matches} status={compData.status} />
-      )}
+      {compData.status === 'before' && <NextMatchInfo compData={compData} />}
       {compData.status === 'during' && (
         <div className="flex flex-col gap-[12px]">
           <CompStatusInfo compData={compData} />
           <div className="border-b-[1.5px] border-gray-30"></div>
-          <NextMatchInfo matches={compData.matches} />
+          <NextMatchInfo compData={compData} />
         </div>
       )}
       {compData.status === 'ended' && <CompStatusInfo compData={compData} />}

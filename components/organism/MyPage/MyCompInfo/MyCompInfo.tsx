@@ -9,16 +9,19 @@ const MyCompInfo = async ({ status }: { status: string }) => {
   const compData: MyCompData[] | { detail: string } = await getMyCompData({ status });
 
   return (
-    <div className="flex w-full flex-1 flex-col gap-[12px]">
-      <div className={cn(CompListVariants({ variant: 'vertical' }), 'flex-1')}>
-        {Array.isArray(compData) ? (
-          compData.map((comp) => <CompCard key={comp.id} comp={comp} status="my" />)
-        ) : (
-          <div className="flex w-full flex-1 flex-col items-center justify-center text-body-2 text-gray-60">
-            {compData.detail}
-          </div>
-        )}
-      </div>
+    <div
+      className={cn(
+        CompListVariants({ variant: 'vertical' }),
+        'no-scrollbar flex-1 overflow-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]',
+      )}
+    >
+      {Array.isArray(compData) ? (
+        compData.map((comp) => <CompCard key={comp.id} comp={comp} status="my" />)
+      ) : (
+        <div className="flex w-full flex-1 flex-col items-center justify-center text-body-2 text-gray-60">
+          {compData.detail}
+        </div>
+      )}
     </div>
   );
 };

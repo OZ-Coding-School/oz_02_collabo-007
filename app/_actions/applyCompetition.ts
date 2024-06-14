@@ -9,7 +9,6 @@ export const applyCompetition = async (
   try {
     formData.delete('userName');
     formData.delete('phone');
-    formData.delete('partnerName');
     const id = formData.get('id');
     formData.delete('id');
 

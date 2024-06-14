@@ -32,7 +32,7 @@ const ClubList = ({
   });
 
   return (
-    <div className="no-scrollbar flex h-full w-full flex-1 flex-col items-center gap-[16px] self-stretch overflow-scroll text-body-2">
+    <div className="no-scrollbar flex h-auto w-full flex-1 flex-col items-center gap-[16px] self-stretch overflow-scroll text-body-2">
       {filteredData.length === 0 ? (
         <span className="flex h-full w-full items-center justify-center text-body-2 text-gray-60">
           {`클럽을 검색 해주세요`}
