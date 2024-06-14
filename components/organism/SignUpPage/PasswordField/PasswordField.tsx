@@ -40,7 +40,7 @@ const PasswordField = () => {
           inputSize={'mdWith'}
         />
       </div>
-      <div className="absolute right-[12px] top-[38px]">
+      <div className="absolute right-[12px] top-[40px]">
         <IconComponent />
       </div>
       {typeof errors.password?.message === 'string' && (
