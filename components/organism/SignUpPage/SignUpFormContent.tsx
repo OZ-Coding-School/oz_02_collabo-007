@@ -51,7 +51,7 @@ const SignUpFormContent: FC<SignUpFormContentProps> = ({
 
   return (
     <>
-      <div className="flex w-full flex-1 flex-col items-center gap-[24px] px-[20px] py-[24px]">
+      <div className="no-scrollbar flex w-full flex-1 flex-col items-center gap-[24px] overflow-scroll px-[20px] py-[24px]">
         <ProfileField
           currentImg={userData?.imageUrl ? [userData?.imageUrl] : undefined}
         />

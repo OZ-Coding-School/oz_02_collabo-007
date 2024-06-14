@@ -15,7 +15,6 @@ interface PartnerModalProp {
 
 const PartnerModal = ({ id, setIsOpen, inputRef, setSelectedId }: PartnerModalProp) => {
   const handleCloseModal = () => {
-    inputRef.current?.blur();
     setIsOpen((prev: boolean) => !prev);
   };
 

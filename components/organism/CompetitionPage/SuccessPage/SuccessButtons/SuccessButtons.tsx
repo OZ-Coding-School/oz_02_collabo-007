@@ -16,6 +16,7 @@ const SuccessButtons = ({
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [pending, setPending] = useState(false);
+  console.log(waiting);
 
   const handleCancel = async () => {
     setPending(() => true);
@@ -49,7 +50,7 @@ const SuccessButtons = ({
         {isOpen && (
           <Dialog
             setIsOpen={setIsOpen}
-            title={waiting ? '대회 참가 신청을 취소할까요?' : '대기를 취소할까요?'}
+            title={waiting ? '대기를 취소할까요?' : '대회 참가 신청을 취소할까요?'}
           >
             <>
               <div className="text-center text-body-2 text-gray-60">
