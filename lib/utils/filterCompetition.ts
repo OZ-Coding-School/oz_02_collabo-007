@@ -2,13 +2,13 @@ import type { Competition } from '@/@types/competition';
 
 export const filterCompetition = ({
   data,
-  status,
-  tier,
+  currentStatus,
+  currentTier,
   date,
 }: {
   data: Competition[];
-  status: string;
-  tier: string;
+  currentStatus: string;
+  currentTier: string;
   date: string;
 }) => {
   const category: { [key: string]: string } = {
@@ -28,8 +28,16 @@ export const filterCompetition = ({
 
   const newArr = data
     .map((ele: Competition) => setCategory(ele))
-    .filter((ele: Competition) => (tier !== '전체' ? ele.tier.includes(tier) : ele))
-    .filter((ele: Competition) => (status !== '전체' ? ele.category === status : ele));
+    .filter((ele: Competition) => {
+      if (currentTier === 'all') return true;
+      if (ele.tier === null) return false;
+      return ele.tier.includes(currentTier);
+    })
+    .filter((ele: Competition) => {
+      if (currentStatus === 'all') return ele.category === 'before';
+      if (ele.status === null) return false;
+      return ele.category === currentStatus;
+    });
 
   const today = new Date().getTime();
 
@@ -44,5 +52,6 @@ export const filterCompetition = ({
           (a: Competition, b: Competition) =>
             new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
         );
+
   return sortedArr;
 };

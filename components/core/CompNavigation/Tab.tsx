@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams, useSelectedLayoutSegment } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { Item } from './TapGroup';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils/cn';
@@ -46,6 +46,8 @@ export const Tab = ({ path, item, variant }: TabProps) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
+  const keyArr = item.option?.map((option) => Object.keys(option)[0]);
+
   item.option?.forEach((option) => {
     const key = Object.keys(option)[0];
     const value = option[key];
@@ -53,12 +55,21 @@ export const Tab = ({ path, item, variant }: TabProps) => {
     if (value) params.set(key, value);
   });
 
-  const isActive = searchParams.toString().includes(params.toString());
-  const href = path + '?' + params.toString;
+  if (params.has('tier')) params.delete('tier');
+
+  let isActive = searchParams.toString().includes(params.toString());
+  if (
+    keyArr.filter((key: string) => searchParams.has(key)).length === 0 &&
+    item.text === '전체'
+  ) {
+    isActive = true;
+  }
+
+  const href = `${path}?${params.toString()}`;
   return (
     <Link
       replace
-      href={`${path}?${params.toString()}`}
+      href={href}
       className={cn(TabVariants({ variant, selected: isActive ? true : false }))}
     >
       {item.text}
