@@ -4,7 +4,7 @@ import FlagIcon from '@/app/_asset/icons/flag.svg';
 
 const ImageBanner = ({ img }: { img: string | null }) => {
   return (
-    <div className="relative h-[200px] w-full">
+    <div className="relative h-[200px] w-full flex-shrink-0">
       {img ? (
         <Image
           src={img}

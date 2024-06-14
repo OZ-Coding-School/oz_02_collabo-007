@@ -124,3 +124,22 @@ export type Matches = {
   winnerName: string[];
   opponentUser: string[];
 };
+
+export type CompetitionResult = {
+  competition: number;
+  competitionName: string;
+  matchTypeDetails: { gender: string; type: string };
+  tier: string;
+  winner: number;
+  winnerParticipants: {
+    username: string;
+    imageUrl: string | null;
+    clubName: string | null;
+  }[];
+  runnerUp: number;
+  runnerUpParticipants: {
+    username: string;
+    imageUrl: string | null;
+    clubName: string | null;
+  }[];
+};

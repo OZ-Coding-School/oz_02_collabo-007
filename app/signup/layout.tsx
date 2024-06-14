@@ -6,7 +6,9 @@ export default function SignOutLayout({ children }: { children: React.ReactNode 
   return (
     <div className="no-scrollbar relative flex h-full w-full flex-col overflow-scroll bg-white">
       <HeaderBar title="회원 가입" backBtn />
-      <Suspense fallback={<Loading />}>{children}</Suspense>
+      <div className="no-scrollbar h-full w-full flex-1 overflow-scroll">
+        <Suspense fallback={<Loading />}>{children}</Suspense>
+      </div>
     </div>
   );
 }
