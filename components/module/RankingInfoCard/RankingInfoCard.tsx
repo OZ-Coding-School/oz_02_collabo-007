@@ -1,3 +1,4 @@
+'use client';
 import { UserRanking } from '@/@types/ranking';
 import Image from 'next/image';
 import React from 'react';

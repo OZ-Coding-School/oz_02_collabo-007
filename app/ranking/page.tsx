@@ -4,9 +4,8 @@ import type { ISearchParams } from '../_actions/getCompData';
 import { getTiers } from '../_actions/getTiers';
 import MyRankingCard from '@/components/organism/RankingPage/MyRankingCard';
 import type { Tier } from '@/@types/tier';
-import RankingBoard from '@/components/organism/RankingPage/RankingBoard/RankingBoard';
 import RankingHeader from '@/components/organism/RankingPage/RankingHeader/RankingHeader';
-import TotalRankingHeader from '@/components/organism/RankingPage/TotalRankingHeader/TotalRankingHeader';
+import RankingSection from '@/components/organism/RankingPage/RankingSection/RankingSection';
 
 const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
   const tiers: Tier[] = await getTiers();
@@ -19,15 +18,11 @@ const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
           <div className="text-headline-6">내 랭킹</div>
           <MyRankingCard />
         </div>
-        <div className="flex w-full flex-1 flex-col gap-[16px]">
-          <TotalRankingHeader />
-          <div className="flex flex-1 gap-[16px]">
-            {/* TODO: 스켈레톤 만들기 */}
-            <Suspense fallback={<div>loading...</div>}>
-              <RankingBoard searchParams={searchParams} tiers={tiers} />
-            </Suspense>
-          </div>
-        </div>
+
+        {/* TODO: 스켈레톤 만들기 */}
+        <Suspense fallback={<div>loading...</div>}>
+          <RankingSection searchParams={searchParams} tiers={tiers} />
+        </Suspense>
       </div>
       <Navbar />
     </div>
