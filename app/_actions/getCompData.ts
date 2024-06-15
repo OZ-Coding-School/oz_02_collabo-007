@@ -1,5 +1,5 @@
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 import { filterCompetition } from '@/lib/utils/filterCompetition';
-import { cookies } from 'next/headers';
 
 export interface ISearchParams {
   status?: string;
@@ -14,8 +14,6 @@ export interface ISearchParams {
 
 export const getCompData = async (searchParams?: ISearchParams, count?: number) => {
   'use server';
-  const cookie = cookies();
-  const token = cookie.get('access');
 
   const {
     gender,
@@ -30,15 +28,11 @@ export const getCompData = async (searchParams?: ISearchParams, count?: number) 
   if (type && type !== 'all') params.set('matchType', type);
   if (count) params.set('count', `${count}`);
 
-  const res = await fetch(
+  const res = await fetchWithToken(
     `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/?${params.toString()}`,
     {
       credentials: 'include',
       method: 'GET',
-      headers: {
-        Authorization: token ? `Bearer ${token.value}` : '',
-      },
-      cache: 'no-cache',
     },
   );
   if (!res.ok) {

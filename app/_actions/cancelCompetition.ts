@@ -1,19 +1,13 @@
 'use server';
-import { cookies } from 'next/headers';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
 const cancelCompetition = async (id: number) => {
   try {
-    const cookie = cookies();
-    const token = cookie.get('access');
-
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/application/cancel/`,
       {
         credentials: 'include',
         method: 'PUT',
-        headers: {
-          Authorization: token ? `Bearer ${token.value}` : '',
-        },
       },
     );
 

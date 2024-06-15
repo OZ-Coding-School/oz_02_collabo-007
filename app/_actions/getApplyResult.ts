@@ -1,21 +1,14 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
 export const getApplyResult = async (id: number) => {
   try {
-    const cookie = cookies();
-    const token = cookie.get('access');
-
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/application/`,
       {
         method: 'GET',
         credentials: 'include',
-        headers: {
-          Authorization: token ? `Bearer ${token.value}` : '',
-        },
-        // next: { revalidate: 3600, tags: [`competition-apply-success-${id}`] },
       },
     );
 

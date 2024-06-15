@@ -1,24 +1,18 @@
-import { cookies } from 'next/headers';
 import { ISearchParams } from './getCompData';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
 export const getMyCompData = async (searchParams?: ISearchParams, count?: number) => {
-  const cookie = cookies();
-  const token = cookie.get('access');
-
   const { status = 'all' } = searchParams ?? {};
   const params = new URLSearchParams();
 
   if (status !== 'all') params.set('status', status);
 
   try {
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/mycompetitions/?${params.toString()}`,
       {
         method: 'GET',
         credentials: 'include',
-        headers: {
-          Authorization: token ? `Bearer ${token.value}` : '',
-        },
       },
     );
 

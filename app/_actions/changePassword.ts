@@ -1,6 +1,7 @@
 'use server';
 
 import { PasswordState } from '@/@types/password';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 import { passwordSchema } from '@/lib/utils/validation';
 import { cookies } from 'next/headers';
 import { ZodError } from 'zod';
@@ -40,16 +41,12 @@ export const changePassword = async (
       };
     }
 
-    const cookie = cookies();
-    const token = cookie.get('access')!;
-
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/password`,
       {
         credentials: 'include',
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${token.value}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
