@@ -58,6 +58,7 @@ export const Tab = ({ path, item, variant, defaultValue }: TabProps) => {
   });
 
   if (params.has('tier')) params.delete('tier');
+  if (params.has('club')) params.delete('club');
 
   let isActive = searchParams.toString().includes(params.toString());
   if (

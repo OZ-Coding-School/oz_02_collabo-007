@@ -24,14 +24,10 @@ const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
         <div className="flex w-full flex-col gap-[16px]">
           <TotalRankingHeader />
           <div className="flex gap-[16px]">
-            <div className="flex flex-1 flex-col gap-[8px]">
-              <RankingFilters tiers={tiers} />
-              <RankingBoardHeader />
-              {/* TODO: 스켈레톤 만들기 */}
-              <Suspense fallback={<div>loading...</div>}>
-                <RankingBoard searchParams={searchParams} tiers={tiers} />
-              </Suspense>
-            </div>
+            {/* TODO: 스켈레톤 만들기 */}
+            <Suspense fallback={<div>loading...</div>}>
+              <RankingBoard searchParams={searchParams} tiers={tiers} />
+            </Suspense>
           </div>
         </div>
       </div>

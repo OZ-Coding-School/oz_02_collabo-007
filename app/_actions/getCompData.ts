@@ -9,6 +9,7 @@ export interface ISearchParams {
   type?: string;
   title?: string;
   date?: string;
+  club?: string;
 }
 
 export const getCompData = async (searchParams?: ISearchParams, count?: number) => {

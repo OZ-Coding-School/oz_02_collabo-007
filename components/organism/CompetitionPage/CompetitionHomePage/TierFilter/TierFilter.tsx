@@ -7,18 +7,17 @@ import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 
 const TierFilter = ({
   tiers,
-  defaultValue = { gender: 'all', type: 'all' },
+  initialValue = { gender: 'all', type: 'all' },
 }: {
   tiers: Tier[];
-  defaultValue?: { gender: string; type: string };
+  initialValue?: { gender: string; type: string };
 }) => {
-  console.log(defaultValue);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentGender = searchParams.get('gender') || defaultValue.gender;
-  const currentType = searchParams.get('type') || defaultValue.type;
+  const currentGender = searchParams.get('gender') || initialValue.gender;
+  const currentType = searchParams.get('type') || initialValue.type;
 
   const filteredTiers = tiers.filter(({ matchTypeDetails: { gender, type } }) => {
     if (currentGender !== 'all' && currentType !== 'all') {
@@ -31,6 +30,8 @@ const TierFilter = ({
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
       params.set(name, value);
+
+      if (searchParams.has('club')) params.delete('club');
 
       return params.toString();
     },
@@ -48,9 +49,9 @@ const TierFilter = ({
         id={'tier'}
         onChange={handleChange}
         value={searchParams.get('tier') ?? ''}
-        className="z-10 w-full appearance-none pr-[24px] outline-none"
+        className="z-10 w-full appearance-none pr-[24px] text-sub-headline-2 text-gray-80 outline-none"
       >
-        {defaultValue.gender === 'all' && <option value="all">전체</option>}
+        {initialValue.gender === 'all' && <option value="all">전체</option>}
         {filteredTiers.map((tier) => (
           <option key={tier.id} value={tier.name}>
             {tier.name}
