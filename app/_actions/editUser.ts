@@ -1,6 +1,7 @@
 'use server';
 
 import { SignUpState } from '@/@types/signup';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 import { editSchema } from '@/lib/utils/validation';
 import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
@@ -33,14 +34,11 @@ export const editUser = async (
     const cookie = cookies();
     const token = cookie.get('access')!;
 
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/update/`,
       {
         credentials: 'include',
         method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
         body: formData,
       },
     );

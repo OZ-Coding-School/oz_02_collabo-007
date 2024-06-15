@@ -10,7 +10,7 @@ import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
 import { MY_COMP_LIST } from '@/constants/competition';
 
 const Home = async () => {
-  const userData: UserData | null = await getMyData();
+  const userData: UserData = await getMyData();
   return (
     <>
       <div className="relative flex h-full w-full flex-col">

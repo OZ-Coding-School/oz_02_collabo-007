@@ -1,26 +1,20 @@
-import { cookies } from 'next/headers';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
 export const getCompProgress = async (
   id: number,
   searchParams: { roundnumber?: number },
 ) => {
   try {
-    const cookie = cookies();
-    const token = cookie.get('access');
-
     const { roundnumber } = searchParams ?? {};
     const params = new URLSearchParams();
 
     if (roundnumber) params.append('roundnumber', `${roundnumber}`);
 
-    const res = await fetch(
+    const res = await fetchWithToken(
       ` ${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/status/?${params.toString()}`,
       {
         method: 'GET',
         credentials: 'include',
-        headers: {
-          Authorization: token ? ` Bearer${token.value}` : 'null',
-        },
       },
     );
 

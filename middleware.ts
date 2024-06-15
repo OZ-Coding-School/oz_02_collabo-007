@@ -38,7 +38,8 @@ export async function middleware(request: NextRequest) {
     !['/', '/signin/', '/signup/', '/competition/'].includes(pathname) &&
     !/^\/competition\/\d+\/$/.test(pathname) &&
     !/^\/competition\/\d+\/progress\/$/.test(pathname) &&
-    !/^\/competition\/\d+\/result\/$/.test(pathname)
+    !/^\/competition\/\d+\/result\/$/.test(pathname) &&
+    !/^\/ranking\/$/.test(pathname)
   ) {
     return NextResponse.redirect(
       new URL('/?alert=로그인 후 이용 가능한 서비스입니다.', request.url),

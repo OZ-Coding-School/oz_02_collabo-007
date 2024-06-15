@@ -1,6 +1,6 @@
 'use server';
 import { ApplyState } from '@/lib/hook/useApplyForm';
-import { cookies } from 'next/headers';
+import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
 export const applyCompetition = async (
   prevState: ApplyState | null,
@@ -12,17 +12,11 @@ export const applyCompetition = async (
     const id = formData.get('id');
     formData.delete('id');
 
-    const cookie = cookies();
-    const token = cookie.get('access')!;
-
-    const res = await fetch(
+    const res = await fetchWithToken(
       `${process.env.NEXT_PUBLIC_BASE_URL}/competitions/${id}/apply/`,
       {
         credentials: 'include',
         method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
         body: formData,
       },
     );
