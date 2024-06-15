@@ -5,13 +5,20 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { ChangeEvent, useCallback } from 'react';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 
-const TierFilter = ({ tiers }: { tiers: Tier[] }) => {
+const TierFilter = ({
+  tiers,
+  defaultValue = { gender: 'all', type: 'all' },
+}: {
+  tiers: Tier[];
+  defaultValue?: { gender: string; type: string };
+}) => {
+  console.log(defaultValue);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentGender = searchParams.get('gender') || 'all';
-  const currentType = searchParams.get('type') || 'all';
+  const currentGender = searchParams.get('gender') || defaultValue.gender;
+  const currentType = searchParams.get('type') || defaultValue.type;
 
   const filteredTiers = tiers.filter(({ matchTypeDetails: { gender, type } }) => {
     if (currentGender !== 'all' && currentType !== 'all') {
@@ -43,7 +50,7 @@ const TierFilter = ({ tiers }: { tiers: Tier[] }) => {
         value={searchParams.get('tier') ?? ''}
         className="z-10 w-full appearance-none pr-[24px] outline-none"
       >
-        <option value="all">전체</option>
+        {defaultValue.gender === 'all' && <option value="all">전체</option>}
         {filteredTiers.map((tier) => (
           <option key={tier.id} value={tier.name}>
             {tier.name}
