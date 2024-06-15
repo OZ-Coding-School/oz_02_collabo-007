@@ -4,18 +4,18 @@ import Navbar from '@/components/module/Navbar/Navbar';
 import RankingInfoCard from '@/components/module/RankingInfoCard/RankingInfoCard';
 import InputModule from '@/components/module/InputModule/InputModule';
 import SearchIcon from '@/app/_asset/icons/search.svg';
+import { RANKING_CATEGORY } from '@/constants/competition';
+import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
+import { getUserRanking } from '../_actions/getUserRanking';
+import { ISearchParams } from '../_actions/getCompData';
+import { getTiers } from '../_actions/getTiers';
+import TierFilter from '@/components/organism/CompetitionPage/CompetitionHomePage/TierFilter/TierFilter';
+import { UserRanking } from '@/@types/ranking';
 
-const COMP_CATEGORY = [
-  { key: 1, title: '전체' },
-  { key: 2, title: '남자 단식' },
-  { key: 3, title: '여자 단식' },
-  { key: 4, title: '남자 복식' },
-  { key: 5, title: '여자 복식' },
-  { key: 6, title: '혼성 복식' },
-  { key: 7, title: '팀' },
-];
+const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
+  const tiers = await getTiers();
+  const usersRankingData: UserRanking = await getUserRanking(searchParams, tiers);
 
-const page = () => {
   return (
     <div className="relative flex h-full w-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
@@ -31,16 +31,14 @@ const page = () => {
             <DropdownIcon width={24} height={24} fill="#787878" />
           </div>
         </div>
-        <div className="no-scrollbar flex gap-[8px] overflow-scroll">
-          {COMP_CATEGORY.map((item) => (
-            <div
-              key={item.key}
-              className="items-center justify-center whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-body-2 text-gray-80"
-            >
-              {item.title}
-            </div>
-          ))}
-        </div>
+        <TabGroup
+          path={'/ranking'}
+          items={RANKING_CATEGORY.map((category, index) => ({
+            text: `${category.title}`,
+            option: [{ gender: `${category.gender}` }, { type: `${category.type}` }],
+          }))}
+          variant="round"
+        />
       </div>
       <div className="no-scrollbar flex h-full flex-col gap-[40px] overflow-scroll border-t-[1px] border-gray-30 bg-gray-10 p-[20px]">
         <div className="flex flex-col gap-[12px]">
@@ -73,13 +71,10 @@ const page = () => {
           <div className="flex gap-[16px]">
             <div className="flex flex-1 flex-col gap-[8px]">
               <div className="flex flex-row gap-[16px]">
-                <div className="flex gap-[4px] py-[4px]">
-                  <select>
-                    <option>국화부</option>
-                    <option>개나리부</option>
-                  </select>
-                  <DropdownIcon width={24} height={24} fill="#787878" />
-                </div>
+                <TierFilter
+                  tiers={tiers}
+                  defaultValue={{ gender: 'male', type: 'single' }}
+                />
                 <div className="flex gap-[4px] py-[4px]">
                   <select>
                     <option>클럽필터</option>
@@ -100,10 +95,9 @@ const page = () => {
                   <span className="text-body-3 text-gray-80">소속클럽</span>
                 </div>
               </div>
-              <RankingInfoCard />
-              <RankingInfoCard />
-              <RankingInfoCard />
-              <RankingInfoCard />
+              {usersRankingData.map((userRanking) => (
+                <RankingInfoCard userRanking={userRanking} />
+              ))}
             </div>
           </div>
         </div>
