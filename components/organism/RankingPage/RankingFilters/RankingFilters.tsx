@@ -1,10 +1,10 @@
 'use client';
 
-import React, { ChangeEvent, useCallback } from 'react';
+import React from 'react';
 import TierFilter from '../../CompetitionPage/CompetitionHomePage/TierFilter/TierFilter';
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
 import type { Tier } from '@/@types/tier';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import useQueryString from '@/lib/hook/useQueryString';
 
 const RankingFilters = ({
   tiers,
@@ -13,23 +13,7 @@ const RankingFilters = ({
   tiers: Tier[];
   clubNameArr: string[];
 }) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams],
-  );
-
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    router.replace(pathname + '?' + createQueryString('club', event.target.value));
-  };
+  const { handleChange, searchParams } = useQueryString('club');
 
   return (
     <div className="flex gap-[16px]">

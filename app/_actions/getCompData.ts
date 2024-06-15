@@ -1,4 +1,3 @@
-import type { Competition } from '@/@types/competition';
 import { filterCompetition } from '@/lib/utils/filterCompetition';
 import { cookies } from 'next/headers';
 
@@ -10,7 +9,7 @@ export interface ISearchParams {
   title?: string;
   date?: string;
   club?: string;
-  playerName?: string;
+  year?: string;
 }
 
 export const getCompData = async (searchParams?: ISearchParams, count?: number) => {

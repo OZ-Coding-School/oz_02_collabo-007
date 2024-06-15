@@ -1,8 +1,8 @@
 'use client';
-import React, { ChangeEvent, useCallback } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React from 'react';
 
 import DropdownIcon from '@/app/_asset/icons/dropdown.svg';
+import useQueryString from '@/lib/hook/useQueryString';
 
 interface CompListFilter {
   filterOption: {
@@ -13,23 +13,7 @@ interface CompListFilter {
 
 const CompListFilter = ({ filterOption }: CompListFilter) => {
   const { name, options } = filterOption;
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams],
-  );
-
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    router.replace(pathname + '?' + createQueryString(name, event.target.value));
-  };
+  const { handleChange, searchParams } = useQueryString(name);
 
   return (
     <div className="relative flex gap-[4px]">
