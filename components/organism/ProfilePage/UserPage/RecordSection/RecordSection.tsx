@@ -4,7 +4,7 @@ import MatchCard from '@/components/organism/CompetitionProgressPage/MatchCard';
 
 const RecordSection = ({ matchData }: { matchData: UserMatches }) => {
   const { name, start, matchTypeDetails, tier, matches } = matchData;
-  console.log(matchData);
+
   return (
     <>
       {matches.length !== 0 && (

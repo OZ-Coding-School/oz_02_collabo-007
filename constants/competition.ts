@@ -22,6 +22,14 @@ export const COMP_CATEGORY: CompCategory[] = [
   { title: '팀', gender: 'team', type: 'team' },
 ];
 
+export const RANKING_CATEGORY: CompCategory[] = [
+  { title: '남자 단식', gender: 'male', type: 'single' },
+  { title: '여자 단식', gender: 'female', type: 'single' },
+  { title: '남자 복식', gender: 'male', type: 'double' },
+  { title: '여자 복식', gender: 'female', type: 'double' },
+  { title: '팀', gender: 'team', type: 'team' },
+];
+
 export const COMP_TIER = {
   name: 'tier',
   options: [

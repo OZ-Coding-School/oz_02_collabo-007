@@ -41,9 +41,10 @@ const TabVariants = cva('flex items-center justify-center', {
 interface TabProps extends VariantProps<typeof TabVariants> {
   path: string;
   item: Item;
+  defaultValue: Item;
 }
 
-export const Tab = ({ path, item, variant }: TabProps) => {
+export const Tab = ({ path, item, variant, defaultValue }: TabProps) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
@@ -57,11 +58,12 @@ export const Tab = ({ path, item, variant }: TabProps) => {
   });
 
   if (params.has('tier')) params.delete('tier');
+  if (params.has('club')) params.delete('club');
 
   let isActive = searchParams.toString().includes(params.toString());
   if (
     keyArr.filter((key: string) => searchParams.has(key)).length === 0 &&
-    item.text === '전체'
+    item.text === defaultValue.text
   ) {
     isActive = true;
   }
