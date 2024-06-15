@@ -19,7 +19,13 @@ export const TabGroup = ({
   return (
     <div className={`no-scrollbar flex w-full gap-[12px] overflow-x-scroll `}>
       {items.map((item, index) => (
-        <Tab key={index} item={item} path={path} variant={variant} />
+        <Tab
+          key={index}
+          item={item}
+          path={path}
+          variant={variant}
+          defaultValue={items[0]}
+        />
       ))}
     </div>
   );
