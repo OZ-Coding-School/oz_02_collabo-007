@@ -2,11 +2,21 @@ import { UserRanking } from '@/@types/ranking';
 import Image from 'next/image';
 import React from 'react';
 import UserIcon from '@/app/_asset/icons/user.svg';
+import { cn } from '@/lib/utils/cn';
 
 const RankingInfoCard = ({ userRanking }: { userRanking: UserRanking }) => {
+  const ranker = userRanking.rank < 4 ? true : false;
+
   return (
-    <div className="flex items-center justify-between gap-[8px] py-[12px]">
-      <span className="w-[24px]">{userRanking.rank}</span>
+    <div className="flex items-center justify-between gap-[8px] py-[12px] text-gray-80">
+      <div
+        className={cn(
+          'w-[24px]',
+          `${ranker ? 'text-[14px] font-[700] leading-[20px] text-primary-60' : 'text-body-2'}`,
+        )}
+      >
+        {userRanking.rank}
+      </div>
       <div className="jutify-center flex w-[80px] items-center gap-[8px]">
         <div className="relative h-[24px] w-[24px] overflow-hidden rounded-full">
           {userRanking.imageUrl == null ? (
@@ -17,13 +27,13 @@ const RankingInfoCard = ({ userRanking }: { userRanking: UserRanking }) => {
             <Image src={userRanking.imageUrl} alt="avatar" fill sizes="24px" />
           )}
         </div>
-        <span>{userRanking.user.username}</span>
+        <div className="text-sub-headline-2">{userRanking.user.username}</div>
       </div>
-      <div className="flex flex-1 justify-end">
-        <span>{userRanking.totalPoints}</span>
+      <div className="flex flex-1 justify-end text-body-2">
+        <div>{userRanking.totalPoints}</div>
       </div>
-      <div className="flex flex-1 justify-end">
-        <span>{userRanking.club ? userRanking.club.name : '무소속'}</span>
+      <div className="flex flex-1 justify-end text-body-2">
+        <div>{userRanking.club ? userRanking.club.name : '무소속'}</div>
       </div>
     </div>
   );
