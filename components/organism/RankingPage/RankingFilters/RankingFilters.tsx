@@ -32,10 +32,12 @@ const RankingFilters = ({
   };
 
   const clubNameSet = new Set(
-    usersRankingData.map((data) => {
-      if (!data.club) return '무소속';
-      return data.club?.name;
-    }),
+    usersRankingData
+      ? usersRankingData.map((data) => {
+          if (!data.club) return '무소속';
+          return data.club?.name;
+        })
+      : [],
   );
 
   const clubNameArr = Array.from(clubNameSet).sort((a, b) => a.localeCompare(b, 'ko-KR'));

@@ -14,10 +14,8 @@ const RankingBoard = async ({
   searchParams: ISearchParams;
   tiers: Tier[];
 }) => {
-  // console.log(searchParams);
-  // console.log(searchParams.club);
   const usersRankingData: UserRanking[] = await getUserRanking(searchParams, tiers);
-  const filteredData: UserRanking[] = usersRankingData.filter((data) => {
+  const filteredData: UserRanking[] = usersRankingData?.filter((data) => {
     if (!searchParams.club || searchParams.club === 'all') {
       return true;
     }
@@ -26,14 +24,22 @@ const RankingBoard = async ({
     }
     return data.club?.name === searchParams.club;
   });
-  console.log(filteredData);
+
   return (
     <div className="flex flex-1 flex-col gap-[8px]">
       <RankingFilters tiers={tiers} usersRankingData={usersRankingData} />
       <RankingBoardHeader />
-      {filteredData.map((userRanking, index) => (
-        <RankingInfoCard userRanking={userRanking} key={index} />
-      ))}
+      {filteredData ? (
+        <>
+          {filteredData.map((userRanking, index) => (
+            <RankingInfoCard userRanking={userRanking} key={index} />
+          ))}
+        </>
+      ) : (
+        <div className="flex h-full w-full items-center justify-center text-gray-80">
+          해당하는 랭킹 유저가 없습니다.
+        </div>
+      )}
     </div>
   );
 };

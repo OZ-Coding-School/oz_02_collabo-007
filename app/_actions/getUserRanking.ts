@@ -4,6 +4,7 @@ import { ISearchParams } from './getCompData';
 export const getUserRanking = async (searchParams: ISearchParams, tiers: Tier[]) => {
   const { gender = 'male', type = 'single' } = searchParams;
 
+  // tier
   const filteredTier = tiers.filter(
     ({ matchTypeDetails }) =>
       matchTypeDetails.gender === gender && matchTypeDetails.type === type,
@@ -12,12 +13,16 @@ export const getUserRanking = async (searchParams: ISearchParams, tiers: Tier[])
   const { tier = filteredTier[0].name } = searchParams;
   const tierId = filteredTier.find(({ name }) => name === tier)?.id;
 
+  // player search
+  const { playerName = '' } = searchParams || {};
+
   try {
     const params = new URLSearchParams();
 
     params.set('gender', gender);
     params.set('type', type);
     if (tierId) params.set('tier', `${tierId}`);
+    if (playerName) params.set('name', playerName);
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/ranking/user/?${params.toString()}`,
