@@ -14,7 +14,7 @@ import { UserRanking } from '@/@types/ranking';
 
 const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
   const tiers = await getTiers();
-  const usersRankingData: UserRanking = await getUserRanking(searchParams, tiers);
+  const usersRankingData: UserRanking[] = await getUserRanking(searchParams, tiers);
 
   return (
     <div className="relative flex h-full w-full flex-col">
@@ -95,8 +95,8 @@ const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
                   <span className="text-body-3 text-gray-80">소속클럽</span>
                 </div>
               </div>
-              {usersRankingData.map((userRanking) => (
-                <RankingInfoCard userRanking={userRanking} />
+              {usersRankingData.map((userRanking, index) => (
+                <RankingInfoCard userRanking={userRanking} key={index} />
               ))}
             </div>
           </div>
