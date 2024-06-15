@@ -24,6 +24,7 @@ const config: Config = {
       },
       boxShadow: {
         card: '0px 2px 8px 0px rgba(0, 0, 0, 0.12)',
+        navbar: '0px -2px 8px 0px rgba(0, 0, 0, 0.04)',
       },
       fontSize: {
         'headline-1': [
