@@ -3,12 +3,13 @@ import { ISearchParams } from './getCompData';
 
 export const getUserRanking = async (searchParams: ISearchParams, tiers: Tier[]) => {
   const { gender = 'male', type = 'single' } = searchParams;
+
   const filteredTier = tiers.filter(
     ({ matchTypeDetails }) =>
       matchTypeDetails.gender === gender && matchTypeDetails.type === type,
   );
-  const { tier = filteredTier[0].name } = searchParams;
 
+  const { tier = filteredTier[0].name } = searchParams;
   const tierId = filteredTier.find(({ name }) => name === tier)?.id;
 
   try {
