@@ -29,7 +29,7 @@ const RankingButtonList = ({
       type: isSelected,
     };
 
-    const res = await fetch(`/api/ranking`, {
+    const res = await fetch(`/api/ranking/`, {
       method: 'POST',
       body: JSON.stringify(data),
     });
