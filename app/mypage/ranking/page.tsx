@@ -1,14 +1,12 @@
-import type { MyProfileRanking, RankingWithoutImage } from '@/@types/ranking';
+import type { MyProfileRanking } from '@/@types/ranking';
 import { getMyData } from '@/app/_actions/getMyData';
-import { getMyProfileRanking } from '@/app/_actions/getMyProfileRanking';
+import { getMyTitleRanking } from '@/app/_actions/getMyTitleRanking';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import RankingButtonList from '@/components/organism/MyPage/RankingButtomList/RankingButtonList';
+import RankingButtonList from '@/components/organism/MyPage/RankingButtonList/RankingButtonList';
 import React from 'react';
 
-type MatchTypeArr = 'single' | 'double' | 'team';
-
 const Ranking = async () => {
-  const myProfileRanking: MyProfileRanking = await getMyProfileRanking();
+  const myProfileRanking: MyProfileRanking = await getMyTitleRanking();
   const { gender } = await getMyData();
 
   return (

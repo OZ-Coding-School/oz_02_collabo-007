@@ -1,7 +1,7 @@
 'use server';
 import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
-export const getMyProfileRanking = async () => {
+export const getMyTitleRanking = async () => {
   const res = await fetchWithToken(
     `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/ranking/`,
     {
