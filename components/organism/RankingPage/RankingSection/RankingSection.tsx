@@ -1,4 +1,4 @@
-import { UserRanking } from '@/@types/ranking';
+import type { Ranking } from '@/@types/ranking';
 import type { Tier } from '@/@types/tier';
 import type { ISearchParams } from '@/app/_actions/getCompData';
 import { getUserRanking } from '@/app/_actions/getUserRanking';
@@ -12,31 +12,32 @@ const RankingSection = async ({
   searchParams: ISearchParams;
   tiers: Tier[];
 }) => {
-  const usersRankingData: UserRanking[] = await getUserRanking(searchParams, tiers);
+  const data: Ranking[] = await getUserRanking(searchParams, tiers);
+  const rankingData = Array.isArray(data) ? data : [];
+  const teamTab = searchParams.gender === 'team' && searchParams.type === 'team';
 
-  const filteredData: UserRanking[] = usersRankingData?.filter((data) => {
-    if (!searchParams.club || searchParams.club === 'all') {
-      return true;
-    }
-    if (searchParams.club === '무소속') {
-      return data.club === null;
-    }
+  const filteredData: Ranking[] = rankingData.filter((data) => {
+    if (!searchParams.club || searchParams.club === 'all') return true;
+    if (searchParams.club === '무소속') return data.club === null;
     return data.club?.name === searchParams.club;
   });
 
   const clubNameSet = new Set(
-    usersRankingData
-      ? usersRankingData.map((data) => {
-          if (!data.club) return '무소속';
-          return data.club?.name;
-        })
-      : [],
+    rankingData.map((data) => {
+      if (!data.club) return '무소속';
+      return data.club?.name;
+    }),
   );
 
   const clubNameArr = Array.from(clubNameSet).sort((a, b) => a.localeCompare(b, 'ko-KR'));
 
   return (
-    <RankingBoard filteredData={filteredData} clubNameArr={clubNameArr} tiers={tiers} />
+    <RankingBoard
+      filteredData={filteredData}
+      clubNameArr={clubNameArr}
+      tiers={tiers}
+      teamTab={teamTab}
+    />
   );
 };
 

@@ -16,7 +16,6 @@ const SuccessButtons = ({
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [pending, setPending] = useState(false);
-  console.log(waiting);
 
   const handleCancel = async () => {
     setPending(() => true);

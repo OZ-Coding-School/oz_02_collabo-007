@@ -13,6 +13,12 @@ const useQueryString = (name: string) => {
       const params = new URLSearchParams(searchParams.toString());
       params.set(name, value);
 
+      if (name === 'tier') params.delete('club');
+      if (name === 'year') {
+        params.delete('club');
+        params.delete('tier');
+      }
+
       return params.toString();
     },
     [searchParams],

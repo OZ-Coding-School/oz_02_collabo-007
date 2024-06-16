@@ -3,7 +3,7 @@
 import Input from '@/components/core/Input/Input';
 import React, { useEffect, useState } from 'react';
 import SearchIcon from '@/app/_asset/icons/search.svg';
-import { UserRanking } from '@/@types/ranking';
+import type { Ranking } from '@/@types/ranking';
 import RankingFilters from '../RankingFilters/RankingFilters';
 import { RankingBoardHeader } from '../RankingBoardHeader/RankingBoardHeader';
 import RankingInfoCard from '@/components/module/RankingInfoCard/RankingInfoCard';
@@ -15,13 +15,15 @@ const RankingBoard = ({
   filteredData = [],
   clubNameArr,
   tiers,
+  teamTab,
 }: {
-  filteredData: UserRanking[];
+  filteredData: Ranking[];
   clubNameArr: string[];
   tiers: Tier[];
+  teamTab: boolean;
 }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [searchedData, setSearchedData] = useState<UserRanking[]>(filteredData);
+  const [searchedData, setSearchedData] = useState<Ranking[]>(filteredData);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -35,8 +37,12 @@ const RankingBoard = ({
       return;
     }
 
-    const filtered: UserRanking[] = filteredData.filter(({ user: { username } }) => {
-      return hangulToJamo(username).includes(hangulToJamo(searchValue));
+    const filtered: Ranking[] = filteredData.filter((data) => {
+      if ('team' in data) {
+        return hangulToJamo(data.team.name).includes(hangulToJamo(searchValue));
+      }
+
+      return hangulToJamo(data.user.username).includes(hangulToJamo(searchValue));
     });
 
     setSearchedData(() => filtered);
@@ -58,13 +64,13 @@ const RankingBoard = ({
       </div>
       <div className="flex flex-1 gap-[16px]">
         <div className="flex flex-1 flex-col gap-[8px]">
-          <RankingFilters tiers={tiers} clubNameArr={clubNameArr} />
+          <RankingFilters tiers={tiers} clubNameArr={clubNameArr} teamTab={teamTab} />
           <RankingBoardHeader />
           {searchedData.length !== 0 ? (
             <>
-              {searchedData.map((userRanking, index) => (
+              {searchedData.map((rankingData, index) => (
                 // TODO: 유저 프로필로 이동
-                <RankingInfoCard userRanking={userRanking} key={index} />
+                <RankingInfoCard rankingData={rankingData} key={index} />
               ))}
             </>
           ) : (
