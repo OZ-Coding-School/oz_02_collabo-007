@@ -3,24 +3,18 @@ import ProfileTab from './ProfileTab/ProfileTab';
 import ClubTab from './ClubTab/ClubTab';
 import Button from '@/components/core/Button/Button';
 import Link from 'next/link';
-import { UserData } from '@/@types/user';
+import type { UserData } from '@/@types/user';
 
 interface MyProfileCardProps {
   userData: UserData;
 }
 
 const MyProfileCard = ({ userData }: MyProfileCardProps) => {
-  const { username, gender, birth, tier, imageUrl, club, team } = userData;
+  const { club, team } = userData;
 
   return (
     <div className="flex flex-col items-start gap-[24px] self-stretch bg-white px-[20px] py-[24px]">
-      <ProfileTab
-        name={username}
-        birth={birth}
-        gender={gender}
-        imageUrl={imageUrl}
-        tier={tier ? tier : null}
-      />
+      <ProfileTab userData={userData} />
 
       <ClubTab club={club} team={team} />
 

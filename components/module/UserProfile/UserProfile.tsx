@@ -1,19 +1,15 @@
-import Link from 'next/link';
 import React from 'react';
-
-import Button from '@/components/core/Button/Button';
 import { UserData } from '@/@types/user';
 import ProfileAvatar from '@/components/core/Avatar/ProfileAvatar';
 import UserInfoCard from './UserInfoCard/UserInfoCard';
-import UserHighlightRankingCard from './UserHighlightRankingCard/UserHighlightRankingCard';
 
 interface UserProfileProps {
   userData: UserData | null;
   loginBtn?: boolean;
-  rankingPanel?: boolean;
+  children?: React.ReactNode;
 }
 
-const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => {
+const UserProfile = ({ userData, loginBtn, children }: UserProfileProps) => {
   return (
     <div className="w-full">
       <div
@@ -23,12 +19,7 @@ const UserProfile = ({ userData, loginBtn, rankingPanel }: UserProfileProps) => 
           <UserInfoCard userData={userData} loginBtn />
           <ProfileAvatar image={userData?.imageUrl} />
         </div>
-        <UserHighlightRankingCard rankingPanel={rankingPanel} userData={userData} />
-        {!userData && loginBtn && (
-          <Link href="/signin">
-            <Button size="lg" label="로그인하러 가기" variant="primary" />
-          </Link>
-        )}
+        {children}
       </div>
     </div>
   );

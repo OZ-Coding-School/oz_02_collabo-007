@@ -11,19 +11,14 @@ export const getMyTitleRanking = async () => {
         'Content-type': 'application/json',
       },
       cache: 'force-cache',
-      next: { tags: ['myProfileRanking'] },
+      next: { tags: ['myTitleRanking'] },
     },
   );
-
-  if (res.status === 401) {
-    return null;
-  }
 
   if (!res.ok) {
     throw new Error(`Server Error`);
   }
 
   const data = await res.json();
-
   return data;
 };

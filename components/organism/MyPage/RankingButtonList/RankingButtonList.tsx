@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import RankingButton from '../RankingButton/RankingButton';
 import { MyProfileRanking } from '@/@types/ranking';
 import Button from '@/components/core/Button/Button';
+import { useRouter } from 'next/navigation';
 
 const RankingButtonList = ({
   gender,
@@ -12,6 +13,8 @@ const RankingButtonList = ({
   gender: string;
   myProfileRanking: MyProfileRanking;
 }) => {
+  const [pending, setPending] = useState(false);
+  const router = useRouter();
   const matchTypeArr = Object.keys(myProfileRanking).filter(
     (_, index) => index !== 0,
   ) as ('single' | 'double' | 'team')[];
@@ -19,6 +22,24 @@ const RankingButtonList = ({
   const [isSelected, setIsSelected] = useState<string | null>(
     myProfileRanking.mainRanking !== '0' ? myProfileRanking.mainRanking : null,
   );
+
+  const handleClickRanking = async () => {
+    setPending(() => true);
+    const data = {
+      type: isSelected,
+    };
+
+    const res = await fetch(`/api/ranking`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      setPending(() => false);
+      router.replace('/mypage');
+      router.refresh();
+    }
+  };
 
   return (
     <>
@@ -36,7 +57,11 @@ const RankingButtonList = ({
         ))}
       </div>
       <div className="sticky bottom-0 w-full bg-white p-[20px]">
-        <Button label="선택하기" disabled={!isSelected} />
+        <Button
+          label="선택하기"
+          disabled={!isSelected || pending}
+          onClick={handleClickRanking}
+        />
       </div>
     </>
   );
