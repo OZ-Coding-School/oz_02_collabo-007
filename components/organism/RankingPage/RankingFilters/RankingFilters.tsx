@@ -9,15 +9,19 @@ import useQueryString from '@/lib/hook/useQueryString';
 const RankingFilters = ({
   tiers,
   clubNameArr,
+  teamTab = false,
 }: {
   tiers: Tier[];
   clubNameArr: string[];
+  teamTab: boolean;
 }) => {
   const { handleChange, searchParams } = useQueryString('club');
 
   return (
     <div className="flex gap-[16px]">
-      <TierFilter tiers={tiers} initialValue={{ gender: 'male', type: 'single' }} />
+      {!teamTab && (
+        <TierFilter tiers={tiers} initialValue={{ gender: 'male', type: 'single' }} />
+      )}
       <div className="relative flex w-[100px]">
         <select
           onChange={handleChange}

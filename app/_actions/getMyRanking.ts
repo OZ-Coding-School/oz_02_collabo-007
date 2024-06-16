@@ -4,6 +4,23 @@ import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 export const getMyRanking = async (searchParams: ISearchParams) => {
   const { gender = 'male', type = 'single' } = searchParams;
 
+  if (gender === 'team' && type === 'team') {
+    const res = await fetchWithToken(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/ranking/realtime/myteamrank/`,
+      {
+        credentials: 'include',
+        method: 'GET',
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error('server errors');
+    }
+
+    const data = await res.json();
+    return data;
+  }
+
   const params = new URLSearchParams();
   params.set('gender', gender);
   params.set('type', type);
@@ -16,12 +33,11 @@ export const getMyRanking = async (searchParams: ISearchParams) => {
     },
   );
 
-  const data = await res.json();
-
-  // FIXME: 변경
-  if (res.status === 404) {
-    return data;
+  if (!res.ok) {
+    throw new Error('server errors');
   }
+
+  const data = await res.json();
 
   return data;
 };
