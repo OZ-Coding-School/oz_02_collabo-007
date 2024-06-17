@@ -6,7 +6,7 @@ const NextMatchInfo = ({ compData }: { compData: MyCompData }) => {
   const { matches, status, applyStatus } = compData;
 
   const beforeText =
-    (applyStatus === 'unpaid' && '참가 대기중') ||
+    (applyStatus === 'unpaid' && '입금 대기중') ||
     (applyStatus === 'confirmed_participation' && !matches && '경기 미배정') ||
     (matches?.courtNumber && `${matches.courtNumber}번 코트`);
 
