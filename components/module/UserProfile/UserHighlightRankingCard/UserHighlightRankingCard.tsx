@@ -44,9 +44,9 @@ const UserHighlightRankingCard = async ({ userData }: UserHighlightRankingCardPr
           <div>{TitleRanking()}</div>
         </div>
       ) : (
-        <span className="text-sub-headline-2 text-primary-60">
+        <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] text-sub-headline-2 text-primary-60 shadow-md">
           현재 등록된 대표 랭킹이 없습니다.
-        </span>
+        </div>
       )}
     </>
   );
