@@ -27,7 +27,7 @@ const MatchCard = ({
   return (
     <div
       className={cn(
-        'relative flex flex-col items-start gap-[12px] self-stretch rounded-[8px] bg-white p-[16px] shadow-card',
+        'relative flex flex-col items-start gap-[12px] self-stretch rounded-[8px] bg-white p-[16px] shadow-xl',
         `${LineClass()}`,
       )}
     >

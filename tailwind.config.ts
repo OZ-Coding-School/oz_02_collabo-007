@@ -24,6 +24,7 @@ const config: Config = {
       },
       boxShadow: {
         card: '0px 2px 8px 0px rgba(0, 0, 0, 0.12)',
+        xl: '0px 2px 10px 0px rgba(0, 0, 0, 0.08)',
         lg: '0px -2px 8px 0px rgba(0, 0, 0, 0.04)',
       },
       fontSize: {

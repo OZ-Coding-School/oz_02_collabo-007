@@ -9,7 +9,7 @@ interface UserProfileProps {
   children?: React.ReactNode;
 }
 
-const UserProfile = ({ userData, loginBtn, children }: UserProfileProps) => {
+const UserProfile = async ({ userData, loginBtn, children }: UserProfileProps) => {
   return (
     <div className="w-full">
       <div
