@@ -26,7 +26,7 @@ const RankingFilters = ({
         <select
           onChange={handleChange}
           value={searchParams.get('club') ?? ''}
-          className="z-10 w-full appearance-none truncate pr-[24px] text-sub-headline-2 text-gray-80 outline-none"
+          className="font-Pretendard z-10 w-full appearance-none truncate pr-[24px] text-sub-headline-2 text-gray-80 outline-none"
         >
           <option value="" disabled>
             클럽 필터
