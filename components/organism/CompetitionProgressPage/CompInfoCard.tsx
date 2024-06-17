@@ -1,6 +1,5 @@
 import { CompDetailInfo } from '@/@types/competition';
-import { GENDER } from '@/constants/competition';
-import { CompType } from '@/constants/competitionDetail';
+import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import React from 'react';
 
 const CompInfoCard = async ({ compDetailData }: { compDetailData: CompDetailInfo }) => {
@@ -9,7 +8,7 @@ const CompInfoCard = async ({ compDetailData }: { compDetailData: CompDetailInfo
       <span className="text-headline-2">{compDetailData.name}</span>
       <span className="text-sub-headline-2 text-gray-80">
         {GENDER[compDetailData.matchTypeDetails.gender]}{' '}
-        {CompType[compDetailData.matchTypeDetails.type]} · {compDetailData.tier}
+        {MATCH_TYPE[compDetailData.matchTypeDetails.type]} · {compDetailData.tier}
       </span>
     </div>
   );

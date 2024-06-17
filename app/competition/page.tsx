@@ -17,6 +17,8 @@ import TierFilter from '@/components/organism/CompetitionPage/CompetitionHomePag
 const page = async ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const tiers: Tier[] = await getTiers();
 
+  // TODO: 비로그인 유저일땐 버튼 없어야 할 것 같은 데요?
+
   return (
     <div className="relative flex h-full flex-col">
       <div className="flex flex-col gap-[16px] p-[20px]">
