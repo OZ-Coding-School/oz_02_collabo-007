@@ -20,7 +20,7 @@ const config: Config = {
         'check-icon': '/app/_asset/icons/check.svg',
       },
       fontFamily: {
-        pretendard: ['var(--font-pretendard)'],
+        Pretendard: ['var(--font-pretendard)'],
       },
       boxShadow: {
         card: '0px 2px 8px 0px rgba(0, 0, 0, 0.12)',
