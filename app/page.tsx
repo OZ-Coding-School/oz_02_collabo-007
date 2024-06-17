@@ -8,13 +8,27 @@ import HomeMyCompInfo from '@/components/organism/HomPage/HomeMyCompInfo/HomeMyC
 import HomeCompInfo from '@/components/organism/HomPage/HomeCompInfo/HomeCompInfo';
 import CompListSkeleton from '@/components/core/Skeleton/CompListSkeleton';
 import { MY_COMP_LIST } from '@/constants/competition';
+import Link from 'next/link';
+import Button from '@/components/core/Button/Button';
+import UserHighlightRankingCard from '@/components/module/UserProfile/UserHighlightRankingCard/UserHighlightRankingCard';
 
 const Home = async () => {
   const userData: UserData = await getMyData();
+
   return (
     <>
       <div className="relative flex h-full w-full flex-col">
-        <UserProfile userData={userData && userData} rankingPanel loginBtn />
+        <UserProfile userData={userData && userData} loginBtn>
+          <>
+            {userData ? (
+              <UserHighlightRankingCard userData={userData} />
+            ) : (
+              <Link href="/signin">
+                <Button size="lg" label="로그인하러 가기" variant="primary" />
+              </Link>
+            )}
+          </>
+        </UserProfile>
         <main className="no-scrollbar flex w-full flex-1 flex-col gap-[32px] overflow-scroll bg-gray-10 p-[20px]">
           {userData && (
             <Suspense

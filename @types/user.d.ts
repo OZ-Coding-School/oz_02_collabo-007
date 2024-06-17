@@ -16,7 +16,13 @@ export type UserData = {
   gender: string;
   birth: number;
   imageUrl: string | null;
-  tier?: string | null;
+  tiers?:
+    | {
+        id: number;
+        name: string;
+        matchTypeDetail: { gender: string; type: string };
+      }[]
+    | null;
   club: Club | null;
   team: Team | null;
   ranking?: {

@@ -1,4 +1,3 @@
-'use client';
 import CheckIcon from '@/app/_asset/icons/check.svg';
 import type { RankingWithoutImage } from '@/@types/ranking';
 import { GENDER, MATCH_TYPE } from '@/constants/competition';

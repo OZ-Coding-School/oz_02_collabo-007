@@ -21,7 +21,14 @@ const page = async () => {
             link={'/mypage/competition/?status=all'}
             description="참가 신청한 대회 보기"
           />
-          <NavigationTab link={'/user/1/record'} description="내 전적 보기" />
+          <NavigationTab
+            link={`/user/${userData.id}/record`}
+            description="내 전적 보기"
+          />
+          <NavigationTab
+            link={`/mypage/ranking/${userData.gender}`}
+            description="대표 랭킹 설정하기"
+          />
         </div>
 
         <div className="flex flex-1 flex-col items-start self-stretch bg-white py-[8px] text-body-1">

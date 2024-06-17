@@ -1,7 +1,7 @@
 'use server';
 import { fetchWithToken } from '@/lib/utils/fetchWithToken';
 
-export const getMyProfileRanking = async () => {
+export const getMyTitleRanking = async () => {
   const res = await fetchWithToken(
     `${process.env.NEXT_PUBLIC_BASE_URL}/user/myprofile/ranking/`,
     {
@@ -11,19 +11,14 @@ export const getMyProfileRanking = async () => {
         'Content-type': 'application/json',
       },
       cache: 'force-cache',
-      next: { tags: ['myProfileRanking'] },
+      next: { tags: ['myTitleRanking'] },
     },
   );
-
-  if (res.status === 401) {
-    return null;
-  }
 
   if (!res.ok) {
     throw new Error(`Server Error`);
   }
 
   const data = await res.json();
-
   return data;
 };
