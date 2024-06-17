@@ -5,18 +5,7 @@ import { ClubSection, InfoSection } from '@/components/organism/ProfilePage';
 import Avatar from '@/components/core/Avatar/Avatar';
 import MemberSection from '@/components/module/MemberSection/MemberSection';
 import type { TennisClubData } from '@/@types/club';
-
-const getClubData = async (id: string) => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/club/${id}`, {
-      next: { revalidate: 3600 },
-    });
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { getClubData } from '@/app/_actions/getClubData';
 
 const page = async ({ params }: { params: { id: string } }) => {
   const { club, coaches, teams, users }: TennisClubData = await getClubData(params.id);
@@ -47,9 +36,11 @@ const page = async ({ params }: { params: { id: string } }) => {
 
           <div className="flex flex-col gap-[12px]">
             <div className="text-headline-6">클럽 팀</div>
-            <div className="flex items-start gap-[24px] self-stretch">
+            <div className="flex w-full items-center justify-center gap-[24px] self-stretch">
               {teams.map(({ id, name, imageUrl }) => (
-                <Avatar key={id} name={name} image={imageUrl} />
+                <Link href={`/team/${id}`} key={id}>
+                  <Avatar name={name} image={imageUrl} />
+                </Link>
               ))}
             </div>
           </div>

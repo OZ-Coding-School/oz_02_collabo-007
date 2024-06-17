@@ -1,5 +1,4 @@
-import { MATCH_TYPE } from '@/constants/competition';
-import { GENDER } from '@/constants/competitionDetail';
+import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import { formatDate } from '@/lib/utils/formatDate';
 import React, { FC } from 'react';
 

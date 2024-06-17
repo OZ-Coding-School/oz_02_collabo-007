@@ -2,22 +2,21 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils/cn';
 import Link from 'next/link';
+import UserIcon from '@/app/_asset/icons/user.svg';
 
 interface MemberProfileProps {
   id: number;
   name: string;
-  rank?: number | null;
-  image?: string | null;
-  score?: string | null;
+  image: string | null;
+  number: number;
   teamName?: string | null;
 }
 
 const MemberProfile: FC<MemberProfileProps> = ({
   id,
   name,
-  rank = null,
-  image = null,
-  score = null,
+  image,
+  number,
   teamName = null,
 }) => {
   return (
@@ -25,25 +24,21 @@ const MemberProfile: FC<MemberProfileProps> = ({
       href={`/user/${id}`}
       className="flex items-center gap-[8px] self-stretch py-[12px] text-body-2"
     >
-      <div
-        className={cn(
-          'w-[24px] text-headline-7 text-gray-60',
-          `${rank && rank <= 3 && 'text-primary-60'}`,
-        )}
-      >
-        {rank ? rank : '-'}
-      </div>
-      <div className="flex items-center gap-[12px]">
-        <div className="relative h-[32px] w-[32px] overflow-hidden rounded-full">
+      <div className={cn('w-[24px] text-headline-7 text-gray-60')}>{number}</div>
+      <div className="flex w-[120px] items-center gap-[12px]">
+        <div className="relative h-[32px] w-[32px] flex-shrink-0 overflow-hidden rounded-full">
+          {/* TODO: 공통 컴포넌트로 만들기 */}
           {image ? (
             <Image src={image} alt="tennis" fill sizes="32px" priority />
           ) : (
-            <div className="h-full w-full bg-gray-30"></div>
+            <div className="flex h-full w-full items-center justify-center bg-gray-30">
+              <UserIcon className="h-[60%] w-[60%] fill-gray-60" />
+            </div>
           )}
         </div>
         <div className="text-sub-headline-2">{name}</div>
       </div>
-      <div className="flex-1 text-right">{score ? score : '-'}</div>
+      <div className="flex-1 text-right">{id}</div>
       <div className="flex-1 text-right">{teamName ? teamName : '-'}</div>
     </Link>
   );

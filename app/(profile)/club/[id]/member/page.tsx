@@ -1,14 +1,8 @@
 import React from 'react';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
-import { ClubTeamUser } from '@/@types/user';
+import type { ClubTeamUser } from '@/@types/user';
 import MemberSection from '@/components/module/MemberSection/MemberSection';
-
-const getClubMember = async (id: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/club/${id}/userlist`, {
-    next: { revalidate: 3600 },
-  }).then((res) => res.json());
-  return res;
-};
+import { getClubMember } from '@/app/_actions/getClubMember';
 
 const page = async ({ params }: { params: { id: string } }) => {
   const clubMemberData: ClubTeamUser[] = await getClubMember(params.id);
@@ -16,7 +10,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex h-full w-full flex-col">
       <HeaderBar title="클럽 멤버" backBtn />
-      <div className="flex w-full flex-1 flex-col px-[20px] py-[16px]">
+      <div className="no-scrollbar flex w-full flex-1 flex-col overflow-scroll px-[20px] py-[16px]">
         <MemberSection userData={clubMemberData} />
       </div>
     </div>
