@@ -28,6 +28,7 @@ const SuccessButtons = ({
       router.replace(
         `/mypage/competition?message=${waiting ? '대기를 취소했습니다.' : '참가 신청을 취소했습니다.'}`,
       );
+      router.refresh();
     }
   };
 

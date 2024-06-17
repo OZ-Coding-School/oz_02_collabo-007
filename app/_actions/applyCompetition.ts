@@ -1,6 +1,7 @@
 'use server';
 import { ApplyState } from '@/lib/hook/useApplyForm';
 import { fetchWithToken } from '@/lib/utils/fetchWithToken';
+import { revalidateTag } from 'next/cache';
 
 export const applyCompetition = async (
   prevState: ApplyState | null,
@@ -29,6 +30,8 @@ export const applyCompetition = async (
         message: data.error,
       };
     }
+
+    revalidateTag('compData');
 
     return {
       status: 'success',

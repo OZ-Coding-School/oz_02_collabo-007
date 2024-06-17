@@ -33,6 +33,8 @@ export const getCompData = async (searchParams?: ISearchParams, count?: number) 
     {
       credentials: 'include',
       method: 'GET',
+      cache: 'force-cache',
+      next: { tags: ['compData'], revalidate: 3600 },
     },
   );
   if (!res.ok) {

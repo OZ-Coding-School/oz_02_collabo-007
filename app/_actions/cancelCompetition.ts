@@ -1,5 +1,6 @@
 'use server';
 import { fetchWithToken } from '@/lib/utils/fetchWithToken';
+import { revalidateTag } from 'next/cache';
 
 const cancelCompetition = async (id: number) => {
   try {
@@ -14,6 +15,8 @@ const cancelCompetition = async (id: number) => {
     if (!res.ok) {
       throw new Error('취소 실패');
     }
+
+    revalidateTag('compData');
 
     const data = await res.json();
     return data;
