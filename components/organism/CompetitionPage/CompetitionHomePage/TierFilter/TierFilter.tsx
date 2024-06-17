@@ -31,7 +31,7 @@ const TierFilter = ({
         id={'tier'}
         onChange={handleChange}
         value={searchParams.get('tier') ?? ''}
-        className="font-Pretendard z-10 w-full appearance-none pr-[24px] text-sub-headline-2 text-gray-80 outline-none"
+        className="z-10 w-full appearance-none pr-[24px] font-pretendard text-sub-headline-2 text-gray-80 outline-none"
       >
         {initialValue.gender === 'all' && <option value="all">전체</option>}
         {filteredTiers.map((tier) => (

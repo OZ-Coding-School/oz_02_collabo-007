@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from '@/components/core/Button/Button';
 import clsx from 'clsx';
-import { Pretendard } from '@/app/fonts';
+import { pretend } from '@/app/fonts';
 
 const meta = {
   title: 'Core/Button',
@@ -12,7 +12,7 @@ const meta = {
   decorators: [
     (Story) => (
       <div
-        className={clsx(Pretendard.variable, 'font-pretendard')}
+        className={clsx(pretend.variable, 'font-pretend')}
         style={{ width: '81px', height: '48px' }}
       >
         <Story />

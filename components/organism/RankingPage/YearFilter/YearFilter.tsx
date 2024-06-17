@@ -19,7 +19,7 @@ const YearFilter = () => {
       <select
         onChange={handleChange}
         value={searchParams.get('year') ?? ''}
-        className="font-Pretendard z-10 w-full appearance-none pr-[24px] text-sub-headline-2 text-gray-80 outline-none"
+        className="z-10 w-full appearance-none pr-[24px] font-pretendard text-sub-headline-2 text-gray-80 outline-none"
       >
         {yearsArr.map((year) => (
           <option key={year} value={year}>
