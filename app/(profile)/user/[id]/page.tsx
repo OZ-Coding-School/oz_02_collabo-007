@@ -1,4 +1,3 @@
-import type { UserData } from '@/@types/user';
 import CategoryRankingCard from '@/components/organism/ProfilePage/UserPage/UserProfileRankingCard/UserProfileRankingCard';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
