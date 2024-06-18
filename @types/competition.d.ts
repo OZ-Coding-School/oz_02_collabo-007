@@ -19,8 +19,6 @@ export type Competition = CompetitionBase & {
   category?: 'before' | 'during' | 'ended';
 };
 
-CompDetailInfo;
-
 export type CompetitionDetails = CompetitionBase & {
   waitingCount: number;
   totalRounds: number;
