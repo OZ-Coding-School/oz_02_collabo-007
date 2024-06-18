@@ -10,5 +10,10 @@ export type Team = {
 
 export type TennisTeamData = {
   team: Team;
+  teamRanking: {
+    rank: number;
+    totalPoints: number;
+    team: { id: number; name: string };
+  }[];
   users: ClubTeamUser[];
 };
