@@ -26,7 +26,7 @@ const page = async () => {
             description="내 전적 보기"
           />
           <NavigationTab
-            link={`/mypage/ranking/${userData.gender}`}
+            link={`/mypage/ranking/${userData.id}/?gender=${userData.gender}`}
             description="대표 랭킹 설정하기"
           />
         </div>
