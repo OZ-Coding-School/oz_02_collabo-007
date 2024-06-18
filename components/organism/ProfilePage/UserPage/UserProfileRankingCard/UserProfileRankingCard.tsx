@@ -1,18 +1,28 @@
-import type { UserData } from '@/@types/user';
+import { MyProfileRanking, RankingWithoutImage } from '@/@types/ranking';
+import { MATCH_TYPE } from '@/constants/competition';
+import { cn } from '@/lib/utils/cn';
 import React from 'react';
 
-interface UserProfileRankingCardProps {
-  res: UserData;
+const UserProfileRankingCard = ({
+  rankingData,
+  name,
+  isMain,
+}: {
+  rankingData: RankingWithoutImage[] | null;
   name: string;
-  category: string;
-}
-
-const UserProfileRankingCard = ({ res, name, category }: UserProfileRankingCardProps) => {
+  isMain: boolean;
+}) => {
+  console.log(rankingData);
   return (
-    <div className="flex flex-1 flex-col gap-[4px] rounded-[8px] bg-gray-20 p-[12px] text-center">
-      <span className="text-body-3 text-gray-60">{name}</span>
-      <span className="text-headline-6 text-gray-60">
-        {res.ranking ? res.ranking[category] : '-'}
+    <div
+      className={cn(
+        'flex flex-1 flex-col gap-[4px] rounded-[8px] bg-gray-20 p-[12px] text-center text-gray-60',
+        isMain && 'bg-primary-10 text-primary-60',
+      )}
+    >
+      <span className="text-body-3">{MATCH_TYPE[name]}</span>
+      <span className="t text-headline-6">
+        {rankingData ? `${rankingData[0].rank}위` : '미정'}
       </span>
     </div>
   );
