@@ -7,7 +7,7 @@ import type { TennisTeamData } from '@/@types/team';
 import { getTeamData } from '@/app/_actions/getTeamData';
 
 const page = async ({ params }: { params: { id: string } }) => {
-  const { team, users }: TennisTeamData = await getTeamData(params.id);
+  const { team, users, teamRanking }: TennisTeamData = await getTeamData(params.id);
 
   return (
     <div className="flex h-full w-full flex-col">
@@ -20,7 +20,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             imageUrl={team.imageUrl}
             description={team.description}
           />
-          <TeamSection rank={32} win={32} lose={15} />
+          <TeamSection rank={teamRanking[0].rank} win={32} lose={15} />
         </div>
 
         <div className="flex w-full flex-1 flex-col gap-[40px] bg-white p-[20px]">
