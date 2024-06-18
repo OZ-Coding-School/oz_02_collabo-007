@@ -20,7 +20,7 @@ const RankingButtonList = ({
   ) as ('single' | 'double' | 'team')[];
 
   const [isSelected, setIsSelected] = useState<string | null>(
-    myProfileRanking.mainRanking !== '0' ? myProfileRanking.mainRanking : null,
+    myProfileRanking.mainRanking ? myProfileRanking.mainRanking : null,
   );
 
   const handleClickRanking = async () => {

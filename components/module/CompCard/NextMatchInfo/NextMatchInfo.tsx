@@ -1,6 +1,5 @@
 import type { Matches, MyCompData } from '@/@types/competition';
 import React from 'react';
-import Clock from '@/app/_asset/icons/clock.svg';
 
 const NextMatchInfo = ({ compData }: { compData: MyCompData }) => {
   const { matches, status, applyStatus } = compData;

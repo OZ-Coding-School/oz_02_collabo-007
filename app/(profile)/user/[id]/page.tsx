@@ -1,4 +1,3 @@
-import CategoryRankingCard from '@/components/organism/ProfilePage/UserPage/UserProfileRankingCard/UserProfileRankingCard';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import UserProfile from '@/components/module/UserProfile/UserProfile';
 import Link from 'next/link';
@@ -6,8 +5,18 @@ import React, { Suspense } from 'react';
 import { getUserData } from '@/app/_actions/getUserData';
 import RecentRecordSection from '@/components/organism/MyPage/RecentRecordSection/RecentRecordSection';
 import { getMyRecord } from '@/app/_actions/getMyRecord';
+import { getUserRanking } from '@/app/_actions/getUserRanking';
+import { MyProfileRanking } from '@/@types/ranking';
+import UserProfileRankingCard from '@/components/organism/ProfilePage/UserPage/UserProfileRankingCard/UserProfileRankingCard';
 
 const page = async ({ params }: { params: { id: number } }) => {
+  const userRanking: MyProfileRanking = await getUserRanking(`${params.id}`);
+  const matchType = Object.keys(userRanking).filter((_, index) => index !== 0) as (
+    | 'single'
+    | 'double'
+    | 'team'
+  )[];
+
   return (
     <div className="flex h-full w-full flex-col bg-gray-30">
       <HeaderBar title="프로필" backBtn />
@@ -22,9 +31,14 @@ const page = async ({ params }: { params: { id: number } }) => {
           <div className="flex flex-col gap-[12px]">
             <span className="text-headline-6 text-gray-100">랭킹</span>
             <div className="flex gap-[12px]">
-              {/* <CategoryRankingCard res={userData} category="single" name="단식" />
-              <CategoryRankingCard res={userData} category="double" name="복식" />
-              <CategoryRankingCard res={userData} category="team" name="팀" /> */}
+              {matchType.map((matchType, index) => (
+                <UserProfileRankingCard
+                  rankingData={userRanking[matchType]}
+                  name={matchType}
+                  isMain={matchType === userRanking.mainRanking}
+                  key={index}
+                />
+              ))}
             </div>
           </div>
           <div className="flex w-full flex-1 flex-col gap-[12px]">

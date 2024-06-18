@@ -1,6 +1,7 @@
 import type { MyProfileRanking } from '@/@types/ranking';
 import { UserData } from '@/@types/user';
 import { getMyTitleRanking } from '@/app/_actions/getMyTitleRanking';
+import { getUserRanking } from '@/app/_actions/getUserRanking';
 import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import React from 'react';
 
@@ -9,7 +10,7 @@ interface UserHighlightRankingCardProps {
 }
 
 const UserHighlightRankingCard = async ({ userData }: UserHighlightRankingCardProps) => {
-  const myProfileRanking: MyProfileRanking = await getMyTitleRanking();
+  const myProfileRanking: MyProfileRanking = await getUserRanking(`${userData.id}`);
   const { mainRanking } = myProfileRanking;
 
   const TitleRanking = () => {
@@ -39,7 +40,7 @@ const UserHighlightRankingCard = async ({ userData }: UserHighlightRankingCardPr
 
   return (
     <>
-      {mainRanking !== '0' ? (
+      {mainRanking ? (
         <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
           <div>{TitleRanking()}</div>
         </div>
