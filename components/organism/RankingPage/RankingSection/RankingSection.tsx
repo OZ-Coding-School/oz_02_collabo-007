@@ -1,7 +1,7 @@
 import type { Ranking } from '@/@types/ranking';
 import type { Tier } from '@/@types/tier';
 import type { ISearchParams } from '@/app/_actions/getCompData';
-import { getUsersRanking } from '@/app/_actions/getUsersRanking';
+import { getUserListRanking } from '@/app/_actions/getUserListRanking';
 import React from 'react';
 import RankingBoard from '../RankingBoard/RankingBoard';
 
@@ -12,7 +12,7 @@ const RankingSection = async ({
   searchParams: ISearchParams;
   tiers: Tier[];
 }) => {
-  const data: Ranking[] = await getUsersRanking(searchParams, tiers);
+  const data: Ranking[] = await getUserListRanking(searchParams, tiers);
   const rankingData = Array.isArray(data) ? data : [];
   const teamTab = searchParams.gender === 'team' && searchParams.type === 'team';
 

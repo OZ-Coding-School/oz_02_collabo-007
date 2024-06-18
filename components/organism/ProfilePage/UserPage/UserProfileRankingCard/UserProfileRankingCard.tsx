@@ -12,7 +12,6 @@ const UserProfileRankingCard = ({
   name: string;
   isMain: boolean;
 }) => {
-  console.log(rankingData);
   return (
     <div
       className={cn(

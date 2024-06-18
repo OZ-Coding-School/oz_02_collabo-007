@@ -1,7 +1,7 @@
 import { Tier } from '@/@types/tier';
 import { ISearchParams } from './getCompData';
 
-export const getUsersRanking = async (searchParams: ISearchParams, tiers: Tier[]) => {
+export const getUserListRanking = async (searchParams: ISearchParams, tiers: Tier[]) => {
   try {
     const { gender = 'male', type = 'single' } = searchParams;
 
