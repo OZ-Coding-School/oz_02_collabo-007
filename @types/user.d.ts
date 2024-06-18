@@ -21,7 +21,7 @@ export type UserData = {
     | {
         id: number;
         name: string;
-        matchTypeDetail: { gender: string; type: string };
+        matchTypeDetail: MatchTypeDetails;
       }[]
     | null;
   club: Club | null;

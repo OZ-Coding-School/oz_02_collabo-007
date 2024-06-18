@@ -1,4 +1,5 @@
-import { MyProfileRanking, RankingWithoutImage } from '@/@types/ranking';
+import { MatchTypeKey } from '@/@types/competition';
+import { RankingWithoutImage } from '@/@types/ranking';
 import { MATCH_TYPE } from '@/constants/competition';
 import { cn } from '@/lib/utils/cn';
 import React from 'react';
@@ -9,7 +10,7 @@ const UserProfileRankingCard = ({
   isMain,
 }: {
   rankingData: RankingWithoutImage[] | null;
-  name: string;
+  name: MatchTypeKey;
   isMain: boolean;
 }) => {
   return (

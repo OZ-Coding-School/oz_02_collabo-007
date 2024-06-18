@@ -5,12 +5,13 @@ import RankingButton from '../RankingButton/RankingButton';
 import { MyProfileRanking } from '@/@types/ranking';
 import Button from '@/components/core/Button/Button';
 import { useRouter } from 'next/navigation';
+import { GenderKey } from '@/@types/competition';
 
 const RankingButtonList = ({
   gender,
   myProfileRanking,
 }: {
-  gender: string;
+  gender: GenderKey;
   myProfileRanking: MyProfileRanking;
 }) => {
   const [pending, setPending] = useState(false);

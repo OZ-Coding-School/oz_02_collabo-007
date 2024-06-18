@@ -5,6 +5,7 @@ import { MATCH_TYPE } from '@/constants/competition';
 import type { UserData } from '@/@types/user';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import Link from 'next/link';
+import { MatchTypeKey } from '@/@types/competition';
 
 interface ProfileTabProps {
   userData: UserData;
@@ -50,8 +51,13 @@ const ProfileTab = ({ userData }: ProfileTabProps) => {
             <div>
               {tiers
                 .map(
-                  ({ name, matchTypeDetail }) =>
-                    `${MATCH_TYPE[matchTypeDetail.type]} ${name}`,
+                  ({
+                    name,
+                    matchTypeDetail,
+                  }: {
+                    name: string;
+                    matchTypeDetail: { type: MatchTypeKey };
+                  }) => `${MATCH_TYPE[matchTypeDetail.type]} ${name}`,
                 )
                 .join(' \u00B7 ')}
             </div>

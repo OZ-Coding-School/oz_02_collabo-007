@@ -1,4 +1,4 @@
-import { Match } from './competition';
+import { Match, MatchTypeDetails } from './competition';
 
 export interface Record {
   id: number;
@@ -9,7 +9,7 @@ export interface Record {
 
 export interface UserMatches {
   name: string;
-  matchTypeDetails: { gender: string; type: string };
+  matchTypeDetails: MatchTypeDetails;
   tier: string;
   start: string;
   matches: Match[];
