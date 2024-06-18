@@ -1,3 +1,5 @@
+import { MatchTypeDetails } from './competition';
+
 export interface Applicant {
   userName: string;
   userPhone: string;
@@ -12,10 +14,7 @@ export interface ApplicantInfo {
 export interface AppliedCompetition {
   name: string;
   startDate: string;
-  matchTypeDetails: {
-    gender: string;
-    type: string;
-  };
+  matchTypeDetails: MatchTypeDetails;
   tier: string;
   totalRounds: number;
   location: string;

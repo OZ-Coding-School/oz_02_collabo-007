@@ -7,7 +7,7 @@ import type { CompetitionDetails } from '@/@types/competition';
 import CopyButton from '../../core/CopyButton/CopyButton';
 import { formatDate } from '@/lib/utils/formatDate';
 import type { AppliedCompetition } from '@/@types/apply';
-import { GENDER, MATCH_TYPE } from '@/constants/competition';
+import { printMatchTypeInfo } from '@/lib/utils/printMatchTypeInfo';
 
 const CompInfoCard = ({ data }: { data: CompetitionDetails | AppliedCompetition }) => {
   const { startDate, matchTypeDetails, tier, totalRounds, location, address } = data;
@@ -23,7 +23,7 @@ const CompInfoCard = ({ data }: { data: CompetitionDetails | AppliedCompetition 
         <span className="flex-1">
           {matchTypeDetails && tier && totalRounds
             ? [
-                `${GENDER[matchTypeDetails.gender]} ${MATCH_TYPE[matchTypeDetails.type]}`,
+                `${printMatchTypeInfo(matchTypeDetails.gender, matchTypeDetails.type)}`,
                 tier,
                 `${Math.pow(2, totalRounds)}강`,
               ].join(' \u00B7 ')

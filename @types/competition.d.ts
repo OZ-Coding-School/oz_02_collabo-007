@@ -102,8 +102,8 @@ export type Set = {
 };
 
 type MatchTypeDetails = {
-  gender: 'female' | 'male' | 'mix';
-  type: 'single' | 'double' | 'team';
+  gender: GenderKey;
+  type: MatchTypeKey;
 };
 
 export type CompCategory = {

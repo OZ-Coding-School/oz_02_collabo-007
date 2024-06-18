@@ -1,11 +1,12 @@
-import { GENDER, MATCH_TYPE } from '@/constants/competition';
+import { MatchTypeDetails } from '@/@types/competition';
 import { formatDate } from '@/lib/utils/formatDate';
+import { printMatchTypeInfo } from '@/lib/utils/printMatchTypeInfo';
 import React, { FC } from 'react';
 
 interface RecordSectionHeaderProps {
   compName: string;
   date: string;
-  category: { gender: string; type: string };
+  category: MatchTypeDetails;
   tier: string;
 }
 
@@ -20,7 +21,7 @@ const RecordSectionHeader: FC<RecordSectionHeaderProps> = ({
       <div className="text-headline-5">{compName}</div>
       <div className="flex items-center gap-[4px] text-body-3 text-gray-60">
         <span>
-          {[formatDate(date), `${GENDER[gender]} ${MATCH_TYPE[type]}`, tier].join(
+          {[formatDate(date), `${printMatchTypeInfo(gender, type)}`, tier].join(
             ` \u00B7 `,
           )}
         </span>
