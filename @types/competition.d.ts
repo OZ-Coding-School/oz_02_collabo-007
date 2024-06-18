@@ -1,134 +1,55 @@
+import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import { UserData } from './user';
 
-export interface Competition {
+type CompetitionBase = {
   id: number;
   name: string;
   startDate: string;
-  endData: string;
-  matchTypeDetails: {
-    gender: 'female' | 'male' | 'mix';
-    type: 'single' | 'double' | 'team';
-  };
   tier: string;
+  matchTypeDetails: MatchTypeDetails;
   location: string;
   imageUrl: string;
   status: string;
+};
+
+export type Competition = CompetitionBase & {
   waitingCount: number;
+  endData: string;
   nextMatch?: NextMatchInfo;
-  [key: string]: string | number;
-}
-
-export interface CompetitionProps {
-  compData: Competition | MyCompData;
-}
-
-export type NextMatchInfo = {
-  id: string | null;
-  teammate: [{ id: string; name: string }, { id: string; name: string }];
-  opponent: [{ id: string; name: string }, { id: string; name: string }] | null;
-  court: string | null;
-  round: number;
+  category?: 'before' | 'during' | 'ended';
 };
 
-type ImageType = {
-  src: string;
-  height: number;
-  width: number;
-  blurDataURL: string;
-  blurWidth: number;
-  blurHeight: number;
-};
+CompDetailInfo;
 
-export type CompDetailInfo = {
-  id: number;
-  name: string;
-  startDate: string;
-  tier: string;
-  matchTypeDetails: { gender: string; type: string };
+export type CompetitionDetails = CompetitionBase & {
+  waitingCount: number;
   totalRounds: number;
   totalSets: number;
-  location: string;
   address: string;
   description: string;
   rule: string;
   phone: string;
   siteLink: string;
-  imageUrl: string | null;
-  status: string;
-  waitingCount: number;
 };
 
-interface CompStatusButtonContent {
-  [key: string]: {
-    label: string;
-    variant: 'primary' | 'secondary' | 'tertiary' | 'ghost';
-    size: 'sm' | 'md' | 'lg';
-    colors: 'default' | 'gray';
-    endPoint: string;
-  };
-}
-
-type CompCategory = {
-  title: string;
-  gender?: 'male' | 'female' | 'mix' | 'team' | 'all' | undefined;
-  type?: 'single' | 'double' | 'team' | 'all' | undefined;
-};
-
-export interface Match {
-  id: number;
-  matchRound: number;
-  matchNumber: number;
-  courtNumber: number;
-  totalSets: number;
-  description: string;
-  winnerUser?: UserData[];
-  aTeamUsers?: UserData[];
-  bTeamUsers?: UserData[];
-  sets?: Set[];
-}
-
-export type Set = {
-  id: number;
-  setNumber: number;
-  aScore: number;
-  bScore: number;
-};
-
-export type MyCompData = {
-  id: number;
-  name: string;
-  startDate: string;
-  tier: string;
-  matchTypeDetails: { gender: string; type: string };
+export type MyCompetition = CompetitionBase & {
   totalRounds: number;
   totalSets: number;
-  location: string | null;
   address: string | null;
   description: string;
   rule: string;
   phone: string | null;
   siteLink: string;
-  imageUrl: string | null;
-  status: string;
   applyStatus: string;
   myteam: string[];
   matchStatus: string | null;
   matches: Matches;
 };
 
-export type Matches = {
-  id: number;
-  matchRound: number;
-  matchNumber: number;
-  courtNumber: number;
-  winnerName: string[];
-  opponentUser: string[];
-};
-
 export type CompetitionResult = {
   competition: number;
   competitionName: string;
-  matchTypeDetails: { gender: string; type: string };
+  matchTypeDetails: MatchTypeDetails;
   tier: string;
   winner: number;
   winnerParticipants: {
@@ -143,3 +64,64 @@ export type CompetitionResult = {
     clubName: string | null;
   }[];
 };
+
+export type NextMatchInfo = {
+  id: string | null;
+  teammate: [{ id: string; name: string }, { id: string; name: string }];
+  opponent: [{ id: string; name: string }, { id: string; name: string }] | null;
+  court: string | null;
+  round: number;
+};
+
+type MatchBase = {
+  id: number;
+  matchRound: number;
+  matchNumber: number;
+  courtNumber: number;
+};
+
+export type Matches = MatchBase & {
+  winnerName: string[];
+  opponentUser: string[];
+};
+
+export type Match = MatchBase & {
+  totalSets: number;
+  description: string;
+  winnerUser?: UserData[];
+  aTeamUsers?: UserData[];
+  bTeamUsers?: UserData[];
+  sets?: Set[];
+};
+
+export type Set = {
+  id: number;
+  setNumber: number;
+  aScore: number;
+  bScore: number;
+};
+
+type MatchTypeDetails = {
+  gender: 'female' | 'male' | 'mix';
+  type: 'single' | 'double' | 'team';
+};
+
+export type CompCategory = {
+  title: string;
+  gender?: 'male' | 'female' | 'mix' | 'team' | 'all';
+  type?: 'single' | 'double' | 'team' | 'all';
+};
+
+type CompStatusButtonContentKey = keyof typeof CompStatusButtonContent;
+
+export type CompStatusButtonContentItem = {
+  label: string;
+  variant: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+  size: 'sm' | 'md' | 'lg';
+  colors: 'default' | 'gray';
+  endPoint: string;
+};
+
+export type GenderKey = keyof typeof GENDER;
+
+export type MatchTypeKey = keyof typeof MATCH_TYPE;

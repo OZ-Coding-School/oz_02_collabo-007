@@ -2,7 +2,7 @@ import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import React, { Suspense } from 'react';
 import CompInfoCard from '@/components/organism/CompetitionProgressPage/CompInfoCard';
 import MatchList from '@/components/organism/CompetitionProgressPage/MatchList';
-import type { CompDetailInfo } from '@/@types/competition';
+import type { CompetitionDetails } from '@/@types/competition';
 import { getCompDetail } from '@/app/_actions/getCompDetail';
 import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import Button from '@/components/core/Button/Button';
@@ -17,7 +17,7 @@ const page = async ({
   params: { id: number };
   searchParams: { roundnumber?: number };
 }) => {
-  const compDetailData: CompDetailInfo = await getCompDetail(params.id);
+  const compDetailData: CompetitionDetails = await getCompDetail(params.id);
 
   function powersOfTwo(totalRounds: number) {
     return Array.from({ length: totalRounds }, (_, i) => Math.pow(2, i));

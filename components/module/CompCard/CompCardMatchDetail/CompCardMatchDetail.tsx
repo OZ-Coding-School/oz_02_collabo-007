@@ -1,8 +1,8 @@
 import CompStatusInfo from '../CompStatusInfo/CompStatusInfo';
 import NextMatchInfo from '../NextMatchInfo/NextMatchInfo';
-import type { MyCompData } from '@/@types/competition';
+import type { MyCompetition } from '@/@types/competition';
 
-const CompCardMatchDetail = ({ compData }: { compData: MyCompData }) => {
+const CompCardMatchDetail = ({ compData }: { compData: MyCompetition }) => {
   return (
     <div className="rounded-[8px] bg-gray-20 p-[12px]">
       {compData.status === 'before' && <NextMatchInfo compData={compData} />}

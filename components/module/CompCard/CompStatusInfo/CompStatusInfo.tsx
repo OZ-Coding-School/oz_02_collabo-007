@@ -2,10 +2,10 @@
 import React from 'react';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import FlagIcon from '@/app/_asset/icons/flag.svg';
-import { MyCompData } from '@/@types/competition';
+import type { MyCompetition } from '@/@types/competition';
 import { useRouter } from 'next/navigation';
 
-const CompStatusInfo = ({ compData }: { compData: MyCompData }) => {
+const CompStatusInfo = ({ compData }: { compData: MyCompetition }) => {
   const { totalRounds, matches } = compData;
   let round = `${Math.round(2 ** (totalRounds - matches?.matchRound + 1))}강`;
   if (round == '2강') round = '결승';

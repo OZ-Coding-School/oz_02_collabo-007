@@ -22,7 +22,7 @@ export const filterCompetition = ({
   };
 
   const setCategory = (comp: Competition): Competition => {
-    comp['category'] = category[comp.status];
+    comp['category'] = category[comp.status] as 'before' | 'during' | 'ended';
     return comp;
   };
 

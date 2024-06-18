@@ -1,4 +1,4 @@
-import { CompDetailInfo } from '@/@types/competition';
+import type { CompetitionDetails } from '@/@types/competition';
 import { UserData } from '@/@types/user';
 import { getCompDetail } from '@/app/_actions/getCompDetail';
 import { getMyData } from '@/app/_actions/getMyData';
@@ -7,9 +7,8 @@ import React from 'react';
 import ApplyForm from './ApplyForm/ApplyForm';
 
 const ApplyPageSection = async ({ id }: { id: number }) => {
-  const [userData, competitionDetailData]: [UserData, CompDetailInfo] = await Promise.all(
-    [getMyData(), getCompDetail(id)],
-  );
+  const [userData, competitionDetailData]: [UserData, CompetitionDetails] =
+    await Promise.all([getMyData(), getCompDetail(id)]);
 
   return (
     <>

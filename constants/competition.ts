@@ -1,12 +1,16 @@
-import { CompCategory, CompStatusButtonContent } from '@/@types/competition';
+import {
+  CompCategory,
+  CompStatusButtonContentItem,
+  CompStatusButtonContentKey,
+} from '@/@types/competition';
 
-export const GENDER: { [key: string]: string } = {
+export const GENDER = {
   female: '여자',
   male: '남자',
   mix: '혼성',
 } as const;
 
-export const MATCH_TYPE: { [key: string]: string } = {
+export const MATCH_TYPE = {
   single: '단식',
   double: '복식',
   team: '팀',
@@ -58,7 +62,10 @@ export const COMP_DATA = {
   ],
 } as const;
 
-export const COMP_STATUS_BUTTON_CONTENT: CompStatusButtonContent = {
+export const COMP_STATUS_BUTTON_CONTENT: Record<
+  CompStatusButtonContentKey,
+  CompStatusButtonContentItem
+> = {
   'Registration Available': {
     label: '대회 신청하기',
     variant: 'primary',

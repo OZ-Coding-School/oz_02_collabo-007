@@ -1,8 +1,12 @@
-import { CompDetailInfo } from '@/@types/competition';
+import type { CompetitionDetails } from '@/@types/competition';
 import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import React from 'react';
 
-const CompInfoCard = async ({ compDetailData }: { compDetailData: CompDetailInfo }) => {
+const CompInfoCard = async ({
+  compDetailData,
+}: {
+  compDetailData: CompetitionDetails;
+}) => {
   return (
     <div className="flex flex-col gap-[8px] self-stretch">
       <span className="text-headline-2">{compDetailData.name}</span>

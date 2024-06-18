@@ -4,11 +4,11 @@ import {
   CompDetail,
   ImageBanner,
 } from '@/components/organism/CompetitionPage';
-import type { CompDetailInfo } from '@/@types/competition';
+import type { CompetitionDetails } from '@/@types/competition';
 import { getCompDetail } from '@/app/_actions/getCompDetail';
 
 const CompDetailSection = async ({ id }: { id: number }) => {
-  const compDetailData: CompDetailInfo = await getCompDetail(id);
+  const compDetailData: CompetitionDetails = await getCompDetail(id);
 
   return (
     <div className="no-scrollbar flex h-full w-full flex-1 flex-col overflow-scroll bg-white">

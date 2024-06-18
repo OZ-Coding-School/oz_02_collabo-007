@@ -1,11 +1,11 @@
 'use client';
-import React, { Suspense } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import ChevronRightIcon from '@/app/_asset/icons/chevron-right.svg';
 import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
-import type { CompDetailInfo } from '@/@types/competition';
+import type { CompetitionDetails } from '@/@types/competition';
 
-const CompDetail = ({ data }: { data: CompDetailInfo }) => {
+const CompDetail = ({ data }: { data: CompetitionDetails }) => {
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
       <div className="flex w-full flex-col gap-[16px]">

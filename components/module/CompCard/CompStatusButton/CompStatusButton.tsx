@@ -1,12 +1,12 @@
 'use client';
-import { Competition, MyCompData } from '@/@types/competition';
+import type { Competition, MyCompetition } from '@/@types/competition';
 import React, { ButtonHTMLAttributes, MouseEvent } from 'react';
 import Button from '@/components/core/Button/Button';
 import { useRouter } from 'next/navigation';
 import { COMP_STATUS_BUTTON_CONTENT } from '@/constants/competition';
 
 interface CompStatusButtonProps {
-  compData: Competition | MyCompData;
+  compData: Competition | MyCompetition;
 }
 
 const CompStatusButton = ({ compData }: CompStatusButtonProps) => {

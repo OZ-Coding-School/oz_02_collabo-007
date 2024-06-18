@@ -1,7 +1,7 @@
-import type { Matches, MyCompData } from '@/@types/competition';
+import type { MyCompetition } from '@/@types/competition';
 import React from 'react';
 
-const NextMatchInfo = ({ compData }: { compData: MyCompData }) => {
+const NextMatchInfo = ({ compData }: { compData: MyCompetition }) => {
   const { matches, status, applyStatus } = compData;
 
   const beforeText =

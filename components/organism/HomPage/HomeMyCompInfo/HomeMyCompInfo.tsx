@@ -2,11 +2,11 @@ import { getMyCompData } from '@/app/_actions/getMyCompData';
 import { BEFORE, DURING, ENDED, MY_COMP_LIST } from '@/constants/competition';
 import Link from 'next/link';
 import React from 'react';
-import { MyCompData } from '@/@types/competition';
+import type { MyCompetition } from '@/@types/competition';
 import HomeMyCompInfoCard from '../HomeMyCompInfoCard/HomeMyCompInfoCard';
 
 const HomeMyCompInfo = async () => {
-  const [beforeData, duringData, endedData]: MyCompData[][] | { detail: string }[] =
+  const [beforeData, duringData, endedData]: MyCompetition[][] | { detail: string }[] =
     await Promise.all(
       [BEFORE, DURING, ENDED].map(async (status) => {
         return await getMyCompData({ status }, 4);

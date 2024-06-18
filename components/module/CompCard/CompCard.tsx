@@ -1,5 +1,5 @@
 'use client';
-import type { Competition, MyCompData } from '@/@types/competition';
+import type { Competition, MyCompetition } from '@/@types/competition';
 import Image from 'next/image';
 import React from 'react';
 import { formatDate } from '@/lib/utils/formatDate';
@@ -13,7 +13,7 @@ const CompCard = ({
   comp,
   status,
 }: {
-  comp: Competition | MyCompData;
+  comp: Competition | MyCompetition;
   status: 'all' | 'my' | 'comp';
 }) => {
   const router = useRouter();
@@ -52,7 +52,7 @@ const CompCard = ({
             </div>
           </div>
         </div>
-        {status === 'my' && <CompCardMatchDetail compData={comp as MyCompData} />}
+        {status === 'my' && <CompCardMatchDetail compData={comp as MyCompetition} />}
 
         {status === 'comp' && <CompStatusButton compData={comp} />}
       </div>
