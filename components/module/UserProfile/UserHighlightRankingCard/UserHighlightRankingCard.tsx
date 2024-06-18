@@ -40,7 +40,7 @@ const UserHighlightRankingCard = async ({ userData }: UserHighlightRankingCardPr
 
   return (
     <>
-      {mainRanking !== '0' ? (
+      {mainRanking ? (
         <div className="flex w-full items-center justify-center gap-[12px] rounded-[8px] border-[1px] border-primary-60 p-[12px] shadow-md">
           <div>{TitleRanking()}</div>
         </div>
