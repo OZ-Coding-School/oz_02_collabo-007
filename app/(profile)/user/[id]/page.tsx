@@ -8,6 +8,8 @@ import { getMyRecord } from '@/app/_actions/getMyRecord';
 import { getUserRanking } from '@/app/_actions/getUserRanking';
 import { MyProfileRanking } from '@/@types/ranking';
 import UserProfileRankingCard from '@/components/organism/ProfilePage/UserPage/UserProfileRankingCard/UserProfileRankingCard';
+import UserProfileSkeleton from '@/components/core/Skeleton/UserProfileSkeleton';
+import RecentRecordSectionSkeleton from '@/components/core/Skeleton/RecentRecordSectionSkeleton';
 
 const page = async ({ params }: { params: { id: number } }) => {
   const userRanking: MyProfileRanking = await getUserRanking(`${params.id}`);
@@ -22,8 +24,7 @@ const page = async ({ params }: { params: { id: number } }) => {
       <HeaderBar title="프로필" backBtn />
       <div className="no-scrollbar flex w-full flex-1 flex-col gap-[8px] overflow-scroll">
         <div className="w-full bg-white">
-          {/* TODO: 스켈레톤 */}
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<UserProfileSkeleton />}>
             <UserProfile userData={await getUserData(params.id)} />
           </Suspense>
         </div>
@@ -51,8 +52,7 @@ const page = async ({ params }: { params: { id: number } }) => {
                 전체 전적 보기
               </Link>
             </div>
-            {/* TODO: 스켈레톤 */}
-            <Suspense fallback={<div>loading</div>}>
+            <Suspense fallback={<RecentRecordSectionSkeleton />}>
               <RecentRecordSection myRecordData={await getMyRecord(params.id)} />
             </Suspense>
           </div>
