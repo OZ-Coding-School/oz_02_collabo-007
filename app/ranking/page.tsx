@@ -8,6 +8,8 @@ import RankingHeader from '@/components/organism/RankingPage/RankingHeader/Ranki
 import RankingSection from '@/components/organism/RankingPage/RankingSection/RankingSection';
 import { getMyData } from '@/app/_actions/getMyData';
 import { UserData } from '@/@types/user';
+import MyRankingCardSkeleton from '@/components/core/Skeleton/MyRankingCardSkeleton';
+import RankingBoardSkeleton from '@/components/core/Skeleton/RankingBoardSkeleton';
 
 const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
   const [tiers, userData]: [Tier[], UserData] = await Promise.all([
@@ -22,15 +24,13 @@ const page = async ({ searchParams }: { searchParams: ISearchParams }) => {
         {userData && (
           <div className="flex w-full flex-col gap-[12px]">
             <div className="text-headline-6">내 랭킹</div>
-            {/* TODO: 스켈레톤 */}
-            <Suspense fallback={<div>loading...</div>}>
+            <Suspense fallback={<MyRankingCardSkeleton />}>
               <MyRankingCard searchParams={searchParams} />
             </Suspense>
           </div>
         )}
 
-        {/* TODO: 스켈레톤 만들기 */}
-        <Suspense fallback={<div>loading...</div>}>
+        <Suspense fallback={<RankingBoardSkeleton />}>
           <RankingSection searchParams={searchParams} tiers={tiers} />
         </Suspense>
       </div>
