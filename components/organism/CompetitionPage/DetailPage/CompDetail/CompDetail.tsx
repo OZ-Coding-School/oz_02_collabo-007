@@ -8,7 +8,6 @@ import PhoneIcon from '@/app/_asset/icons/phone.svg';
 import CopyButton from '@/components/core/CopyButton/CopyButton';
 
 const CompDetail = ({ data }: { data: CompetitionDetails }) => {
-  console.log(data);
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
       <div className="flex w-full flex-col gap-[16px]">
