@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
 import Input from '@/components/core/Input/Input';
@@ -9,6 +9,7 @@ import ClubItem from './ClubItem';
 import ClubModal from './ClubModal';
 import Button from '@/components/core/Button/Button';
 import AddIcon from '@/app/_asset/icons/add.svg';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 interface ClubFieldProps {
   isOpen: boolean;
@@ -34,6 +35,15 @@ const ClubField = ({
     setSelectedId(() => null);
     setIsChanged(() => true);
   };
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.has('modalOpen')) {
+      setIsOpen(() => true);
+    }
+  }, [searchParams]);
 
   return (
     <div className="relative w-full">
@@ -63,7 +73,7 @@ const ClubField = ({
           icon={!selectedId && <AddIcon className="h-[20px] w-[20px] fill-gray-80" />}
           colors="gray"
           size="md"
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => router.push(`${pathname}?modalOpen=true`)}
         />
 
         {selectedId && (
@@ -83,6 +93,7 @@ const ClubField = ({
       <AnimatePresence>
         {isOpen && (
           <ClubModal
+            isOpen={isOpen}
             setIsOpen={setIsOpen}
             clubList={clubList}
             setSelectedId={setSelectedId}

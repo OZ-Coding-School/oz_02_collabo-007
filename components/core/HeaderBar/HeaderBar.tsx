@@ -16,7 +16,7 @@ const HeaderBar: FC<Props> = ({ title, backBtn = false, route, actionBtn }) => {
 
   const handleRoute = () => {
     if (route) {
-      router.push(route);
+      router.replace(route);
       return;
     }
     router.back();

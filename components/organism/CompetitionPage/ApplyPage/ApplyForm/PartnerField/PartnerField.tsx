@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
@@ -8,6 +8,7 @@ import Input from '@/components/core/Input/Input';
 import PartnerItem from './PartnerItem';
 import PartnerModal from './PartnerModal';
 import type { PartnerData } from '@/@types/user';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 interface PartnerFieldProps {
   isOpen: boolean;
@@ -16,12 +17,21 @@ interface PartnerFieldProps {
 }
 
 const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const [selectedId, setSelectedId] = useState<PartnerData | null>(null);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const handleDelete = () => {
     setSelectedId(() => null);
   };
+
+  useEffect(() => {
+    if (searchParams.has('modalOpen')) {
+      setIsOpen(() => true);
+    }
+  }, [searchParams]);
 
   return (
     <div className="relative w-full">
@@ -37,7 +47,7 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
 
         <button
           type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => router.push(`${pathname}?modalOpen=true`)}
           className="flex w-full items-center justify-start rounded-[8px] border-[1px] border-gray-30 py-[10px] pl-[44px] pr-[10px] text-body-1 text-gray-50"
         >
           {selectedId ? selectedId.username : '파트너 검색'}
@@ -70,8 +80,8 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
         {isOpen && (
           <PartnerModal
             id={competitionId}
+            isOpen={isOpen}
             setIsOpen={setIsOpen}
-            inputRef={inputRef}
             setSelectedId={setSelectedId}
           />
         )}

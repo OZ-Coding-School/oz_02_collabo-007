@@ -24,9 +24,11 @@ const ModalContent: React.FC<ModalContentProps> = ({
   const debounceSearchValue = useDebounce<string>(searchValue, 500);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
-  // useEffect(() => {
-  //   searchInputRef.current?.focus();
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 500);
+  }, []);
 
   const ModalActionBtn = () => {
     return (
