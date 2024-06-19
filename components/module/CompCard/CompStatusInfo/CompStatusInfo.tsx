@@ -9,7 +9,7 @@ const CompStatusInfo = ({ compData }: { compData: MyCompetition }) => {
   const { totalRounds, matches } = compData;
   let round = `${Math.round(2 ** (totalRounds - matches?.matchRound + 1))}강`;
   if (round == '2강') round = '결승';
-  if (round == '4강') round = '준경승';
+  if (round == '4강') round = '준결승';
 
   const router = useRouter();
   const endPoint =
