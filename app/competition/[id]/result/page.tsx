@@ -3,7 +3,7 @@ import { getCompResult } from '@/app/_actions/getCompResult';
 import Button from '@/components/core/Button/Button';
 import HeaderBar from '@/components/core/HeaderBar/HeaderBar';
 import ResultCard from '@/components/module/ResultCard/ResultCard';
-import { GENDER, MATCH_TYPE } from '@/constants/competition';
+import { printMatchTypeInfo } from '@/lib/utils/printMatchTypeInfo';
 import Link from 'next/link';
 import React from 'react';
 
@@ -23,8 +23,10 @@ const page = async ({ params }: { params: { id: number } }) => {
 
       <div className="flex w-full flex-col items-start gap-[16px] p-[20px]">
         <div className="text-headline-2">{result.competitionName}</div>
-        <div className="text-sub-headline-2">
-          {GENDER[gender]} {MATCH_TYPE[type]} {tier}
+        <div className="flex gap-[4px] text-sub-headline-2">
+          <div>{printMatchTypeInfo(gender, type)}</div>
+          <div>{'\u00B7'}</div>
+          <div>{tier}</div>
         </div>
       </div>
 

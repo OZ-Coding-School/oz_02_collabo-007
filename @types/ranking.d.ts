@@ -1,3 +1,5 @@
+import { MatchTypeKey } from './competition';
+
 export type UserRanking = UserRankingWithoutImage & {
   imageUrl: string | null;
 };
@@ -26,7 +28,7 @@ export type Ranking = TeamRanking | UserRanking;
 export type RankingWithoutImage = UserRankingWithoutImage | TeamRankingWithoutImage;
 
 export type MyProfileRanking = {
-  mainRanking: string | null;
+  mainRanking: MatchTypeKey | null;
   single: UserRankingWithoutImage[] | null;
   double: UserRankingWithoutImage[] | null;
   team: TeamRankingWithoutImage[] | null;

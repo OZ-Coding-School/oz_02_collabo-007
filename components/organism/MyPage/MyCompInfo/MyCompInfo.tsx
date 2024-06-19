@@ -2,11 +2,11 @@ import { getMyCompData } from '@/app/_actions/getMyCompData';
 import { cn } from '@/lib/utils/cn';
 import React from 'react';
 import { CompListVariants } from '../../HomPage/HomeCompInfo/HomeCompInfo';
-import type { MyCompData } from '@/@types/competition';
+import type { MyCompetition } from '@/@types/competition';
 import CompCard from '@/components/module/CompCard/CompCard';
 
 const MyCompInfo = async ({ status }: { status: string }) => {
-  const compData: MyCompData[] | { detail: string } = await getMyCompData({ status });
+  const compData: MyCompetition[] | { detail: string } = await getMyCompData({ status });
 
   return (
     <div

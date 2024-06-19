@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
+import ClubIcon from '@/app/_asset/icons/group.svg';
 
 interface InfoSectionProps {
   name: string;
@@ -16,7 +17,9 @@ const InfoSection: FC<InfoSectionProps> = ({ name, description, imageUrl = null 
       </div>
       <div className="relative h-[80px] w-[80px] overflow-hidden rounded-[8px]">
         {imageUrl === null ? (
-          <div className="flex h-full w-full items-center justify-center bg-gray-30"></div>
+          <div className="flex h-full w-full items-center justify-center bg-gray-30">
+            <ClubIcon width={30} height={30} fill="#787878" />
+          </div>
         ) : (
           <Image
             src={imageUrl}

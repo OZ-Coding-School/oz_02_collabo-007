@@ -3,13 +3,13 @@ import FlagIcon from '@/app/_asset/icons/flag.svg';
 import CalendarIcon from '@/app/_asset/icons/calendar.svg';
 import MapPinIcon from '@/app/_asset/icons/map-pin.svg';
 import MapIcon from '@/app/_asset/icons/map.svg';
-import type { CompDetailInfo } from '@/@types/competition';
+import type { CompetitionDetails } from '@/@types/competition';
 import CopyButton from '../../core/CopyButton/CopyButton';
 import { formatDate } from '@/lib/utils/formatDate';
 import type { AppliedCompetition } from '@/@types/apply';
-import { GENDER, MATCH_TYPE } from '@/constants/competition';
+import { printMatchTypeInfo } from '@/lib/utils/printMatchTypeInfo';
 
-const CompInfoCard = ({ data }: { data: CompDetailInfo | AppliedCompetition }) => {
+const CompInfoCard = ({ data }: { data: CompetitionDetails | AppliedCompetition }) => {
   const { startDate, matchTypeDetails, tier, totalRounds, location, address } = data;
 
   return (
@@ -23,7 +23,7 @@ const CompInfoCard = ({ data }: { data: CompDetailInfo | AppliedCompetition }) =
         <span className="flex-1">
           {matchTypeDetails && tier && totalRounds
             ? [
-                `${GENDER[matchTypeDetails.gender]} ${MATCH_TYPE[matchTypeDetails.type]}`,
+                `${printMatchTypeInfo(matchTypeDetails.gender, matchTypeDetails.type)}`,
                 tier,
                 `${Math.pow(2, totalRounds)}강`,
               ].join(' \u00B7 ')

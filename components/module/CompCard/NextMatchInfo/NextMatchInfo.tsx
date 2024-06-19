@@ -1,11 +1,11 @@
-import type { Matches, MyCompData } from '@/@types/competition';
+import type { MyCompetition } from '@/@types/competition';
 import React from 'react';
 
-const NextMatchInfo = ({ compData }: { compData: MyCompData }) => {
+const NextMatchInfo = ({ compData }: { compData: MyCompetition }) => {
   const { matches, status, applyStatus } = compData;
 
   const beforeText =
-    (applyStatus === 'unpaid' && '참가 대기중') ||
+    (applyStatus === 'unpaid' && '입금 대기중') ||
     (applyStatus === 'confirmed_participation' && !matches && '경기 미배정') ||
     (matches?.courtNumber && `${matches.courtNumber}번 코트`);
 

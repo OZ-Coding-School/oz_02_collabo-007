@@ -1,7 +1,7 @@
 import type { MyProfileRanking } from '@/@types/ranking';
 import { UserData } from '@/@types/user';
 import { getUserRanking } from '@/app/_actions/getUserRanking';
-import { GENDER, MATCH_TYPE } from '@/constants/competition';
+import { printMatchTypeInfo } from '@/lib/utils/printMatchTypeInfo';
 import React from 'react';
 
 interface UserHighlightRankingCardProps {
@@ -17,7 +17,7 @@ const UserHighlightRankingCard = async ({ userData }: UserHighlightRankingCardPr
     const titleMatchType =
       mainRanking === 'team'
         ? '팀'
-        : `${GENDER[userData!.gender]} ${MATCH_TYPE[mainRanking!]}`;
+        : `${printMatchTypeInfo(userData!.gender, mainRanking!)}`;
 
     let titleName = '미정';
     if (data && 'team' in data[0]) titleName = data[0].team.name;

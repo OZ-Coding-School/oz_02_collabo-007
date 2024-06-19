@@ -1,3 +1,4 @@
+import { GenderKey } from '@/@types/competition';
 import type { MyProfileRanking } from '@/@types/ranking';
 import { ISearchParams } from '@/app/_actions/getCompData';
 import { getUserRanking } from '@/app/_actions/getUserRanking';
@@ -10,7 +11,7 @@ const page = async ({
   searchParams,
 }: {
   params: { id: string };
-  searchParams: { gender: string };
+  searchParams: { gender: GenderKey };
 }) => {
   const myProfileRanking: MyProfileRanking = await getUserRanking(params.id);
 

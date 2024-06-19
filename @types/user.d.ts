@@ -1,4 +1,5 @@
 import { Club } from './club';
+import { GenderKey } from './competition';
 import { ImageFile } from './image';
 import { Team } from './team';
 
@@ -13,14 +14,14 @@ export type UserData = {
   id: number;
   phone: string;
   username: string;
-  gender: string;
+  gender: GenderKey;
   birth: number;
   imageUrl: string | null;
   tiers?:
     | {
         id: number;
         name: string;
-        matchTypeDetail: { gender: string; type: string };
+        matchTypeDetail: MatchTypeDetails;
       }[]
     | null;
   club: Club | null;

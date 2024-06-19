@@ -1,7 +1,8 @@
 import CheckIcon from '@/app/_asset/icons/check.svg';
 import type { RankingWithoutImage } from '@/@types/ranking';
-import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import { cn } from '@/lib/utils/cn';
+import { GenderKey, MatchTypeKey } from '@/@types/competition';
+import { printMatchTypeInfo } from '@/lib/utils/printMatchTypeInfo';
 
 const RankingButton = ({
   rankingData,
@@ -12,8 +13,8 @@ const RankingButton = ({
 }: {
   rankingData: RankingWithoutImage[] | null;
   mainRanking: boolean;
-  gender: string;
-  type: string;
+  gender: GenderKey;
+  type: MatchTypeKey;
   isClicked: boolean;
 }) => {
   const assignTier = () => {
@@ -30,7 +31,7 @@ const RankingButton = ({
       )}
     >
       <div className="flex flex-col gap-[8px]">
-        {type === 'team' ? '팀 \u00B7 ' : `${GENDER[gender]} ${MATCH_TYPE[type]} \u00B7 `}
+        {type === 'team' ? '팀 \u00B7 ' : `${printMatchTypeInfo(gender, type)} \u00B7 `}
         {assignTier()}
         <div
           className={cn(
