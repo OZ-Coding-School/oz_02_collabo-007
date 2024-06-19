@@ -1,6 +1,5 @@
 import type { MyProfileRanking } from '@/@types/ranking';
 import { UserData } from '@/@types/user';
-import { getMyTitleRanking } from '@/app/_actions/getMyTitleRanking';
 import { getUserRanking } from '@/app/_actions/getUserRanking';
 import { GENDER, MATCH_TYPE } from '@/constants/competition';
 import React from 'react';
