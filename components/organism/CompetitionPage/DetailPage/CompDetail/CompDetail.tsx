@@ -6,7 +6,6 @@ import CompInfoCard from '@/components/module/CompInfoCard/CompInfoCard';
 import type { CompetitionDetails } from '@/@types/competition';
 
 const CompDetail = ({ data }: { data: CompetitionDetails }) => {
-  console.log(data);
   return (
     <div className="flex w-full flex-1 flex-col gap-[24px]">
       <div className="flex w-full flex-col gap-[16px]">
@@ -16,13 +15,17 @@ const CompDetail = ({ data }: { data: CompetitionDetails }) => {
 
       <div className="flex w-full flex-col gap-[8px]">
         <div className="text-headline-6">대회 요강</div>
-
         <div className="flex w-full flex-col gap-[4px] text-body-2 text-gray-80">
           <div>{data.description}</div>
           <div>{data.rule}</div>
         </div>
       </div>
-      <Link href={data.siteLink} className="flex w-full items-center gap-[6px]">
+      <Link
+        href={data.siteLink}
+        className="flex w-full items-center gap-[6px]"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="text-headline-6">대회 상세 요강 링크</div>
         <ChevronRightIcon width={16} height={16} fill="393939" />
       </Link>
