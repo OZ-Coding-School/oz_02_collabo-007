@@ -43,7 +43,7 @@ const ClubField = ({
     if (searchParams.has('modalOpen')) {
       setIsOpen(() => true);
     }
-  }, [searchParams]);
+  }, [searchParams, setIsOpen]);
 
   return (
     <div className="relative w-full">

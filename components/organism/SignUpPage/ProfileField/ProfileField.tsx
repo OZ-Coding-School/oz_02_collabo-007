@@ -34,7 +34,7 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
     if (currentImg.length === 0) return;
 
     setImageChange(() => 'false');
-  }, []);
+  }, [currentImg.length]);
 
   return (
     <div className="relative h-[88px] w-[88px] rounded-full">

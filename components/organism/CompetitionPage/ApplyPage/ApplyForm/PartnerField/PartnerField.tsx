@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchIcon from '@/app/_asset/icons/search.svg';
 import Label from '@/components/core/Label/Label';
 import { AnimatePresence } from 'framer-motion';
@@ -31,7 +31,7 @@ const PartnerField = ({ isOpen, setIsOpen, competitionId }: PartnerFieldProps) =
     if (searchParams.has('modalOpen')) {
       setIsOpen(() => true);
     }
-  }, [searchParams]);
+  }, [searchParams, setIsOpen]);
 
   return (
     <div className="relative w-full">

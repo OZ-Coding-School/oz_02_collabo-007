@@ -2,7 +2,7 @@
 
 import Modal from '@/components/module/Modal/Modal';
 import ModalContent from '@/components/module/ModalContent/ModalContent';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ClubSearchData } from '@/@types/club';
 import ClubList from './ClubList';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -27,16 +27,16 @@ const ClubModal = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsOpen((prev: boolean) => !prev);
     router.back();
-  };
+  }, [setIsOpen, router]);
 
-  const handleBackButtonClick = () => {
+  const handleBackButtonClick = useCallback(() => {
     if (isOpen) {
       handleCloseModal();
     }
-  };
+  }, [isOpen, handleCloseModal]);
 
   useEffect(() => {
     const currentQueryParam = searchParams.get('modalOpen');
@@ -45,7 +45,7 @@ const ClubModal = ({
     return () => {
       window.removeEventListener('popstate', handleBackButtonClick);
     };
-  }, [searchParams]);
+  }, [searchParams, handleBackButtonClick, setIsOpen]);
 
   return (
     <Modal handleCloseModal={handleCloseModal}>
