@@ -30,14 +30,14 @@ const Modal: FC<ModalProps> = ({ handleCloseModal, children }) => {
       initial={{ y: '100vh' }}
       animate={{ y: 0 }}
       exit={{ y: '100vh' }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.3 }}
       className="fixed left-0 top-0 z-10 h-full w-full"
     >
       <motion.div
         ref={modalRef}
         drag="y"
         dragConstraints={{ top: 0, bottom: 0 }}
-        dragElastic={0.5}
+        dragElastic={1}
         onDragEnd={handleDragEnd}
         className="relative m-auto flex h-full w-full max-w-[500px] flex-col items-center bg-gray-10"
       >

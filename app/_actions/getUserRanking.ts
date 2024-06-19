@@ -10,7 +10,6 @@ export const getUserRanking = async (id: string) => {
       next: { tags: ['myTitleRanking'] },
     });
     const data = await res.json();
-    console.log(data);
 
     return data;
   } catch (error) {
