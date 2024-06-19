@@ -42,9 +42,10 @@ const ResultCard = ({
                 <Image
                   src={imageUrl}
                   alt="user"
-                  fill
                   sizes="48px"
+                  fill
                   className="object-cover"
+                  priority
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-gray-30">

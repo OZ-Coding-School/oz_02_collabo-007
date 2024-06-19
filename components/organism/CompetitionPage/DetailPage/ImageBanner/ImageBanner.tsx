@@ -9,8 +9,8 @@ const ImageBanner = ({ img }: { img: string | null }) => {
         <Image
           src={img}
           alt="compImg"
-          fill
           sizes="200px"
+          fill
           className="h-full w-full object-cover"
           priority
         />

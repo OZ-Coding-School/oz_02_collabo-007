@@ -25,15 +25,14 @@ const CompCard = ({
         onClick={() => router.push(`/competition/${comp.id}`)}
       >
         <div className="flex gap-[16px]">
-          <div className="relative flex h-[88px] w-[88px] flex-shrink-0 items-center justify-center rounded-[8px] bg-gray-20">
+          <div className="relative flex h-[88px] w-[88px] flex-shrink-0 items-center justify-center overflow-hidden rounded-[8px] bg-gray-20">
             {comp.imageUrl ? (
               <Image
                 src={comp.imageUrl}
-                fill
                 sizes="88px"
                 alt="comp"
-                style={{ borderRadius: '8px' }}
-                className="rounded-[8px] object-cover"
+                fill
+                className="object-cover"
                 priority
               />
             ) : (

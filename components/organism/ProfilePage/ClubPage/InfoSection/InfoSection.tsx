@@ -24,8 +24,8 @@ const InfoSection: FC<InfoSectionProps> = ({ name, description, imageUrl = null 
           <Image
             src={imageUrl}
             alt="tennis"
-            fill
             sizes="80px"
+            fill
             className="object-cover"
             priority
           />
