@@ -27,24 +27,24 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className="flex w-full flex-1 flex-col gap-[40px] bg-white p-[20px]">
           <div className="flex flex-col gap-[12px]">
             <div className="text-headline-6">코치 정보</div>
-            <div className="flex items-start gap-[24px] self-stretch">
+            <div className="no-scrollbar flex w-full justify-around gap-[12px] overflow-y-scroll">
               {coaches.map(({ user }) => (
-                <Avatar key={user.id} name={user.username} image={user.imageUrl} />
+                <div key={user.id} className="w-[30%] max-w-[96px]">
+                  <Avatar name={user.username} image={user.imageUrl} />
+                </div>
               ))}
             </div>
           </div>
-
           <div className="flex flex-col gap-[12px]">
             <div className="text-headline-6">클럽 팀</div>
-            <div className="flex w-full items-center justify-center gap-[24px] self-stretch">
+            <div className="no-scrollbar flex w-full justify-around gap-[12px] overflow-y-scroll">
               {teams.map(({ id, name, imageUrl }) => (
-                <Link href={`/team/${id}`} key={id}>
+                <Link href={`/team/${id}`} key={id} className="w-[30%] max-w-[96px]">
                   <Avatar name={name} image={imageUrl} />
                 </Link>
               ))}
             </div>
           </div>
-
           <div className="flex w-full flex-col gap-[12px]">
             <div className="flex gap-[16px]">
               <div className="flex-1 text-headline-6">멤버</div>
