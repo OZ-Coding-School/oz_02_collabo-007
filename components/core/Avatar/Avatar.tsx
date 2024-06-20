@@ -16,7 +16,14 @@ const Avatar: FC<AvatarProps> = ({ image = null, name = null }) => {
             <UserIcon className="h-[40%] w-[40%] fill-gray-60" />
           </div>
         ) : (
-          <Image src={image} alt="avatar" fill sizes="64px" />
+          <Image
+            src={image}
+            alt="avatar"
+            sizes="64px"
+            fill
+            className="object-cover"
+            priority
+          />
         )}
       </div>
       {name && <div className="w-full text-center text-sub-headline-2">{name}</div>}

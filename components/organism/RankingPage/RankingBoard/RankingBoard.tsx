@@ -55,7 +55,7 @@ const RankingBoard = ({
         <div className="relative">
           <SearchIcon className="absolute left-[12px] top-[13px] z-50 h-[20px] w-[20px] fill-gray-50" />
           <Input
-            placeholder="선수 검색"
+            placeholder={teamTab ? '팀 검색' : '선수 검색'}
             className=" border-gray-30 py-[10px] pl-[44px] pr-[12px]"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}

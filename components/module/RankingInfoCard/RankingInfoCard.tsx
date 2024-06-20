@@ -27,7 +27,14 @@ const RankingInfoCard = ({ rankingData }: { rankingData: Ranking }) => {
                 <UserIcon className="h-[60%] w-[60%] fill-gray-60" />
               </div>
             ) : (
-              <Image src={rankingData.imageUrl} alt="avatar" fill sizes="24px" />
+              <Image
+                src={rankingData.imageUrl}
+                alt="avatar"
+                sizes="24px"
+                fill
+                className="object-cover"
+                priority
+              />
             )}
           </div>
           {'team' in rankingData ? (

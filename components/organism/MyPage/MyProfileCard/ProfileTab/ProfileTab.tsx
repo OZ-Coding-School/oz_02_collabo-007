@@ -21,8 +21,8 @@ const ProfileTab = ({ userData }: ProfileTabProps) => {
           <Image
             src={imageUrl}
             alt="profile"
-            fill
             sizes="64px"
+            fill
             className="rounded-full object-cover"
             priority
           />

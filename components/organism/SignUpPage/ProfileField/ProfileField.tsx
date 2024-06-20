@@ -53,8 +53,7 @@ const ProfileField = ({ currentImg = [] }: { currentImg?: string[] }) => {
               alt="profileImg"
               fill
               sizes="88px"
-              style={{ objectFit: 'cover' }}
-              className="rounded-full"
+              className="rounded-full object-cover"
               priority
             />
           </div>

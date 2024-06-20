@@ -44,14 +44,18 @@ export const filterCompetition = ({
   const sortedArr =
     date === 'closest'
       ? newArr.sort((a: Competition, b: Competition) => {
-          const diffA = Math.abs(new Date(a.startDate).getTime() - today);
-          const diffB = Math.abs(new Date(b.startDate).getTime() - today);
-          return diffA - diffB;
+          return (
+            Math.abs(new Date(a.startDate).getTime() - today) -
+            Math.abs(new Date(b.startDate).getTime() - today)
+          );
         })
-      : newArr.sort(
-          (a: Competition, b: Competition) =>
-            new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
-        );
+      : date === 'furthest' &&
+        newArr.sort((a: Competition, b: Competition) => {
+          return (
+            Math.abs(new Date(b.startDate).getTime() - today) -
+            Math.abs(new Date(a.startDate).getTime() - today)
+          );
+        });
 
   return sortedArr;
 };

@@ -33,9 +33,10 @@ const ClubItem: FC<ClubItemProps> = ({
             <Image
               src={image}
               alt={name}
-              fill
               sizes="w-[56px] h-[56px]"
+              fill
               className="rounded-[8px] object-cover"
+              priority
             />
           ) : (
             <div className="h-full w-full rounded-[8px] bg-gray-30" />
