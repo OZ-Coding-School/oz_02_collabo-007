@@ -15,6 +15,10 @@ export const verifyToken = async (
     body: JSON.stringify(body),
   });
 
+  if (!res.ok) {
+    return { code: 'token_not_valid' };
+  }
+
   const data = await res.json();
 
   return data;

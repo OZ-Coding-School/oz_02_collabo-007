@@ -11,15 +11,19 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (accessToken) {
-    const isVerify = await verifyToken(accessToken);
-
-    if (isVerify.code) {
-      const token = await renewAccessToken();
-      response.cookies.set({
-        name: 'access',
-        value: token,
-        httpOnly: true,
-      });
+    try {
+      const isVerify = await verifyToken(accessToken);
+      if (isVerify.code) {
+        const token = await renewAccessToken();
+        response.cookies.set({
+          name: 'access',
+          value: token,
+          httpOnly: true,
+        });
+      }
+    } catch (error) {
+      response.cookies.delete('access');
+      response.cookies.delete('refresh');
     }
   }
 

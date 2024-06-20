@@ -14,11 +14,11 @@ export const renewAccessToken = async (): Promise<string> => {
     },
   });
 
-  const data = await res.json();
-
   if (!res.ok) {
-    throw new Error('Failed to refresh token');
+    throw new Error('expired');
   }
+
+  const data = await res.json();
 
   return data.access;
 };
