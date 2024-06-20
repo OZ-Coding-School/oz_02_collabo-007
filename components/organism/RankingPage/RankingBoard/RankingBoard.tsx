@@ -65,7 +65,7 @@ const RankingBoard = ({
       <div className="flex flex-1 gap-[16px]">
         <div className="flex flex-1 flex-col gap-[8px]">
           <RankingFilters tiers={tiers} clubNameArr={clubNameArr} teamTab={teamTab} />
-          <RankingBoardHeader />
+          <RankingBoardHeader teamTab={teamTab} />
           {searchedData.length !== 0 ? (
             <>
               {searchedData.map((rankingData, index) => (

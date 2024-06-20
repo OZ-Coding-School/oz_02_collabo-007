@@ -28,9 +28,14 @@ export async function middleware(request: NextRequest) {
   }
 
   if (refreshToken) {
-    const refreshVerify = await verifyToken(`${refreshToken}`);
+    try {
+      const refreshVerify = await verifyToken(`${refreshToken}`);
 
-    if (refreshVerify.code) {
+      if (refreshVerify.code) {
+        response.cookies.delete('access');
+        response.cookies.delete('refresh');
+      }
+    } catch (error) {
       response.cookies.delete('access');
       response.cookies.delete('refresh');
     }
@@ -43,7 +48,10 @@ export async function middleware(request: NextRequest) {
     !/^\/competition\/\d+\/$/.test(pathname) &&
     !/^\/competition\/\d+\/progress\/$/.test(pathname) &&
     !/^\/competition\/\d+\/result\/$/.test(pathname) &&
-    !/^\/ranking\/$/.test(pathname)
+    !/^\/ranking\/$/.test(pathname) &&
+    !/^\/club\/.+$/.test(pathname) &&
+    !/^\/team\/.+$/.test(pathname) &&
+    !/^\/user\/.+$/.test(pathname)
   ) {
     return NextResponse.redirect(
       new URL('/?alert=로그인 후 이용 가능한 서비스입니다.', request.url),
