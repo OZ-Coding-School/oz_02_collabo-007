@@ -18,7 +18,6 @@ const MemberProfile: FC<MemberProfileProps> = ({ id, name, image, teamName = nul
     >
       <div className="flex w-[120px] items-center gap-[12px]">
         <div className="relative h-[32px] w-[32px] flex-shrink-0 overflow-hidden rounded-full">
-          {/* TODO: 공통 컴포넌트로 만들기 */}
           {image ? (
             <Image src={image} alt="tennis" fill sizes="32px" priority />
           ) : (

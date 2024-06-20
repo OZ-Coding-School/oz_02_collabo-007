@@ -69,7 +69,6 @@ const RankingBoard = ({
           {searchedData.length !== 0 ? (
             <>
               {searchedData.map((rankingData, index) => (
-                // TODO: 유저 프로필로 이동
                 <RankingInfoCard rankingData={rankingData} key={index} />
               ))}
             </>

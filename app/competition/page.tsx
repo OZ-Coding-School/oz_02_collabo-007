@@ -1,11 +1,6 @@
 import Navbar from '@/components/module/Navbar/Navbar';
 import React, { Suspense } from 'react';
-import {
-  COMP_CATEGORY,
-  COMP_DATA,
-  COMP_STATUS,
-  COMP_TIER,
-} from '@/constants/competition';
+import { COMP_CATEGORY, COMP_DATA, COMP_STATUS } from '@/constants/competition';
 import { TabGroup } from '@/components/core/CompNavigation/TapGroup';
 import CompListFilter from '@/components/organism/CompetitionPage/CompetitionHomePage/CompListFilter/CompListFilter';
 import CompInfo from '@/components/organism/CompetitionPage/CompetitionHomePage/CompInfo/CompInfo';
@@ -16,8 +11,6 @@ import TierFilter from '@/components/organism/CompetitionPage/CompetitionHomePag
 
 const page = async ({ searchParams }: { searchParams: { [key: string]: string } }) => {
   const tiers: Tier[] = await getTiers();
-
-  // TODO: 비로그인 유저일땐 버튼 없어야 할 것 같은 데요?
 
   return (
     <div className="relative flex h-full flex-col">
