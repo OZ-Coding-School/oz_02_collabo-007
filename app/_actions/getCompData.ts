@@ -36,9 +36,6 @@ export const getCompData = async (searchParams?: ISearchParams, count?: number) 
       next: { tags: ['compData'], revalidate: 3600 },
     },
   );
-  if (!res.ok) {
-    return;
-  }
 
   const data = await res.json();
 
