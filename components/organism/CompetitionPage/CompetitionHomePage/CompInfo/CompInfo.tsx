@@ -7,7 +7,7 @@ import React from 'react';
 
 const CompInfo = async ({ searchParams }: { searchParams: ISearchParams }) => {
   const compData: Competition[] | { detail: string } = await getCompData(searchParams);
-
+  console.log(compData);
   return (
     <div className={cn(CompListVariants({ variant: 'vertical' }))}>
       {Array.isArray(compData) ? (

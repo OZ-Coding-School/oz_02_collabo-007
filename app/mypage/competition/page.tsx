@@ -11,18 +11,16 @@ const page = ({ searchParams }: { searchParams: { [key: string]: string } }) => 
 
   return (
     <div className="relative flex h-full w-full flex-col">
-      <div className="">
-        <HeaderBar title="참가 신청한 대회" backBtn />
-        <div className={`flex w-full gap-[4px] bg-white px-[20px] pt-[12px]`}>
-          <TabGroup
-            path={'/mypage/competition/'}
-            items={COMP_LIST_OPTIONS.map((option, index) => ({
-              text: `${option.title}`,
-              option: [{ status: `${option.status}` }],
-            }))}
-            variant="underBar"
-          />
-        </div>
+      <HeaderBar title="참가 신청한 대회" backBtn />
+      <div className={`flex w-full gap-[4px] bg-white pt-[12px]`}>
+        <TabGroup
+          path={'/mypage/competition/'}
+          items={COMP_LIST_OPTIONS.map((option, index) => ({
+            text: `${option.title}`,
+            option: [{ status: `${option.status}` }],
+          }))}
+          variant="underBar"
+        />
       </div>
 
       <Suspense

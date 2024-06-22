@@ -10,9 +10,9 @@ const TabVariants = cva('flex items-center justify-center', {
   variants: {
     variant: {
       circle:
-        'w-[52px] h-[52px] bg-gray-20 rounded-[99px] text-[14px] leading-[20px] font-[500]',
+        ' w-[52px] h-[52px] bg-gray-20 rounded-[99px] text-[14px] leading-[20px] font-[500] flex-shrink-0',
       round: `whitespace-nowrap rounded-[99px] bg-gray-20 px-[12px] py-[6px] text-[14px] leading-[20px] font-[400]`,
-      underBar: `h-[32px] flex-1 text-[14px] leading-[20px] font-[400]`,
+      underBar: ` h-[32px] flex-1 text-[14px] leading-[20px] font-[400]`,
     },
     selected: {
       true: '',
