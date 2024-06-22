@@ -27,14 +27,14 @@ const page = async ({
   return (
     <div className="relative flex h-full w-full flex-col">
       <HeaderBar title="대회 현황" backBtn />
-      <div className="no-scrollbar relative flex flex-1 flex-col overflow-x-hidden overflow-y-scroll ">
+      <div className="no-scrollbar relative flex w-full flex-1 flex-col overflow-x-hidden overflow-y-scroll">
         <div
           className={cn('px-[20px] pt-[20px]', !searchParams.roundnumber && 'pb-[20px]')}
         >
           <CompInfoCard compDetailData={compDetailData} />
         </div>
         {searchParams.roundnumber && (
-          <div className="sticky top-0 z-10 flex justify-start bg-white p-[20px]">
+          <div className="sticky top-0 z-10 justify-start bg-white p-[20px]">
             <TabGroup
               path={`/competition/${params.id}/progress/`}
               items={rounds.reverse().map((round, index) => ({
