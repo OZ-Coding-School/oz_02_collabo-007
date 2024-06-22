@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils/cn';
 import { Tab } from './Tab';
 
 export type Item = {
@@ -18,7 +19,10 @@ export const TabGroup = ({
 }) => {
   return (
     <div
-      className={`no-scrollbar ml-[-20px] flex w-[calc(100%+40px)] gap-[12px] overflow-x-scroll px-[20px]`}
+      className={cn(
+        `no-scrollbar ml-[-20px] flex w-[calc(100%+40px)] gap-[12px] overflow-x-scroll px-[20px]`,
+        variant === 'underBar' && `ml-0 w-full gap-[4px]`,
+      )}
     >
       {items.map((item, index) => (
         <Tab
