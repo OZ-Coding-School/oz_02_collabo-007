@@ -17,7 +17,9 @@ export const TabGroup = ({
   variant: 'circle' | 'round' | 'underBar' | undefined | null;
 }) => {
   return (
-    <div className={`no-scrollbar flex w-full gap-[12px] overflow-x-scroll`}>
+    <div
+      className={`no-scrollbar ml-[-20px] flex w-[calc(100%+40px)] gap-[12px] overflow-x-scroll px-[20px]`}
+    >
       {items.map((item, index) => (
         <Tab
           key={index}
