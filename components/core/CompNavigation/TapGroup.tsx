@@ -21,7 +21,7 @@ export const TabGroup = ({
     <div
       className={cn(
         `no-scrollbar ml-[-20px] flex w-[calc(100%+40px)] gap-[12px] overflow-x-scroll px-[20px]`,
-        variant === 'underBar' && `ml-0 w-full gap-[4px]`,
+        variant === 'underBar' && `ml-0 gap-[4px]`,
       )}
     >
       {items.map((item, index) => (
